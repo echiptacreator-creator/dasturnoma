@@ -39,7 +39,11 @@ function ol(u){
      var yol = p.get("yol") || "";
      var mid = p.get("mid") || "";
      var m = u.replace(/\/$/,"");
-     m += (yol === "mvp") ? "/mvp" : "/";
+     /* Ruxsat etilgan sahifalar. Ro'yxat sabab: bu yerga
+        tashqaridan kelgan matn qo'yiladi va u manzilga qo'shiladi —
+        begona joyga yo'naltirib yuborilmasin. */
+     var YOL = {mvp: "/mvp", intervyu: "/intervyu"};
+     m += YOL[yol] || "/";
      if(mid) m += "?mid=" + encodeURIComponent(mid);
      location.replace(m + location.hash);
    })
