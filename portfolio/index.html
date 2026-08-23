@@ -270,7 +270,7 @@ function oqKadr(nom, kadr, i, jami){
   }
   var t4 = document.createElement("button");
   t4.className = "asos";
-  t4.innerHTML = ikon("buyurtma", 15, "#fff") + "Shunga o'xshash kerak";
+  t4.innerHTML = ikon("buyurtma", 15, "#fff") + "Shu uslubda buyurtma";
   t4.onclick = function(e){
     e.stopPropagation(); titra("medium");
     yubor({amal: "buyurtma", oxshash: nom});
@@ -613,6 +613,11 @@ document.getElementById("reels").addEventListener("scroll", function(){
 .karta .reaksiya-belgi{position:absolute;left:8px;bottom:34px;z-index:2;
   display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
   padding:4px 8px;border-radius:9px;background:rgba(255,85,0,.9);color:#fff}
+.karta .tanlov-belgi{position:absolute;right:8px;top:8px;z-index:3;
+  display:flex;align-items:center;gap:4px;font-size:10px;font-weight:800;
+  padding:4px 8px;border-radius:9px;color:#140800;
+  background:linear-gradient(100deg,var(--urgu),#ffba26);
+  box-shadow:0 4px 14px rgba(255,85,0,.35)}
 
 /* ---------- OVOZLAR ---------- */
 .ovoz-royxat{padding:0 18px}
@@ -887,6 +892,8 @@ var TG = window.Telegram ? window.Telegram.WebApp : null;
 var ADMIN = 515902673;
 var PROFIL = {"ism": "Sardorbek", "taxallus": "malades.bola", "kasb": "brend va sport identikasi dizayneri", "shahar": "Andijon / Toshkent", "yillar": 5, "haqida": "Brend va sport identikasi bilan 5 yildan beri ishlayman. Ishim shablon tanlash emas — har konsept ortida biznes mantiqi turadi va mijozga nega shunday qilinganini tushuntirib beraman.", "raqamlar": [["110+", "tayyorlangan ish"], ["25", "klub gerbi"], ["5", "yil tajriba"]], "loyihalar": [{"nom": "Andijon FK", "rol": "Brend identikasi", "izoh": "Klub gerbi, forma brendingi va matchday dizayn tizimi.", "turi": "mijoz"}, {"nom": "O'zbekiston futzal assotsiatsiyasi", "rol": "Identika", "turi": "mijoz", "izoh": "Federatsiya darajasidagi vizual tizim."}, {"nom": "echipta", "rol": "Asoschi", "turi": "asoschi", "izoh": "Chipta xizmati — g'oyadan brendgacha o'zim qurdim."}, {"nom": "kissam", "rol": "Asoschi", "turi": "asoschi", "izoh": "Kontent va dizayn yo'nalishi."}], "xizmatlar": ["Logo va brend identikasi", "Sport klublari uchun gerb va forma brendingi", "Brendbuk va qo'llanish tizimi", "Ijtimoiy tarmoq dizayn tizimi"]};
 var ALOQA = {"telegram": "@khamilofff", "kanal": "t.me/maladesbola", "instagram": "instagram.com/malades.bola", "behance": "behance.net/maladesbola", "telefon": "+998 88 472 77 72"};
+var BOT_NOM = "malades_bolabot";
+var QIZIQISH = {};
 if (TG) {
   TG.ready(); TG.expand();
   try { TG.setHeaderColor("#0F1115"); TG.setBackgroundColor("#0F1115"); }
@@ -995,13 +1002,17 @@ function kartaYasa(nom, v){
   var reb = v.rebrend
     ? '<div class="rebrend-belgi">' + ikon("rebrend", 11, "#04222b") +
       'rebrending</div>' : "";
+  var tanlov = (QIZIQISH && QIZIQISH[nom]) || 0;
+  var tb = tanlov >= 3
+    ? '<div class="tanlov-belgi">' + ikon("olov", 11, "#140800") +
+      tanlov + ' tanlagan</div>' : "";
   var rk = r(nom);
   var rb = (rk.olov || rk.like)
     ? '<div class="reaksiya-belgi">' + ikon("olov", 11, "#fff") +
       (rk.olov + rk.like) + '</div>' : "";
   k.innerHTML = '<img loading="lazy" src="rasm/' + v.papka + '/' + birinchi +
     '" alt="' + nom + '"><div class="nishon ' + h + '">' + nomi + '</div>' +
-    son + reb + vid + rb + '<div class="nom">' + nom + '</div>';
+    son + reb + vid + rb + tb + '<div class="nom">' + nom + '</div>';
   k.onclick = function(){ oqimOch(nom); };
   return k;
 }
@@ -1254,7 +1265,7 @@ function oqKadr(nom, kadr, i, jami){
   }
   var t4 = document.createElement("button");
   t4.className = "asos";
-  t4.innerHTML = ikon("buyurtma", 15, "#fff") + "Shunga o'xshash kerak";
+  t4.innerHTML = ikon("buyurtma", 15, "#fff") + "Shu uslubda buyurtma";
   t4.onclick = function(e){
     e.stopPropagation(); titra("medium");
     yubor({amal: "buyurtma", oxshash: nom});
@@ -1488,6 +1499,16 @@ if (TG) TG.BackButton.onClick(function(){
 });
 
 function yubor(malumotlar){
+  /* Mini app ichidan botga xabar berishning ishonchli yo'li - chuqur
+     havola. sendData faqat klaviatura tugmasidan ochilgan mini appda
+     ishlaydi, inline tugmadan ochilganida jim qoladi. */
+  if (malumotlar && malumotlar.oxshash && BOT_NOM) {
+    var h = "https://t.me/" + BOT_NOM + "?start=uslub_" +
+            encodeURIComponent(malumotlar.oxshash);
+    if (TG && TG.openTelegramLink) { TG.openTelegramLink(h); return; }
+    window.open(h, "_blank");
+    return;
+  }
   if (TG && TG.sendData) { TG.sendData(JSON.stringify(malumotlar)); TG.close(); }
 }
 
