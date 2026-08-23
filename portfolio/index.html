@@ -53,6 +53,7 @@ img{display:block;max-width:100%}
   letter-spacing:.8px;padding:4px 8px;border-radius:999px;
   background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
 .karta.och .belgi{background:rgba(255,255,255,.7);color:#111}
+.belgi.nishon{background:var(--urgu);color:#fff}
 
 .oyna{position:fixed;inset:0;background:#000;z-index:100;display:none;
   flex-direction:column}
@@ -184,16 +185,17 @@ function uchir(tugma, belgi){
 
 var TOIFA = [
   ["hammasi", "Hammasi"],
-  ["klub",    "Klublar"],
+  ["sport",   "Sport"],
+  ["biznes",  "Biznes"],
   ["talim",   "Ta'lim"],
-  ["biznes",  "Biznes"]
+  ["ovqat",   "Ovqat"],
+  ["texno",   "Texno"],
+  ["sanoat",  "Sanoat"]
 ];
 
 function toifasi(nom, v){
-  if (v.klub) return "klub";
-  var n = nom.toLowerCase();
-  if (/school|maktab|talim|maorif|akademiya|universitet|teacher|books/.test(n))
-    return "talim";
+  if (v.toifa) return v.toifa;
+  if (v.klub) return "sport";
   return "biznes";
 }
 
@@ -212,17 +214,26 @@ function filtrChiz(){
 function torChiz(){
   var tor = document.getElementById("tor");
   tor.innerHTML = "";
-  Object.keys(malumot).forEach(function(nom){
+  var nomlar = Object.keys(malumot);
+  nomlar.sort(function(a, b){
+    var x = malumot[a].tanlangan ? 0 : 1;
+    var y = malumot[b].tanlangan ? 0 : 1;
+    if (x !== y) return x - y;
+    return a.localeCompare(b);
+  });
+  nomlar.forEach(function(nom){
     var v = malumot[nom];
     if (joriy !== "hammasi" && toifasi(nom, v) !== joriy) return;
     var k = document.createElement("div");
-    k.className = "karta" + (v.tema !== "toq" ? " och" : "");
+    k.className = "karta" + (v.tema !== "qora" ? " och" : "");
     var birinchi = v.kadrlar.length ? v.kadrlar[0].fayl : "";
+    var nishon = "";
+    if (v.tanlangan) nishon = '<div class="belgi nishon">★</div>';
+    else if (v.kadrlar.length > 1)
+      nishon = '<div class="belgi">' + v.kadrlar.length + '</div>';
     k.innerHTML =
       '<img loading="lazy" src="rasm/' + v.papka + '/' + birinchi + '">' +
-      (v.kadrlar.length > 1
-        ? '<div class="belgi">' + v.kadrlar.length + '</div>' : '') +
-      '<div class="nom">' + nom + '</div>';
+      nishon + '<div class="nom">' + nom + '</div>';
     k.onclick = function(){ ochish(nom, v); };
     tor.appendChild(k);
   });
