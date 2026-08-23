@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>malades.bola — portfolio</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{
+  --fon:#08080a; --qatlam:#111114; --chiziq:#1e1e24;
+  --matn:#f2f2f4; --xira:#8a8a95; --urgu:#e8443f; --r:18px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--fon);color:var(--matn);
+  font-family:'Gilroy','Inter',-apple-system,'Segoe UI',system-ui,sans-serif;
+  overscroll-behavior-y:none}
+body{padding-bottom:92px}
+img{display:block;max-width:100%}
+
+.bosh{padding:28px 20px 18px;position:relative;overflow:hidden}
+.bosh::after{content:"";position:absolute;left:-30%;top:-120%;
+  width:160%;height:200%;background:radial-gradient(closest-side,
+  rgba(232,68,63,.20),transparent 70%);pointer-events:none}
+.ism{font-size:30px;font-weight:800;letter-spacing:-.5px;position:relative}
+.kasb{margin-top:6px;font-size:12px;color:var(--xira);
+  letter-spacing:2.4px;text-transform:uppercase;position:relative}
+.raqamlar{display:flex;gap:26px;margin-top:20px;position:relative}
+.raqam b{display:block;font-size:22px;font-weight:800}
+.raqam span{font-size:10.5px;color:var(--xira);letter-spacing:1.4px;
+  text-transform:uppercase}
+
+.filtr{display:flex;gap:8px;padding:4px 20px 16px;overflow-x:auto;
+  scrollbar-width:none;position:sticky;top:0;z-index:20;
+  background:linear-gradient(var(--fon) 72%,transparent)}
+.filtr::-webkit-scrollbar{display:none}
+.tug{flex:0 0 auto;padding:9px 15px;border-radius:999px;font-size:13px;
+  font-weight:600;background:var(--qatlam);color:var(--xira);
+  border:1px solid var(--chiziq);cursor:pointer;transition:.18s}
+.tug.faol{background:var(--matn);color:#0a0a0c;border-color:var(--matn)}
+
+.tor{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px}
+.karta{position:relative;border-radius:var(--r);overflow:hidden;
+  background:var(--qatlam);border:1px solid var(--chiziq);cursor:pointer;
+  aspect-ratio:4/5;transition:transform .18s}
+.karta:active{transform:scale(.975)}
+.karta img{width:100%;height:100%;object-fit:cover}
+.karta .nom{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 11px;
+  font-size:12.5px;font-weight:600;
+  background:linear-gradient(transparent,rgba(0,0,0,.82))}
+.karta.och .nom{background:linear-gradient(transparent,rgba(255,255,255,.92));
+  color:#111}
+.belgi{position:absolute;top:9px;right:9px;font-size:9.5px;font-weight:700;
+  letter-spacing:.8px;padding:4px 8px;border-radius:999px;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
+.karta.och .belgi{background:rgba(255,255,255,.7);color:#111}
+
+.oyna{position:fixed;inset:0;background:#000;z-index:100;display:none;
+  flex-direction:column}
+.oyna.ochiq{display:flex}
+.oyna-bosh{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;gap:12px}
+.oyna-nom{font-size:16px;font-weight:700}
+.oyna-var{font-size:10.5px;color:var(--xira);letter-spacing:1.4px;
+  text-transform:uppercase;margin-top:2px}
+.yop{width:34px;height:34px;border-radius:50%;background:#1b1b20;
+  display:flex;align-items:center;justify-content:center;font-size:19px;
+  cursor:pointer;flex:0 0 auto}
+.tasma{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;align-items:center}
+.tasma::-webkit-scrollbar{display:none}
+.tasma img{flex:0 0 100%;scroll-snap-align:center;width:100%;
+  max-height:76vh;object-fit:contain}
+.nuqta{display:flex;gap:6px;justify-content:center;padding:14px}
+.nuqta i{width:6px;height:6px;border-radius:50%;background:#33333c;
+  transition:.2s}
+.nuqta i.faol{background:var(--matn);width:18px;border-radius:3px}
+
+.panel{position:fixed;left:0;right:0;bottom:0;z-index:50;
+  padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(10,10,12,.92);backdrop-filter:blur(14px);
+  border-top:1px solid var(--chiziq);display:flex;gap:10px}
+.asosiy{flex:1;padding:14px;border-radius:14px;background:var(--urgu);
+  color:#fff;font-weight:700;font-size:14.5px;text-align:center;border:0;
+  cursor:pointer}
+.ikkilamchi{padding:14px 18px;border-radius:14px;background:var(--qatlam);
+  border:1px solid var(--chiziq);color:var(--matn);font-weight:600;
+  font-size:14.5px;cursor:pointer}
+.yuk{padding:60px 20px;text-align:center;color:var(--xira);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="bosh">
+  <div class="ism">malades.bola</div>
+  <div class="kasb">brend va sport identikasi</div>
+  <div class="raqamlar">
+    <div class="raqam"><b id="s-brend">—</b><span>brend</span></div>
+    <div class="raqam"><b id="s-logo">—</b><span>logo</span></div>
+    <div class="raqam"><b id="s-klub">—</b><span>klub</span></div>
+  </div>
+</div>
+
+<div class="filtr" id="filtr"></div>
+<div class="tor" id="tor"><div class="yuk">Yuklanmoqda…</div></div>
+
+<div class="oyna" id="oyna">
+  <div class="oyna-bosh">
+    <div>
+      <div class="oyna-nom" id="o-nom"></div>
+      <div class="oyna-var" id="o-var"></div>
+    </div>
+    <div class="yop" id="o-yop">&#10005;</div>
+  </div>
+  <div class="tasma" id="o-tasma"></div>
+  <div class="nuqta" id="o-nuqta"></div>
+</div>
+
+<div class="panel">
+  <button class="asosiy" id="buyurtma">Buyurtma berish</button>
+  <button class="ikkilamchi" id="narx">Narxlar</button>
+</div>
+
+<script>
+var TG = window.Telegram ? window.Telegram.WebApp : null;
+if (TG) { TG.ready(); TG.expand(); }
+
+var malumot = {}, joriy = "hammasi";
+
+var TOIFA = [
+  ["hammasi", "Hammasi"],
+  ["klub",    "Klublar"],
+  ["talim",   "Ta'lim"],
+  ["biznes",  "Biznes"]
+];
+
+function toifasi(nom, v){
+  if (v.klub) return "klub";
+  var n = nom.toLowerCase();
+  if (/school|maktab|talim|maorif|akademiya|universitet|teacher|books/.test(n))
+    return "talim";
+  return "biznes";
+}
+
+function filtrChiz(){
+  var f = document.getElementById("filtr");
+  f.innerHTML = "";
+  TOIFA.forEach(function(t){
+    var b = document.createElement("button");
+    b.className = "tug" + (t[0] === joriy ? " faol" : "");
+    b.textContent = t[1];
+    b.onclick = function(){ joriy = t[0]; filtrChiz(); torChiz(); };
+    f.appendChild(b);
+  });
+}
+
+function torChiz(){
+  var tor = document.getElementById("tor");
+  tor.innerHTML = "";
+  Object.keys(malumot).forEach(function(nom){
+    var v = malumot[nom];
+    if (joriy !== "hammasi" && toifasi(nom, v) !== joriy) return;
+    var k = document.createElement("div");
+    k.className = "karta" + (v.tema !== "toq" ? " och" : "");
+    var birinchi = v.kadrlar.length ? v.kadrlar[0].fayl : "";
+    k.innerHTML =
+      '<img loading="lazy" src="rasm/' + v.papka + '/' + birinchi + '">' +
+      (v.kadrlar.length > 1
+        ? '<div class="belgi">' + v.kadrlar.length + '</div>' : '') +
+      '<div class="nom">' + nom + '</div>';
+    k.onclick = function(){ ochish(nom, v); };
+    tor.appendChild(k);
+  });
+  if (!tor.children.length)
+    tor.innerHTML = '<div class="yuk">Bu bo\'limda ish yo\'q</div>';
+}
+
+function ochish(nom, v){
+  document.getElementById("o-nom").textContent = nom;
+  var tasma = document.getElementById("o-tasma");
+  var nuqta = document.getElementById("o-nuqta");
+  tasma.innerHTML = ""; nuqta.innerHTML = "";
+  v.kadrlar.forEach(function(k, i){
+    var im = document.createElement("img");
+    im.src = "rasm/" + v.papka + "/" + k.fayl;
+    tasma.appendChild(im);
+    var d = document.createElement("i");
+    if (!i) d.className = "faol";
+    nuqta.appendChild(d);
+  });
+  document.getElementById("o-var").textContent =
+    v.kadrlar.length ? v.kadrlar[0].variant : "";
+  tasma.onscroll = function(){
+    var i = Math.round(tasma.scrollLeft / tasma.clientWidth);
+    var d = nuqta.children;
+    for (var j = 0; j < d.length; j++) d[j].className = (j === i ? "faol" : "");
+    if (v.kadrlar[i])
+      document.getElementById("o-var").textContent = v.kadrlar[i].variant;
+  };
+  document.getElementById("oyna").classList.add("ochiq");
+  if (TG) TG.BackButton.show();
+}
+
+function yopish(){
+  document.getElementById("oyna").classList.remove("ochiq");
+  if (TG) TG.BackButton.hide();
+}
+document.getElementById("o-yop").onclick = yopish;
+if (TG) TG.BackButton.onClick(yopish);
+
+document.getElementById("buyurtma").onclick = function(){
+  if (TG) { TG.sendData(JSON.stringify({amal: "buyurtma"})); TG.close(); }
+};
+document.getElementById("narx").onclick = function(){
+  if (TG) { TG.sendData(JSON.stringify({amal: "narx"})); TG.close(); }
+};
+
+fetch("malumot.json?v=" + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(j){
+    malumot = j;
+    var nomlar = Object.keys(j);
+    var logo = 0, klub = 0;
+    nomlar.forEach(function(n){
+      logo += j[n].kadrlar.length;
+      if (j[n].klub) klub++;
+    });
+    document.getElementById("s-brend").textContent = nomlar.length;
+    document.getElementById("s-logo").textContent = logo;
+    document.getElementById("s-klub").textContent = klub;
+    filtrChiz(); torChiz();
+  })
+  .catch(function(){
+    document.getElementById("tor").innerHTML =
+      '<div class="yuk">Ma\'lumot yuklanmadi</div>';
+  });
+</script>
+</body>
+</html>
