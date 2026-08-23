@@ -99,6 +99,52 @@ img{display:block;max-width:100%}
   100%{opacity:0;transform:translateY(-90px) scale(1.5)}
 }
 
+/* ================= NARXLAR ================= */
+.narx-oyna{position:fixed;inset:0;background:var(--fon);z-index:110;
+  display:none;flex-direction:column}
+.narx-oyna.ochiq{display:flex}
+.narx-bosh{padding:22px 20px 8px;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:12px;position:relative;overflow:hidden}
+.narx-bosh::after{content:"";position:absolute;left:-20%;top:-160%;
+  width:150%;height:230%;background:radial-gradient(closest-side,
+  rgba(255,92,26,.24),transparent 70%);pointer-events:none}
+.narx-bosh h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.4px;
+  position:relative}
+.narx-bosh p{margin:6px 0 0;font-size:12px;color:var(--xira);
+  letter-spacing:2px;text-transform:uppercase;position:relative}
+.narx-ich{flex:1;overflow-y:auto;padding:10px 20px 30px}
+
+.tarif{border:1px solid var(--chiziq);border-radius:20px;padding:20px;
+  margin-bottom:14px;background:var(--qatlam);position:relative;
+  overflow:hidden}
+.tarif.tavsiya{border-color:var(--urgu)}
+.tarif.tavsiya::before{content:"TAVSIYA";position:absolute;top:16px;right:0;
+  background:var(--urgu);color:#fff;font-size:9px;font-weight:800;
+  letter-spacing:1.4px;padding:5px 12px 5px 10px;border-radius:8px 0 0 8px}
+.tarif h3{margin:0;font-size:18px;font-weight:800;letter-spacing:.4px}
+.tarif .kim{margin:5px 0 0;font-size:12px;color:var(--xira)}
+.tarif .baho{margin:15px 0 3px;font-size:29px;font-weight:800;
+  color:var(--urgu);letter-spacing:-.6px}
+.tarif .som{font-size:14px;font-weight:600;color:var(--xira);
+  margin-left:5px;letter-spacing:0}
+.tarif .kun{font-size:11.5px;color:var(--xira);letter-spacing:1.4px;
+  text-transform:uppercase;margin-bottom:15px}
+.tarif ul{list-style:none;margin:0 0 17px;padding:0}
+.tarif li{font-size:13.5px;line-height:1.5;color:#c9c9d2;padding-left:20px;
+  position:relative;margin-bottom:8px}
+.tarif li::before{content:"";position:absolute;left:0;top:8px;width:9px;
+  height:2px;background:var(--urgu);border-radius:2px}
+.tarif .ol{width:100%;padding:13px;border-radius:13px;border:1px solid
+  var(--chiziq);background:#17171d;color:var(--matn);font-weight:700;
+  font-size:14px;cursor:pointer;font-family:inherit}
+.tarif.tavsiya .ol{background:var(--urgu);border-color:var(--urgu);color:#fff}
+.tarif .ol:active{transform:scale(.98)}
+
+.shart{border:1px dashed var(--chiziq);border-radius:16px;padding:16px 18px;
+  font-size:13px;line-height:1.6;color:#a8a8b4}
+.shart b{color:var(--urgu);display:block;font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:8px;font-weight:800}
+
 .panel{position:fixed;left:0;right:0;bottom:0;z-index:50;
   padding:12px 20px calc(12px + env(safe-area-inset-bottom));
   background:rgba(10,10,12,.92);backdrop-filter:blur(14px);
@@ -143,6 +189,17 @@ img{display:block;max-width:100%}
     <button class="amal" id="o-like">❤️ <span class="son" id="n-like">0</span></button>
     <button class="amal" id="o-saqla">⤓ Saqlash</button>
   </div>
+</div>
+
+<div class="narx-oyna" id="narx-oyna">
+  <div class="narx-bosh">
+    <div>
+      <h2>Xizmat va narxlar</h2>
+      <p>2026-yil</p>
+    </div>
+    <div class="yop" id="narx-yop">&#10005;</div>
+  </div>
+  <div class="narx-ich" id="narx-ich"></div>
 </div>
 
 <div class="panel">
@@ -333,14 +390,106 @@ function yopish(){
   if (TG) TG.BackButton.hide();
 }
 document.getElementById("o-yop").onclick = yopish;
-if (TG) TG.BackButton.onClick(yopish);
+if (TG) TG.BackButton.onClick(function(){
+  var n = document.getElementById("narx-oyna");
+  if (n.classList.contains("ochiq")) { narxYop(); return; }
+  yopish();
+});
 
 document.getElementById("buyurtma").onclick = function(){
+  titra();
   if (TG) { TG.sendData(JSON.stringify({amal: "buyurtma"})); TG.close(); }
 };
-document.getElementById("narx").onclick = function(){
-  if (TG) { TG.sendData(JSON.stringify({amal: "narx"})); TG.close(); }
-};
+
+/* ================= NARXLAR ================= */
+
+var TARIFLAR = [
+  {
+    nom: "LOGO", baho: "1 500 000", kun: "7\u201310 kun",
+    kim: "do'kon, xizmat, shaxsiy brend",
+    ich: ["2 ta konsept, noldan chiziladi",
+          "Rang va shrift tanlovi",
+          "To'liq vektor: AI, SVG, PDF, PNG",
+          "Qora-oq va negativ versiya",
+          "Ijtimoiy tarmoq formatlari",
+          "2 marta tahrir"]
+  },
+  {
+    nom: "BREND", baho: "4 500 000", kun: "14\u201320 kun",
+    kim: "startap, kichik va o'rta biznes", tavsiya: true,
+    ich: ["3 ta konsept, har biri boshqa g'oyada",
+          "Raqobatchilar tahlili",
+          "Rang palitrasi va shrift tizimi",
+          "Mini brendbuk",
+          "Izohli PDF taqdimot",
+          "3 marta tahrir"]
+  },
+  {
+    nom: "BREND TIZIMI", baho: "12 000 000", kun: "30\u201345 kun",
+    kim: "yirik kompaniya, tarmoq, muassasa",
+    ich: ["Bozor va auditoriya tahlili",
+          "Neyming (kerak bo'lsa)",
+          "Plagiat va patent tekshiruvi",
+          "To'liq brendbuk",
+          "Qo'llanish maketlari",
+          "30 kun qo'llab-quvvatlash"]
+  },
+  {
+    nom: "KLUB IDENTIKASI", baho: "18 000 000", dan: true,
+    kun: "kelishuv bo'yicha",
+    kim: "klub, akademiya, federatsiya",
+    ich: ["Gerb (asosiy va soddalashtirilgan)",
+          "Forma brendingi",
+          "Tipografiya tizimi",
+          "Matchday va tarkib shablonlari",
+          "Ijtimoiy tarmoq dizayn tizimi"]
+  }
+];
+
+function narxChiz(){
+  var ich = document.getElementById("narx-ich");
+  ich.innerHTML = "";
+  TARIFLAR.forEach(function(t){
+    var el = document.createElement("div");
+    el.className = "tarif" + (t.tavsiya ? " tavsiya" : "");
+    var li = t.ich.map(function(x){ return "<li>" + x + "</li>"; }).join("");
+    el.innerHTML =
+      "<h3>" + t.nom + "</h3>" +
+      '<p class="kim">' + t.kim + "</p>" +
+      '<div class="baho">' + t.baho +
+      '<span class="som">so\'m' + (t.dan ? "dan" : "") + "</span></div>" +
+      '<div class="kun">' + t.kun + "</div>" +
+      "<ul>" + li + "</ul>" +
+      '<button class="ol">Shu paketni tanlash</button>';
+    el.querySelector(".ol").onclick = function(){
+      titra();
+      if (TG) {
+        TG.sendData(JSON.stringify({amal: "buyurtma", paket: t.nom}));
+        TG.close();
+      }
+    };
+    ich.appendChild(el);
+  });
+  var sh = document.createElement("div");
+  sh.className = "shart";
+  sh.innerHTML = "<b>Shartlar</b>Avans 50%, qolgani fayllarni " +
+    "topshirishdan oldin. To'liq to'lovdan keyin logo to'liq sizniki " +
+    "bo'ladi \u2014 barcha huquqlar bilan.";
+  ich.appendChild(sh);
+}
+
+function narxOch(){
+  narxChiz();
+  document.getElementById("narx-oyna").classList.add("ochiq");
+  if (TG) TG.BackButton.show();
+}
+function narxYop(){
+  document.getElementById("narx-oyna").classList.remove("ochiq");
+  if (TG && !document.getElementById("oyna").classList.contains("ochiq"))
+    TG.BackButton.hide();
+}
+document.getElementById("narx").onclick = function(){ titra(); narxOch(); };
+document.getElementById("narx-yop").onclick = narxYop;
 
 reaksiyaOqi();
 
