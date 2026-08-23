@@ -8,7 +8,7 @@
 <style>
 :root{
   --fon:#08080a; --qatlam:#111114; --chiziq:#1e1e24;
-  --matn:#f2f2f4; --xira:#8a8a95; --urgu:#e8443f; --r:18px;
+  --matn:#f2f2f4; --xira:#8a8a95; --urgu:#ff5c1a; --r:18px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;background:var(--fon);color:var(--matn);
@@ -75,6 +75,29 @@ img{display:block;max-width:100%}
   transition:.2s}
 .nuqta i.faol{background:var(--matn);width:18px;border-radius:3px}
 
+/* --- tahlil va amallar --- */
+.tahlil{padding:0 20px 12px;font-size:13.5px;line-height:1.62;
+  color:#b8b8c2;max-height:34vh;overflow-y:auto}
+.tahlil b{color:var(--urgu);font-weight:700;display:block;
+  font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:7px}
+.amallar{display:flex;gap:9px;padding:6px 20px 16px}
+.amal{flex:1;padding:12px 8px;border-radius:13px;background:#141419;
+  border:1px solid var(--chiziq);color:var(--matn);font-size:13.5px;
+  font-weight:600;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px;transition:.16s}
+.amal:active{transform:scale(.96)}
+.amal.bosilgan{background:rgba(255,92,26,.14);border-color:var(--urgu);
+  color:var(--urgu)}
+.amal .son{font-size:12px;color:var(--xira)}
+.amal.bosilgan .son{color:var(--urgu)}
+.olov{position:absolute;pointer-events:none;font-size:26px;
+  animation:uch .9s ease-out forwards}
+@keyframes uch{
+  0%{opacity:1;transform:translateY(0) scale(.6)}
+  100%{opacity:0;transform:translateY(-90px) scale(1.5)}
+}
+
 .panel{position:fixed;left:0;right:0;bottom:0;z-index:50;
   padding:12px 20px calc(12px + env(safe-area-inset-bottom));
   background:rgba(10,10,12,.92);backdrop-filter:blur(14px);
@@ -113,6 +136,12 @@ img{display:block;max-width:100%}
   </div>
   <div class="tasma" id="o-tasma"></div>
   <div class="nuqta" id="o-nuqta"></div>
+  <div class="tahlil" id="o-tahlil"></div>
+  <div class="amallar">
+    <button class="amal" id="o-olov">🔥 <span class="son" id="n-olov">0</span></button>
+    <button class="amal" id="o-like">❤️ <span class="son" id="n-like">0</span></button>
+    <button class="amal" id="o-saqla">⤓ Saqlash</button>
+  </div>
 </div>
 
 <div class="panel">
@@ -124,7 +153,34 @@ img{display:block;max-width:100%}
 var TG = window.Telegram ? window.Telegram.WebApp : null;
 if (TG) { TG.ready(); TG.expand(); }
 
-var malumot = {}, joriy = "hammasi";
+var malumot = {}, tahlil = {}, joriy = "hammasi", ochiq = null;
+var reaksiya = {};
+
+function reaksiyaOqi(){
+  try { reaksiya = JSON.parse(localStorage.getItem("mb_reaksiya") || "{}"); }
+  catch (e) { reaksiya = {}; }
+}
+function reaksiyaYoz(){
+  try { localStorage.setItem("mb_reaksiya", JSON.stringify(reaksiya)); }
+  catch (e) {}
+}
+function r(nom){
+  if (!reaksiya[nom]) reaksiya[nom] = {olov: 0, like: 0};
+  return reaksiya[nom];
+}
+
+function titra(){ if (TG && TG.HapticFeedback) TG.HapticFeedback.impactOccurred("light"); }
+
+function uchir(tugma, belgi){
+  var q = document.createElement("div");
+  q.className = "olov"; q.textContent = belgi;
+  var b = tugma.getBoundingClientRect();
+  q.style.left = (b.left + b.width / 2 - 13) + "px";
+  q.style.top = (b.top - 6) + "px";
+  q.style.position = "fixed";
+  document.body.appendChild(q);
+  setTimeout(function(){ q.remove(); }, 900);
+}
 
 var TOIFA = [
   ["hammasi", "Hammasi"],
@@ -175,6 +231,7 @@ function torChiz(){
 }
 
 function ochish(nom, v){
+  ochiq = {nom: nom, v: v};
   document.getElementById("o-nom").textContent = nom;
   var tasma = document.getElementById("o-tasma");
   var nuqta = document.getElementById("o-nuqta");
@@ -196,9 +253,60 @@ function ochish(nom, v){
     if (v.kadrlar[i])
       document.getElementById("o-var").textContent = v.kadrlar[i].variant;
   };
+
+  var t = tahlil[nom];
+  document.getElementById("o-tahlil").innerHTML =
+    t ? "<b>Uslub haqida</b>" + t : "";
+
+  var x = r(nom);
+  document.getElementById("n-olov").textContent = x.olov;
+  document.getElementById("n-like").textContent = x.like;
+  document.getElementById("o-olov").className =
+    "amal" + (x.olov ? " bosilgan" : "");
+  document.getElementById("o-like").className =
+    "amal" + (x.like ? " bosilgan" : "");
+
   document.getElementById("oyna").classList.add("ochiq");
   if (TG) TG.BackButton.show();
 }
+
+document.getElementById("o-olov").onclick = function(){
+  if (!ochiq) return;
+  var x = r(ochiq.nom);
+  x.olov = x.olov ? 0 : 1;
+  reaksiyaYoz(); titra();
+  if (x.olov) uchir(this, "🔥");
+  document.getElementById("n-olov").textContent = x.olov;
+  this.className = "amal" + (x.olov ? " bosilgan" : "");
+};
+
+document.getElementById("o-like").onclick = function(){
+  if (!ochiq) return;
+  var x = r(ochiq.nom);
+  x.like = x.like ? 0 : 1;
+  reaksiyaYoz(); titra();
+  if (x.like) uchir(this, "❤️");
+  document.getElementById("n-like").textContent = x.like;
+  this.className = "amal" + (x.like ? " bosilgan" : "");
+};
+
+document.getElementById("o-saqla").onclick = function(){
+  if (!ochiq) return;
+  var tasma = document.getElementById("o-tasma");
+  var i = Math.round(tasma.scrollLeft / tasma.clientWidth);
+  var k = ochiq.v.kadrlar[i] || ochiq.v.kadrlar[0];
+  var url = "rasm/" + ochiq.v.papka + "/" + k.fayl;
+  titra();
+  if (TG && TG.downloadFile) {
+    TG.downloadFile({url: location.origin +
+      location.pathname.replace(/[^/]*$/, "") + url,
+      file_name: ochiq.nom + "-" + k.fayl});
+  } else {
+    var a = document.createElement("a");
+    a.href = url; a.download = ochiq.nom + "-" + k.fayl;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+};
 
 function yopish(){
   document.getElementById("oyna").classList.remove("ochiq");
@@ -213,6 +321,13 @@ document.getElementById("buyurtma").onclick = function(){
 document.getElementById("narx").onclick = function(){
   if (TG) { TG.sendData(JSON.stringify({amal: "narx"})); TG.close(); }
 };
+
+reaksiyaOqi();
+
+fetch("tahlil.json?v=" + Date.now())
+  .then(function(r2){ return r2.json(); })
+  .then(function(j){ tahlil = j; })
+  .catch(function(){});
 
 fetch("malumot.json?v=" + Date.now())
   .then(function(r){ return r.json(); })
