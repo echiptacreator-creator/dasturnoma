@@ -170,167 +170,6 @@ button{font-family:inherit;cursor:pointer}
 .varaq-ich{flex:1;overflow-y:auto;padding:0 18px 26px}
 
 
-/* ---------- OQIM: reels ko'rinishi ---------- */
-var oqimRoyxat = [], oqimJoriy = -1;
-
-function oqimNomlari(nom){
-  /* Joriy ko'rinishdagi ishlar - reels shu ro'yxat bo'ylab suriladi */
-  var b = document.querySelector(".bolim.faol");
-  var id = b ? b.id : "b-ishlar";
-  var nomlar = [];
-  if (id === "b-posterlar") {
-    Object.keys(malumot).sort().forEach(function(n){
-      if (posterli(malumot[n])) nomlar.push(n);
-    });
-  } else if (id.indexOf("b-") === 0 && QOSH_KALIT.indexOf(id.slice(2)) >= 0) {
-    var k = id.slice(2);
-    Object.keys(malumot).sort().forEach(function(n){
-      if (malumot[n].bolim === k) nomlar.push(n);
-    });
-  } else {
-    nomlar = Object.keys(malumot).sort(function(a, b2){
-      var x = malumot[a], y = malumot[b2];
-      var xa = x.tanlangan ? 0 : (holati(x) === "buyurtma" ? 1 : 2);
-      var ya = y.tanlangan ? 0 : (holati(y) === "buyurtma" ? 1 : 2);
-      if (xa !== ya) return xa - ya;
-      return a.localeCompare(b2);
-    }).filter(function(n){ return mos(n, malumot[n], false); });
-  }
-  if (nomlar.indexOf(nom) < 0) nomlar.unshift(nom);
-  return nomlar;
-}
-
-function oqKadr(nom, kadr, i, jami){
-  var v = malumot[nom];
-  var el = document.createElement("div");
-  el.className = "oq-kadr" + (v.tema === "oq" ? " och" : "");
-  el.dataset.nom = nom;
-
-  var im = document.createElement("img");
-  im.src = "rasm/" + v.papka + "/" + kadr.fayl;
-  im.loading = i < 2 ? "eager" : "lazy";
-  im.alt = nom;
-  el.appendChild(im);
-
-  if (jami > 1) {
-    var nq = document.createElement("div");
-    nq.className = "oq-nuqta";
-    for (var j = 0; j < jami; j++)
-      nq.innerHTML += '<i class="' + (j === i ? "faol" : "") + '"></i>';
-    el.appendChild(nq);
-  }
-
-  var past = document.createElement("div");
-  past.className = "oq-past";
-  var teglar = teglari(nom);
-  var izoh = v.izoh || uslubi(nom) || "";
-  past.innerHTML =
-    '<div class="oq-nom">' + nom + '</div>' +
-    '<div class="oq-var">' + (kadr.variant || "") +
-      (v.rang ? '  ·  ' + v.rang : '') + '</div>' +
-    (izoh ? '<div class="oq-izoh">' + izoh + '</div>' : '') +
-    (teglar.length ? '<div class="oq-teg">' +
-      teglar.map(function(t){ return '<span>' + t + '</span>'; }).join("") +
-      '</div>' : '');
-
-  var amal = document.createElement("div");
-  amal.className = "oq-amal";
-  var rk = r(nom);
-
-  var t1 = document.createElement("button");
-  t1.className = rk.olov ? "bosilgan" : "";
-  t1.innerHTML = ikon("olov", 15, rk.olov ? "#ffb38a" : "#fff") +
-    (rk.olov ? "Yoqdi" : "Yoqdi");
-  t1.onclick = function(e){
-    e.stopPropagation();
-    rk.olov = rk.olov ? 0 : 1;
-    reaksiyaYoz(); titra("medium");
-    t1.className = rk.olov ? "bosilgan" : "";
-    t1.innerHTML = ikon("olov", 15, rk.olov ? "#ffb38a" : "#fff") + "Yoqdi";
-  };
-  amal.appendChild(t1);
-
-  if (v.video) {
-    var t2 = document.createElement("button");
-    t2.innerHTML = ikon("video", 15, "#fff") + "Reels";
-    t2.onclick = function(e){
-      e.stopPropagation(); titra("medium");
-      if (TG && TG.openLink) TG.openLink(v.video); else window.open(v.video);
-    };
-    amal.appendChild(t2);
-  }
-  if (v.havola) {
-    var t3 = document.createElement("button");
-    t3.innerHTML = ikon("havola", 15, "#fff") + "Havola";
-    t3.onclick = function(e){
-      e.stopPropagation(); titra();
-      if (TG && TG.openLink) TG.openLink(v.havola); else window.open(v.havola);
-    };
-    amal.appendChild(t3);
-  }
-  var t4 = document.createElement("button");
-  t4.className = "asos";
-  t4.innerHTML = ikon("buyurtma", 15, "#fff") + "Shu uslubda buyurtma";
-  t4.onclick = function(e){
-    e.stopPropagation(); titra("medium");
-    yubor({amal: "buyurtma", oxshash: nom});
-  };
-  amal.appendChild(t4);
-
-  past.appendChild(amal);
-  el.appendChild(past);
-  return el;
-}
-
-function oqimOch(nom){
-  titra();
-  oqimRoyxat = oqimNomlari(nom);
-  var ich = document.getElementById("oq-ich");
-  ich.innerHTML = "";
-  var nishon = null;
-  oqimRoyxat.forEach(function(n){
-    var v = malumot[n];
-    var kadrlar = v.kadrlar.length ? v.kadrlar : [{fayl: "", variant: ""}];
-    kadrlar.forEach(function(k, i){
-      var el = oqKadr(n, k, i, kadrlar.length);
-      ich.appendChild(el);
-      if (n === nom && i === 0 && !nishon) nishon = el;
-    });
-  });
-  var q = document.getElementById("reels");
-  q.classList.add("ochiq");
-  document.body.style.overflow = "hidden";
-  if (nishon) q.scrollTop = nishon.offsetTop;
-  oqimHisob();
-  if (TG) { TG.BackButton.show(); }
-}
-
-function oqimHisob(){
-  var q = document.getElementById("reels");
-  var kadrlar = q.querySelectorAll(".oq-kadr");
-  var i = Math.round(q.scrollTop / window.innerHeight);
-  var nom = kadrlar[i] ? kadrlar[i].dataset.nom : "";
-  var joy = oqimRoyxat.indexOf(nom) + 1;
-  document.getElementById("oq-hisob").textContent =
-    joy > 0 ? joy + " / " + oqimRoyxat.length : "";
-}
-
-function oqimYop(){
-  var q = document.getElementById("reels");
-  q.classList.remove("ochiq");
-  q.scrollTop = 0;
-  document.getElementById("oq-ich").innerHTML = "";
-  document.body.style.overflow = "";
-  if (TG) TG.BackButton.hide();
-  torChiz();
-}
-
-document.getElementById("oq-yop").onclick = oqimYop;
-document.getElementById("reels").addEventListener("scroll", function(){
-  clearTimeout(window._oqT);
-  window._oqT = setTimeout(oqimHisob, 90);
-});
-
 /* ---------- ISH OYNASI ---------- */
 .tasma{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
   scrollbar-width:none;background:#08090c;flex:0 0 auto}
@@ -567,12 +406,29 @@ document.getElementById("reels").addEventListener("scroll", function(){
   overscroll-behavior:contain}
 .reels::-webkit-scrollbar{display:none}
 .reels.ochiq{display:block}
-.oq-kadr{position:relative;height:100dvh;min-height:100dvh;
+/* Vertikal — brenddan brendga. Gorizontal — shu brend versiyalari. */
+.oq-brend{position:relative;height:100dvh;min-height:100dvh;
+  scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+.oq-yon{position:absolute;inset:0;display:flex;overflow-x:auto;
+  overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;
+  overscroll-behavior-x:contain}
+.oq-yon::-webkit-scrollbar{display:none}
+.oq-kadr{position:relative;flex:0 0 100%;width:100%;height:100%;
   scroll-snap-align:start;scroll-snap-stop:always;display:flex;
-  align-items:center;justify-content:center;overflow:hidden}
-.oq-kadr>img{width:100%;height:100%;object-fit:contain;
+  align-items:center;justify-content:center;overflow:hidden;
   background:#08090c}
-.oq-kadr.och>img{background:#eef0f3}
+.oq-kadr.och{background:#eef0f3}
+.oq-kadr>img{max-width:100%;max-height:100%;width:auto;height:auto;
+  object-fit:contain}
+.oq-yonlik{position:absolute;left:0;right:0;bottom:calc(150px + env(safe-area-inset-bottom));
+  display:flex;justify-content:center;gap:6px;z-index:4;pointer-events:none}
+.oq-yonlik i{width:16px;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.28)}
+.oq-yonlik i.faol{background:var(--urgu);width:26px}
+.oq-ishora{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  z-index:4;font-size:10.5px;letter-spacing:1.2px;color:#cfd6e0;
+  background:rgba(0,0,0,.42);padding:8px 10px;border-radius:11px;
+  writing-mode:vertical-rl;pointer-events:none}
 .oq-past{position:absolute;left:0;right:0;bottom:0;padding:22px 18px
   calc(26px + env(safe-area-inset-bottom));
   background:linear-gradient(transparent,rgba(0,0,0,.72) 38%,rgba(0,0,0,.94));
@@ -893,7 +749,7 @@ var ADMIN = 515902673;
 var PROFIL = {"ism": "Sardorbek", "taxallus": "malades.bola", "kasb": "brend va sport identikasi dizayneri", "shahar": "Andijon / Toshkent", "yillar": 5, "haqida": "Brend va sport identikasi bilan 5 yildan beri ishlayman. Ishim shablon tanlash emas — har konsept ortida biznes mantiqi turadi va mijozga nega shunday qilinganini tushuntirib beraman.", "raqamlar": [["110+", "tayyorlangan ish"], ["25", "klub gerbi"], ["5", "yil tajriba"]], "loyihalar": [{"nom": "Andijon FK", "rol": "Brend identikasi", "izoh": "Klub gerbi, forma brendingi va matchday dizayn tizimi.", "turi": "mijoz"}, {"nom": "O'zbekiston futzal assotsiatsiyasi", "rol": "Identika", "turi": "mijoz", "izoh": "Federatsiya darajasidagi vizual tizim."}, {"nom": "echipta", "rol": "Asoschi", "turi": "asoschi", "izoh": "Chipta xizmati — g'oyadan brendgacha o'zim qurdim."}, {"nom": "kissam", "rol": "Asoschi", "turi": "asoschi", "izoh": "Kontent va dizayn yo'nalishi."}], "xizmatlar": ["Logo va brend identikasi", "Sport klublari uchun gerb va forma brendingi", "Brendbuk va qo'llanish tizimi", "Ijtimoiy tarmoq dizayn tizimi"]};
 var ALOQA = {"telegram": "@khamilofff", "kanal": "t.me/maladesbola", "instagram": "instagram.com/malades.bola", "behance": "behance.net/maladesbola", "telefon": "+998 88 472 77 72"};
 var BOT_NOM = "malades_bolabot";
-var QIZIQISH = {};
+var QIZIQISH = {"Labsearch": 1};
 if (TG) {
   TG.ready(); TG.expand();
   try { TG.setHeaderColor("#0F1115"); TG.setBackgroundColor("#0F1115"); }
@@ -1195,24 +1051,56 @@ function oqimNomlari(nom){
   return nomlar;
 }
 
-function oqKadr(nom, kadr, i, jami){
+function oqBrend(nom){
+  /* Bitta brend = bitta ekran. Ichida chapga surilib versiyalar. */
   var v = malumot[nom];
-  var el = document.createElement("div");
-  el.className = "oq-kadr" + (v.tema === "oq" ? " och" : "");
-  el.dataset.nom = nom;
+  var bolim = document.createElement("section");
+  bolim.className = "oq-brend";
+  bolim.dataset.nom = nom;
 
-  var im = document.createElement("img");
-  im.src = "rasm/" + v.papka + "/" + kadr.fayl;
-  im.loading = i < 2 ? "eager" : "lazy";
-  im.alt = nom;
-  el.appendChild(im);
+  var yon = document.createElement("div");
+  yon.className = "oq-yon";
+  var kadrlar = v.kadrlar && v.kadrlar.length ? v.kadrlar
+    : [{fayl: "", variant: ""}];
 
-  if (jami > 1) {
+  kadrlar.forEach(function(k, i){
+    var el = document.createElement("div");
+    el.className = "oq-kadr" + (i === 1 ? " och" : "");
+    el.dataset.variant = k.variant || "";
+    var im = document.createElement("img");
+    im.src = "rasm/" + v.papka + "/" + k.fayl;
+    im.loading = i < 2 ? "eager" : "lazy";
+    im.alt = nom + " " + (k.variant || "");
+    el.appendChild(im);
+    yon.appendChild(el);
+  });
+  bolim.appendChild(yon);
+
+  if (kadrlar.length > 1) {
     var nq = document.createElement("div");
-    nq.className = "oq-nuqta";
-    for (var j = 0; j < jami; j++)
-      nq.innerHTML += '<i class="' + (j === i ? "faol" : "") + '"></i>';
-    el.appendChild(nq);
+    nq.className = "oq-yonlik";
+    for (var j = 0; j < kadrlar.length; j++)
+      nq.innerHTML += '<i class="' + (j === 0 ? "faol" : "") + '"></i>';
+    bolim.appendChild(nq);
+
+    var ish = document.createElement("div");
+    ish.className = "oq-ishora";
+    ish.textContent = "← versiyalar";
+    bolim.appendChild(ish);
+
+    yon.addEventListener("scroll", function(){
+      clearTimeout(yon._t);
+      yon._t = setTimeout(function(){
+        var i2 = Math.round(yon.scrollLeft / yon.clientWidth);
+        var nuq = nq.querySelectorAll("i");
+        for (var z = 0; z < nuq.length; z++)
+          nuq[z].className = (z === i2 ? "faol" : "");
+        var vr = yon.children[i2] ? yon.children[i2].dataset.variant : "";
+        var e = bolim.querySelector(".oq-var");
+        if (e) e.textContent = vr;
+        if (i2 > 0) ish.style.opacity = "0";
+      }, 80);
+    });
   }
 
   var past = document.createElement("div");
@@ -1221,7 +1109,7 @@ function oqKadr(nom, kadr, i, jami){
   var izoh = v.izoh || uslubi(nom) || "";
   past.innerHTML =
     '<div class="oq-nom">' + nom + '</div>' +
-    '<div class="oq-var">' + (kadr.variant || "") +
+    '<div class="oq-var">' + (kadrlar[0].variant || "") +
       (v.rang ? '  ·  ' + v.rang : '') + '</div>' +
     (izoh ? '<div class="oq-izoh">' + izoh + '</div>' : '') +
     (teglar.length ? '<div class="oq-teg">' +
@@ -1234,8 +1122,7 @@ function oqKadr(nom, kadr, i, jami){
 
   var t1 = document.createElement("button");
   t1.className = rk.olov ? "bosilgan" : "";
-  t1.innerHTML = ikon("olov", 15, rk.olov ? "#ffb38a" : "#fff") +
-    (rk.olov ? "Yoqdi" : "Yoqdi");
+  t1.innerHTML = ikon("olov", 15, rk.olov ? "#ffb38a" : "#fff") + "Yoqdi";
   t1.onclick = function(e){
     e.stopPropagation();
     rk.olov = rk.olov ? 0 : 1;
@@ -1273,8 +1160,8 @@ function oqKadr(nom, kadr, i, jami){
   amal.appendChild(t4);
 
   past.appendChild(amal);
-  el.appendChild(past);
-  return el;
+  bolim.appendChild(past);
+  return bolim;
 }
 
 function oqimOch(nom){
@@ -1284,13 +1171,9 @@ function oqimOch(nom){
   ich.innerHTML = "";
   var nishon = null;
   oqimRoyxat.forEach(function(n){
-    var v = malumot[n];
-    var kadrlar = v.kadrlar.length ? v.kadrlar : [{fayl: "", variant: ""}];
-    kadrlar.forEach(function(k, i){
-      var el = oqKadr(n, k, i, kadrlar.length);
-      ich.appendChild(el);
-      if (n === nom && i === 0 && !nishon) nishon = el;
-    });
+    var el = oqBrend(n);
+    ich.appendChild(el);
+    if (n === nom && !nishon) nishon = el;
   });
   var q = document.getElementById("reels");
   q.classList.add("ochiq");
@@ -1302,9 +1185,9 @@ function oqimOch(nom){
 
 function oqimHisob(){
   var q = document.getElementById("reels");
-  var kadrlar = q.querySelectorAll(".oq-kadr");
+  var b = q.querySelectorAll(".oq-brend");
   var i = Math.round(q.scrollTop / window.innerHeight);
-  var nom = kadrlar[i] ? kadrlar[i].dataset.nom : "";
+  var nom = b[i] ? b[i].dataset.nom : "";
   var joy = oqimRoyxat.indexOf(nom) + 1;
   document.getElementById("oq-hisob").textContent =
     joy > 0 ? joy + " / " + oqimRoyxat.length : "";
@@ -1321,6 +1204,7 @@ function oqimYop(){
 }
 
 document.getElementById("oq-yop").onclick = oqimYop;
+
 document.getElementById("reels").addEventListener("scroll", function(){
   clearTimeout(window._oqT);
   window._oqT = setTimeout(oqimHisob, 90);
