@@ -185,6 +185,8 @@ function uchir(tugma, belgi){
 
 var TOIFA = [
   ["hammasi", "Hammasi"],
+  ["buyurtma", "Buyurtma"],
+  ["konsept", "Konsept"],
   ["sport",   "Sport"],
   ["biznes",  "Biznes"],
   ["talim",   "Ta'lim"],
@@ -197,6 +199,13 @@ function toifasi(nom, v){
   if (v.toifa) return v.toifa;
   if (v.klub) return "sport";
   return "biznes";
+}
+
+function mos(nom, v){
+  if (joriy === "hammasi") return true;
+  if (joriy === "buyurtma") return v.haqiqiy === 1;
+  if (joriy === "konsept") return v.haqiqiy === 0;
+  return toifasi(nom, v) === joriy;
 }
 
 function filtrChiz(){
@@ -223,7 +232,7 @@ function torChiz(){
   });
   nomlar.forEach(function(nom){
     var v = malumot[nom];
-    if (joriy !== "hammasi" && toifasi(nom, v) !== joriy) return;
+    if (!mos(nom, v)) return;
     var k = document.createElement("div");
     k.className = "karta" + (v.tema !== "qora" ? " och" : "");
     var birinchi = v.kadrlar.length ? v.kadrlar[0].fayl : "";
