@@ -112,6 +112,8 @@ button{font-family:inherit;cursor:pointer}
   background:var(--qatlam);border:1px solid var(--chiziq);
   aspect-ratio:4/5;transition:transform .16s}
 .karta:active{transform:scale(.972)}
+/* Kadrning pastida brend nomi va imzo bor - muqovada u kartaning
+   o'z yozuvi bilan to'qnashadi. Shuning uchun pastki tasma kesiladi. */
 .karta img{width:100%;height:100%;object-fit:cover}
 .karta .nom{position:absolute;left:0;right:0;bottom:0;padding:26px 11px 10px;
   font-size:12.5px;font-weight:600;line-height:1.25;
@@ -429,10 +431,19 @@ button{font-family:inherit;cursor:pointer}
   z-index:4;font-size:10.5px;letter-spacing:1.2px;color:#cfd6e0;
   background:rgba(0,0,0,.42);padding:8px 10px;border-radius:11px;
   writing-mode:vertical-rl;pointer-events:none}
-.oq-past{position:absolute;left:0;right:0;bottom:0;padding:22px 18px
-  calc(26px + env(safe-area-inset-bottom));
+.oq-past{position:absolute;left:0;right:0;bottom:0;padding:20px 18px
+  calc(24px + env(safe-area-inset-bottom));
   background:linear-gradient(transparent,rgba(0,0,0,.72) 38%,rgba(0,0,0,.94));
-  pointer-events:none}
+  pointer-events:none;transition:background .2s}
+.oq-past.och{background:linear-gradient(transparent,
+  rgba(245,246,248,.82) 38%,rgba(245,246,248,.97))}
+.oq-past.och .oq-izoh{color:#3a4048}
+.oq-past.och .oq-teg span{background:rgba(0,0,0,.06);color:#3a4048}
+.oq-past.och .oq-amal button{background:rgba(0,0,0,.06);
+  border-color:rgba(0,0,0,.12);color:#14161a}
+.oq-past.och .oq-amal button.asos{background:var(--urgu);
+  border-color:var(--urgu);color:#fff}
+.oq-past.och .oq-amal button:not(.asos) svg{filter:invert(1)}
 .oq-past *{pointer-events:auto}
 .oq-nom{font-family:var(--sarlavha);font-size:21px;font-weight:700;
   letter-spacing:-.5px;margin-bottom:5px}
@@ -453,8 +464,7 @@ button{font-family:inherit;cursor:pointer}
   border-color:var(--urgu);color:#ffb38a}
 .oq-tepa{position:absolute;top:0;left:0;right:0;z-index:3;
   padding:calc(12px + env(safe-area-inset-top)) 14px 30px;
-  background:linear-gradient(rgba(0,0,0,.6),transparent);
-  display:flex;align-items:center;gap:10px}
+  background:none;display:flex;align-items:center;gap:10px}
 .oq-yop{width:38px;height:38px;border-radius:12px;flex:0 0 auto;
   background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.16);
   color:#fff;display:flex;align-items:center;justify-content:center}
@@ -866,7 +876,8 @@ function kartaYasa(nom, v){
   var rb = (rk.olov || rk.like)
     ? '<div class="reaksiya-belgi">' + ikon("olov", 11, "#fff") +
       (rk.olov + rk.like) + '</div>' : "";
-  k.innerHTML = '<img loading="lazy" src="rasm/' + v.papka + '/' + birinchi +
+  var muq = v.muqova || birinchi;
+  k.innerHTML = '<img loading="lazy" src="rasm/' + v.papka + '/' + muq +
     '" alt="' + nom + '"><div class="nishon ' + h + '">' + nomi + '</div>' +
     son + reb + vid + rb + tb + '<div class="nom">' + nom + '</div>';
   k.onclick = function(){ oqimOch(nom); };
@@ -1065,8 +1076,9 @@ function oqBrend(nom){
 
   kadrlar.forEach(function(k, i){
     var el = document.createElement("div");
-    el.className = "oq-kadr" + (i === 1 ? " och" : "");
+    el.className = "oq-kadr" + (k.tema === "och" ? " och" : "");
     el.dataset.variant = k.variant || "";
+    el.dataset.tema = k.tema || "toq";
     var im = document.createElement("img");
     im.src = "rasm/" + v.papka + "/" + k.fayl;
     im.loading = i < 2 ? "eager" : "lazy";
@@ -1095,9 +1107,11 @@ function oqBrend(nom){
         var nuq = nq.querySelectorAll("i");
         for (var z = 0; z < nuq.length; z++)
           nuq[z].className = (z === i2 ? "faol" : "");
-        var vr = yon.children[i2] ? yon.children[i2].dataset.variant : "";
-        var e = bolim.querySelector(".oq-var");
-        if (e) e.textContent = vr;
+        var ch = yon.children[i2];
+        var pastEl = bolim.querySelector(".oq-past");
+        if (ch && pastEl)
+          pastEl.className = "oq-past" +
+            (ch.dataset.tema === "och" ? " och" : "");
         if (i2 > 0) ish.style.opacity = "0";
       }, 80);
     });
@@ -1106,11 +1120,12 @@ function oqBrend(nom){
   var past = document.createElement("div");
   past.className = "oq-past";
   var teglar = teglari(nom);
-  var izoh = v.izoh || uslubi(nom) || "";
+  var izoh = v.izoh || v.art_izoh || uslubi(nom) || "";
+  if (v.xarakter) teglar = [v.xarakter].concat(teglar);
+  /* Nom va variant kadrning O'ZIDA yozilgan - takrorlamaymiz. */
+  past.className = "oq-past" +
+    (kadrlar[0].tema === "och" ? " och" : "");
   past.innerHTML =
-    '<div class="oq-nom">' + nom + '</div>' +
-    '<div class="oq-var">' + (kadrlar[0].variant || "") +
-      (v.rang ? '  ·  ' + v.rang : '') + '</div>' +
     (izoh ? '<div class="oq-izoh">' + izoh + '</div>' : '') +
     (teglar.length ? '<div class="oq-teg">' +
       teglar.map(function(t){ return '<span>' + t + '</span>'; }).join("") +
