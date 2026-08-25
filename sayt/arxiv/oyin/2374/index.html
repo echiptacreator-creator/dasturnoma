@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="uz"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#021B53">
+<title>Andijon — Buxoro 1:1 — FK Andijon</title>
+<meta name="description" content="Superliga · 2025-11-01">
+<meta property="og:title" content="Andijon — Buxoro 1:1 — FK Andijon">
+<meta property="og:description" content="Superliga · 2025-11-01">
+<meta property="og:type" content="website">
+
+<style>
+@font-face{font-family:"Nekst";src:url("/shrift/Nekst-Black.ttf");
+  font-weight:900;font-display:swap}
+@font-face{font-family:"Nekst";src:url("/shrift/Nekst-Bold.ttf");
+  font-weight:700;font-display:swap}
+@font-face{font-family:"Coolvetica";src:url("/shrift/Coolvetica-Regular.otf");
+  font-display:swap}
+:root{--kok:#021B53;--fon:#03102E;--qizil:#EB1F28;--oltin:#E2BA75;
+  --chiziq:rgba(226,186,117,.20)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fon);color:#fff;
+  font-family:"Coolvetica",-apple-system,BlinkMacSystemFont,"Segoe UI",
+  Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:var(--oltin);text-decoration:none}
+img{display:block;max-width:100%}
+.q{max-width:1240px;margin:0 auto;padding:0 22px}
+
+/* --- YOY NAQSHI: gerb ravog'i, brendbukning grafik elementi --- */
+.yoy{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  opacity:.4}
+.yoy svg{position:absolute;bottom:-40%;left:50%;
+  transform:translateX(-50%);height:230%;width:auto}
+.yoy path{fill:none;stroke:var(--oltin);stroke-width:1.1;opacity:.2}
+
+/* --- BOSH SAHIFA HERO: keyingi o'yin va o'rin ---------------------
+   Klub saytiga kirgan odam eng avval bitta narsani qidiradi:
+   qachon o'ynaymiz. Shuning uchun hero — sahifaning eng kuchli
+   joyi: chuqur fon, stadion yorug'i (radial), gerb ostida yumshoq
+   yostiq va katta VS. */
+.hero{position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 130% at 50% -20%,rgba(235,31,40,.20),
+                    rgba(2,27,83,0) 62%),
+    radial-gradient(80% 90% at 50% 120%,rgba(226,186,117,.10),
+                    rgba(2,27,83,0) 60%),
+    linear-gradient(180deg,#0A2260 0%,var(--kok) 55%,#031539 100%);
+  border-bottom:1px solid var(--chiziq)}
+.hero .q{position:relative;padding-top:46px;padding-bottom:40px}
+.hero .lenta{display:flex;align-items:center;justify-content:center;
+  gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.hero .lenta span{display:inline-flex;align-items:center;gap:6px;
+  font-family:"Nekst";font-weight:700;font-size:10.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--oltin);
+  padding:6px 13px;border-radius:99px;
+  border:1px solid rgba(226,186,117,.3);background:rgba(226,186,117,.07)}
+.hero .lenta span.jonli{color:#fff;border-color:transparent;
+  background:var(--qizil)}
+.hero .jang{display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:24px}
+.hero .tomon{display:flex;flex-direction:column;align-items:center;gap:14px}
+/* Gerb ostidagi yostiq — turli klub gerblari turli fonda chiziladi
+   va ba'zilari to'q ko'kda «yo'qolib» ketardi. */
+.hero .tomon .gerbjoy{width:112px;height:112px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.10),
+             rgba(255,255,255,.02) 70%);
+  border:1px solid rgba(255,255,255,.10)}
+.hero .tomon img{width:82px;height:82px;object-fit:contain}
+.hero .tomon .nomi{font-family:"Nekst";font-weight:900;font-size:19px;
+  text-align:center;letter-spacing:.01em}
+.hero .tomon .joy{font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42)}
+.hero .orta{text-align:center;min-width:150px}
+.hero .orta .vs{font-family:"Nekst";font-weight:900;font-size:30px;
+  color:rgba(255,255,255,.22);letter-spacing:.1em}
+.hero .orta .hisob{font-family:"Nekst";font-weight:900;font-size:58px;
+  line-height:1;letter-spacing:.01em}
+.hero .orta .sana{font-family:"Nekst";font-weight:700;font-size:15px;
+  color:#fff;margin-top:12px}
+.hero .orta .soat{display:inline-block;margin-top:7px;padding:5px 12px;
+  border-radius:99px;background:rgba(255,255,255,.08);font-size:13px;
+  color:rgba(255,255,255,.8)}
+/* Stat reyki — o'rin, ochko, forma, stadion */
+.hero .past{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-top:32px;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.08)}
+.hero .past > span{display:inline-flex;align-items:center;gap:7px;
+  padding:9px 15px;border-radius:12px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);font-size:12.5px;
+  letter-spacing:.03em;color:rgba(255,255,255,.55);white-space:nowrap}
+.hero .past b{font-family:"Nekst";font-weight:900;color:#fff;font-size:16px;
+  margin-right:1px}
+.hero .past .ik{color:var(--oltin)}
+.forma{display:inline-flex;gap:5px;vertical-align:middle}
+.forma i{width:24px;height:24px;border-radius:7px;font-style:normal;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Nekst";font-weight:800;font-size:11.5px;color:#fff}
+.forma i.g{background:#2ecc84}
+.forma i.d{background:rgba(255,255,255,.18)}
+.forma i.m{background:var(--qizil)}
+
+/* --- IKONKALAR ---
+   Har bir ikonka `currentColor` oladi: qaysi element ichida
+   tursa, o'sha elementning rangida chiziladi. */
+.ik{width:18px;height:18px;flex:none;display:inline-block;
+  vertical-align:-3px}
+.ik-k{width:15px;height:15px;vertical-align:-2px}
+.ik-b{width:22px;height:22px}
+
+/* --- O'YIN SAHIFASI: FotMob uslubi -------------------------------
+   Telefonda eng ko'p ochiladigan sahifa — shu. Shuning uchun u
+   ilova kabi qurilgan: tepada hisob, ostida yopishib turadigan
+   uchta bo'lim tugmasi (Voqealar / Tarkib / Statistika) va faqat
+   bittasining ichi ko'rinadi. Ilgari hammasi bitta uzun ustunga
+   tizilgandi va telefonda oxirigacha surish kerak edi. */
+.mch{position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 130% at 50% -20%,rgba(235,31,40,.22),
+                    rgba(2,27,83,0) 62%),
+    linear-gradient(180deg,#0A2260 0%,var(--kok) 60%,#031539 100%);
+  border-bottom:1px solid var(--chiziq)}
+.mch .q{position:relative;padding:30px 22px 26px}
+.mch .lenta{display:flex;align-items:center;justify-content:center;gap:9px;
+  flex-wrap:wrap;margin-bottom:24px}
+.mch .lenta span{display:inline-flex;align-items:center;gap:6px;
+  font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--oltin);
+  padding:6px 12px;border-radius:99px;
+  border:1px solid rgba(226,186,117,.3);background:rgba(226,186,117,.07)}
+.mch .lenta span.jonli{color:#fff;border-color:transparent;
+  background:var(--qizil)}
+.mch .jang{display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:18px}
+.mch .tomon{display:flex;flex-direction:column;align-items:center;gap:12px}
+.mch .tomon .gerbjoy{width:98px;height:98px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.10),
+             rgba(255,255,255,.02) 70%);
+  border:1px solid rgba(255,255,255,.10)}
+.mch .tomon img{width:70px;height:70px;object-fit:contain}
+.mch .tomon .nomi{font-family:"Nekst";font-weight:900;font-size:17px;
+  text-align:center;line-height:1.2}
+.mch .tomon .joy{font-family:"Nekst";font-weight:700;font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;text-align:center;
+  color:rgba(255,255,255,.4)}
+.mch .orta{text-align:center;min-width:118px}
+.mch .orta .hisob{font-family:"Nekst";font-weight:900;font-size:52px;
+  line-height:1;letter-spacing:.01em}
+.mch .orta .vs{font-family:"Nekst";font-weight:900;font-size:26px;
+  color:rgba(255,255,255,.22);letter-spacing:.1em}
+.mch .orta .holat{display:inline-block;margin-top:10px;padding:5px 12px;
+  border-radius:99px;background:rgba(255,255,255,.08);
+  font-family:"Nekst";font-weight:700;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.mch .past{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+  margin-top:26px;padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08)}
+.mch .past span{display:inline-flex;align-items:center;gap:7px;
+  padding:8px 14px;border-radius:11px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);font-size:12.5px;
+  color:rgba(255,255,255,.6);white-space:nowrap}
+.mch .past .ik{color:var(--oltin)}
+
+/* Bo'lim tugmalari sahifa tepasida yopishib turadi.
+   ⚠ KOMPYUTERDA CHO'ZILMAYDI. `flex:1` bilan uchta tugma 1440px
+   ni bo'lib olardi va har biri yarim ekran kenglikda chiqardi —
+   telefonda to'g'ri, kompyuterda esa xunuk. */
+.tablar{position:sticky;top:72px;z-index:8;display:flex;gap:6px;
+  justify-content:center;
+  background:rgba(3,16,46,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--chiziq);padding:8px 22px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablar button{flex:0 0 auto;min-width:172px;display:inline-flex;
+  align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  padding:11px 12px;border:0;border-radius:11px;background:transparent;
+  color:rgba(255,255,255,.55);font-family:"Nekst";font-weight:700;
+  font-size:11.5px;letter-spacing:.11em;text-transform:uppercase}
+.tablar button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.tablar button.faol{background:var(--qizil);color:#fff}
+.tablar .ik{width:16px;height:16px}
+.tabich{padding-top:30px}
+
+/* VOQEALAR LENTASI. Markazda daqiqa, ikki chetda tomonlar —
+   muxlis golni kim urganini o'qimasdan, joylashuviga qarab
+   biladi. Chapda — mezbon, o'ngda — mehmon. */
+.vqs{max-width:780px;margin:0 auto;position:relative}
+.vqs:before{content:"";position:absolute;top:8px;bottom:8px;left:50%;
+  width:2px;margin-left:-1px;background:rgba(255,255,255,.08)}
+.vq{display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;
+  gap:8px;padding:8px 0}
+.vq .d{display:flex;align-items:center;justify-content:center;
+  grid-column:2;height:30px;border-radius:99px;background:#0A2260;
+  border:1px solid var(--chiziq);font-family:"Nekst";font-weight:900;
+  font-size:12.5px;color:var(--oltin);position:relative;z-index:2}
+.vq .v{display:flex;align-items:center;gap:11px;min-width:0;
+  padding:10px 13px;border-radius:13px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07)}
+.vq.chapda .v{grid-column:1;grid-row:1;flex-direction:row-reverse;
+  text-align:right}
+.vq.ongda .v{grid-column:3;grid-row:1}
+.vq .v b{font-family:"Nekst";font-weight:700;font-size:14.5px;display:block;
+  line-height:1.25;overflow-wrap:anywhere}
+.vq .v i{font-style:normal;font-size:11px;letter-spacing:.07em;
+  text-transform:uppercase;color:rgba(255,255,255,.45)}
+.vq .v .ik{width:21px;height:21px}
+.vq .v.gol,.vq .v.avtogol{background:rgba(46,204,132,.10);
+  border-color:rgba(46,204,132,.30)}
+.vq .v.gol .ik,.vq .v.avtogol .ik{color:#2ECC84}
+.vq .v.sariq .ik{color:#F2C94C}
+.vq .v.qizil .ik{color:var(--qizil)}
+.vq .v.almash .ik{color:#6AB3F3}
+.vq .v.penyoq .ik{color:#F2994A}
+
+/* STATISTIKA — ikki tomon yonma-yon taqqoslanadi */
+.stq{max-width:620px;margin:0 auto}
+.stq .stbosh{display:flex;align-items:center;justify-content:space-between;
+  gap:14px;margin-bottom:24px;padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.stq .stbosh span{display:inline-flex;align-items:center;gap:10px;
+  font-family:"Nekst";font-weight:700;font-size:13.5px}
+.stq .stbosh img{width:30px;height:30px;object-fit:contain}
+.stq .r{margin-bottom:20px}
+.stq .n{display:flex;align-items:center;justify-content:space-between;
+  gap:14px;margin-bottom:8px}
+.stq .n b{font-family:"Nekst";font-weight:900;font-size:19px;color:#fff;
+  min-width:26px;text-align:center}
+.stq .n span{font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.55)}
+.stq .chiz{display:flex;height:8px;border-radius:99px;overflow:hidden;
+  background:rgba(255,255,255,.07);gap:2px}
+.stq .chiz i{display:block;height:100%;border-radius:99px}
+.stq .chiz i.a{background:var(--qizil)}
+.stq .chiz i.b{background:rgba(255,255,255,.30)}
+
+/* TARKIB */
+.tarkib-ust{display:grid;grid-template-columns:1fr 1fr;gap:26px;
+  max-width:780px;margin:0 auto}
+.tarkib-ust h3{font-family:"Nekst";font-weight:700;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--oltin);
+  margin:0 0 13px;display:flex;align-items:center;gap:8px}
+.tarkib-ust .p{display:flex;align-items:center;gap:11px;padding:8px 11px;
+  font-size:14.5px;border-radius:10px;background:rgba(255,255,255,.035);
+  margin-bottom:6px}
+.tarkib-ust .p i{width:27px;height:25px;border-radius:8px;flex:none;
+  background:var(--qizil);color:#fff;font-style:normal;font-family:"Nekst";
+  font-weight:800;font-size:11.5px;display:flex;align-items:center;
+  justify-content:center}
+.tarkib-ust .p.zaxira i{background:rgba(255,255,255,.14)}
+@media(max-width:640px){.tarkib-ust{grid-template-columns:1fr;gap:18px}}
+.orqaga{display:inline-flex;align-items:center;gap:9px;margin-top:30px;
+  padding:11px 17px;border-radius:12px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);font-family:"Nekst";font-weight:700;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.orqaga:hover{border-color:var(--oltin)}
+
+/* --- TELEFON PASTKI MENYUSI ---------------------------------------
+   Telefonda tepadagi menyu qatori sig'masdi: yetti havola ikki
+   qatorga o'ralib, sarlavhani pastga surib yuborardi. Endi
+   ilovadagidek: pastda beshta ikonka, bosh barmoq yetadigan
+   joyda. Kompyuterda esa hech nima o'zgarmaydi — pastki menyu
+   umuman chizilmaydi. */
+.pastnav{display:none}
+
+/* --- FUTBOLCHI KARTOCHKASI --- */
+.saf{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));
+  gap:16px}
+.fk{position:relative;background:linear-gradient(180deg,#08204F,#04143A);
+  border:1px solid var(--chiziq);border-radius:16px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .18s,transform .18s,box-shadow .18s}
+.fk:hover{border-color:var(--oltin);transform:translateY(-4px);
+  box-shadow:0 16px 34px rgba(0,0,0,.42)}
+/* Portret ostidagi to'q gradient — ism va lavozim rasmdan ajralib
+   turadi, kartochkalar bir xil «og'irlik» bilan chiziladi. */
+.fk .rasm:after{content:"";position:absolute;inset:auto 0 0 0;height:52%;
+  background:linear-gradient(180deg,rgba(4,20,58,0),rgba(4,20,58,.85));
+  pointer-events:none}
+.fk .pas{flex:1}
+/* PORTRET KESILMASIN: quti 4:5 (portretlarning o'rtacha nisbati
+   0.81), rasm to'liq sig'adi va pastga tayanadi. Ilgari rasm
+   112% balandlikda edi — boshi kesilardi. */
+.fk .rasm{height:auto;aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:rgba(0,0,0,.28)}
+.fk .rasm img{position:absolute;left:0;bottom:0;
+  width:100%;height:100%;max-width:100%;
+  object-fit:contain;object-position:50% 100%}
+.fk .rasm .yoq{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;font-family:"Nekst";font-weight:900;font-size:30px;
+  color:rgba(255,255,255,.13)}
+.fk .raq{position:absolute;top:9px;left:10px;min-width:28px;height:26px;
+  padding:0 7px;border-radius:8px;background:var(--qizil);color:#fff;
+  font-family:"Nekst";font-weight:900;font-size:14px;display:flex;
+  align-items:center;justify-content:center;z-index:2}
+.fk .gol{position:absolute;top:9px;right:9px;padding:3px 8px;
+  border-radius:7px;background:var(--oltin);color:var(--kok);
+  font-family:"Nekst";font-weight:800;font-size:11px;z-index:2}
+.fk .pas{padding:12px 13px 14px;border-top:1px solid rgba(255,255,255,.07)}
+.fk .ism{font-family:"Nekst";font-weight:700;font-size:14px;line-height:1.28}
+.fk .poz{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--oltin);margin-top:4px;font-family:"Nekst";font-weight:600;
+  opacity:.85}
+.fk .qosh{font-size:12px;color:rgba(255,255,255,.45);margin-top:3px}
+.saf-guruh{margin-bottom:26px}
+.saf-guruh > .sarl{font-family:"Nekst";font-weight:700;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--oltin);
+  margin:0 0 13px;display:flex;align-items:center;gap:10px}
+.saf-guruh > .sarl:after{content:"";flex:1;height:1px;
+  background:rgba(255,255,255,.09)}
+header{background:var(--kok);border-bottom:1px solid var(--chiziq);
+  position:sticky;top:0;z-index:9}
+header .q{display:flex;align-items:center;gap:14px;height:72px}
+header img{height:44px;width:auto}
+header b{font-family:"Nekst";font-weight:900;font-size:17px;
+  letter-spacing:.02em;line-height:1.1;display:block}
+header .sub{font-family:"Nekst";font-size:9.5px;letter-spacing:.16em;
+  color:var(--oltin);display:flex;align-items:center;gap:5px}
+header .sub i{width:5px;height:5px;border-radius:50%;
+  background:var(--qizil);display:inline-block}
+/* ⚠ MENYU BIR QATORDA QOLSIN. «Statistika» qo'shilgach bandlar
+   soni sakkiztaga yetdi va 1440px li ekranda oxirgi band («Jamoa»)
+   ikkinchi qatorga tushib, sarlavha bilan ustma-ust kelardi
+   (`ps/_sayt_surat.py` ko'rsatdi). Yechim: `nowrap` va tor
+   ekranda ikonkani yashirish — 860px dan pastda menyu baribir
+   pastki panelga o'tadi. */
+header nav{margin-left:auto;display:flex;gap:4px;flex-wrap:nowrap}
+header nav a{display:inline-flex;align-items:center;gap:6px;
+  white-space:nowrap;
+  font-family:"Nekst";font-weight:700;font-size:12px;
+  letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.76);
+  padding:8px 10px;border-radius:8px}
+@media(max-width:1180px){
+  header nav a .ik{display:none}
+  header nav a{font-size:11.5px;padding:8px 8px}
+}
+header nav a .ik{opacity:.62}
+header nav a:hover,header nav a.faol{background:var(--qizil);color:#fff}
+header nav a:hover .ik,header nav a.faol .ik{opacity:1}
+h1{font-family:"Nekst";font-weight:900;font-size:35px;line-height:1.15;
+  letter-spacing:-.005em;margin:0 0 12px}
+/* Bo'lim sarlavhasi — chap tomonida qizil ustuncha. Ilgari
+   sarlavha kichkina oltin yozuv edi va sahifada bo'limlar
+   bir-biridan ajralmasdi. */
+h2{position:relative;font-family:"Nekst";font-weight:900;font-size:15px;
+  letter-spacing:.15em;text-transform:uppercase;color:#fff;
+  margin:46px 0 20px;padding-left:15px}
+h2:before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:4px;
+  border-radius:3px;background:var(--qizil)}
+.lenta{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px}
+/* MAQOLA KARTOCHKASI. Rasm ustida to'q gradient («scrim») —
+   turi rasm ustida turadi va oq matn har qanday rasmda o'qiladi. */
+.kar{position:relative;background:linear-gradient(180deg,#08204F,#04143A);
+  border:1px solid var(--chiziq);border-radius:16px;
+  overflow:hidden;display:flex;flex-direction:column;color:#fff;
+  transition:transform .18s,border-color .18s,box-shadow .18s}
+.kar:hover{border-color:var(--oltin);transform:translateY(-4px);
+  box-shadow:0 16px 38px rgba(0,0,0,.42)}
+.kar .rasm{position:relative;aspect-ratio:16/9;background:rgba(0,0,0,.35);
+  overflow:hidden}
+.kar .rasm:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(3,16,46,0) 45%,
+             rgba(3,16,46,.75) 100%)}
+.kar .rasm img{width:100%;height:100%;object-fit:cover;
+  transition:transform .5s}
+.kar:hover .rasm img{transform:scale(1.06)}
+.kar .ich{padding:17px 19px 20px;display:flex;flex-direction:column;flex:1}
+.kar .tur{align-self:flex-start;font-family:"Nekst";font-size:10px;
+  font-weight:700;letter-spacing:.13em;color:var(--oltin);
+  text-transform:uppercase;padding:5px 10px;border-radius:99px;
+  background:rgba(226,186,117,.12);border:1px solid rgba(226,186,117,.28)}
+.kar h3{font-family:"Nekst";font-weight:900;font-size:19px;line-height:1.28;
+  margin:11px 0 9px}
+.kar p{margin:0;font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.55}
+.kar .sana{font-size:12px;color:rgba(255,255,255,.38);margin-top:auto;
+  padding-top:13px}
+/* BOSH MAQOLA — birinchi kartochka ikki ustunni egallaydi va
+   yonma-yon chiziladi. Klub saytida yangilik ko'p bo'lmaydi:
+   uch-to'rtta bir xil kartochka «bo'sh sahifa» taassurotini
+   berardi, bosh maqola esa lentaga markaz beradi. */
+@media(min-width:900px){
+  .lenta > .kar:first-child{grid-column:span 2;flex-direction:row}
+  .lenta > .kar:first-child .rasm{aspect-ratio:auto;width:50%;flex:none}
+  .lenta > .kar:first-child .rasm:after{
+    background:linear-gradient(90deg,rgba(3,16,46,0) 55%,
+               rgba(3,16,46,.5) 100%)}
+  .lenta > .kar:first-child .ich{padding:26px 28px 26px;
+    justify-content:center}
+  .lenta > .kar:first-child h3{font-size:26px;line-height:1.2}
+  .lenta > .kar:first-child p{font-size:15.5px}
+  /* Rasmi yo'q bosh maqola yarim bo'sh qolmasin */
+  .lenta > .kar:first-child .ich:only-child{width:100%}
+}
+
+/* --- O'YIN KARTOCHKASI (kalendar) -------------------------------
+   Ilgari kalendar oddiy matn ro'yxati edi: gerb yo'q, uy/mehmon
+   ko'rinmasdi, natija rangi yo'q edi — muxlis qaysi o'yin
+   yutilganini bir qarashda ayta olmasdi. */
+.oy-set{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+  gap:16px}
+.oy{position:relative;display:block;color:#fff;border-radius:16px;
+  overflow:hidden;background:linear-gradient(180deg,#08204F,#04143A);
+  border:1px solid var(--chiziq);transition:transform .18s,
+  border-color .18s,box-shadow .18s}
+.oy:hover{border-color:var(--oltin);transform:translateY(-3px);
+  box-shadow:0 14px 32px rgba(0,0,0,.4)}
+.oy .ust{display:flex;align-items:center;gap:9px;padding:11px 15px;
+  border-bottom:1px solid rgba(255,255,255,.07);font-family:"Nekst";
+  font-weight:700;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.5)}
+.oy .ust > span{display:inline-flex;align-items:center;gap:6px;min-width:0}
+.oy .ust .joy{margin-left:auto;padding:4px 10px;border-radius:99px;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);flex:none}
+.oy .ust .joy.uy{background:rgba(226,186,117,.16);color:var(--oltin)}
+.oy .n .k{display:inline-flex;align-items:center;gap:6px}
+.oy .jang{display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:12px;padding:18px 15px}
+.oy .t{display:flex;flex-direction:column;align-items:center;gap:9px;
+  min-width:0}
+.oy .t img{width:46px;height:46px;object-fit:contain}
+.oy .t span{font-family:"Nekst";font-weight:700;font-size:13px;
+  text-align:center;line-height:1.25;max-width:120px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.oy .n{text-align:center;min-width:74px}
+.oy .n .h{font-family:"Nekst";font-weight:900;font-size:26px;line-height:1}
+.oy .n .v{font-family:"Nekst";font-weight:900;font-size:17px;
+  color:rgba(255,255,255,.75)}
+.oy .n .k{font-size:11.5px;color:rgba(255,255,255,.45);margin-top:5px}
+.oy .n .n-g{color:#2ecc84}
+.oy .n .n-m{color:#FF8B91}
+/* Natija chap chetida ingichka chiziq bilan ham ko'rinadi —
+   rangni ajratmaydigan odam uchun ham belgi bo'lsin. */
+.oy.g:before,.oy.d:before,.oy.m:before{content:"";position:absolute;
+  left:0;top:0;bottom:0;width:4px}
+.oy.g:before{background:#2ecc84}
+.oy.d:before{background:rgba(255,255,255,.28)}
+.oy.m:before{background:var(--qizil)}
+article{max-width:760px;margin:0 auto;padding:40px 20px 70px}
+article .tur{font-family:"Nekst";font-size:11px;font-weight:700;
+  letter-spacing:.14em;color:var(--oltin);text-transform:uppercase}
+article .sana{color:rgba(255,255,255,.45);font-size:13.5px;margin:10px 0 26px}
+article .muqova{border-radius:14px;overflow:hidden;margin-bottom:30px}
+article p{margin:0 0 20px}
+article p.savol{font-family:"Nekst";font-weight:700;color:var(--oltin);
+  font-size:18px;margin-top:32px}
+article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
+  border-left:3px solid var(--qizil);padding-left:16px;margin-bottom:28px}
+/* --- TURNIR JADVALI ----------------------------------------------
+   Ilgari jadval inline uslublar bilan chizilgan oddiy jadval edi:
+   gerb yo'q, zonalar (yetakchi / tushish xavfi) ko'rinmasdi. */
+.tbl-o{overflow-x:auto;border:1px solid var(--chiziq);border-radius:16px;
+  background:linear-gradient(180deg,#08204F,#04143A)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
+.tbl th{font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);
+  padding:14px 10px;text-align:right;
+  border-bottom:1px solid rgba(255,255,255,.09);white-space:nowrap}
+.tbl th:nth-child(2){text-align:left}
+.tbl td{padding:12px 10px;text-align:right;
+  border-bottom:1px solid rgba(255,255,255,.05);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr:hover td{background:rgba(255,255,255,.03)}
+.tbl .orin{width:52px;text-align:center}
+.tbl .orin i{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:8px;font-style:normal;
+  font-family:"Nekst";font-weight:900;font-size:12.5px;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.75)}
+/* Zonalar: 1-3 — yetakchilar, oxirgi ikkitasi — tushish xavfi. */
+.tbl .orin i.z1{background:rgba(46,204,132,.18);color:#2ecc84}
+.tbl .orin i.z3{background:rgba(226,186,117,.18);color:var(--oltin)}
+.tbl .klub{text-align:left}
+.tbl .klub a,.tbl .klub span{display:flex;align-items:center;gap:11px;
+  color:#fff;font-family:"Nekst";font-weight:700;font-size:14.5px}
+.tbl .klub img{width:26px;height:26px;object-fit:contain;flex:none}
+.tbl .ochko{font-family:"Nekst";font-weight:900;font-size:16px;
+  color:var(--oltin)}
+.tbl tr.biz td{background:rgba(235,31,40,.13)}
+.tbl tr.biz .klub a,.tbl tr.biz .klub span{color:#fff}
+.tbl tr.biz td:first-child{box-shadow:inset 4px 0 0 var(--qizil)}
+.tbl-izoh{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;
+  font-size:12.5px;color:rgba(255,255,255,.45)}
+.tbl-izoh span{display:inline-flex;align-items:center;gap:7px}
+.tbl-izoh i{width:11px;height:11px;border-radius:4px;font-style:normal}
+
+footer{border-top:1px solid var(--chiziq);
+  background:linear-gradient(180deg,#04143A,var(--kok));
+  margin-top:70px;padding:38px 0 30px;color:rgba(255,255,255,.5);
+  font-size:13px}
+footer .ust{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;
+  padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.07)}
+footer .ust h4{font-family:"Nekst";font-weight:900;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--oltin);
+  margin:0 0 13px}
+footer .ust a{display:flex;align-items:center;gap:9px;
+  color:rgba(255,255,255,.62);padding:5px 0;font-size:13.5px}
+footer .ust a:hover{color:#fff}
+footer .ust a .ik{color:var(--oltin);opacity:.75}
+footer .klub{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+footer .klub img{height:44px;width:auto}
+footer .klub b{font-family:"Nekst";font-weight:900;font-size:16px;
+  color:#fff;display:block;line-height:1.2}
+footer .klub span{font-family:"Nekst";font-size:9.5px;letter-spacing:.16em;
+  color:var(--oltin)}
+footer .q{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+footer .past{padding-top:20px}
+@media(max-width:760px){footer .ust{grid-template-columns:1fr;gap:22px}}
+/* BO'SH HOLAT. Ilgari bu shunchaki katta bo'sh maydonda turgan
+   bitta qator edi va sahifa «sinib qolgandek» ko'rinardi. Endi
+   ikonka bilan: ma'lumot yo'qligi ham dizaynning bir qismi. */
+.bosh-yoq{display:flex;flex-direction:column;align-items:center;gap:14px;
+  padding:52px 20px;text-align:center;color:rgba(255,255,255,.5);
+  font-size:14.5px}
+.bosh-yoq .ik{width:34px;height:34px;color:var(--oltin);opacity:.4}
+/* Hero'siz sahifada birinchi sarlavha tepada ortiqcha bo'sh joy
+   qoldirmasin — `.q` ning o'z chekinishi allaqachon bor. */
+.q > h2:first-child{margin-top:0}
+/* --- KANAL LENTASI ---
+   Kartochka maqolanikidan KICHIKROQ: bu kanal ko'zgusi, maqola
+   emas — u haqiqiy maqolalarni bosib ketmasligi kerak. */
+.lenta-set{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;
+  margin-bottom:30px}
+.lk{background:linear-gradient(180deg,#08204F,#04143A);
+  border:1px solid var(--chiziq);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .18s,border-color .18s,box-shadow .18s}
+.lk:hover{border-color:var(--oltin);transform:translateY(-3px);
+  box-shadow:0 14px 32px rgba(0,0,0,.4)}
+/* ⚠ POSTER KESILMASIN. `cover` bilan 1:1 qutida afishaning ustki
+   lentasi (sana, stadion) va pastki gerblari kesilib ketardi —
+   holbuki posterdagi butun ma'lumot MATN. Poster 4:5 (1080x1350),
+   quti ham 4:5 va `contain`: hech nima yo'qolmaydi. */
+.lk .rasm{aspect-ratio:4/5;overflow:hidden;background:rgba(0,0,0,.3)}
+.lk .rasm img{width:100%;height:100%;object-fit:contain;display:block}
+.lk .ich{padding:13px 14px 15px}
+.lk .tur{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--oltin);font-weight:700;margin-bottom:7px}
+.lk h3{margin:0;font-size:15px;line-height:1.32}
+.lk p{margin:7px 0 0;font-size:13px;line-height:1.5;
+  color:rgba(255,255,255,.62)}
+.lk .sana{margin-top:10px;font-size:12px;color:rgba(255,255,255,.4)}
+h2 .yana{float:right;font-size:13px;color:var(--oltin);
+  text-transform:none;letter-spacing:0}
+/* Maqola oxiridagi teglar */
+.teglar{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px;
+  padding-top:20px;border-top:1px solid var(--chiziq)}
+.teglar span{padding:6px 12px;border-radius:99px;font-size:12px;
+  letter-spacing:.04em;background:rgba(226,186,117,.12);
+  border:1px solid rgba(226,186,117,.28);color:var(--oltin)}
+
+/* --- FUTBOLCHI SAHIFASI --- */
+.fk-bosh{display:flex;gap:26px;align-items:flex-end;margin-bottom:30px;
+  flex-wrap:wrap}
+.fk-rasm{width:200px;height:250px;border-radius:16px;overflow:hidden;
+  background:rgba(0,0,0,.3);position:relative;flex:none}
+/* DIQQAT: bu CSS pastda `dict(...)` bilan formatlanadi, shuning
+   uchun har bir HAQIQIY foiz belgisi IKKI MARTA yoziladi.
+   Bitta qolsa «not enough arguments for format string» chiqadi —
+   va bu IZOHGA ham tegishli: izoh ham shu satr ichida. */
+/* `cover` emas, `contain`: `cover` tor portretning YONLARINI
+   kesardi (eng tor fayl nisbati 0.68). Endi rasm butunlay
+   ko'rinadi va quti pastiga tayanadi. */
+.fk-rasm img{width:100%;height:100%;object-fit:contain;
+  object-position:50% 100%;position:relative;z-index:2}
+/* Rasm bo'lmasa bosh harflar ko'rinadi. `img` yuklanmasa
+   `onerror` uni olib tashlaydi va shu qatlam ochiladi. */
+.fk-rasm .yoq{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;font-size:52px;font-weight:800;
+  color:rgba(255,255,255,.22)}
+.fk-pas{flex:1;min-width:260px}
+.fk-pas .raq{font-size:52px;font-weight:800;line-height:1;
+  color:var(--qizil)}
+.fk-pas h1{margin:4px 0 14px}
+.pas-qat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:8px 20px}
+.pas-qat .qat{display:flex;justify-content:space-between;gap:10px;
+  border-bottom:1px solid var(--chiziq);padding:5px 0;font-size:14px}
+.pas-qat .qat span{color:rgba(255,255,255,.55)}
+.stat-tur{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));
+  gap:10px;margin:8px 0 34px}
+.stat-tur div{background:rgba(255,255,255,.05);border-radius:12px;
+  padding:14px 8px;text-align:center}
+.stat-tur b{display:block;font-size:26px;font-weight:800}
+.stat-tur span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.5)}
+/* ⚠ JADVAL TELEFONDA SIG'MAYDI — o'z ichida suriladi. Aks holda
+   butun sahifa yon tomonga surilib ketardi. */
+.jadval-o{overflow-x:auto;margin-bottom:34px}
+.jadval-o table{width:100%;border-collapse:collapse;font-size:14px;
+  min-width:460px}
+.jadval-o th,.jadval-o td{padding:9px 10px;text-align:left;
+  border-bottom:1px solid var(--chiziq)}
+.jadval-o th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);font-weight:700}
+.jadval-o .r{text-align:right}
+
+/* --- TELEFON VA PLANSHET: pastki menyu ishga tushadi ------------- */
+@media(max-width:860px){
+  header nav{display:none}
+  .pastnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;
+    background:rgba(3,16,46,.94);backdrop-filter:blur(14px);
+    border-top:1px solid var(--chiziq);
+    padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .pastnav a{flex:1;display:flex;flex-direction:column;align-items:center;
+    gap:4px;padding:7px 2px;border-radius:12px;
+    color:rgba(255,255,255,.5);font-family:"Nekst";font-weight:700;
+    font-size:9px;letter-spacing:.07em;text-transform:uppercase}
+  .pastnav a .ik{width:21px;height:21px}
+  .pastnav a.faol{color:#fff;background:rgba(235,31,40,.16)}
+  .pastnav a.faol .ik{color:var(--qizil)}
+  /* Pastki menyu sahifa oxirini yopib qo'ymasin */
+  body{padding-bottom:74px}
+  .tablar{top:62px}
+}
+
+@media(max-width:640px){
+  .fk-rasm{width:150px;height:188px}
+  .fk-pas .raq{font-size:38px}
+  h1{font-size:27px}
+  h2{font-size:13px;margin:34px 0 16px}
+  header .q{height:62px}header img{height:36px}
+  .hero .q{padding-top:30px;padding-bottom:28px}
+  .hero .lenta{margin-bottom:22px}
+  .hero .tomon .gerbjoy{width:76px;height:76px}
+  .hero .tomon img{width:56px;height:56px}
+  .hero .tomon .nomi{font-size:14px}
+  .hero .orta .hisob{font-size:38px}
+  .hero .orta .vs{font-size:21px}
+  .hero .orta{min-width:0}
+  /* Telefonda sana gerblarga tegib ketardi */
+  .hero .orta .sana{font-size:13px;margin-top:9px;line-height:1.3}
+  .hero .orta .soat{font-size:12px;padding:4px 10px}
+  .hero .jang{gap:7px}
+  .hero .past{margin-top:24px;padding-top:18px;gap:8px}
+  .hero .past > span{padding:7px 11px;font-size:12px}
+  .oy-set{grid-template-columns:1fr}
+  .oy .t img{width:40px;height:40px}
+  header nav{gap:5px}
+  header nav a{padding:6px 9px;font-size:11px}
+  article{padding:26px 18px 50px}
+  /* O'yin sahifasi telefonda */
+  .mch .q{padding:22px 18px 20px}
+  .mch .lenta{margin-bottom:18px;gap:6px}
+  .mch .jang{gap:8px}
+  .mch .tomon .gerbjoy{width:70px;height:70px}
+  .mch .tomon img{width:50px;height:50px}
+  .mch .tomon .nomi{font-size:13px}
+  .mch .orta{min-width:0}
+  .mch .orta .hisob{font-size:36px}
+  .mch .orta .vs{font-size:19px}
+  .mch .past{margin-top:20px;padding-top:16px;gap:7px}
+  .mch .past span{padding:7px 11px;font-size:11.5px}
+  .tablar{padding:7px 12px;gap:4px}
+  .tablar button{flex:1;min-width:0;padding:10px 7px;font-size:10px;gap:6px}
+  .tabich{padding-top:22px}
+  .vq{grid-template-columns:1fr 46px 1fr;gap:5px;padding:6px 0}
+  .vq .d{height:26px;font-size:11.5px}
+  .vq .v{padding:8px 10px;gap:8px;border-radius:11px}
+  .vq .v b{font-size:13px}
+  .vq .v i{font-size:9.5px}
+  .vq .v .ik{width:18px;height:18px}
+  .stq .n b{font-size:16px}
+  /* ⚠ JADVAL TELEFONDA YON TOMONGA SURILMASIN. Ilgari jadval
+     660px enida edi va telefonda barmoq bilan surish kerak
+     bo'lardi — muxlis ochkoni ko'rmasdi. Endi telefonda faqat
+     eng kerakli ustunlar qoladi: o'rin, klub, o'yin, farq,
+     ochko. Qolgan to'rttasi (g'alaba, durang, mag'lubiyat,
+     gollar) kompyuterda o'z joyida turadi. */
+  .tbl{min-width:0;font-size:13px}
+  .tbl th,.tbl td{padding:11px 5px}
+  .tbl th:nth-child(n+4):nth-child(-n+7),
+  .tbl td:nth-child(n+4):nth-child(-n+7){display:none}
+  .tbl .orin{width:36px}
+  .tbl .orin i{width:23px;height:23px;font-size:11.5px}
+  .tbl .klub a,.tbl .klub span{font-size:13px;gap:8px}
+  .tbl .klub img{width:22px;height:22px}
+}
+/* Sichqonchasiz qurilmada «hover» ko'tarilishi keraksiz — barmoq
+   tekkanda kartochka sakrab ketardi. */
+@media(hover:none){
+  .kar:hover,.oy:hover,.lk:hover,.fk:hover{transform:none;box-shadow:none}
+}
+
+/* ==================================================================
+   ARXIV, UCHRASHUVLAR VA STATISTIKA
+   ------------------------------------------------------------------
+   Bu uch bo'limda ma'lumot ko'p va u JADVAL bo'lib chiqadi. Sayt
+   qolgan joyida kartochka uslubida — shuning uchun jadval ham
+   kartochkaning ichida turadi (`.blok`), aks holda sahifa
+   ma'lumotnomaga o'xshab qoladi.
+   ================================================================== */
+.blok{background:linear-gradient(180deg,rgba(255,255,255,.045),
+  rgba(255,255,255,.015));border:1px solid var(--chiziq);
+  border-radius:18px;padding:20px 22px;margin-bottom:22px}
+.blok>h3{margin:0 0 16px;font-family:"Nekst";font-weight:900;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--oltin);display:flex;align-items:center;gap:9px}
+.blok>h3 .ik{width:17px;height:17px}
+.izoh{font-size:13px;color:rgba(255,255,255,.45);margin-top:12px;
+  line-height:1.5}
+
+/* Bo'lim ichidagi tanlov tugmalari (yil, jamoa, turnir) */
+.tanlov{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.tanlov a{display:inline-flex;align-items:center;gap:7px;
+  padding:9px 15px;border-radius:11px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.72);
+  font-family:"Nekst";font-weight:700;font-size:12px;
+  letter-spacing:.09em;text-transform:uppercase}
+.tanlov a.faol{background:var(--qizil);border-color:var(--qizil);
+  color:#fff}
+.tanlov a .ik{width:15px;height:15px}
+
+/* Arxiv qatori — kalendar kartochkasidan IXCHAMROQ. Bir yilda 30
+   dan ortiq o'yin bo'ladi va katta kartochka bilan sahifa cheksiz
+   uzayib ketardi; bu yerda muxlis natijani tez ko'rib o'tadi. */
+.aq{display:grid;grid-template-columns:96px 1fr auto;gap:14px;
+  align-items:center;padding:12px 14px;border-radius:13px;
+  border:1px solid rgba(255,255,255,.06);margin-bottom:8px;
+  background:rgba(255,255,255,.03);color:#fff}
+.aq:hover{background:rgba(255,255,255,.06)}
+.aq .sn{font-size:12.5px;color:rgba(255,255,255,.55)}
+.aq .jf{display:flex;align-items:center;gap:10px;min-width:0;
+  font-family:"Nekst";font-weight:700;font-size:14.5px}
+.aq .jf .tm{display:flex;align-items:center;gap:9px;min-width:0}
+.aq .jf img{width:22px;height:22px;object-fit:contain;flex:0 0 auto}
+.aq .jf b{font-weight:900;flex:0 0 auto}
+.aq .jf i{font-style:normal;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+.aq .hs{display:flex;align-items:center;gap:10px}
+.aq .hs .b{font-family:"Nekst";font-weight:900;font-size:16px;
+  min-width:54px;text-align:center;padding:5px 9px;border-radius:9px;
+  background:rgba(255,255,255,.07)}
+.aq .hs .pn{font-size:11px;color:rgba(255,255,255,.55);
+  white-space:nowrap}
+/* Natija belgisi — rang ko'rmaydigan odam uchun HARF ham bor */
+.nb{display:inline-flex;align-items:center;justify-content:center;
+  width:23px;height:23px;border-radius:7px;font-family:"Nekst";
+  font-weight:900;font-size:12px;flex:0 0 auto}
+.nb.g{background:rgba(46,204,132,.20);color:#2ECC84}
+.nb.d{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
+.nb.m{background:rgba(235,31,40,.20);color:#FF6A70}
+
+/* Yil kartochkalari — arxivning bosh sahifasi */
+.yil-set{display:grid;grid-template-columns:repeat(auto-fill,
+  minmax(210px,1fr));gap:14px}
+.yk{padding:18px;border-radius:16px;border:1px solid var(--chiziq);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),
+  rgba(255,255,255,.015));color:#fff}
+.yk:hover{border-color:rgba(226,186,117,.45)}
+.yk b{display:block;font-family:"Nekst";font-weight:900;font-size:30px;
+  line-height:1;margin-bottom:10px}
+.yk .gdm{display:flex;gap:6px;margin-bottom:9px}
+.yk .kv{font-size:12px;color:rgba(255,255,255,.55);line-height:1.45}
+
+/* Oddiy ma'lumot jadvali (to'purarlar, darvozabonlar, tarix) */
+.jd{width:100%;border-collapse:collapse;font-size:14.5px}
+.jd th{text-align:left;padding:9px 8px;font-family:"Nekst";
+  font-weight:700;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);
+  border-bottom:1px solid var(--chiziq)}
+.jd td{padding:11px 8px;border-bottom:1px solid rgba(255,255,255,.05)}
+.jd tr:last-child td{border-bottom:0}
+.jd .n{font-family:"Nekst";font-weight:900;color:var(--oltin);
+  width:34px}
+.jd .r{text-align:right;font-family:"Nekst";font-weight:900}
+.jd .ism{font-family:"Nekst";font-weight:700}
+.jd-o{overflow-x:auto}
+
+/* Uchrashuvlar tarixi — umumiy hisob */
+.h2h{display:flex;align-items:center;justify-content:center;gap:22px;
+  flex-wrap:wrap;margin-bottom:22px}
+.h2h .t{display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:"Nekst";font-weight:700;font-size:13px}
+.h2h .t img{width:56px;height:56px;object-fit:contain}
+/* ⚠ O'RALSIN. Statistika sahifasidagi mavsum reykasida YETTITA
+   katak bor (o'rin, ochko, o'yin, g'alaba, durang, mag'lubiyat,
+   gollar). O'ralmasa 390px li telefonda sahifa yon tomonga
+   surilib ketardi — `ps/_sayt_surat.py` aynan shuni topdi. */
+.h2h .say{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.h2h .say div{min-width:74px;padding:12px 10px;border-radius:13px;
+  background:rgba(255,255,255,.05);text-align:center}
+.h2h .say b{display:block;font-family:"Nekst";font-weight:900;
+  font-size:26px;line-height:1.1}
+.h2h .say span{font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* Rekord kartochkalari */
+.rek{display:grid;grid-template-columns:repeat(auto-fill,
+  minmax(240px,1fr));gap:14px}
+.rek div{padding:16px;border-radius:14px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06)}
+.rek span{display:block;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
+.rek b{font-family:"Nekst";font-weight:900;font-size:17px;
+  display:block;line-height:1.3}
+.rek i{font-style:normal;font-size:12.5px;
+  color:rgba(255,255,255,.55)}
+
+/* O'yin sahifasidagi rasmiylar reykasi */
+.rasmiy{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin:0 auto 22px;max-width:780px}
+.rasmiy span{display:inline-flex;align-items:center;gap:8px;
+  padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);font-size:13px}
+.rasmiy .ik{width:16px;height:16px;color:var(--oltin)}
+.rasmiy i{font-style:normal;color:rgba(255,255,255,.5)}
+
+@media(max-width:860px){
+  .aq{grid-template-columns:1fr auto;gap:8px 12px}
+  .aq .sn{grid-column:1/-1;font-size:11.5px}
+  /* ⚠ TELEFONDA IKKI JAMOA IKKI QATORDA. Bitta qatorda ikkita
+     gerb, ikkita nom va hisob 390px ga sig'maydi va nomlar
+     «Andij…» bo'lib kesilardi — muxlis o'z klubining nomini
+     ham to'liq ko'ra olmasdi. `ps/_sayt_surat.py` shuni
+     ko'rsatdi. */
+  .aq .jf{flex-direction:column;align-items:stretch;gap:5px;
+    font-size:13.5px}
+  .aq .jf b{display:none}
+  .aq .jf i{white-space:normal}
+  .aq .hs .b{font-size:15px;min-width:48px}
+  .yk b{font-size:26px}
+  .h2h{gap:14px}
+  .h2h .t img{width:46px;height:46px}
+  .h2h .say div{min-width:62px;padding:10px 8px;flex:1 1 84px}
+  .h2h .say b{font-size:21px}
+  .blok{padding:16px 15px}
+  .jd{font-size:13px}
+  .jd th,.jd td{padding:9px 5px}
+  /* Ikkinchi darajali ustun — telefonda o'rin bo'shatadi.
+     Jadval o'z ichida surilishi ham yomon: muxlis eng kerakli
+     raqamni ko'rish uchun barmoq bilan surishi kerak bo'lardi. */
+  .jd .dq{display:none}
+  .rek{grid-template-columns:1fr}
+}
+</style>
+</head><body>
+<header><div class="q">
+  <img src="../../../gerb/Andijon.png" alt="FK Andijon">
+  <div><b>FK ANDIJON</b>
+    <div class="sub">ANDIJON PRESS <i></i> LIVE</div></div>
+  <nav><a href="../../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a href="../../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>Yangiliklar</a><a href="../../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal</a><a href="../../../oyinlar" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yinlar</a><a href="../../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Jadval</a><a href="../../../statistika"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</a><a href="../../../jamoa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa</a></nav>
+</div></header>
+<div class="mch"><div class="yoy"><svg viewBox="0 0 400 520" aria-hidden="true"><path d="M200 8C200 8 372 168 372 330v182H28V330C28 168 200 8 200 8Z"/><path d="M200 78C200 78 320 208 320 336v176H80V336C80 208 200 78 200 78Z"/><path d="M200 148C200 148 268 248 268 342v170H132V342C132 248 200 148 200 148Z"/></svg></div><div class="q">
+<div class="lenta"><span>Superliga</span><span>27-tur</span><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Uy maydoni</span></div>
+<div class="jang"><div class="tomon"><div class="gerbjoy"><img src="../../../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'"></div><div><div class="nomi">Andijon</div><div class="joy">Uy</div></div></div><div class="orta"><div class="hisob">1 : 1</div><div class="holat">Yakunlandi</div></div><div class="tomon"><div class="gerbjoy"><img src="../../../gerb/Buxoro.png" alt="" onerror="this.style.visibility='hidden'"></div><div><div class="nomi">Buxoro</div><div class="joy">Mehmon</div></div></div></div>
+<div class="past"><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1-noyabr, 2025</span><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Bobur arena</span></div>
+</div></div>
+<div class="q" style="padding-top:26px"><div class="rasmiy"><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6"/><circle cx="12" cy="13.5" r="5"/><path d="M9.5 6.5h5"/></svg><i>Bosh hakam:</i>Rustam Choriyev</span><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.2"/><path d="M5 20v-1.5A5.5 5.5 0 0 1 10.5 13h3A5.5 5.5 0 0 1 19 18.5V20"/></svg><i>Andijon:</i>Maksim Shatskix</span><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.2"/><path d="M5 20v-1.5A5.5 5.5 0 0 1 10.5 13h3A5.5 5.5 0 0 1 19 18.5V20"/></svg><i>Buxoro:</i>Aleksandr Xomyakov</span><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.5a3 3 0 0 1 0 5.6M17 13.2a5 5 0 0 1 4 4.8V19"/></svg><i>Tomoshabin:</i>5100 kishi</span></div></div>
+<div class="tablar">
+<button type="button" data-t="voqea" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>Voqealar</button>
+<button type="button" data-t="tarkib"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Tarkib</button>
+<button type="button" data-t="stat"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</button>
+</div>
+<div class="tabich q" id="t-voqea"><div class="vqs"><div class="vq ongda"><div class="d">57</div><div class="v gol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg><div><b>Dominik Begich</b><i>Gol</i></div></div></div><div class="vq ongda"><div class="d">61</div><div class="v sariq"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><div><b>Toma Tabatadze</b><i>Sariq kartochka</i></div></div></div><div class="vq chapda"><div class="d">61</div><div class="v almash"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg><div><b>Bektemir Abdumannonov → Doniyor Abdumannopov</b><i>Almashtirish</i></div></div></div><div class="vq ongda"><div class="d">64</div><div class="v sariq"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><div><b>Sardor Qulmatov</b><i>Sariq kartochka</i></div></div></div><div class="vq chapda"><div class="d">68</div><div class="v gol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg><div><b>Abdulvohid G‘ulomov</b><i>Gol</i></div></div></div><div class="vq ongda"><div class="d">69</div><div class="v almash"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg><div><b>Ravshan Xayrullayev → Javohir Ro‘ziyev</b><i>Almashtirish</i></div></div></div><div class="vq ongda"><div class="d">69</div><div class="v almash"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg><div><b>Toma Tabatadze → Bilol Tupliyev</b><i>Almashtirish</i></div></div></div><div class="vq chapda"><div class="d">86</div><div class="v almash"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg><div><b>Sardor Azimov → Muhammadali Usmonov</b><i>Almashtirish</i></div></div></div><div class="vq ongda"><div class="d">87</div><div class="v almash"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg><div><b>Azizbek Amonov → Ibroxim Numonov</b><i>Almashtirish</i></div></div></div></div></div>
+<div class="tabich q" id="t-tarkib" style="display:none"><div class="tarkib-ust"><div><h3><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Andijon</h3><div class="p"><i>31</i>Erjan Tokotayev</div><div class="p"><i>3</i>Sunnatulloh Hamidjonov</div><div class="p"><i>5</i>Abdulvohid G‘ulomov</div><div class="p"><i>8</i>Shahzod Azmiddinov</div><div class="p"><i>27</i>Kristian Novak</div><div class="p"><i>13</i>Sardor Azimov 86&#x27;</div><div class="p"><i>18</i>Damir Temirov</div><div class="p"><i>26</i>Muhammadkarim Toirov</div><div class="p"><i>71</i>Bektemir Abdumannonov 61&#x27;</div><div class="p"><i>11</i>Otabek Jo‘raqo‘ziyev</div><div class="p"><i>22</i>Usmonali Ismonaliyev</div><h3><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg>O'yinga tushdi</h3><div class="p zaxira"><i>12</i>Mohir Komilov 1&#x27;</div><div class="p zaxira"><i>2</i>Abubakir Ashurov 1&#x27;</div><div class="p zaxira"><i>14</i>Abdurahmon Komilov 1&#x27;</div><div class="p zaxira"><i>33</i>Oleg Zoteyev 1&#x27;</div><div class="p zaxira"><i>9</i>Saidumarxon Saidnurullayev 1&#x27;</div><div class="p zaxira"><i>23</i>Doniyor Abdumannopov 61&#x27;</div><div class="p zaxira"><i>88</i>Shohjahon Yorqinboyev 1&#x27;</div><div class="p zaxira"><i>99</i>Muhammadali Usmonov 86&#x27;</div><div class="p zaxira"><i>16</i>Abdurahmon Abdullayev 1&#x27;</div></div><div><h3><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Buxoro</h3><div class="p"><i>21</i>Otabek Boymurodov</div><div class="p"><i>5</i>Sardor Qulmatov</div><div class="p"><i>33</i>Yosip Tomashevich</div><div class="p"><i>93</i>Marko Kolakovich</div><div class="p"><i>94</i>Ikich Frane</div><div class="p"><i>97</i>Shahboz Jo‘rabekov</div><div class="p"><i>6</i>Ravshan Xayrullayev 69&#x27;</div><div class="p"><i>25</i>Franye Chiryak</div><div class="p"><i>10</i>Azizbek Amonov 87&#x27;</div><div class="p"><i>22</i>Toma Tabatadze 69&#x27;</div><div class="p"><i>88</i>Dominik Begich</div><h3><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.6h12M13 5.4l3.2 3.2L13 11.8"/><path d="M20 15.4H8M11 12.2 7.8 15.4 11 18.6"/></svg>O'yinga tushdi</h3><div class="p zaxira"><i>1</i>Shirinboy Abdullayev 1&#x27;</div><div class="p zaxira"><i>4</i>Javohir O‘tamurodov 1&#x27;</div><div class="p zaxira"><i>27</i>Muxammad Yuldashev 1&#x27;</div><div class="p zaxira"><i>8</i>Anvarjon Jo‘rayev 1&#x27;</div><div class="p zaxira"><i>11</i>Ibroxim Numonov 87&#x27;</div><div class="p zaxira"><i>14</i>Alisher Xayrullayev 1&#x27;</div><div class="p zaxira"><i>17</i>Javohir Ro‘ziyev 69&#x27;</div><div class="p zaxira"><i>19</i>Bilol Tupliyev 69&#x27;</div><div class="p zaxira"><i>9</i>Amirbek Saidov 1&#x27;</div></div></div></div>
+<div class="tabich q" id="t-stat" style="display:none"><div class="stq"><div class="stbosh"><span><img src="../../../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'">Andijon</span><span>Buxoro<img src="../../../gerb/Buxoro.png" alt="" onerror="this.style.visibility='hidden'"></span></div><div class="r"><div class="n"><b>12</b><span>Zarbalar</span><b>13</b></div><div class="chiz"><i class="a" style="width:48%"></i><i class="b" style="width:52%"></i></div></div><div class="r"><div class="n"><b>6</b><span>Nishonga zarba</span><b>6</b></div><div class="chiz"><i class="a" style="width:50%"></i><i class="b" style="width:50%"></i></div></div><div class="r"><div class="n"><b>3</b><span>Burchak</span><b>5</b></div><div class="chiz"><i class="a" style="width:38%"></i><i class="b" style="width:62%"></i></div></div><div class="r"><div class="n"><b>14</b><span>Qoida buzish</span><b>16</b></div><div class="chiz"><i class="a" style="width:47%"></i><i class="b" style="width:53%"></i></div></div><div class="r"><div class="n"><b>4</b><span>Ofsayd</span><b>2</b></div><div class="chiz"><i class="a" style="width:67%"></i><i class="b" style="width:33%"></i></div></div></div><div class="izoh" style="text-align:center">Manba — pfl.uz rasmiy qaydnomasi.</div></div>
+<script>
+(function(){
+var t=document.querySelectorAll('.tablar button');
+var p=document.querySelectorAll('.tabich');
+for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
+  var k=this.getAttribute('data-t');
+  for(var a=0;a<t.length;a++){
+    t[a].className=(t[a].getAttribute('data-t')===k)?'faol':'';}
+  for(var b=0;b<p.length;b++){
+    p[b].style.display=(p[b].id==='t-'+k)?'':'none';}
+});}
+})();
+</script>
+<div class="q"><div class="tanlov"><a href="../../../uchrashuvlar/8"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Buxoro bilan tarix</a><a href="../../../arxiv/oyin/2990"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5.4M11.4 5.6 5 12l6.4 6.4"/></svg>Oldingi o'yin</a><a href="../../../arxiv/oyin/3002">Keyingi o'yin<svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13.6M12.6 5.6 19 12l-6.4 6.4"/></svg></a><a href="../../../arxiv/2025"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg>2025 yil o'yinlari</a></div></div>
+<footer><div class="q">
+  <div class="ust">
+    <div>
+      <div class="klub"><img src="../../../gerb/Andijon.png" alt="">
+        <div><b>FK ANDIJON</b><span>ANDIJON PRESS</span></div></div>
+      <div>Andijon viloyati futbol klubi. O'zbekiston Superligasi,
+        U21 va U19 chempionatlari.</div>
+    </div>
+    <div><h4>Bo'limlar</h4><a href="../../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a href="../../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>Yangiliklar</a><a href="../../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal</a></div>
+    <div><h4>Klub</h4><a href="../../../jamoa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa safi</a><a href="../../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Turnir jadvali</a><a href="../../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>O&#x27;yinlar kalendari</a><a href="../../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal lentasi</a></div>
+  </div>
+  <div class="past q" style="padding:20px 0 0;display:flex;flex-wrap:wrap;
+       gap:14px;align-items:center;max-width:none">
+    <span>© 2026 FK Andijon — rasmiy sayt</span>
+    <span style="margin-left:auto">Andijon Press</span>
+  </div>
+</div></footer>
+<nav class="pastnav"><a href="../../../"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg><span>Bosh</span></a><a href="../../../yangiliklar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg><span>Yangilik</span></a><a href="../../../oyinlar" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><span>O&#x27;yin</span></a><a href="../../../jadval"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg><span>Jadval</span></a><a href="../../../jamoa"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg><span>Jamoa</span></a></nav>
+</body></html>
