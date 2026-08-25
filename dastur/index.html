@@ -27,10 +27,17 @@
 </div>
 <script>
 (function(){
-  var ICHKI = "https://7f6c0bd295b555.lhr.life";
-  var VAQT  = "2026-08-25 09:04:14";
+  var ICHKI = "https://new-women-begin.loca.lt/dasturnoma";
+  var VAQT  = "2026-08-25 09:08:47";
+  // SO'ROV QATORI HAM UZATILADI.
+  // Bosma dasturnomadagi QR `/dastur/?mid=2` ko'rinishida bo'ladi —
+  // aynan SHU o'yin. Uzatilmasa har QR eng yaqin o'yinni ochardi va
+  // eski dasturnomadagi QR keyingi o'yinni ko'rsatib qo'yardi.
   function ket(u){
     if(!u){ yopiq(); return; }
+    var s = location.search || "";
+    if(s.length > 1){ u += (u.indexOf("?") < 0 ? "?" : "&") + s.slice(1); }
+    if(location.hash){ u += location.hash; }
     document.getElementById("y").href = u;
     document.getElementById("y").style.display = "inline-block";
     location.replace(u);
