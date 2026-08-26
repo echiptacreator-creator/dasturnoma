@@ -363,6 +363,159 @@ img{display:block;max-width:100%}
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tx-raq span{font-size:11.5px;color:rgba(255,255,255,.4);white-space:nowrap;
   flex:none}
+/* ============ KLUB TARIXI: 1964-YILDAN ============ */
+/* Hikoya matni. ⚠ En cheklangan: 100% enli qatorni katta
+   ekranda o'qib bo'lmaydi — ko'z qator boshiga qaytolmaydi. */
+.tx-matn{max-width:74ch;font-size:15.5px;line-height:1.72;
+  color:rgba(255,255,255,.82)}
+.tx-matn p{margin:0 0 14px}
+.tx-matn p:last-child{margin-bottom:0}
+/* Tarixiy jamoa suratlari. */
+.tx-sur-ust{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.tx-sur{margin:0;border:1px solid var(--chiziq);border-radius:14px;
+  overflow:hidden;background:rgba(255,255,255,.035)}
+.tx-sur img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  background:rgba(0,0,0,.25)}
+.tx-sur figcaption{padding:11px 13px}
+.tx-sur figcaption b{display:block;font-family:"Nekst";font-weight:900;
+  font-size:19px;color:var(--oltin);line-height:1}
+.tx-sur figcaption span{display:block;margin-top:4px;font-size:12.5px;
+  color:rgba(255,255,255,.5)}
+/* Birinchilar — ikki ustun. */
+.tx-ilk-ust{display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.tx-ilk{border:1px solid var(--chiziq);border-radius:14px;padding:16px 18px;
+  background:rgba(255,255,255,.035)}
+.tx-ilk dl{margin:12px 0 0;display:grid;grid-template-columns:auto 1fr;
+  gap:8px 14px;font-size:13.5px}
+.tx-ilk dt{color:rgba(255,255,255,.45)}
+.tx-ilk dd{margin:0;text-align:right;font-family:"Nekst";font-weight:700}
+/* Nomlar tarixi. */
+.tx-nom{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:10px}
+/* ⚠ YIL PASTGA ITARILADI. «Andijanets, Vodnik, Olimpiya» ikki
+   qatorga sig'adi va tekislanmasa qatordagi yillar bir-biriga
+   nisbatan siljib turardi. */
+.tx-nom div{padding:12px 14px;border:1px solid var(--chiziq);
+  border-radius:12px;background:rgba(255,255,255,.035);
+  display:flex;flex-direction:column}
+.tx-nom b{display:block;font-family:"Nekst";font-weight:700;font-size:15px}
+.tx-nom span{display:block;margin-top:auto;padding-top:4px;font-size:12px;
+  color:rgba(255,255,255,.45)}
+/* Tarixiy gerblar. */
+.tx-gerb{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;
+  padding-top:16px;border-top:1px solid var(--chiziq)}
+.tx-gerb figure{margin:0;text-align:center;width:88px}
+.tx-gerb img{width:72px;height:72px;object-fit:contain;display:block;
+  margin:0 auto}
+.tx-gerb figcaption{margin-top:6px;font-family:"Nekst";font-weight:700;
+  font-size:12px;color:rgba(255,255,255,.5)}
+/* Chempionatdagi o'rinlar — yil kataklari. */
+.tx-or-ust{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));
+  gap:8px}
+.tx-or{padding:11px 6px;border-radius:12px;text-align:center;
+  border:1px solid var(--chiziq);background:rgba(255,255,255,.04)}
+.tx-or b{display:block;font-family:"Nekst";font-weight:900;font-size:21px;
+  line-height:1}
+.tx-or span{display:block;margin-top:4px;font-size:11px;
+  color:rgba(255,255,255,.45)}
+.tx-or.a b{color:var(--oltin)}
+.tx-or.b b{color:rgba(255,255,255,.82)}
+.tx-or.c b{color:rgba(235,31,40,.85)}
+.tx-or.eng{border-color:var(--oltin);background:rgba(226,186,117,.12)}
+/* Murabbiylar kartochkasi. */
+.tx-mb-ust{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));
+  gap:12px}
+/* ⚠ KARTOCHKALAR BIR SATRDA TEKIS TURSIN. Ism goh bir, goh
+   ikki qatorga sig'adi («Otabek G'ulomxo'jayev»); tekislanmasa
+   yillar har kartochkada boshqa balandlikda turib, qator
+   sinib ko'rinardi. Shuning uchun yil pastga «itariladi». */
+.tx-mb{margin:0;text-align:center;border:1px solid var(--chiziq);
+  border-radius:14px;padding:14px 8px 12px;
+  background:rgba(255,255,255,.035);
+  display:flex;flex-direction:column}
+.tx-mb figcaption{display:flex;flex-direction:column;flex:1}
+.tx-mb img{width:76px;height:76px;object-fit:cover;object-position:top center;
+  border-radius:50%;display:block;margin:0 auto;
+  background:rgba(255,255,255,.06)}
+/* Surati yo'q murabbiy — bosh harflari. */
+.tx-mb-yoq{width:76px;height:76px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;margin:0 auto;
+  background:rgba(255,255,255,.06);border:1px solid var(--chiziq);
+  font-family:"Nekst";font-weight:900;font-size:22px;
+  color:rgba(255,255,255,.35)}
+.tx-mb figcaption b{display:block;margin-top:10px;font-family:"Nekst";
+  font-weight:700;font-size:13px;line-height:1.3}
+.tx-mb figcaption span{display:block;margin-top:auto;padding-top:5px;
+  font-size:11.5px;color:rgba(255,255,255,.45)}
+/* Afsona — Hamidullayev. */
+.tx-afs{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+.tx-afs img{width:190px;border-radius:16px;display:block;
+  background:rgba(255,255,255,.05);flex:none}
+.tx-afs-m{flex:1;min-width:260px}
+.tx-afs-m b{display:block;font-family:"Nekst";font-weight:700;font-size:19px;
+  margin-bottom:10px}
+.tx-afs-m p{margin:0 0 14px;font-size:14.5px;line-height:1.7;
+  color:rgba(255,255,255,.78);max-width:66ch}
+.tx-afs-m dl{margin:0;display:grid;grid-template-columns:auto 1fr;
+  gap:7px 14px;font-size:13.5px;max-width:420px}
+.tx-afs-m dt{color:rgba(255,255,255,.45)}
+.tx-afs-m dd{margin:0;text-align:right;font-family:"Nekst";font-weight:700}
+/* Fahriylar zali. */
+.tx-fah{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:10px}
+.tx-fah div{padding:14px 16px;border-radius:12px;
+  border:1px solid rgba(226,186,117,.28);
+  background:rgba(226,186,117,.08);font-family:"Nekst";font-weight:700;
+  font-size:14.5px}
+/* Gvardiyachilar — chiziqli. */
+.tx-gv{display:flex;align-items:center;gap:12px;padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.05)}
+.tx-gv:last-of-type{border-bottom:0}
+.tx-gv i{font-style:normal;font-family:"Nekst";font-weight:900;font-size:13px;
+  color:var(--qizil);width:20px;flex:none}
+.tx-gv b{font-family:"Nekst";font-weight:700;font-size:14px;
+  width:190px;flex:none;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+.tx-gv-ch{flex:1;height:8px;border-radius:99px;
+  background:rgba(255,255,255,.06);overflow:hidden;min-width:60px}
+.tx-gv-ch span{display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,rgba(226,186,117,.55),var(--oltin))}
+.tx-gv em{font-style:normal;font-family:"Nekst";font-weight:900;font-size:14px;
+  width:52px;text-align:right;flex:none}
+/* To'purarlar jadvalidagi bo'sh yillar. */
+.tx-bosh td{color:rgba(255,255,255,.35);font-style:italic}
+@media(max-width:640px){
+  .tx-gv b{width:130px;font-size:13px}
+  .tx-afs img{width:132px}
+  .tx-or-ust{grid-template-columns:repeat(auto-fill,minmax(62px,1fr))}
+  /* ⚠ TELEFONDA GALEREYA — YON SURILADIGAN LENTA.
+     Otuz uchta surat butun kenglikda tepadan pastga terilsa,
+     tarix sahifasi telefonda 8000 pikselga cho'zilardi va
+     muxlis qolgan bo'limlarga hech qachon yetib bormasdi.
+     Lenta esa bir ekran joy oladi, barmoq bilan suriladi —
+     Sofascore/FotMob dagi galereya shunday ishlaydi.
+     Sahifaning O'ZI yon tomonga surilmaydi: surish shu
+     qutining ichida qoladi. */
+  .tx-sur-ust{display:flex;overflow-x:auto;gap:10px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding-bottom:6px;scrollbar-width:thin}
+  .tx-sur{flex:0 0 78%;scroll-snap-align:center}
+  .tx-sur img{aspect-ratio:4/3}
+  .tx-mb-ust{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));
+    gap:9px}
+  .tx-mb img,.tx-mb-yoq{width:60px;height:60px}
+  .tx-mb-yoq{font-size:17px}
+  .tx-mb figcaption b{font-size:12px;margin-top:8px}
+  /* ⚠ NOMLAR IKKI USTUNDA. 190px da telefonga bittadan
+     tushib, o'nta nom butun ekranni egallardi. */
+  .tx-nom{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:8px}
+  .tx-nom div{padding:10px 12px}
+  .tx-nom b{font-size:13.5px}
+}
+
 /* Stadion galereyasi. Birinchi surat kattaroq — sahifaning
    «yuzi» bo'lib turadi. */
 .std-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
