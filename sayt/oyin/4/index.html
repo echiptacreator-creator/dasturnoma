@@ -174,6 +174,220 @@ img{display:block;max-width:100%}
   display:inline-block;animation:puls 1.6s ease-in-out infinite}
 @keyframes puls{0%,100%{opacity:1}50%{opacity:.3}}
 
+/* ============ DASTURNOMA O'YIN SAHIFASI ICHIDA ============
+   ⚠ IFRAME EMAS, MA'LUMOTNING O'ZI. Ilgari bu yerda dasturnoma
+     miniappiga iframe turardi. Operator (2026-08-26): «dasturnoma
+     linkimizni o'zini qo'shib qo'yibsan bu xato, aslida hamma
+     ma'lumotni yozishing kerak edi». To'g'ri: havola sahifani
+     saytdan tashqariga olib chiqadi, qidiruv tizimi uni
+     o'qimaydi, kompyuter o'chsa yoki nashr qilinmagan bo'lsa
+     bo'lim umuman ko'rinmaydi. Endi hamma raqam sahifaning
+     ichida, HAR BIR o'yin uchun va O'SHA RAQIBGA qarab. */
+.dn{display:grid;gap:26px}
+
+/* --- ICHKI BO'LIMLAR ---
+   ⚠ HAMMASI BITTA USTUNDA BO'LMASIN. Operator (2026-08-26):
+     «bu dasturnomadagi ma'lumotlar ekranini alohida bo'limlariga
+     to'g'ri ajratish kerak, bitta ustun ichida hammasi
+     bo'lmasdan». To'g'ri: 13 ta bo'lim ketma-ket tizilganda
+     muxlis kerakli raqamgacha yarim daqiqa suradi. */
+.dn-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;
+  scrollbar-width:none;-ms-overflow-style:none}
+.dn-nav::-webkit-scrollbar{display:none}
+.dn-nav button{flex:0 0 auto;padding:9px 16px;border-radius:99px;
+  border:1px solid var(--chiziq);background:transparent;color:#fff;
+  font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;cursor:pointer;
+  transition:background .16s,border-color .16s,color .16s}
+.dn-nav button:hover{border-color:var(--oltin);color:var(--oltin)}
+.dn-nav button.faol{background:var(--qizil);border-color:var(--qizil);
+  color:#fff}
+.dn-ich{display:grid;gap:26px}
+
+/* --- YUMALOQ PORTRET ---
+   Rasm topilmasa `onerror` uni o'chiradi va ostidagi bosh
+   harflar ko'rinadi — bo'sh kulrang doira qolmaydi. */
+.dn-av{position:relative;flex:0 0 auto;width:34px;height:34px;
+  border-radius:50%;overflow:hidden;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-style:normal;font-family:"Nekst";font-weight:700;font-size:11px;
+  color:rgba(255,255,255,.55);border:1px solid var(--chiziq)}
+.dn-av img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 12%}
+
+.dn-b>h3{display:flex;align-items:center;gap:9px;margin:0 0 14px;
+  font-family:"Nekst";font-weight:800;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--oltin)}
+.dn-b>h3 i{flex:1;height:1px;background:var(--chiziq)}
+.dn-kart{border:1px solid var(--chiziq);border-radius:14px;
+  background:rgba(255,255,255,.035);padding:16px 18px}
+.dn-ikki{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dn-yoq{color:rgba(255,255,255,.45);font-size:14px}
+
+/* --- KLUB KARTOCHKASI --- */
+.dn-kk .b{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.dn-kk .b img{width:44px;height:44px;object-fit:contain}
+.dn-kk .b b{font-family:"Nekst";font-weight:800;font-size:16px}
+.dn-kk dl{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;
+  margin:0;font-size:14px}
+.dn-kk dt{color:rgba(255,255,255,.45);white-space:nowrap}
+.dn-kk dd{margin:0;text-align:right}
+
+/* --- TAQQOSLASH: biz | ko'rsatkich | raqib ---
+   Ustunlik kimdaligi RAQAMSIZ ham ko'rinsin deb chiziq
+   chiziladi: muxlis jadvalni o'qimasdan bir qarashda tushunadi. */
+.dn-bosh{display:flex;justify-content:space-between;align-items:center;
+  font-family:"Nekst";font-weight:800;font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;
+  color:rgba(255,255,255,.7)}
+.dn-bosh span{display:flex;align-items:center;gap:8px}
+.dn-bosh img{width:22px;height:22px;object-fit:contain}
+.dn-vs .r{margin-bottom:11px}
+.dn-vs .n{display:flex;justify-content:space-between;align-items:center;
+  font-size:14px;margin-bottom:5px}
+.dn-vs .n b{font-family:"Nekst";font-weight:800;
+  font-variant-numeric:tabular-nums}
+.dn-vs .n span{font-size:11.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(255,255,255,.45)}
+.dn-vs .chiz{display:flex;height:5px;border-radius:99px;overflow:hidden;
+  background:rgba(255,255,255,.07)}
+.dn-vs .chiz i{display:block;height:100%}
+.dn-vs .chiz .a{background:var(--qizil)}
+.dn-vs .chiz .b{background:rgba(226,186,117,.55)}
+
+/* --- SHAKL: oxirgi o'yinlar nishonlari --- */
+.dn-frm{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.dn-frm i{width:24px;height:24px;border-radius:6px;display:flex;
+  align-items:center;justify-content:center;font-style:normal;
+  font-family:"Nekst";font-weight:800;font-size:11px;color:#fff}
+.dn-frm .g{background:#1f9d55}
+.dn-frm .d{background:rgba(255,255,255,.22)}
+.dn-frm .m{background:var(--qizil)}
+
+/* --- JADVAL / RO'YXAT --- */
+.dn-tab{width:100%;border-collapse:collapse;font-size:14px}
+.dn-tab th{font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);text-align:right;padding:0 6px 8px;
+  font-weight:700}
+.dn-tab th:nth-child(-n+2){text-align:left}
+.dn-tab td{padding:7px 6px;text-align:right;
+  border-top:1px solid rgba(255,255,255,.05);
+  font-variant-numeric:tabular-nums}
+.dn-tab td:nth-child(-n+2){text-align:left}
+.dn-tab tr.biz td{background:rgba(235,31,40,.12);color:#fff}
+.dn-tab tr.raqib td{background:rgba(226,186,117,.10)}
+.dn-tab tr.biz td:first-child{border-left:2px solid var(--qizil)}
+.dn-tab tr.raqib td:first-child{border-left:2px solid var(--oltin)}
+.dn-oq{overflow-x:auto}
+
+/* --- KATTA RAQAMLAR (o'zaro tarix) --- */
+.dn-son{display:grid;grid-template-columns:repeat(auto-fit,minmax(94px,1fr));
+  gap:10px}
+.dn-son div{border:1px solid var(--chiziq);border-radius:12px;
+  padding:12px 8px;text-align:center;background:rgba(255,255,255,.03)}
+.dn-son b{display:block;font-family:"Nekst";font-weight:900;font-size:24px;
+  line-height:1.1;font-variant-numeric:tabular-nums}
+.dn-son span{font-family:"Nekst";font-weight:700;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+.dn-son .qizil b{color:var(--qizil)}
+.dn-son .oltin b{color:var(--oltin)}
+
+/* --- ODAM RO'YXATI (saf, to'purar, intizom, chetda) --- */
+.dn-p{display:flex;align-items:center;gap:10px;padding:6px 0;
+  border-top:1px solid rgba(255,255,255,.05);font-size:14.5px}
+.dn-p:first-child{border-top:0}
+.dn-p i{min-width:26px;height:22px;border-radius:5px;font-style:normal;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.07);font-family:"Nekst";font-weight:700;
+  font-size:11px;color:rgba(255,255,255,.6);
+  font-variant-numeric:tabular-nums}
+.dn-p b{flex:1;font-weight:400}
+.dn-p u{text-decoration:none;font-size:12px;
+  color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+.dn-p em{font-style:normal;font-size:12px;color:var(--oltin)}
+.dn-guruh{font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin:14px 0 2px}
+.dn-guruh:first-child{margin-top:0}
+
+/* Chetlashtirilganlar — qizil chiziq bilan ajratiladi: bu
+   ma'lumot muxlis uchun eng «qimmat» qismi. */
+.dn-chet .dn-p i{background:rgba(235,31,40,.2);color:#ffb4b8}
+
+/* --- OXIRGI UCHRASHUV VOQEALARI --- */
+.dn-vq{display:grid;gap:6px;font-size:14px}
+.dn-vq div{display:grid;grid-template-columns:44px 1fr;gap:10px;
+  padding:5px 0;border-top:1px solid rgba(255,255,255,.05)}
+.dn-vq div:first-child{border-top:0}
+.dn-vq b{font-family:"Nekst";font-weight:800;
+  font-variant-numeric:tabular-nums;color:rgba(255,255,255,.5)}
+.dn-vq em{font-style:normal;color:rgba(255,255,255,.45);font-size:12.5px}
+
+.dn-manba{font-size:12px;color:rgba(255,255,255,.35);
+  border-top:1px solid var(--chiziq);padding-top:12px}
+
+/* ====================== MAYDON KO'RINISHI ======================
+   ⚠ RO'YXAT EMAS, MAYDON. Qaydnomada har futbolchining
+     pozitsiyasi bor (darvozabon/himoya/yarim/hujum), demak
+     tarkibni chizmaga qo'yish mumkin — kuchli futbol
+     ilovalarida aynan shunday ko'rsatiladi va muxlis
+     tuzilishni bir qarashda ko'radi.
+   ⚠ ANIQ KOORDINATA YO'Q. PFL faqat chiziqni beradi, maydondagi
+     nuqtani emas. Shuning uchun har chiziq bir xil kenglikda
+     yoyiladi: bu «taxminiy tuzilish», va shuni ko'rsatgani
+     uchun ostida chiziqlar soni (masalan 4-4-2) yoziladi. */
+.mdn{position:relative;border:1px solid var(--chiziq);border-radius:16px;
+  padding:18px 10px;background:
+    radial-gradient(80% 60% at 50% 0,rgba(31,157,85,.16),rgba(2,27,83,0)),
+    linear-gradient(180deg,rgba(31,157,85,.10),rgba(2,27,83,.25));
+  overflow:hidden}
+/* Maydon chiziqlari — bezak, o'lchov emas. */
+.mdn:before{content:"";position:absolute;left:8%;right:8%;top:50%;
+  height:1px;background:rgba(255,255,255,.10)}
+.mdn:after{content:"";position:absolute;left:50%;top:50%;width:96px;
+  height:96px;margin:-48px 0 0 -48px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.10)}
+.mdn-ich{position:relative;display:grid;gap:16px}
+.mdn-qat{display:flex;justify-content:space-evenly;align-items:flex-start;
+  gap:6px}
+.mdn-p{width:74px;text-align:center;position:relative}
+.mdn-p .dn-av{width:44px;height:44px;margin:0 auto 6px;font-size:13px}
+/* ⚠ IKKI QATORGA JOY. «A. Andronikashvili» ikki qatorga
+   bo'linadi, «I. Ashortia» esa bitta qatorga sig'adi — balandlik
+   turlicha bo'lgani uchun chiziqlar qiyshayib, quyi qator
+   ustidagi ismga tegib ketardi. Endi har katak bir xil. */
+.mdn-p b{display:block;font-size:11.5px;font-weight:400;line-height:1.25;
+  overflow-wrap:anywhere;min-height:2.5em}
+.mdn-p .raq{position:absolute;top:-4px;left:50%;margin-left:8px;
+  min-width:19px;height:19px;border-radius:6px;background:var(--qizil);
+  color:#fff;font-family:"Nekst";font-weight:800;font-size:10px;
+  display:flex;align-items:center;justify-content:center;z-index:3;
+  font-variant-numeric:tabular-nums}
+/* Voqea belgilari — gol, kartochka, almashtirish. */
+.mdn-p .vb{position:absolute;top:-4px;left:50%;margin-left:-30px;
+  display:flex;flex-direction:column;gap:2px;z-index:3}
+.mdn-p .vb i{width:13px;height:13px;border-radius:3px;font-style:normal;
+  display:block}
+.mdn-p .vb i.sariq{background:#f5c518}
+.mdn-p .vb i.qizil{background:var(--qizil)}
+.mdn-p .vb i.gol{background:#1f9d55;border-radius:50%}
+.mdn-p .vb i.chiqdi{background:rgba(255,255,255,.5);
+  clip-path:polygon(50% 100%,0 0,100% 0)}
+.mdn-shakl{text-align:center;font-family:"Nekst";font-weight:800;
+  font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.5);
+  margin-top:14px}
+@media(max-width:640px){
+  .mdn-p{width:58px}
+  .mdn-p .dn-av{width:36px;height:36px}
+  .mdn-p b{font-size:10.5px}
+}
+
+@media(max-width:720px){
+  .dn-ikki{grid-template-columns:1fr}
+}
+
 /* ====================== TESKARI SANOQ ====================== */
 .sanoq{display:flex;gap:8px;justify-content:center;margin-top:22px}
 .sanoq div{min-width:64px;padding:10px 6px;border-radius:12px;
@@ -901,7 +1115,35 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <div class="jang"><div class="tomon"><div class="gerbjoy"><img src="../../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'"></div><div><div class="nomi">Andijon</div><div class="joy">Uy</div></div></div><div class="orta"><div class="vs">VS</div><div class="holat">10-sentabr, 2026</div></div><div class="tomon"><div class="gerbjoy"><img src="../../gerb/Qo_qon_1912.png" alt="" onerror="this.style.visibility='hidden'"></div><div><div class="nomi">Qo‘qon-1912</div><div class="joy">Mehmon</div></div></div></div>
 <div class="past"><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Bobur Arena</span></div>
 </div></div>
-<div class="q"><div class="bosh-yoq"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><div>Bu o'yin haqida hali ma'lumot yo'q.</div></div></div>
+<div class="tablar">
+<button type="button" data-t="dast" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5S10 4.8 6.5 4.8 3 6 3 6v12s1.2-1 3.5-1 5.5 1.7 5.5 1.7"/><path d="M12 6.5S14 4.8 17.5 4.8 21 6 21 6v12s-1.2-1-3.5-1-5.5 1.7-5.5 1.7z"/><path d="M12 6.5v13"/></svg>Dasturnoma</button>
+</div>
+<div class="tabich q" id="t-dast"><div class="dn"><div class="dn-nav"><button type="button" data-dn="umumiy" class="faol">Umumiy</button><button type="button" data-dn="tarkib">Tarkiblar</button><button type="button" data-dn="stat">Statistika</button><button type="button" data-dn="tarix">Tarix</button><button type="button" data-dn="saf">Saflar</button></div><div class="dn-ich" id="dn-umumiy"><section class="dn-b"><h3>Ikki klub<i></i></h3><div class="dn-ikki"><div class="dn-kart dn-kk"><div class="b"><img src="../../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'"><b>FK Andijon</b></div><dl><dt>Shahar</dt><dd>Andijon shahri, Toshkent ko‘chasi 49</dd><dt>Stadion</dt><dd>Bobur Arena</dd><dt>Tashkil topgan</dt><dd>1964</dd><dt>Sig&#x27;imi</dt><dd>18360 o&#x27;rin</dd><dt>Bosh murabbiy</dt><dd>Islam Akhmedov</dd><dt>O&#x27;rtacha yosh</dt><dd>27.7</dd><dt>Saf qiymati</dt><dd>6.1 mln €</dd></dl></div><div class="dn-kart dn-kk"><div class="b"><img src="../../gerb/Qo_qon_1912.png" alt="" onerror="this.style.visibility='hidden'"><b>Qo‘qon-1912</b></div><dl><dt>Stadion</dt><dd>Markaziy Qo&#x27;qon</dd><dt>Tashkil topgan</dt><dd>1912</dd></dl></div></div></section><section class="dn-b"><h3>Mavsum ko&#x27;rsatkichlari<i></i></h3><div class="dn-kart"><div class="dn-bosh"><span><img src="../../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'">Andijon</span><span>Qo‘qon-1912<img src="../../gerb/Qo_qon_1912.png" alt="" onerror="this.style.visibility='hidden'"></span></div><div class="dn-son" style="margin-bottom:14px"><div class="qizil"><b>7</b><span>Andijon o&#39;rni</span></div><div class="oltin"><b>14</b><span>Qo‘qon-1912 o&#39;rni</span></div></div><div class="dn-vs"><div class="r"><div class="n"><b>27</b><span>Ochko</span><b>19</b></div><div class="chiz"><i class="a" style="width:59%"></i><i class="b" style="width:41%"></i></div></div><div class="r"><div class="n"><b>8</b><span>G&#x27;alaba</span><b>4</b></div><div class="chiz"><i class="a" style="width:67%"></i><i class="b" style="width:33%"></i></div></div><div class="r"><div class="n"><b>3</b><span>Durang</span><b>7</b></div><div class="chiz"><i class="a" style="width:30%"></i><i class="b" style="width:70%"></i></div></div><div class="r"><div class="n"><b>8</b><span>Mag&#x27;lubiyat</span><b>8</b></div><div class="chiz"><i class="a" style="width:50%"></i><i class="b" style="width:50%"></i></div></div><div class="r"><div class="n"><b>24</b><span>Urgan gol</span><b>17</b></div><div class="chiz"><i class="a" style="width:59%"></i><i class="b" style="width:41%"></i></div></div><div class="r"><div class="n"><b>20</b><span>Yegan gol</span><b>26</b></div><div class="chiz"><i class="a" style="width:43%"></i><i class="b" style="width:57%"></i></div></div><div class="r"><div class="n"><b>1.42</b><span>O&#x27;yinga o&#x27;rtacha ochko</span><b>1.0</b></div><div class="chiz"><i class="a" style="width:59%"></i><i class="b" style="width:41%"></i></div></div><div class="r"><div class="n"><b>1.26</b><span>O&#x27;yinga o&#x27;rtacha gol</span><b>0.89</b></div><div class="chiz"><i class="a" style="width:59%"></i><i class="b" style="width:41%"></i></div></div></div><div class="dn-guruh">Shu o&#39;yin sharoitida (mezbon &mdash; mehmon)</div><div class="dn-vs"><div class="r"><div class="n"><b>10</b><span>O&#x27;yin</span><b>10</b></div><div class="chiz"><i class="a" style="width:50%"></i><i class="b" style="width:50%"></i></div></div><div class="r"><div class="n"><b>5</b><span>G&#x27;alaba</span><b>1</b></div><div class="chiz"><i class="a" style="width:83%"></i><i class="b" style="width:17%"></i></div></div><div class="r"><div class="n"><b>1</b><span>Durang</span><b>4</b></div><div class="chiz"><i class="a" style="width:20%"></i><i class="b" style="width:80%"></i></div></div><div class="r"><div class="n"><b>4</b><span>Mag&#x27;lubiyat</span><b>5</b></div><div class="chiz"><i class="a" style="width:44%"></i><i class="b" style="width:56%"></i></div></div><div class="r"><div class="n"><b>13</b><span>Urgan gol</span><b>8</b></div><div class="chiz"><i class="a" style="width:62%"></i><i class="b" style="width:38%"></i></div></div><div class="r"><div class="n"><b>9</b><span>Yegan gol</span><b>15</b></div><div class="chiz"><i class="a" style="width:38%"></i><i class="b" style="width:62%"></i></div></div></div></div></section><section class="dn-b"><h3>Dubl<i></i></h3><div class="dn-kart"><div class="dn-p"><i>5:1</i><b>U21 (dubl) — Qo‘qon-1912</b><em>safarda</em><u>18.04.2026</u></div></div></section></div><div class="dn-ich" id="dn-tarkib" style="display:none"><section class="dn-b"><h3>Ehtimoliy tarkib<i></i></h3><div class="dn-ikki"><div class="dn-kart"><div class="dn-guruh">Andijon</div><div class="dn-guruh">Ko&#x27;p o&#x27;ynaganlar</div><div class="dn-p"><span class="dn-av">AK<img src="../../futbolchi/Abdurahmon_Komilov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>14</i><b>Abdurahmon Komilov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AA<img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="" loading="lazy" onerror="this.remove()"></span><i>6</i><b>Aleksandre Andronikashvili</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AP<img src="../../futbolchi/Artyom_Potapov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>19</i><b>Artyom Potapov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">DT<img src="../../futbolchi/Damir_Temirov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>18</i><b>Damir Temirov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">HI<img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>11</i><b>Humoyunmirzo Iminov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IA<img src="../../futbolchi/Imeda_Ashortia.png" alt="" loading="lazy" onerror="this.remove()"></span><i>9</i><b>Imeda Ashortia</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IT<img src="../../futbolchi/Islom_To_xtaxo_jayev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>20</i><b>Islom To‘xtaxo‘jayev</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">MM<img src="../../futbolchi/Mahmudjon_Mahamadjonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>77</i><b>Mahmudjon Mahamadjonov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">NC<img src="../../futbolchi/Nemanya_Chalasan.png" alt="" loading="lazy" onerror="this.remove()"></span><i>15</i><b>Nemanya Chalasan</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">PX<img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>7</i><b>Po‘latxo‘ja Xoldorxonov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">RT<img src="../../futbolchi/Rustam_Turdimurodov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>99</i><b>Rustam Turdimurodov</b><u>2 o&#x27;yin</u></div><div class="dn-guruh">Safdagi boshqalar</div><div class="dn-p"><span class="dn-av">EA<img src="../../futbolchi/Eldor_Adhamov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>1</i><b>Eldor Adhamov</b></div><div class="dn-p"><span class="dn-av">DC<img src="../../futbolchi/Dragan_Cheran.png" alt="" loading="lazy" onerror="this.remove()"></span><i>10</i><b>Dragan Cheran</b></div><div class="dn-p"><span class="dn-av">DA<img src="../../futbolchi/Doniyor_Abdumannopov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>23</i><b>Doniyor Abdumannopov</b></div><div class="dn-p"><span class="dn-av">OA<img src="../../futbolchi/Odilbek_Abdumajidov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>2</i><b>Odilbek Abdumajidov</b></div><div class="dn-p"><span class="dn-av">AG<img src="../../futbolchi/Abdulvohid_G_ulomov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>5</i><b>Abdulvohid G‘ulomov</b></div><div class="dn-p"><span class="dn-av">SK<img src="../../futbolchi/Shoxmalik_Komilov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>8</i><b>Shoxmalik Komilov</b></div><div class="dn-p"><span class="dn-av">BS<img src="../../futbolchi/Bekzod_Sulaymonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>28</i><b>Bekzod Sulaymonov</b></div><div class="dn-p"><span class="dn-av">AT<img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>17</i><b>Azizbek Turg‘unboyev</b></div><div class="dn-p"><span class="dn-av">MB<img src="../../futbolchi/Martin_Boakye.png" alt="" loading="lazy" onerror="this.remove()"></span><i>27</i><b>Martin Boakye</b></div><div class="dn-p"><span class="dn-av">SY<img src="../../futbolchi/Shohjahon_Yorqinboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>88</i><b>Shohjahon Yorqinboyev</b></div><div class="dn-p"><span class="dn-av">FU<img src="../../futbolchi/Fazliddinxo_ja_Ubaydullayev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>67</i><b>Fazliddinxo‘ja Ubaydullayev</b></div><div class="dn-p"><span class="dn-av">JK<img src="../../futbolchi/Jamshidbek_Ko_paysinov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>87</i><b>Jamshidbek Ko‘paysinov</b></div></div><div class="dn-kart"><div class="dn-guruh">Qo‘qon-1912</div><div class="dn-guruh">Ko&#x27;p o&#x27;ynaganlar</div><div class="dn-p"><span class="dn-av">AS</span><i>6</i><b>Alisher Salimov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AG</span><i>44</i><b>Andro Giorgadze</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IY</span><i>14</i><b>Ibrohim Yo&#x27;ldoshev</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">JS</span><i>7</i><b>Javohir Sidiqov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">MH</span><i>99</i><b>Muhammadanas Hasanov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">RD</span><i>13</i><b>Rahimjon Davronov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">SN</span><i>11</i><b>Silvanus Nimeli</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">GH</span><i>21</i><b>G&#x27;ulom Haydar G&#x27;ulomov</b><u>1 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">JY</span><i>5</i><b>Jasurbek Yoqubov</b><u>1 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">YK</span><i>69</i><b>Yegor Kondratyuk</b><u>1 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">ZH</span><i>15</i><b>Zafar Hakimov</b><u>1 o&#x27;yin</u></div><div class="dn-guruh">Safdagi boshqalar</div><div class="dn-p"><span class="dn-av">AT</span><i>4</i><b>Asliddin Toshtemirov</b></div><div class="dn-p"><span class="dn-av">SA</span><i>19</i><b>Shahzod Akramov</b></div><div class="dn-p"><span class="dn-av">SG</span><i>10</i><b>Shohruh Gadoyev</b></div><div class="dn-p"><span class="dn-av">SG</span><i>7</i><b>Shota Gvazava</b></div><div class="dn-p"><span class="dn-av">TT</span><i>22</i><b>Toma Tabatadze</b></div><div class="dn-p"><span class="dn-av">AO</span><i>90</i><b>Akbar O‘ktamov</b></div><div class="dn-p"><span class="dn-av">JH</span><i>8</i><b>Javohir Husanov</b></div><div class="dn-p"><span class="dn-av">IM</span><i>20</i><b>Iqboljon Malikjonov</b></div><div class="dn-p"><span class="dn-av">EY</span><i>71</i><b>Elbekjon Yo‘lchiyev</b></div><div class="dn-p"><span class="dn-av">RN</span><i>1</i><b>Rustam Nartajiyev</b></div></div></div><div class="dn-manba" style="margin-top:12px">So&#x27;nggi 3 o&#x27;yin qaydnomasi bo&#x27;yicha</div></section><section class="dn-b"><h3>Chetda qolganlar<i></i></h3><div class="dn-ikki"><div class="dn-kart dn-chet"><div class="dn-guruh">Andijon</div><div class="dn-p"><span class="dn-av">UI<img src="../../futbolchi/Usmonali_Ismonaliyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>✕</i><b>Usmonali Ismonaliyev</b><em>Sariq karta to&#x27;plandi — 1 o&#x27;yin qoldi</em></div><div class="dn-p"><span class="dn-av">AT<img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>✕</i><b>Azizbek Turg‘unboyev</b><em>4-sariq kartochka (qaydnoma bo&#x27;yicha)</em></div><div class="dn-p"><span class="dn-av">IT<img src="../../futbolchi/Islom_To_xtaxo_jayev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>✕</i><b>Islom To‘xtaxo‘jayev</b><em>4-sariq kartochka (qaydnoma bo&#x27;yicha)</em></div><div class="dn-p"><span class="dn-av">MT<img src="../../futbolchi/Muhammadkarim_Toirov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>✕</i><b>Muhammadkarim Toirov</b><em>4-sariq kartochka (qaydnoma bo&#x27;yicha)</em></div></div><div class="dn-kart dn-chet"><div class="dn-guruh">Qo‘qon-1912</div><div class="dn-p"><span class="dn-av">IM</span><i>✕</i><b>Iqboljon Malikjonov</b><em>4-sariq kartochka</em></div><div class="dn-p"><span class="dn-av">JY</span><i>✕</i><b>Jasurbek Yoqubov</b><em>4-sariq kartochka</em></div><div class="dn-p"><span class="dn-av">SG</span><i>✕</i><b>Shota Gvazava</b><em>4-sariq kartochka</em></div></div></div></section><section class="dn-b"><h3>Kartochkalar<i></i></h3><div class="dn-ikki"><div class="dn-kart"><div class="dn-guruh">Andijon &middot; 33 sariq, 3 qizil</div><div class="dn-p"><span class="dn-av">AT<img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Azizbek Turg‘unboyev</b><u>4 sariq</u></div><div class="dn-p"><span class="dn-av">IT<img src="../../futbolchi/Islom_To_xtaxo_jayev.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Islom To‘xtaxo‘jayev</b><u>4 sariq</u></div><div class="dn-p"><span class="dn-av">MT<img src="../../futbolchi/Muhammadkarim_Toirov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Muhammadkarim Toirov</b><u>4 sariq</u></div><div class="dn-p"><span class="dn-av">NC<img src="../../futbolchi/Nemanya_Chalasan.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Nemanya Chalasan</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq · 1 qizil</u></div><div class="dn-p"><span class="dn-av">AA<img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Aleksandre Andronikashvili</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq</u></div><div class="dn-p"><span class="dn-av">HI<img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Humoyunmirzo Iminov</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq</u></div><div class="dn-p"><span class="dn-av">MM<img src="../../futbolchi/Mahmudjon_Mahamadjonov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Mahmudjon Mahamadjonov</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq</u></div><div class="dn-p"><span class="dn-av">PX<img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Po‘latxo‘ja Xoldorxonov</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq</u></div></div><div class="dn-kart"><div class="dn-guruh">Qo‘qon-1912 &middot; 30 sariq, 3 qizil</div><div class="dn-p"><span class="dn-av">JY</span><b>Jasurbek Yoqubov</b><u>4 sariq · 1 qizil</u></div><div class="dn-p"><span class="dn-av">IM</span><b>Iqboljon Malikjonov</b><u>4 sariq</u></div><div class="dn-p"><span class="dn-av">SG</span><b>Shota Gvazava</b><u>4 sariq</u></div><div class="dn-p"><span class="dn-av">AS</span><b>Alisher Salimov</b><em>yana bitta sariq — chetlatiladi</em><u>3 sariq</u></div><div class="dn-p"><span class="dn-av">AT</span><b>Asliddin Toshtemirov</b><u>2 sariq · 1 qizil</u></div><div class="dn-p"><span class="dn-av">GH</span><b>G&#x27;ulom Haydar G&#x27;ulomov</b><u>2 sariq</u></div><div class="dn-p"><span class="dn-av">IY</span><b>Ibrohim Yo&#x27;ldoshev</b><u>2 sariq</u></div><div class="dn-p"><span class="dn-av">SG</span><b>Shohruh Gadoyev</b><u>2 sariq</u></div></div></div></section></div><div class="dn-ich" id="dn-stat" style="display:none"><section class="dn-b"><h3>To&#x27;purarlar<i></i></h3><div class="dn-ikki"><div class="dn-kart"><div class="dn-guruh">Andijon</div><div class="dn-p"><span class="dn-av">PX<img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Po‘latxo‘ja Xoldorxonov</b><em>4 gol · 4 uzatma</em><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">MB<img src="../../futbolchi/Martin_Boakye.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Martin Boakye</b><em>3 gol · 2 uzatma</em><u>14 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AA<img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Aleksandre Andronikashvili</b><em>3 gol · 2 uzatma</em><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">DC<img src="../../futbolchi/Dragan_Cheran.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Dragan Cheran</b><em>3 gol · 1 uzatma</em><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">RT<img src="../../futbolchi/Rustam_Turdimurodov.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Rustam Turdimurodov</b><em>3 gol</em><u>15 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IA<img src="../../futbolchi/Imeda_Ashortia.png" alt="" loading="lazy" onerror="this.remove()"></span><b>Imeda Ashortia</b><em>2 gol · 2 uzatma</em><u>14 o&#x27;yin</u></div></div><div class="dn-kart"><div class="dn-guruh">Qo‘qon-1912</div><div class="dn-p"><span class="dn-av">SN</span><b>Silvanus Nimeli</b><em>3 gol</em></div><div class="dn-p"><span class="dn-av">TT</span><b>Toma Tabatadze</b><em>3 gol</em></div><div class="dn-p"><span class="dn-av">JH</span><b>Javohir Husanov</b><em>2 gol</em></div><div class="dn-p"><span class="dn-av">MH</span><b>Muhammadanas Hasanov</b><em>2 gol</em></div><div class="dn-p"><span class="dn-av">SG</span><b>Shota Gvazava</b><em>2 gol</em></div><div class="dn-p"><span class="dn-av">IY</span><b>Ibrohim Yo&#x27;ldoshev</b><em>1 gol</em></div></div></div></section><section class="dn-b"><h3>Turnir jadvali<i></i></h3><div class="dn-kart dn-oq"><table class="dn-tab"><tr><th>#</th><th>Klub</th><th>O</th><th>G</th><th>D</th><th>M</th><th>Farq</th><th>Ochko</th></tr><tr><td>1</td><td>Neftchi</td><td>19</td><td>14</td><td>3</td><td>2</td><td>+35</td><td><b>45</b></td></tr><tr><td colspan="8" style="text-align:center;color:rgba(255,255,255,.25)">&middot;&middot;&middot;</td></tr><tr><td>6</td><td>OKMK</td><td>19</td><td>8</td><td>5</td><td>6</td><td>+2</td><td><b>29</b></td></tr><tr class="biz"><td>7</td><td>Andijon</td><td>19</td><td>8</td><td>3</td><td>8</td><td>+4</td><td><b>27</b></td></tr><tr><td>8</td><td>Dinamo</td><td>19</td><td>7</td><td>5</td><td>7</td><td>-1</td><td><b>26</b></td></tr><tr><td colspan="8" style="text-align:center;color:rgba(255,255,255,.25)">&middot;&middot;&middot;</td></tr><tr><td>13</td><td>Xorazm</td><td>19</td><td>5</td><td>5</td><td>9</td><td>-11</td><td><b>20</b></td></tr><tr class="raqib"><td>14</td><td>Qo&#x27;qon-1912</td><td>19</td><td>4</td><td>7</td><td>8</td><td>-9</td><td><b>19</b></td></tr><tr><td>15</td><td>Bunyodkor</td><td>19</td><td>6</td><td>1</td><td>12</td><td>-11</td><td><b>19</b></td></tr></table></div></section></div><div class="dn-ich" id="dn-tarix" style="display:none"><section class="dn-b"><h3>Oxirgi o&#x27;yinlar<i></i></h3><div class="dn-ikki"><div class="dn-kart"><div class="dn-guruh">Andijon</div><div class="dn-frm"><i class="g" title="Buxoro 2:0">G</i><i class="d" title="Paxtakor 0:0">D</i><i class="m" title="So‘g‘diyona 0:1">M</i><i class="m" title="Neftchi 0:3">M</i><i class="g" title="Mash&#x27;al 1:0">G</i><i class="g" title="Xorazm 1:0">G</i></div><div class="dn-p"><i>1:0</i><b>uyda Xorazm</b><u>25.08.2026</u></div><div class="dn-p"><i>1:0</i><b>safarda Mash&#x27;al</b><u>19.08.2026</u></div><div class="dn-p"><i>0:3</i><b>uyda Neftchi</b><u>13.08.2026</u></div><div class="dn-p"><i>0:1</i><b>safarda So‘g‘diyona</b><u>06.08.2026</u></div><div class="dn-p"><i>0:0</i><b>uyda Paxtakor</b><u>01.08.2026</u></div><div class="dn-p"><i>2:0</i><b>uyda Buxoro</b><u>27.07.2026</u></div></div><div class="dn-kart"><div class="dn-guruh">Qo‘qon-1912</div><div class="dn-frm"><i class="m" title="Dinamo 2:3">M</i><i class="m" title="Surxon 0:1">M</i><i class="d" title="Nasaf 0:0">D</i><i class="g" title="Lokomotiv 2:1">G</i><i class="g" title="Bunyodkor 1:0">G</i><i class="d" title="Buxoro 1:1">D</i></div><div class="dn-p"><i>1:1</i><b>uyda Buxoro</b><u>24.08.2026</u></div><div class="dn-p"><i>1:0</i><b>safarda Bunyodkor</b><u>20.08.2026</u></div><div class="dn-p"><i>2:1</i><b>uyda Lokomotiv</b><u>15.08.2026</u></div><div class="dn-p"><i>0:0</i><b>safarda Nasaf</b><u>08.08.2026</u></div><div class="dn-p"><i>0:1</i><b>uyda Surxon</b><u>03.08.2026</u></div><div class="dn-p"><i>2:3</i><b>safarda Dinamo</b><u>29.07.2026</u></div></div></div></section><section class="dn-b"><h3>O&#x27;zaro tarix<i></i></h3><div class="dn-son"><div><b>31</b><span>uchrashuv</span></div><div class="qizil"><b>10</b><span>Andijon g&#39;alabasi</span></div><div><b>10</b><span>durang</span></div><div class="oltin"><b>11</b><span>Qo‘qon-1912 g&#39;alabasi</span></div><div><b>49:42</b><span>gollar</span></div></div><div class="dn-manba" style="margin-top:12px">Birinchi uchrashuv — 1992, darvozamiz 10 marta quruq qoldi</div><div class="dn-kart" style="margin-top:14px"><div class="dn-guruh">Oxirgi uchrashuvlar</div><div class="dn-p"><i>3:1</i><b>Superliga · 4-tur</b><em>uyda</em><u>15.05.2026</u></div><div class="dn-p"><i>0:0</i><b>Superliga · 8-tur</b><em>safarda</em><u>19.04.2026</u></div><div class="dn-p"><i>5:1</i><b>U21 · 8-tur</b><em>safarda</em><u>18.04.2026</u></div><div class="dn-p"><i>3:2</i><b>Superliga · 18-tur</b><em>uyda</em><u>23.09.2025</u></div><div class="dn-p"><i>7:2</i><b>U21 · 16-tur</b><em>uyda</em><u>04.08.2025</u></div><div class="dn-p"><i>3:0</i><b>Superliga · 16-tur</b><em>uyda</em><u>03.08.2025</u></div><div class="dn-p"><i>1:0</i><b>Superliga · 7-tur</b><em>safarda</em><u>04.06.2025</u></div><div class="dn-p"><i>1:2</i><b>U21 · 1-tur</b><em>safarda</em><u>09.03.2025</u></div><div class="dn-p"><i>1:1</i><b>Superliga · 1-tur</b><em>safarda</em><u>08.03.2025</u></div><div class="dn-p"><i>1:2</i><b>Superliga · 14-tur</b><em>uyda</em><u>20.08.2024</u></div></div></section><section class="dn-b"><h3>Oxirgi uchrashuv<i></i></h3><div class="dn-kart"><div class="dn-bosh"><span>Qo‘qon-1912</span><span>Andijon</span></div><div class="dn-son"><div><b>0:0</b><span>hisob</span></div><div><b style="font-size:14px">19.04.2026 18:15</b><span>sana</span></div><div><b style="font-size:14px">Markaziy Qo&#x27;qon</b><span>stadion</span></div><div><b style="font-size:14px">7650</b><span>tomoshabin</span></div><div><b style="font-size:14px">Asker Najafaliyev</b><span>hakam</span></div></div><div class="dn-guruh">Voqealar</div><div class="dn-vq"><div><b>10&#39;</b><span>Nemanya Chalasan <em>sariq kartochka</em></span></div><div><b>40&#39;</b><span>Iqboljon Malikjonov <em>sariq kartochka</em></span></div><div><b>67&#39;</b><span>Shota Gvazava <em>sariq kartochka</em></span></div><div><b>71&#39;</b><span>Alisher Salimov <em>sariq kartochka</em></span></div></div><div class="dn-guruh">Statistika</div><div class="dn-vs"><div class="r"><div class="n"><b>7</b><span>Zarbalar</span><b>11</b></div><div class="chiz"><i class="a" style="width:39%"></i><i class="b" style="width:61%"></i></div></div><div class="r"><div class="n"><b>1</b><span>Aniq zarbalar</span><b>3</b></div><div class="chiz"><i class="a" style="width:25%"></i><i class="b" style="width:75%"></i></div></div><div class="r"><div class="n"><b>6</b><span>Burchak zarbalari</span><b>1</b></div><div class="chiz"><i class="a" style="width:86%"></i><i class="b" style="width:14%"></i></div></div><div class="r"><div class="n"><b>14</b><span>Qoidabuzarliklar</span><b>12</b></div><div class="chiz"><i class="a" style="width:54%"></i><i class="b" style="width:46%"></i></div></div><div class="r"><div class="n"><b>1</b><span>Ofsayd</span><b>0</b></div><div class="chiz"><i class="a" style="width:100%"></i><i class="b" style="width:0%"></i></div></div><div class="r"><div class="n"><b>3</b><span>Sariq kartochka</span><b>1</b></div><div class="chiz"><i class="a" style="width:75%"></i><i class="b" style="width:25%"></i></div></div></div></div></section></div><div class="dn-ich" id="dn-saf" style="display:none"><section class="dn-b"><h3>Saflar<i></i></h3><div class="dn-ikki"><div class="dn-kart"><div class="dn-guruh">Andijon</div><div class="dn-guruh">Darvozabonlar</div><div class="dn-p"><span class="dn-av">EA<img src="../../futbolchi/Eldor_Adhamov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>1</i><b>Eldor Adhamov</b><u>12 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AP<img src="../../futbolchi/Artyom_Potapov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>19</i><b>Artyom Potapov</b></div><div class="dn-guruh">Himoyachilar</div><div class="dn-p"><span class="dn-av">OA<img src="../../futbolchi/Odil_Abdumajidov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>2</i><b>Odil Abdumajidov</b><u>13 o&#x27;yin · 2 gol · 1 uzatma</u></div><div class="dn-p"><span class="dn-av">AG<img src="../../futbolchi/Abdulvohid_G_ulomov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>5</i><b>Abdulvohid G‘ulomov</b><u>7 o&#x27;yin · 1 uzatma</u></div><div class="dn-p"><span class="dn-av">NC<img src="../../futbolchi/Nemanya_Chalasan.png" alt="" loading="lazy" onerror="this.remove()"></span><i>15</i><b>Nemanya Chalasan</b><u>17 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">IT<img src="../../futbolchi/Islom_To_xtaxo_jayev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>20</i><b>Islom To‘xtaxo‘jayev</b><u>13 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">UI<img src="../../futbolchi/Usmonali_Ismonaliyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>22</i><b>Usmonali Ismonaliyev</b><u>25 o&#x27;yin · 3 gol · 1 uzatma</u></div><div class="dn-p"><span class="dn-av">BS<img src="../../futbolchi/Bekzod_Sulaymonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>28</i><b>Bekzod Sulaymonov</b><u>14 o&#x27;yin · 1 gol · 1 uzatma</u></div><div class="dn-p"><span class="dn-av">MM<img src="../../futbolchi/Mahmud_Mahammadjonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>77</i><b>Mahmud Mahammadjonov</b><u>20 o&#x27;yin · 3 uzatma</u></div><div class="dn-guruh">Hujumchilar</div><div class="dn-p"><span class="dn-av">PX<img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>7</i><b>Po‘latxo‘ja Xoldorxonov</b><u>20 o&#x27;yin · 5 gol · 4 uzatma</u></div><div class="dn-p"><span class="dn-av">IA<img src="../../futbolchi/Imeda_Ashortia.png" alt="" loading="lazy" onerror="this.remove()"></span><i>9</i><b>Imeda Ashortia</b><u>14 o&#x27;yin · 2 gol · 2 uzatma</u></div><div class="dn-p"><span class="dn-av">DC<img src="../../futbolchi/Dragan_Cheran.png" alt="" loading="lazy" onerror="this.remove()"></span><i>10</i><b>Dragan Cheran</b><u>18 o&#x27;yin · 3 gol · 1 uzatma</u></div><div class="dn-p"><span class="dn-av">MB<img src="../../futbolchi/Martin_Boakye.png" alt="" loading="lazy" onerror="this.remove()"></span><i>27</i><b>Martin Boakye</b><u>15 o&#x27;yin · 3 gol · 2 uzatma</u></div><div class="dn-p"><span class="dn-av">DA<img src="../../futbolchi/Doniyor_Abdumannopov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>33</i><b>Doniyor Abdumannopov</b><u>21 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">HK<img src="../../futbolchi/Hamidullo_Karimov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>70</i><b>Hamidullo Karimov</b><u>6 o&#x27;yin · 3 gol</u></div><div class="dn-p"><span class="dn-av">RT<img src="../../futbolchi/Rustam_Turdimurodov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>99</i><b>Rustam Turdimurodov</b><u>1 o&#x27;yin</u></div><div class="dn-guruh">Boshqalar</div><div class="dn-p"><span class="dn-av">AA<img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="" loading="lazy" onerror="this.remove()"></span><i>6</i><b>Aleksandre Andronikashvili</b><u>19 o&#x27;yin · 3 gol · 2 uzatma</u></div><div class="dn-p"><span class="dn-av">SK<img src="../../futbolchi/Shoxmalik_Komilov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>8</i><b>Shoxmalik Komilov</b><u>1 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">HI<img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>11</i><b>Humoyunmirzo Iminov</b><u>18 o&#x27;yin · 1 gol · 3 uzatma</u></div><div class="dn-p"><span class="dn-av">AK<img src="../../futbolchi/Abdurahmon_Komilov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>14</i><b>Abdurahmon Komilov</b><u>3 o&#x27;yin · 2 uzatma</u></div><div class="dn-p"><span class="dn-av">AT<img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>17</i><b>Azizbek Turg‘unboyev</b><u>16 o&#x27;yin · 3 gol · 4 uzatma</u></div><div class="dn-p"><span class="dn-av">DT<img src="../../futbolchi/Damir_Temirov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>18</i><b>Damir Temirov</b><u>21 o&#x27;yin · 1 gol · 2 uzatma</u></div><div class="dn-p"><span class="dn-av">MT<img src="../../futbolchi/Muhammadkarim_Toirov.png" alt="" loading="lazy" onerror="this.remove()"></span><i>26</i><b>Muhammadkarim Toirov</b><u>22 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">SY<img src="../../futbolchi/Shohjahon_Yorqinboyev.png" alt="" loading="lazy" onerror="this.remove()"></span><i>88</i><b>Shohjahon Yorqinboyev</b><u>4 o&#x27;yin</u></div></div><div class="dn-kart"><div class="dn-guruh">Qo‘qon-1912</div><div class="dn-guruh">Darvozabonlar</div><div class="dn-p"><span class="dn-av">RN</span><i>1</i><b>Rustam Nartajiyev</b><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AI</span><i>13</i><b>Azizxon Isaqov</b><u>9 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">RD</span><i>13</i><b>Rahimjon Davronov</b><u>8 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">HX</span><i>46</i><b>Hamzaxon Xo&#x27;jayev</b><u>2 o&#x27;yin</u></div><div class="dn-guruh">Himoyachilar</div><div class="dn-p"><span class="dn-av">AT</span><i>4</i><b>Asliddin Toshtemirov</b><u>18 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">JY</span><i>5</i><b>Jasurbek Yoqubov</b><u>16 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AS</span><i>6</i><b>Alisher Salimov</b><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IY</span><i>14</i><b>Ibrohim Yo&#x27;ldoshev</b><u>8 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">ZH</span><i>15</i><b>Zafar Hakimov</b><u>16 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">SA</span><i>19</i><b>Shahzod Akramov</b><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AG</span><i>44</i><b>Andro Giorgadze</b><u>18 o&#x27;yin</u></div><div class="dn-guruh">Hujumchilar</div><div class="dn-p"><span class="dn-av">SN</span><i>11</i><b>Silvanus Nimeli</b><u>16 o&#x27;yin · 3 gol</u></div><div class="dn-p"><span class="dn-av">TT</span><i>22</i><b>Toma Tabatadze</b><u>17 o&#x27;yin · 3 gol</u></div><div class="dn-p"><span class="dn-av">SM</span><i>70</i><b>Shohruh Mahmudxojiyev</b><u>9 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">EY</span><i>71</i><b>Elbekjon Yo‘lchiyev</b><u>4 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AO</span><i>90</i><b>Akbar O‘ktamov</b><u>2 o&#x27;yin</u></div><div class="dn-guruh">Boshqalar</div><div class="dn-p"><span class="dn-av">JS</span><i>7</i><b>Javohir Sidiqov</b><u>18 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">SG</span><i>7</i><b>Shota Gvazava</b><u>18 o&#x27;yin · 2 gol</u></div><div class="dn-p"><span class="dn-av">JH</span><i>8</i><b>Javohir Husanov</b><u>19 o&#x27;yin · 2 gol</u></div><div class="dn-p"><span class="dn-av">SG</span><i>10</i><b>Shohruh Gadoyev</b><u>19 o&#x27;yin · 1 gol</u></div><div class="dn-p"><span class="dn-av">FS</span><i>17</i><b>Farhodjon Sohibjonov</b><u>11 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">MF</span><i>18</i><b>Muhriddin Fazliddinov</b><u>12 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IM</span><i>20</i><b>Iqboljon Malikjonov</b><u>18 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">GH</span><i>21</i><b>G&#x27;ulom Haydar G&#x27;ulomov</b><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">IM</span><i>30</i><b>Ibrohimjon Muxtorov</b><u>4 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AM</span><i>33</i><b>Ayyubxon Muxtorov</b><u>1 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">AA</span><i>47</i><b>Alper Aleksandrov</b><u>2 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">YK</span><i>69</i><b>Yegor Kondratyuk</b><u>19 o&#x27;yin</u></div><div class="dn-p"><span class="dn-av">MH</span><i>99</i><b>Muhammadanas Hasanov</b><u>19 o&#x27;yin · 2 gol</u></div></div></div></section></div><div class="dn-manba">Ma&#39;lumot manbai: PFL rasmiy qaydnomalari va klub bazamiz. Dasturnoma nusxasi.</div></div><script>
+(function(){
+  var t=document.querySelectorAll('.dn-nav button');
+  var p=document.querySelectorAll('.dn-ich');
+  for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
+    var k=this.getAttribute('data-dn');
+    for(var a=0;a<t.length;a++){
+      t[a].className=(t[a].getAttribute('data-dn')===k)?'faol':'';}
+    for(var b=0;b<p.length;b++){
+      p[b].style.display=(p[b].id==='dn-'+k)?'':'none';}
+  });}
+})();
+</script></div>
+<script>
+(function(){
+var t=document.querySelectorAll('.tablar button');
+var p=document.querySelectorAll('.tabich');
+for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
+  var k=this.getAttribute('data-t');
+  for(var a=0;a<t.length;a++){
+    t[a].className=(t[a].getAttribute('data-t')===k)?'faol':'';}
+  for(var b=0;b<p.length;b++){
+    p[b].style.display=(p[b].id==='t-'+k)?'':'none';}
+});}
+})();
+</script>
 <div class="q"><a class="orqaga" href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5.4M11.4 5.6 5 12l6.4 6.4"/></svg>Hamma o'yinlar</a></div>
 <footer><div class="q">
   <div class="ust">
