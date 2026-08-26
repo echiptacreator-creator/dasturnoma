@@ -148,8 +148,61 @@ img{display:block;max-width:100%}
 .mch .orta{text-align:center;min-width:118px}
 .mch .orta .hisob{font-family:"Nekst";font-weight:900;font-size:52px;
   line-height:1;letter-spacing:.01em}
+/* ====================== O'YIN TASMASI ======================
+   Menyu tagida, har sahifada. Uch band: oldingi natija, jonli
+   hisob, keyingi o'yin. Tor ekranda yon tomonga suriladi —
+   yig'ilib ketmaydi va balandlik o'zgarmaydi. */
+.tasma{background:var(--kok);border-bottom:1px solid var(--chiziq)}
+.tasma.bor-jonli{background:var(--qizil);border-bottom-color:transparent}
+.tasma-ich{display:flex;overflow-x:auto;scrollbar-width:none}
+.tasma-ich::-webkit-scrollbar{display:none}
+.tsm{display:flex;flex-direction:column;gap:2px;flex:none;
+  padding:9px 20px 9px 0;margin-right:20px;color:#fff;
+  border-right:1px solid rgba(255,255,255,.14)}
+.tsm:last-child{border-right:0;margin-right:0}
+.tsm .k{display:flex;align-items:center;gap:6px;font-family:"Nekst";
+  font-weight:700;font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.55)}
+.tsm .v{font-size:13.5px;white-space:nowrap}
+.tsm .v b{font-family:"Nekst";font-weight:900;font-size:16px}
+.tsm .v em{font-style:normal;color:rgba(255,255,255,.6);font-size:12px}
+.tsm:hover .v{color:var(--oltin)}
+.tsm.jonli .k{color:#fff}
+/* Jonli nuqta — puls uradi. Harakatni o'chirgan foydalanuvchida
+   tinch turadi (pastdagi `prefers-reduced-motion`). */
+.nuqta{width:6px;height:6px;border-radius:50%;background:#fff;
+  display:inline-block;animation:puls 1.6s ease-in-out infinite}
+@keyframes puls{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ====================== TESKARI SANOQ ====================== */
+.sanoq{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.sanoq div{min-width:64px;padding:10px 6px;border-radius:12px;
+  background:rgba(255,255,255,.06);border:1px solid var(--chiziq);
+  text-align:center}
+.sanoq b{display:block;font-family:"Nekst";font-weight:900;font-size:26px;
+  line-height:1;font-variant-numeric:tabular-nums}
+.sanoq span{font-family:"Nekst";font-weight:700;font-size:9px;
+  letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(255,255,255,.5)}
+
+/* ====================== TUGMALAR ====================== */
+.tugmalar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  margin-top:20px}
+.tug{display:inline-flex;align-items:center;padding:11px 20px;
+  border-radius:10px;border:1px solid var(--chiziq);color:#fff;
+  font-family:"Nekst";font-weight:700;font-size:12px;letter-spacing:.09em;
+  text-transform:uppercase;transition:background .16s,border-color .16s}
+.tug:hover{border-color:var(--oltin);color:var(--oltin)}
+.tug.asosiy{background:var(--qizil);border-color:var(--qizil);color:#fff}
+.tug.asosiy:hover{background:#ff3b44;border-color:#ff3b44;color:#fff}
+
 .mch .orta .vs{font-family:"Nekst";font-weight:900;font-size:26px;
   color:rgba(255,255,255,.22);letter-spacing:.1em}
+/* Hisob PFL bilan mos kelmasa raqam o'rniga shu turadi.
+   ⚠ Oltin rang — «xato» emas, «hali aniq emas» degani. Qizil
+   qo'ysak muxlis mag'lubiyat deb o'ylardi. */
+.mch .orta .vs.aniqlanmoqda{font-size:46px;color:var(--oltin);
+  letter-spacing:.02em}
 .mch .orta .holat{display:inline-block;margin-top:10px;padding:5px 12px;
   border-radius:99px;background:rgba(255,255,255,.08);
   font-family:"Nekst";font-weight:700;font-size:10.5px;
@@ -842,7 +895,8 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     <div class="sub">ANDIJON PRESS <i></i> LIVE</div></div>
   <nav><a href="../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>Yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal</a><a href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yinlar</a><a href="../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Jadval</a><a href="../../statistika"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</a><a href="../../jamoa" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa</a></nav>
 </div></header>
-<div class="q" style="padding-top:34px"><div class="fk-bosh"><div class="fk-rasm"><img src="../../futbolchi/Doniyor_Abdumannopov.png" alt="" onerror="this.remove()"><div class="yoq">DA</div></div><div class="fk-pas"><div class="raq">23</div><h1>Doniyor Abdumannopov</h1><div class="pas-qat"><div class="qat"><span>Pozitsiya</span><b>Yarim himoyachi</b></div><div class="qat"><span>Raqam</span><b>23</b></div><div class="qat"><span>Kuchli oyoq</span><b>o&#x27;ng</b></div><div class="qat"><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="qat"><span>Shartnoma</span><b>2026-12-30</b></div></div></div></div><div class="stat-tur"><div><b>122</b><span>o‘yin</span></div><div><b>20</b><span>gol</span></div><div><b>3</b><span>uzatma</span></div><div><b>7175</b><span>daqiqa</span></div><div><b>13</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O‘yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td>11-mavsum</td><td>Andijon</td><td class='r'>13</td><td class='r'>1</td><td class='r'>0</td><td class='r'>465</td></tr><tr><td>10-mavsum</td><td>Andijon</td><td class='r'>28</td><td class='r'>5</td><td class='r'>1</td><td class='r'>1876</td></tr><tr><td>6-mavsum</td><td>Andijon</td><td class='r'>13</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1052</td></tr><tr><td>4-mavsum</td><td>Andijon</td><td class='r'>12</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1020</td></tr><tr><td>3-mavsum</td><td>So‘g‘diyona / Navbahor</td><td class='r'>18</td><td class='r'>5</td><td class='r'>0</td><td class='r'>653</td></tr><tr><td>2-mavsum</td><td>Bunyodkor / Navbahor</td><td class='r'>21</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1304</td></tr><tr><td>1-mavsum</td><td>Paxtakor</td><td class='r'>17</td><td class='r'>4</td><td class='r'>2</td><td class='r'>805</td></tr></table></div><h2>So‘nggi o‘yinlar</h2><div class="jadval-o"><table><tr><th>Sana</th><th>Uchrashuv</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Voqea</th></tr><tr><td>2026-08-19</td><td>Mash&#x27;al — Andijon</td><td class='r'>0 : 1</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-13</td><td>Andijon — Neftchi</td><td class='r'>0 : 3</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-06</td><td>So‘g‘diyona — Andijon</td><td class='r'>1 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-01</td><td>Andijon — Paxtakor</td><td class='r'>0 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-07-27</td><td>Andijon — Buxoro</td><td class='r'>2 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-07-18</td><td>Andijon — Surxon</td><td class='r'>1 : 2</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-05-21</td><td>Andijon — Nasaf</td><td class='r'>1 : 1</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-05-15</td><td>Sho‘rtan — Andijon</td><td class='r'>1 : 3</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-04-28</td><td>Andijon — Dinamo</td><td class='r'>2 : 1</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-04-24</td><td>Bunyodkor — Andijon</td><td class='r'>1 : 3</td><td class='r'>zaxira</td><td class='r'></td></tr></table></div></div>
+<div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/2"><span class="k">Oldingi</span><span class="v">Andijon <b>1</b> : <b>0</b> Xorazm</span></a><a class="tsm" href="../../oyin/3"><span class="k">Keyingi</span><span class="v">Paxtakor — Andijon <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
+<div class="q" style="padding-top:34px"><div class="fk-bosh"><div class="fk-rasm"><img src="../../futbolchi/Doniyor_Abdumannopov.png" alt="" onerror="this.remove()"><div class="yoq">DA</div></div><div class="fk-pas"><div class="raq">23</div><h1>Doniyor Abdumannopov</h1><div class="pas-qat"><div class="qat"><span>Pozitsiya</span><b>Yarim himoyachi</b></div><div class="qat"><span>Raqam</span><b>23</b></div><div class="qat"><span>Kuchli oyoq</span><b>o&#x27;ng</b></div><div class="qat"><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="qat"><span>Shartnoma</span><b>2026-12-30</b></div></div></div></div><div class="stat-tur"><div><b>122</b><span>o‘yin</span></div><div><b>20</b><span>gol</span></div><div><b>3</b><span>uzatma</span></div><div><b>7175</b><span>daqiqa</span></div><div><b>13</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O‘yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td>11-mavsum</td><td>Andijon</td><td class='r'>13</td><td class='r'>1</td><td class='r'>0</td><td class='r'>465</td></tr><tr><td>10-mavsum</td><td>Andijon</td><td class='r'>28</td><td class='r'>5</td><td class='r'>1</td><td class='r'>1876</td></tr><tr><td>6-mavsum</td><td>Andijon</td><td class='r'>13</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1052</td></tr><tr><td>4-mavsum</td><td>Andijon</td><td class='r'>12</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1020</td></tr><tr><td>3-mavsum</td><td>So‘g‘diyona / Navbahor</td><td class='r'>18</td><td class='r'>5</td><td class='r'>0</td><td class='r'>653</td></tr><tr><td>2-mavsum</td><td>Bunyodkor / Navbahor</td><td class='r'>21</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1304</td></tr><tr><td>1-mavsum</td><td>Paxtakor</td><td class='r'>17</td><td class='r'>4</td><td class='r'>2</td><td class='r'>805</td></tr></table></div><h2>So‘nggi o‘yinlar</h2><div class="jadval-o"><table><tr><th>Sana</th><th>Uchrashuv</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Voqea</th></tr><tr><td>2026-08-25</td><td>Andijon — Xorazm</td><td class='r'>1 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-19</td><td>Mash&#x27;al — Andijon</td><td class='r'>0 : 1</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-13</td><td>Andijon — Neftchi</td><td class='r'>0 : 3</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-06</td><td>So‘g‘diyona — Andijon</td><td class='r'>1 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-08-01</td><td>Andijon — Paxtakor</td><td class='r'>0 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-07-27</td><td>Andijon — Buxoro</td><td class='r'>2 : 0</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-07-18</td><td>Andijon — Surxon</td><td class='r'>1 : 2</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-05-21</td><td>Andijon — Nasaf</td><td class='r'>1 : 1</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-05-15</td><td>Sho‘rtan — Andijon</td><td class='r'>1 : 3</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-04-28</td><td>Andijon — Dinamo</td><td class='r'>2 : 1</td><td class='r'>asosiy</td><td class='r'></td></tr></table></div></div>
 <footer><div class="q">
   <div class="ust">
     <div>
@@ -861,4 +915,28 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   </div>
 </div></footer>
 <nav class="pastnav"><a href="../../"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg><span>Bosh</span></a><a href="../../yangiliklar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg><span>Yangilik</span></a><a href="../../oyinlar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><span>O&#x27;yin</span></a><a href="../../jadval"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg><span>Jadval</span></a><a href="../../jamoa" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg><span>Jamoa</span></a></nav>
+<script>
+/* TESKARI SANOQ. Nishon vaqti HTMLda, hisob brauzerda — statik
+   nusxada ham to'g'ri ishlaydi (u yerda server yo'q).
+   ⚠ Element `hidden` bo'lib keladi va faqat JS ishlagandagina
+     ochiladi: aks holda «— kun — soat» degan bo'sh quti qolardi. */
+(function(){
+  var q = document.querySelector(".sanoq");
+  if (!q) return;
+  var nishon = new Date(q.dataset.vaqt).getTime();
+  if (!nishon) return;
+  q.hidden = false;
+  function chiz(){
+    var qoldi = nishon - Date.now();
+    if (qoldi <= 0) { q.hidden = true; return; }
+    var v = {d: Math.floor(qoldi/864e5), h: Math.floor(qoldi/36e5)%24,
+             m: Math.floor(qoldi/6e4)%60, s: Math.floor(qoldi/1e3)%60};
+    q.querySelectorAll("[data-s]").forEach(function(el){
+      el.textContent = String(v[el.dataset.s]).padStart(2, "0");
+    });
+  }
+  chiz();
+  setInterval(chiz, 1000);
+})();
+</script>
 </body></html>
