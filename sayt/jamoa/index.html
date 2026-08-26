@@ -486,6 +486,16 @@ img{display:block;max-width:100%}
   width:52px;text-align:right;flex:none}
 /* To'purarlar jadvalidagi bo'sh yillar. */
 .tx-bosh td{color:rgba(255,255,255,.35);font-style:italic}
+/* ⚠ SURATI YUKLANMAGAN KARTOCHKA — KO'RINADI, YO'QOLMAYDI.
+   Rasm topilmasa butun kartochkani o'chirib yuborish eng yomon
+   yechim: sahifa to'g'ridek ko'rinadi, ma'lumot esa jimgina
+   yo'qoladi. Endi yil va nom qoladi, surat o'rnida esa
+   ko'rinadigan bo'sh joy turadi. */
+.tx-sur.rasmsiz img,.tx-gerb figure.rasmsiz img{visibility:hidden}
+.tx-sur.rasmsiz img{background:repeating-linear-gradient(45deg,
+  rgba(255,255,255,.04) 0 10px,rgba(255,255,255,.02) 10px 20px);
+  visibility:visible}
+.tx-gerb figure.rasmsiz{opacity:.4}
 @media(max-width:640px){
   .tx-gv b{width:130px;font-size:13px}
   .tx-afs img{width:132px}
