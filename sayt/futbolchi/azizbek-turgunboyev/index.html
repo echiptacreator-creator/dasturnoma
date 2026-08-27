@@ -1478,6 +1478,42 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .stat-tur b{display:block;font-size:26px;font-weight:800}
 .stat-tur span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(255,255,255,.5)}
+/* ⚠ DARVOZA DAHLSIZLIGI — KARYERA KATAKLARIDAN ALOHIDA CHIZIQ.
+   Sababi qamrov: karyera raqamlari butun faoliyat bo'yicha,
+   PFL ning darvozabonlar ro'yxati esa faqat joriy mavsum.
+   Bir qatorda tursa, muxlis ularni bir xil deb o'qirdi. */
+/* ⚠ TO'R EMAS, LENTA. `auto-fit` da bitta kartochka butun
+   kenglikka cho'zilib, ichida bitta raqam bilan bo'm-bo'sh
+   turardi (2026-08-27). Endi kartochka o'z eniga ega. */
+.fk-dv-ust{display:flex;flex-wrap:wrap;gap:10px;margin:-22px 0 12px}
+.fk-dv{flex:0 1 220px;padding:14px 16px;border-radius:13px;
+  border:1px solid rgba(226,186,117,.32);background:rgba(226,186,117,.08)}
+.fk-dv i{display:block;font-style:normal;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+.fk-dv b{display:block;margin-top:6px;font-family:"Nekst";font-weight:900;
+  font-size:30px;line-height:1;color:var(--oltin)}
+.fk-dv span{display:block;margin-top:3px;font-size:11.5px;
+  color:rgba(255,255,255,.6)}
+.fk-dv em{display:block;margin-top:5px;font-style:normal;font-size:11.5px;
+  color:rgba(255,255,255,.4)}
+/* Mavsum katagi: yil katta, turnir kichik — ikkovi bir ustunda. */
+.fk-mav b{display:block;font-family:"Nekst";font-weight:700;font-size:14px}
+.fk-mav span{display:block;margin-top:2px;font-size:11.5px;
+  color:rgba(255,255,255,.45)}
+/* Tarkibdagi o'rni — matn emas, belgi. */
+.fk-asosiy,.fk-zaxira{display:inline-block;padding:2px 9px;border-radius:99px;
+  font-size:11px;letter-spacing:.04em}
+.fk-asosiy{background:rgba(226,186,117,.14);color:var(--oltin)}
+.fk-zaxira{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)}
+/* O'yindagi shaxsiy voqealar. */
+.fk-voqea{white-space:nowrap}
+.fk-voqea i{display:inline-block;margin-right:6px;font-style:normal;
+  padding:2px 9px;border-radius:99px;font-size:11.5px}
+.fk-gol{background:rgba(226,186,117,.16);color:var(--oltin);
+  font-family:"Nekst";font-weight:700}
+.fk-sariq{background:rgba(240,200,60,.16);color:rgba(240,200,60,.9)}
+.fk-qizil{background:rgba(235,31,40,.18);color:rgba(255,120,125,.95)}
 /* ⚠ JADVAL TELEFONDA SIG'MAYDI — o'z ichida suriladi. Aks holda
    butun sahifa yon tomonga surilib ketardi. */
 .jadval-o{overflow-x:auto;margin-bottom:34px}
@@ -1488,6 +1524,36 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .jadval-o th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(255,255,255,.5);font-weight:700}
 .jadval-o .r{text-align:right}
+/* ⚠ TELEFONDA O'YINLAR JADVALI KARTOCHKAGA AYLANADI. Olti
+   ustunli jadval 390px ga sig'maydi va o'z ichida yon tomonga
+   suriladi — natijada eng qimmatli ustun («Voqea»: gol va uning
+   daqiqasi) ekrandan tashqarida qolardi va muxlis uni umuman
+   ko'rmasdi (2026-08-27 da telefon suratida shunday chiqdi).
+   Endi har o'yin ikki-uch qatorli kartochka bo'ladi.
+   ⚠ TARTIB MUHIM: bu blok `.jadval-o` QOIDALARIDAN KEYIN
+     turishi shart. Media so'rovi maxsuslikni oshirmaydi —
+     oldinroq tursa, `.jadval-o table{min-width:460px}` uni
+     bosib ketardi. */
+@media(max-width:640px){
+  .fk-oyin{overflow:visible}
+  .fk-oyin table{min-width:0}
+  .fk-oyin tr:first-child{display:none}
+  .fk-oyin tr{display:flex;flex-wrap:wrap;align-items:center;
+    gap:6px 10px;padding:12px 0;
+    border-bottom:1px solid var(--chiziq)}
+  .fk-oyin td{display:block;border:0;padding:0;text-align:left}
+  .fk-oyin .s-sana{order:1;font-size:11.5px;
+    color:rgba(255,255,255,.45)}
+  .fk-oyin .s-hisob{order:2;margin-left:auto;font-family:"Nekst";
+    font-weight:900;font-size:15px;text-align:right}
+  .fk-oyin .s-uch{order:3;flex:1 0 100%;font-size:14.5px;
+    line-height:1.3}
+  .fk-oyin .s-tarkib{order:4}
+  .fk-oyin .s-daq{order:5;font-family:"Nekst";font-weight:700;
+    font-size:13px;color:rgba(255,255,255,.65)}
+  .fk-oyin .s-voqea{order:6;white-space:normal}
+  .fk-oyin .s-voqea i{margin:0 6px 0 0}
+}
 
 /* --- TELEFON VA PLANSHET: pastki menyu ishga tushadi ------------- */
 @media(max-width:860px){
@@ -1745,7 +1811,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   <nav><a href="../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>Yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal</a><a href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yinlar</a><a href="../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Jadval</a><a href="../../statistika"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</a><a href="../../jamoa" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa</a></nav>
 </div></header>
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/2"><span class="k">Oldingi</span><span class="v">Andijon <b>1</b> : <b>0</b> Xorazm</span></a><a class="tsm" href="../../oyin/3"><span class="k">Keyingi</span><span class="v">Paxtakor — Andijon <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
-<div class="q" style="padding-top:34px"><div class="fk-bosh"><div class="fk-rasm"><img src="../../futbolchi/Aziz_Turg_unboyev.png" alt="" onerror="this.remove()"><div class="yoq">AT</div></div><div class="fk-pas"><div class="raq">17</div><h1>Azizbek Turg‘unboyev</h1><div class="pas-qat"><div class="qat"><span>Pozitsiya</span><b>Markaziy yarim himoyachi</b></div><div class="qat"><span>Raqam</span><b>17</b></div><div class="qat"><span>Bo‘y</span><b>173 sm</b></div><div class="qat"><span>Kuchli oyoq</span><b>chap</b></div><div class="qat"><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="qat"><span>Shartnoma</span><b>2026-12-30</b></div></div></div></div><div class="stat-tur"><div><b>123</b><span>o‘yin</span></div><div><b>21</b><span>gol</span></div><div><b>1</b><span>uzatma</span></div><div><b>8692</b><span>daqiqa</span></div><div><b>4</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O‘yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td>11-mavsum</td><td>Andijon</td><td class='r'>14</td><td class='r'>1</td><td class='r'>1</td><td class='r'>818</td></tr><tr><td>10-mavsum</td><td>Paxtakor</td><td class='r'>15</td><td class='r'>1</td><td class='r'>0</td><td class='r'>813</td></tr><tr><td>6-mavsum</td><td>Navbahor</td><td class='r'>22</td><td class='r'>6</td><td class='r'>0</td><td class='r'>1851</td></tr><tr><td>4-mavsum</td><td>Paxtakor</td><td class='r'>25</td><td class='r'>5</td><td class='r'>0</td><td class='r'>1612</td></tr><tr><td>3-mavsum</td><td>Paxtakor</td><td class='r'>23</td><td class='r'>3</td><td class='r'>0</td><td class='r'>1745</td></tr><tr><td>2-mavsum</td><td>Paxtakor</td><td class='r'>24</td><td class='r'>5</td><td class='r'>0</td><td class='r'>1853</td></tr></table></div><h2>So‘nggi o‘yinlar</h2><div class="jadval-o"><table><tr><th>Sana</th><th>Uchrashuv</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Voqea</th></tr><tr><td>2026-08-25</td><td>Andijon — Xorazm</td><td class='r'>1 : 0</td><td class='r'>zaxira</td><td class='r'>sariq</td></tr><tr><td>2026-08-13</td><td>Andijon — Neftchi</td><td class='r'>0 : 3</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-08-06</td><td>So‘g‘diyona — Andijon</td><td class='r'>1 : 0</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-08-01</td><td>Andijon — Paxtakor</td><td class='r'>0 : 0</td><td class='r'>asosiy</td><td class='r'>sariq</td></tr><tr><td>2026-07-27</td><td>Andijon — Buxoro</td><td class='r'>2 : 0</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-05-26</td><td>Havokand — Andijon</td><td class='r'>1 : 8</td><td class='r'>asosiy</td><td class='r'>2 gol</td></tr><tr><td>2026-05-21</td><td>Andijon — Nasaf</td><td class='r'>1 : 1</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-05-15</td><td>Sho‘rtan — Andijon</td><td class='r'>1 : 3</td><td class='r'>asosiy</td><td class='r'></td></tr><tr><td>2026-05-04</td><td>Xorazm — Andijon</td><td class='r'>0 : 3</td><td class='r'>zaxira</td><td class='r'></td></tr><tr><td>2026-04-28</td><td>Andijon — Dinamo</td><td class='r'>2 : 1</td><td class='r'>asosiy</td><td class='r'></td></tr></table></div></div>
+<div class="q" style="padding-top:34px"><div class="fk-bosh"><div class="fk-rasm"><img src="../../futbolchi/Aziz_Turg_unboyev.png" alt="" onerror="this.remove()"><div class="yoq">AT</div></div><div class="fk-pas"><div class="raq">17</div><h1>Azizbek Turg‘unboyev</h1><div class="pas-qat"><div class="qat"><span>Pozitsiya</span><b>Markaziy yarim himoyachi</b></div><div class="qat"><span>Raqam</span><b>17</b></div><div class="qat"><span>Bo‘y</span><b>173 sm</b></div><div class="qat"><span>Kuchli oyoq</span><b>chap</b></div><div class="qat"><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="qat"><span>Shartnoma</span><b>2026-12-30</b></div></div></div></div><div class="stat-tur"><div><b>123</b><span>o&#8216;yin</span></div><div><b>21</b><span>gol</span></div><div><b>1</b><span>uzatma</span></div><div><b>8692</b><span>daqiqa</span></div><div><b>4</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='fk-mav'><b>2026</b><span>Superliga</span></td><td>Andijon</td><td class='r'>14</td><td class='r'>1</td><td class='r'>1</td><td class='r'>818</td></tr><tr><td class='fk-mav'><b>2025</b><span>Superliga</span></td><td>Paxtakor</td><td class='r'>15</td><td class='r'>1</td><td class='r'>0</td><td class='r'>813</td></tr><tr><td class='fk-mav'><b>2023</b><span>Superliga</span></td><td>Paxtakor</td><td class='r'>24</td><td class='r'>5</td><td class='r'>0</td><td class='r'>1853</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td>Paxtakor</td><td class='r'>25</td><td class='r'>5</td><td class='r'>0</td><td class='r'>1612</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td>Paxtakor</td><td class='r'>23</td><td class='r'>3</td><td class='r'>0</td><td class='r'>1745</td></tr><tr><td class='fk-mav'><b>2020</b><span>Superliga</span></td><td>Navbahor</td><td class='r'>22</td><td class='r'>6</td><td class='r'>0</td><td class='r'>1851</td></tr></table></div><h2>So&#8216;nggi o&#8216;yinlar</h2><div class="jadval-o fk-oyin"><table><tr><th>Sana</th><th>Uchrashuv</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Daqiqa</th><th>Voqea</th></tr><tr><td class="s-sana">2026-08-25</td><td class="s-uch">Andijon &mdash; Xorazm</td><td class="r s-hisob">1 : 0</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">16&#39;</td><td class="fk-voqea s-voqea"><i class="fk-sariq">sariq</i></td></tr><tr><td class="s-sana">2026-08-13</td><td class="s-uch">Andijon &mdash; Neftchi</td><td class="r s-hisob">0 : 3</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">63&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-08-06</td><td class="s-uch">So‘g‘diyona &mdash; Andijon</td><td class="r s-hisob">1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">73&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-08-01</td><td class="s-uch">Andijon &mdash; Paxtakor</td><td class="r s-hisob">0 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">75&#39;</td><td class="fk-voqea s-voqea"><i class="fk-sariq">sariq</i></td></tr><tr><td class="s-sana">2026-07-27</td><td class="s-uch">Andijon &mdash; Buxoro</td><td class="r s-hisob">2 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">68&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-05-26</td><td class="s-uch">Havokand &mdash; Andijon</td><td class="r s-hisob">1 : 8</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">67&#39;</td><td class="fk-voqea s-voqea"><i class="fk-gol">2 gol &middot; 20&#39;, 32&#39;</i></td></tr><tr><td class="s-sana">2026-05-21</td><td class="s-uch">Andijon &mdash; Nasaf</td><td class="r s-hisob">1 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">64&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-05-15</td><td class="s-uch">Sho‘rtan &mdash; Andijon</td><td class="r s-hisob">1 : 3</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">65&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-05-04</td><td class="s-uch">Xorazm &mdash; Andijon</td><td class="r s-hisob">0 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">26&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-04-28</td><td class="s-uch">Andijon &mdash; Dinamo</td><td class="r s-hisob">2 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">74&#39;</td><td class="fk-voqea s-voqea"></td></tr></table></div><div class="izoh">Daqiqa &mdash; qaydnomadagi kirish va chiqish daqiqasidan hisoblangan; qo&#39;shimcha vaqt sanalmaydi.</div></div>
 <footer><div class="q">
   <div class="ust">
     <div>
