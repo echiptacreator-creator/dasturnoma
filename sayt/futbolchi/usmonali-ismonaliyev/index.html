@@ -411,6 +411,16 @@ img{display:block;max-width:100%}
   margin:0 auto}
 .tx-gerb figcaption{margin-top:6px;font-family:"Nekst";font-weight:700;
   font-size:12px;color:rgba(255,255,255,.5)}
+/* ⚠ HOZIRGI GERB AJRATILADI: qatorda sakkizta gerb turganda
+   muxlis qaysi biri bugungi ekanini bir qarashda ko'rishi kerak. */
+.tx-gerb figure.hozir{padding:8px 4px 6px;border-radius:14px;
+  background:rgba(226,186,117,.10);border:1px solid rgba(226,186,117,.42)}
+.tx-gerb figure.hozir img{width:80px;height:80px}
+.tx-gerb figure.hozir figcaption{color:var(--oltin)}
+.tx-gerb figure.hozir figcaption i{display:block;margin-top:2px;
+  font-style:normal;font-family:"Nekst";font-weight:700;font-size:10px;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(226,186,117,.72)}
 /* Chempionatdagi o'rinlar — yil kataklari. */
 .tx-or-ust{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));
   gap:8px}
@@ -424,7 +434,143 @@ img{display:block;max-width:100%}
 .tx-or.b b{color:rgba(255,255,255,.82)}
 .tx-or.c b{color:rgba(235,31,40,.85)}
 .tx-or.eng{border-color:var(--oltin);background:rgba(226,186,117,.12)}
-/* Murabbiylar kartochkasi. */
+/* ============ TARIX: SHIOR VA MUSOBAQA RAQAMLARI ============ */
+/* Sahifa boshi — klub shiori. ⚠ Bu bo'lim BIRINCHI ekranda
+   turadi: muxlis kim ekanimizni raqam o'qimasdan tushunsin. */
+.tx-hero{padding:30px 26px;border-radius:18px;margin-bottom:16px;
+  border:1px solid rgba(226,186,117,.28);
+  background:linear-gradient(135deg,rgba(226,186,117,.10),
+    rgba(2,27,83,.35) 55%,rgba(255,255,255,.02))}
+.tx-shior{font-family:"Nekst";font-weight:900;font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--oltin);
+  margin-bottom:10px}
+.tx-hero h3{margin:0 0 20px;font-family:"Nekst";font-weight:900;
+  font-size:27px;line-height:1.15;border:0;padding:0}
+.tx-hero-say{display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+.tx-hero-say div{border-left:2px solid rgba(226,186,117,.35);
+  padding-left:13px}
+.tx-hero-say b{display:block;font-family:"Nekst";font-weight:900;
+  font-size:31px;line-height:1;color:var(--oltin)}
+.tx-hero-say span{display:block;margin-top:5px;font-size:13px;
+  font-weight:600}
+.tx-hero-say i{display:block;margin-top:2px;font-style:normal;
+  font-size:11.5px;color:rgba(255,255,255,.45)}
+/* Musobaqa kartochkasi — HAR BIRI ALOHIDA sanaladi. */
+.trn-ust{display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.trn{border:1px solid var(--chiziq);border-radius:16px;padding:18px;
+  background:rgba(255,255,255,.035)}
+.trn-b{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+/* ⚠ LOGO OSTIGA YORUG' DOIRA. Superliga belgisining o'zi to'q
+   ko'k; to'q ko'k fonda u deyarli ko'rinmasdi (2026-08-27 da
+   telefon suratida shunday chiqdi). Oq doira har qanday
+   turnir belgisini ko'rinadigan qiladi. */
+.trn-b img,.trn-b .trn-yoq{width:46px;height:46px;flex:none;
+  border-radius:50%;background:rgba(255,255,255,.92);padding:6px;
+  box-sizing:border-box}
+.trn-b img{object-fit:contain}
+/* Belgisi yo'q turnir — bo'sh joy emas, harf. Uch kartochka
+   bir tekisda turadi. */
+.trn-b .trn-yoq{display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.08);font-family:"Nekst";font-weight:900;
+  font-size:17px;color:rgba(255,255,255,.5)}
+.trn-b b{display:block;font-family:"Nekst";font-weight:700;font-size:15px}
+.trn-b span{display:block;margin-top:2px;font-size:11.5px;
+  color:rgba(255,255,255,.45)}
+.trn-katta{font-family:"Nekst";font-weight:900;font-size:38px;
+  line-height:1;color:var(--oltin)}
+.trn-katta i{font-style:normal;font-size:12px;font-weight:700;
+  color:rgba(255,255,255,.45);margin-left:8px;letter-spacing:.08em;
+  text-transform:uppercase}
+/* G'alaba/durang/mag'lubiyat ulushi — bir qarashda ko'rinadi. */
+.trn-chiz,.rq-chiz{display:flex;height:7px;border-radius:99px;
+  overflow:hidden;background:rgba(255,255,255,.06);margin:13px 0 12px}
+.trn-chiz .g,.rq-chiz .g{background:var(--oltin)}
+.trn-chiz .d,.rq-chiz .d{background:rgba(255,255,255,.3)}
+.trn-chiz .m,.rq-chiz .m{background:rgba(235,31,40,.7)}
+/* ⚠ UCH USTUNLI TO'R — FLEX-WRAP EMAS. Superligada besh
+   ko'rsatkich (ochko bilan), kubokda to'rtta. Flex-wrap da
+   beshinchisi yolg'iz o'zi pastga tushib, uch kartochka uch xil
+   balandlikda turardi. Uch ustunda ikkovi ham ikki qatorga
+   joylashadi va yonma-yon tekis ko'rinadi. */
+.trn-say{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px 10px}
+.trn-say b{display:block;font-family:"Nekst";font-weight:900;font-size:17px}
+.trn-say span{display:block;margin-top:2px;font-size:10.5px;
+  color:rgba(255,255,255,.45);letter-spacing:.05em;text-transform:uppercase}
+/* Raqiblar — to'liq tarix raqami bilan. */
+.rq-legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+  font-size:11.5px;color:rgba(255,255,255,.45);margin-bottom:12px}
+.rq-legend span{width:11px;height:11px;border-radius:3px;display:block;
+  margin-left:9px}
+.rq-legend span:first-child{margin-left:0}
+.rq-legend .g{background:var(--oltin)}
+.rq-legend .d{background:rgba(255,255,255,.3)}
+.rq-legend .m{background:rgba(235,31,40,.7)}
+.rq-ust{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.rq{display:block;padding:14px 16px;border-radius:14px;
+  border:1px solid var(--chiziq);background:rgba(255,255,255,.035);
+  transition:border-color .16s,transform .16s}
+.rq:hover{border-color:var(--oltin);transform:translateY(-2px)}
+.rq-b{display:flex;align-items:center;gap:9px}
+.rq-b img{width:26px;height:26px;object-fit:contain;flex:none}
+.rq-b b{font-family:"Nekst";font-weight:700;font-size:14px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rq-son{font-family:"Nekst";font-weight:900;font-size:25px;
+  line-height:1;margin-top:11px;color:var(--oltin)}
+.rq-son i{font-style:normal;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.4);margin-left:6px;letter-spacing:.06em;
+  text-transform:uppercase}
+.rq-chiz{margin:11px 0 8px}
+.rq-gdm{display:flex;gap:14px;font-family:"Nekst";font-weight:700;
+  font-size:12.5px;color:rgba(255,255,255,.6)}
+.rq-gdm span:first-child{color:var(--oltin)}
+.rq-gdm span:last-child{color:rgba(235,31,40,.8)}
+/* ⚠ MURABBIY — PORTRET KARTOCHKA, YUMALOQ AVATAR EMAS.
+   76px li doira 2480x2480 li arxiv suratini ezib tashlardi va
+   `object-position:top` peshonadan yuqorisini kesardi. 4:5
+   portretda yuz katta, kesim tabiiy; qora-oq arxiv surati ham,
+   rangli zamonaviy surati ham bir xil turadi. */
+.mrb-ust{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));
+  gap:12px}
+.mrb{margin:0;border:1px solid var(--chiziq);border-radius:14px;
+  overflow:hidden;background:rgba(255,255,255,.035);
+  display:flex;flex-direction:column}
+.mrb-r{aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:rgba(255,255,255,.05)}
+.mrb-r img{width:100%;height:100%;object-fit:cover;
+  object-position:center 26%;display:block;
+  /* ⚠ BIR XIL PARDOZ — ARXIV RANG-BARANGLIGI UCHUN. Ellik
+     uchta surat ellik xil manbadan: 60-yillardagi qora-oq
+     skaner, 90-yillardagi yashil fonli pasport surati,
+     bugungi rangli matbuot kadri. Ularni xom holida yonma-yon
+     qo'ysak, devor emas — yamoq bo'lib ko'rinardi
+     (2026-08-27 da operator «rasvo» dedi va haq edi).
+     Bitta qora-oq pardoz hammasini bir devorga aylantiradi;
+     sichqoncha tekkanda asl rangi qaytadi. */
+  filter:grayscale(1) contrast(1.06) brightness(1.02);
+  transition:filter .25s ease,transform .35s ease}
+.mrb:hover .mrb-r img{filter:none;transform:scale(1.03)}
+/* Suratning pastki chekkasi kartochka foniga singib ketadi —
+   turli fonli skanerlar chegarasi shu bilan yumshaydi. */
+.mrb-r::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;
+  background:linear-gradient(180deg,rgba(3,16,46,0),rgba(3,16,46,.55));
+  pointer-events:none}
+/* Surati yo'q murabbiy — bosh harflar. */
+.mrb-yoq{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;font-family:"Nekst";font-weight:900;
+  font-size:30px;color:rgba(255,255,255,.24)}
+.mrb figcaption{padding:11px 12px 12px;flex:1;display:flex;
+  flex-direction:column}
+.mrb figcaption b{display:block;font-family:"Nekst";font-weight:700;
+  font-size:13px;line-height:1.32}
+.mrb figcaption span{display:block;margin-top:auto;padding-top:6px;
+  font-size:11.5px;color:rgba(255,255,255,.45)}
+.mrb.rasmsiz .mrb-r img{display:none}
+
+/* Murabbiylar kartochkasi (eski, boshqa joyda ishlatiladi). */
 .tx-mb-ust{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));
   gap:12px}
 /* ⚠ KARTOCHKALAR BIR SATRDA TEKIS TURSIN. Ism goh bir, goh
@@ -518,6 +664,19 @@ img{display:block;max-width:100%}
   .tx-mb img,.tx-mb-yoq{width:60px;height:60px}
   .tx-mb-yoq{font-size:17px}
   .tx-mb figcaption b{font-size:12px;margin-top:8px}
+  /* ⚠ TELEFONDA IKKI USTUN. 136px da uchtadan tushib, yuz juda
+     kichrayardi; ikkitada yuz kattaroq va ism sig'adi. */
+  .mrb-ust{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));
+    gap:9px}
+  .mrb figcaption{padding:9px 10px 10px}
+  .mrb figcaption b{font-size:12px}
+  .tx-hero{padding:22px 18px}
+  .tx-hero h3{font-size:21px;margin-bottom:16px}
+  .tx-hero-say{gap:12px}
+  .tx-hero-say b{font-size:25px}
+  .trn{padding:15px}
+  .trn-katta{font-size:31px}
+  .rq-ust{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
   /* ⚠ NOMLAR IKKI USTUNDA. 190px da telefonga bittadan
      tushib, o'nta nom butun ekranni egallardi. */
   .tx-nom{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
