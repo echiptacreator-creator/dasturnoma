@@ -1160,42 +1160,96 @@ img{display:block;max-width:100%}
 /* --- FUTBOLCHI KARTOCHKASI --- */
 .saf{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));
   gap:16px}
-.fk{position:relative;background:linear-gradient(180deg,#08204F,#04143A);
-  border:1px solid var(--chiziq);border-radius:16px;
-  overflow:hidden;display:flex;flex-direction:column;
-  transition:border-color .18s,transform .18s,box-shadow .18s}
-.fk:hover{border-color:var(--oltin);transform:translateY(-4px);
-  box-shadow:0 16px 34px rgba(0,0,0,.42)}
-/* Portret ostidagi to'q gradient — ism va lavozim rasmdan ajralib
-   turadi, kartochkalar bir xil «og'irlik» bilan chiziladi. */
-.fk .rasm:after{content:"";position:absolute;inset:auto 0 0 0;height:52%;
-  background:linear-gradient(180deg,rgba(4,20,58,0),rgba(4,20,58,.85));
-  pointer-events:none}
-.fk .pas{flex:1}
-/* PORTRET KESILMASIN: quti 4:5 (portretlarning o'rtacha nisbati
-   0.81), rasm to'liq sig'adi va pastga tayanadi. Ilgari rasm
-   112% balandlikda edi — boshi kesilardi. */
-.fk .rasm{height:auto;aspect-ratio:4/5;position:relative;overflow:hidden;
-  background:rgba(0,0,0,.28)}
-.fk .rasm img{position:absolute;left:0;bottom:0;
-  width:100%;height:100%;max-width:100%;
-  object-fit:contain;object-position:50% 100%}
+/* ⚠ KARTOCHKA — BITTA BUTUN NARSA (operator, 2026-08-27:
+   «mukammal kreativ dizayn»). Ilgari u ikki qavat edi: tepada
+   rasm, ostida ism uchun alohida quti. Ko'z ikkovini alohida
+   ko'rardi va kartochka «rasm + jadval» bo'lib qolardi. Endi
+   portret butun kartochkani egallaydi, ism uning ustidagi
+   gradientda turadi. */
+.fk{position:relative;display:block;aspect-ratio:3/4;
+  background:linear-gradient(165deg,#0A2A63,#04143A);
+  border:1px solid var(--chiziq);border-radius:18px;overflow:hidden;
+  transition:border-color .2s,transform .2s,box-shadow .2s}
+.fk:hover{border-color:var(--oltin);transform:translateY(-5px);
+  box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.fk .rasm{position:absolute;inset:0;overflow:hidden;
+  background:radial-gradient(120% 85% at 50% 12%,
+    rgba(13,44,105,.95),rgba(3,16,46,.98))}
+/* Portret pastga tayanadi va kartochka enini to'ldiradi. */
+.fk .rasm img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  height:100%;width:auto;max-width:none;object-fit:contain;
+  transition:transform .35s ease}
+.fk:hover .rasm img{transform:translateX(-50%) scale(1.045)}
+/* Ism o'qilishi uchun pastdan to'q gradient. */
+/* ⚠ GRADIENT ISMNING TURGAN JOYIDA TO'Q BO'LSIN. Raqamlar
+   paneli chiqqanda ism 52px tepaga suriladi va gradientning
+   ochroq qismiga tushadi; telefonda panel DOIMO ochiq, ya'ni
+   ism doim o'sha yerda turadi. Shuning uchun to'qlik pastroq
+   nuqtadan boshlanadi. */
+.fk .rasm:after{content:"";position:absolute;inset:auto 0 0 0;height:70%;
+  background:linear-gradient(180deg,rgba(2,27,83,0) 0%,
+    rgba(2,20,62,.66) 34%,rgba(2,15,45,.93) 68%,
+    rgba(2,13,38,.98) 100%);pointer-events:none}
 .fk .rasm .yoq{position:absolute;inset:0;display:flex;align-items:center;
-  justify-content:center;font-family:"Nekst";font-weight:900;font-size:30px;
-  color:rgba(255,255,255,.13)}
-.fk .raq{position:absolute;top:9px;left:10px;min-width:28px;height:26px;
-  padding:0 7px;border-radius:8px;background:var(--qizil);color:#fff;
-  font-family:"Nekst";font-weight:900;font-size:14px;display:flex;
-  align-items:center;justify-content:center;z-index:2}
-.fk .gol{position:absolute;top:9px;right:9px;padding:3px 8px;
+  justify-content:center;font-family:"Nekst";font-weight:900;font-size:44px;
+  color:rgba(255,255,255,.10)}
+/* ⚠ RAQAM — BEZAK, NISHON EMAS. Qizil kvadratcha kartochkaning
+   burchagida yamoqday turardi; yirik yarim shaffof raqam esa
+   portret bilan bir qatlamda ishlaydi. */
+.fk .raq{position:absolute;top:2px;right:10px;z-index:2;
+  font-family:"Nekst";font-weight:900;font-size:62px;line-height:1;
+  color:rgba(255,255,255,.13);letter-spacing:-.04em;pointer-events:none}
+.fk .fk-u21{position:absolute;top:11px;left:11px;z-index:3;
+  padding:3px 8px;border-radius:7px;border:1px solid rgba(226,186,117,.55);
+  background:rgba(2,27,83,.55);color:var(--oltin);
+  font-family:"Nekst";font-weight:800;font-size:9.5px;letter-spacing:.1em}
+.fk .gol{position:absolute;top:11px;right:11px;z-index:3;padding:3px 8px;
   border-radius:7px;background:var(--oltin);color:var(--kok);
-  font-family:"Nekst";font-weight:800;font-size:11px;z-index:2}
-.fk .pas{padding:12px 13px 14px;border-top:1px solid rgba(255,255,255,.07)}
-.fk .ism{font-family:"Nekst";font-weight:700;font-size:14px;line-height:1.28}
-.fk .poz{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--oltin);margin-top:4px;font-family:"Nekst";font-weight:600;
-  opacity:.85}
-.fk .qosh{font-size:12px;color:rgba(255,255,255,.45);margin-top:3px}
+  font-family:"Nekst";font-weight:800;font-size:10.5px}
+.fk .ustki{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:14px 14px 15px;transition:transform .28s ease}
+.fk .ism{font-family:"Nekst";line-height:1.15;color:#fff}
+.fk .ism span{display:block;font-weight:600;font-size:11.5px;
+  color:rgba(255,255,255,.62);letter-spacing:.02em;margin-bottom:1px}
+.fk .ism b{display:block;font-weight:900;font-size:17px;letter-spacing:-.01em}
+.fk .poz{font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--oltin);margin-top:6px;font-family:"Nekst";font-weight:700;
+  opacity:.9}
+/* ⚠ RAQAMLAR PANELI — HOVERDA. Uch turnir yonma-yon; kartochka
+   tinch turganda ko'rinmaydi, sichqoncha tekkanda pastdan
+   ko'tariladi. Sichqonchasiz qurilma uchun pastdagi
+   `@media (hover:none)` buni doimiy ko'rinadigan qiladi. */
+.fk .fk-stat{position:absolute;left:0;right:0;bottom:0;z-index:3;
+  display:flex;gap:1px;background:rgba(255,255,255,.09);
+  border-top:1px solid rgba(226,186,117,.3);
+  transform:translateY(101%);opacity:0;
+  transition:transform .28s ease,opacity .2s ease}
+.fk:hover .fk-stat{transform:translateY(0);opacity:1}
+.fk:hover .ustki{transform:translateY(-58px)}
+.fk-tq{flex:1;min-width:0;padding:8px 4px 9px;text-align:center;
+  background:rgba(3,16,46,.96)}
+.fk-tq i{display:block;font-style:normal;font-size:8.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(226,186,117,.75);font-family:"Nekst";
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fk-tq b{display:block;font-family:"Nekst";font-weight:900;font-size:18px;
+  line-height:1.1;margin-top:2px;color:#fff}
+.fk-tq span{display:block;font-size:8.5px;color:rgba(255,255,255,.45);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ⚠ TELEFONDA HOVER YO'Q — RAQAMLAR DOIMO KO'RINADI. Agar
+   faqat `:hover` ga tayansak, muxlisning yarmi (telefondan
+   kiradiganlar) turnir raqamlarini umuman ko'rmasdi: barmoq
+   bosilganda sahifa allaqachon almashib bo'lgan bo'ladi. */
+@media(hover:none){
+  .fk .fk-stat{transform:none;opacity:1}
+  .fk .ustki{transform:translateY(-58px)}
+}
+.saf-izoh{font-size:13px;color:rgba(255,255,255,.45);
+  margin:-8px 0 20px;max-width:640px;line-height:1.5}
+/* Turnir jadvalidagi nom — ikonka bilan bir qatorda. */
+.trn-nom{white-space:nowrap}
+.trn-nom .ik-k{width:15px;height:15px;margin-right:8px;
+  vertical-align:-3px;color:rgba(226,186,117,.7)}
 .saf-guruh{margin-bottom:26px}
 .saf-guruh > .sarl{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--oltin);
@@ -1706,6 +1760,31 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
   /* Mavsumlar jadvali ham telefonda tor — gerb kichrayadi. */
   .fk-klub .fk-g,.s-raqib .fk-g{width:22px;height:22px;margin-right:7px}
+  /* ⚠ MAVSUMLAR JADVALI HAM KARTOCHKA BO'LADI. «So'nggi
+     o'yinlar» telefonda allaqachon kartochkaga aylanardi,
+     mavsumlar esa jadvalligicha qolgandi: 390px ekranda
+     «O'yin», «Gol», «Uzatma», «Daqiqa» ustunlari o'ng chetdan
+     chiqib ketardi (2026-08-27, telefon ko'rinishi). Yon
+     surish bor edi-yu, uni hech narsa bildirmasdi — muxlis
+     raqamlar umuman yo'q deb o'ylardi.
+     ⚠ BU QOIDALAR `.fk-mavj td` DAN KEYIN TURISHI SHART:
+     media so'rovi maxsuslik qo'shmaydi, faqat tartib hal
+     qiladi. */
+  .fk-mavj{overflow:visible}
+  .fk-mavj table{min-width:0}
+  .fk-mavj tr:first-child{display:none}
+  .fk-mavj tr{display:flex;flex-wrap:wrap;align-items:center;
+    gap:4px 14px;padding:12px 0;
+    border-bottom:1px solid var(--chiziq)}
+  .fk-mavj td{display:block;border:0;padding:0;text-align:left}
+  .fk-mavj .fk-mav{order:1;flex:0 0 auto}
+  .fk-mavj .fk-klub{order:2;margin-left:auto;display:flex;
+    align-items:center;justify-content:flex-end}
+  .fk-mavj .s-son{order:3;font-family:"Nekst";font-weight:700;
+    font-size:13.5px}
+  .fk-mavj .s-son::before{content:attr(data-y) " ";
+    font-weight:600;font-size:9.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:rgba(255,255,255,.4)}
 }
 
 /* --- TELEFON VA PLANSHET: pastki menyu ishga tushadi ------------- */
@@ -1728,6 +1807,24 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 }
 
 @media(max-width:640px){
+  /* ⚠ TELEFONDA IKKITA KARTOCHKA BIR QATORDA. `auto-fill` +
+     `minmax(176px,1fr)` 390px ekranda bitta ustun beradi
+     (350px dan gap ayrilgach, ustunga 167px qoladi — 176 dan
+     kam), va bitta kartochka butun ekranni egallab, saf
+     ro'yxati emas, plakatga aylanib qolardi (2026-08-27,
+     telefon ko'rinishi). Endi ustun soni QAT'IY ikkita. */
+  .saf{grid-template-columns:repeat(2,1fr);gap:10px}
+  .fk{border-radius:14px}
+  .fk .raq{font-size:44px;top:4px;right:8px}
+  .fk .ustki{padding:11px 10px 12px}
+  .fk .ism b{font-size:14px}
+  .fk .ism span{font-size:10px}
+  .fk .poz{font-size:8.5px;letter-spacing:.06em;margin-top:4px}
+  .fk .fk-u21{font-size:8.5px;padding:2px 6px;top:8px;left:8px}
+  .fk .ustki,.fk:hover .ustki{transform:translateY(-52px)}
+  .fk-tq{padding:6px 2px 7px}
+  .fk-tq b{font-size:15px}
+  .fk-tq i,.fk-tq span{font-size:7.5px}
   .fk-rasm{width:150px;height:188px}
   .fk-pas .raq{font-size:38px}
   h1{font-size:27px}
