@@ -1444,6 +1444,95 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   border:1px solid rgba(226,186,117,.28);color:var(--oltin)}
 
 /* --- FUTBOLCHI SAHIFASI --- */
+/* ============ FUTBOLCHI SAHIFASI: HERO ============
+   ⚠ Operator (2026-08-27): «menga bu dizayn hali ham yoqmadi,
+     professional bo'lishi kerak — dizayn, logolar, iconlar,
+     sifatli rasm bilan». Yirik klub saytlari (Real Madrid,
+     Bayern, BVB, Benfica) o'rganildi; ulardagi uch doimiy
+     element olindi: fon bo'lib turgan YIRIK forma raqami,
+     ikki qatorli ism, hero ostidagi maydonlar qatori. */
+.fkh{position:relative;overflow:hidden;
+  background:
+    radial-gradient(760px 420px at 18% 8%,rgba(226,186,117,.14),
+      transparent 62%),
+    radial-gradient(900px 500px at 88% 100%,rgba(235,31,40,.13),
+      transparent 60%),
+    linear-gradient(160deg,var(--kok),var(--fon) 68%);
+  border-bottom:1px solid var(--chiziq)}
+.fkh-ich{position:relative;z-index:2;display:grid;
+  grid-template-columns:300px 1fr;gap:34px;align-items:end;
+  padding-top:26px}
+/* Portret: shaffof PNG, kesilmasdan sig'adi va quti pastiga
+   tayanadi — 23 ta studiya surati aynan shunga mo'ljallangan. */
+.fkh-r{position:relative;margin:0;width:300px;height:375px;
+  display:flex;align-items:flex-end;justify-content:center}
+/* ⚠ PASTKI CHEKKA YUMSHOQ SO'NADI. Ikki sababdan:
+     1) fon o'chirilgan portretlarning pastida qirqim izi qolgan
+        (oq-kulrang tasma — qo'lning ostida ko'rinib turadi);
+     2) qirqim izisiz ham rasm hero chekkasida keskin kesilib,
+        «yopishtirilgan» bo'lib ko'rinardi.
+   Mask bilan portret fonga singib ketadi va ikkala muammo ham
+   yo'qoladi (2026-08-27, telefon suratida topildi). */
+.fkh-r img{position:relative;z-index:2;max-width:100%;max-height:100%;
+  object-fit:contain;object-position:50% 100%;
+  filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));
+  -webkit-mask-image:linear-gradient(180deg,#000 76%,rgba(0,0,0,0) 97%);
+  mask-image:linear-gradient(180deg,#000 76%,rgba(0,0,0,0) 97%)}
+/* ⚠ FON BO'LIB TURGAN FORMA RAQAMI. Portret ortida, o'qish
+   uchun emas — sahifaga xarakter berish uchun. */
+.fkh-raq{position:absolute;z-index:1;left:50%;top:46%;
+  transform:translate(-50%,-50%);font-family:"Nekst";font-weight:900;
+  font-size:230px;line-height:1;color:rgba(255,255,255,.07);
+  letter-spacing:-.04em;pointer-events:none;user-select:none}
+/* Surati yo'q futbolchi — bosh harf emas, xira klub gerbi. */
+.fkh-zaxira{display:none;position:absolute;inset:0;z-index:1;
+  align-items:center;justify-content:center}
+.fkh-zaxira img{width:150px;height:150px;object-fit:contain;opacity:.16}
+.fkh-r.yoq .fkh-zaxira{display:flex}
+/* ⚠ YUKLANMAGAN RASM O'CHIRILADI, alt matni QOLMAYDI. Aks holda
+   hero pastida «Anvarjon Hojimirzayev» degan buzuq rasm yozuvi
+   osilib turardi (2026-08-27, Chrome). */
+.fkh-r.yoq img[src*="/futbolchi/"]{display:none}
+.fkh-matn{min-width:0;padding-bottom:30px}
+.fkh-gerb{margin-bottom:12px}
+.fkh-gerb .fk-g{width:56px;height:56px}
+.fkh-chiplar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.fkh-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;
+  border-radius:99px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.05);font-size:12.5px;
+  color:rgba(255,255,255,.82)}
+.fkh-chip .ik{width:15px;height:15px;color:var(--oltin)}
+.fkh-num{font-family:"Nekst";font-weight:900;color:var(--oltin);
+  border-color:rgba(226,186,117,.42);background:rgba(226,186,117,.10)}
+/* ⚠ ISM IKKI QATORDA — familiya kattaroq (BVB modeli). Bitta
+   qatorda «Anvarjon Hojimirzayev» kabi uzun ism sarlavhani
+   maydalashga majbur qilardi. */
+.fkh h1{margin:0;line-height:.94}
+.fkh h1 span{display:block;font-family:"Nekst";font-weight:700;
+  font-size:22px;letter-spacing:.02em;color:rgba(255,255,255,.62)}
+.fkh h1 b{display:block;font-family:"Nekst";font-weight:900;
+  font-size:clamp(34px,5.4vw,62px);text-transform:uppercase;
+  letter-spacing:-.01em}
+/* Hero ostidagi maydonlar — ikonka + yorliq + qiymat. */
+.fkh-may{display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--chiziq)}
+.fkh-m{min-width:0}
+.fkh-m .ik{width:16px;height:16px;color:var(--oltin);
+  display:block;margin-bottom:6px}
+.fkh-m span{display:block;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.42)}
+.fkh-m b{display:block;margin-top:3px;font-family:"Nekst";font-weight:700;
+  font-size:14.5px}
+.fkh-m b i{font-style:normal;color:rgba(255,255,255,.5)}
+/* Klub gerbi — jadval qatorlarida va hero'da bir xil sinf.
+   ⚠ `display:inline-block` MAJBURIY. Global qoida `img{display:
+     block}` bo'lgani uchun gerb o'z qatorini egallab, klub nomi
+     ostiga tushib ketardi va jadval ikki barobar balandlashardi
+     (2026-08-27 da Chrome'da shunday chiqdi). */
+.fk-g{display:inline-block;width:22px;height:22px;object-fit:contain;
+  flex:none;vertical-align:middle}
 .fk-bosh{display:flex;gap:26px;align-items:flex-end;margin-bottom:30px;
   flex-wrap:wrap}
 .fk-rasm{width:200px;height:250px;border-radius:16px;overflow:hidden;
@@ -1501,6 +1590,33 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .fk-mav b{display:block;font-family:"Nekst";font-weight:700;font-size:14px}
 .fk-mav span{display:block;margin-top:2px;font-size:11.5px;
   color:rgba(255,255,255,.45)}
+/* Mavsumlar jadvalidagi klub ustuni — gerb + nom. */
+.fk-klub{white-space:nowrap}
+.fk-klub .fk-g{width:26px;height:26px;margin-right:8px}
+.fk-klub b{font-weight:400;vertical-align:middle}
+.fk-mavj td{padding-top:11px;padding-bottom:11px}
+/* ⚠ RAQIB USTUNI — GERB + NOM + «uyda/mehmonda».
+   «vs» va «@» belgisi Amerika sport saytlaridagidek: bir
+   qarashda uyda o'ynaganini aytadi va joy egallamaydi. */
+.s-raqib{white-space:nowrap}
+.s-raqib .fk-g{width:26px;height:26px;margin-right:9px}
+.s-raqib b{font-weight:400;vertical-align:middle}
+.s-raqib em{font-style:normal;margin-left:9px;font-size:11.5px;
+  color:rgba(255,255,255,.4)}
+.fk-vs{display:inline-block;width:20px;font-size:11.5px;
+  color:rgba(255,255,255,.35)}
+/* ⚠ NATIJA — RANG VA HARF BIRGA. Faqat rang bilan kodlash
+   rang ko'rmaydigan odam uchun ma'lumotni yo'q qiladi;
+   shuning uchun yonida Y/D/M harfi ham turadi. */
+.fk-n{display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:6px;margin-right:9px;
+  font-style:normal;font-family:"Nekst";font-weight:900;font-size:11px;
+  vertical-align:middle;background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.45)}
+.n-g .fk-n{background:rgba(35,160,90,.20);color:#5FD79B}
+.n-d .fk-n{background:rgba(255,255,255,.10);color:rgba(255,255,255,.62)}
+.n-m .fk-n{background:rgba(235,31,40,.18);color:#FF8A8E}
+.n-yoq .fk-n{display:none}
 /* Tarkibdagi o'rni — matn emas, belgi. */
 .fk-asosiy,.fk-zaxira{display:inline-block;padding:2px 9px;border-radius:99px;
   font-size:11px;letter-spacing:.04em}
@@ -1546,6 +1662,8 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     color:rgba(255,255,255,.45)}
   .fk-oyin .s-hisob{order:2;margin-left:auto;font-family:"Nekst";
     font-weight:900;font-size:15px;text-align:right}
+  .fk-oyin .s-raqib{order:3;flex:1 0 100%;font-size:14.5px;
+    line-height:1.3;white-space:normal}
   .fk-oyin .s-uch{order:3;flex:1 0 100%;font-size:14.5px;
     line-height:1.3}
   .fk-oyin .s-tarkib{order:4}
@@ -1553,6 +1671,20 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     font-size:13px;color:rgba(255,255,255,.65)}
   .fk-oyin .s-voqea{order:6;white-space:normal}
   .fk-oyin .s-voqea i{margin:0 6px 0 0}
+  /* Telefonda hero: portret tepada, matn ostida. */
+  .fkh-ich{grid-template-columns:1fr;gap:0;padding-top:16px;
+    justify-items:center}
+  .fkh-r{width:232px;height:290px}
+  .fkh-raq{font-size:168px}
+  .fkh-matn{padding-bottom:22px;width:100%;text-align:center}
+  .fkh-gerb{margin-bottom:8px}
+  .fkh-gerb .fk-g{width:44px;height:44px}
+  .fkh-chiplar{justify-content:center}
+  .fkh h1 span{font-size:17px}
+  .fkh-may{text-align:left;
+    grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
+  /* Mavsumlar jadvali ham telefonda tor — gerb kichrayadi. */
+  .fk-klub .fk-g,.s-raqib .fk-g{width:22px;height:22px;margin-right:7px}
 }
 
 /* --- TELEFON VA PLANSHET: pastki menyu ishga tushadi ------------- */
@@ -1811,7 +1943,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   <nav><a href="../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>Yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal</a><a href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yinlar</a><a href="../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Jadval</a><a href="../../statistika"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</a><a href="../../jamoa" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa</a></nav>
 </div></header>
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/2"><span class="k">Oldingi</span><span class="v">Andijon <b>1</b> : <b>0</b> Xorazm</span></a><a class="tsm" href="../../oyin/3"><span class="k">Keyingi</span><span class="v">Paxtakor — Andijon <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
-<div class="q" style="padding-top:34px"><div class="fk-bosh"><div class="fk-rasm"><img src="../../futbolchi/Igor_Golban.png" alt="" onerror="this.remove()"><div class="yoq">IG</div></div><div class="fk-pas"><div class="raq">4</div><h1>Igor Golban</h1><div class="pas-qat"><div class="qat"><span>Pozitsiya</span><b>Himoyachi</b></div><div class="qat"><span>Raqam</span><b>4</b></div><div class="qat"><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="qat"><span>Shartnoma</span><b>2026-06-29</b></div></div></div></div><div class="stat-tur"><div><b>146</b><span>o&#8216;yin</span></div><div><b>7</b><span>gol</span></div><div><b>0</b><span>uzatma</span></div><div><b>11552</b><span>daqiqa</span></div><div><b>3</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='fk-mav'><b>2026</b><span>Superliga</span></td><td>Andijon / So‘g‘diyona</td><td class='r'>8</td><td class='r'>0</td><td class='r'>0</td><td class='r'>720</td></tr><tr><td class='fk-mav'><b>2025</b><span>Superliga</span></td><td>Nasaf</td><td class='r'>27</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1188</td></tr><tr><td class='fk-mav'><b>2024</b><span>Superliga</span></td><td>Nasaf</td><td class='r'>21</td><td class='r'>0</td><td class='r'>0</td><td class='r'>1663</td></tr><tr><td class='fk-mav'><b>2023</b><span>Superliga</span></td><td>Navbahor</td><td class='r'>25</td><td class='r'>2</td><td class='r'>0</td><td class='r'>2250</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td>Navbahor</td><td class='r'>24</td><td class='r'>1</td><td class='r'>0</td><td class='r'>2160</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td>Navbahor</td><td class='r'>19</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1591</td></tr><tr><td class='fk-mav'><b>2020</b><span>Superliga</span></td><td>Navbahor</td><td class='r'>22</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1980</td></tr></table></div><h2>So&#8216;nggi o&#8216;yinlar</h2><div class="jadval-o fk-oyin"><table><tr><th>Sana</th><th>Uchrashuv</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Daqiqa</th><th>Voqea</th></tr><tr><td class="s-sana">2026-08-06</td><td class="s-uch">So‘g‘diyona &mdash; Andijon</td><td class="r s-hisob">1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-08-02</td><td class="s-uch">Mash&#x27;al &mdash; So‘g‘diyona</td><td class="r s-hisob">1 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">89&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-07-21</td><td class="s-uch">So‘g‘diyona &mdash; Neftchi</td><td class="r s-hisob">1 : 5</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-07-16</td><td class="s-uch">So‘g‘diyona &mdash; Xorazm</td><td class="r s-hisob">2 : 0</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">89&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-04-07</td><td class="s-uch">Andijon &mdash; Navbahor</td><td class="r s-hisob">0 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-04-03</td><td class="s-uch">Nasaf &mdash; Andijon</td><td class="r s-hisob">1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-03-19</td><td class="s-uch">Andijon &mdash; Mash&#x27;al</td><td class="r s-hisob">2 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-03-10</td><td class="s-uch">Neftchi &mdash; Andijon</td><td class="r s-hisob">3 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-03-04</td><td class="s-uch">Qizilqum &mdash; Andijon</td><td class="r s-hisob">2 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr><td class="s-sana">2026-02-27</td><td class="s-uch">Andijon &mdash; So‘g‘diyona</td><td class="r s-hisob">4 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr></table></div><div class="izoh">Daqiqa &mdash; qaydnomadagi kirish va chiqish daqiqasidan hisoblangan; qo&#39;shimcha vaqt sanalmaydi.</div></div>
+<section class="fkh"><div class="yoy"><svg viewBox="0 0 400 520" aria-hidden="true"><path d="M200 8C200 8 372 168 372 330v182H28V330C28 168 200 8 200 8Z"/><path d="M200 78C200 78 320 208 320 336v176H80V336C80 208 200 78 200 78Z"/><path d="M200 148C200 148 268 248 268 342v170H132V342C132 248 200 148 200 148Z"/></svg></div><div class="q fkh-ich"><figure class="fkh-r"><span class="fkh-raq" aria-hidden="true">4</span><img src="../../futbolchi/Igor_Golban.png" alt="Igor Golban" onerror="this.closest('figure').classList.add('yoq')"><span class="fkh-zaxira"><img src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"></span></figure><div class="fkh-matn"><div class="fkh-chiplar"><span class="fkh-chip"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Himoyachi</span><span class="fkh-chip fkh-num">#4</span></div><div class="fkh-gerb"><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"></div><h1><span>Igor</span><b>Golban</b></h1><div class="fkh-may"><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Klubda</span><b>31.01.2026</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5a13 13 0 0 1 0 17a13 13 0 0 1 0-17z"/></svg><span>Fuqaroligi</span><b>Oʻzbekiston</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 16.5c1.5-2.5 2.5-2.5 3 0s1.5 2.5 3 0"/></svg><span>Shartnoma</span><b>29.06.2026</b></div></div></div></div></section><div class="q"><div class="stat-tur"><div><b>146</b><span>o&#8216;yin</span></div><div><b>7</b><span>gol</span></div><div><b>0</b><span>uzatma</span></div><div><b>11552</b><span>daqiqa</span></div><div><b>3</b><span>sariq</span></div><div><b>0</b><span>qizil</span></div></div><h2>Mavsumlar</h2><div class="jadval-o fk-mavj"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='fk-mav'><b>2026</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"><img class="fk-g" src="../../gerb/So_g_diyona.png" alt="" loading="lazy" onerror="this.remove()"><b>Andijon / So‘g‘diyona</b></td><td class='r'>8</td><td class='r'>0</td><td class='r'>0</td><td class='r'>720</td></tr><tr><td class='fk-mav'><b>2025</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b></td><td class='r'>27</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1188</td></tr><tr><td class='fk-mav'><b>2024</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b></td><td class='r'>21</td><td class='r'>0</td><td class='r'>0</td><td class='r'>1663</td></tr><tr><td class='fk-mav'><b>2023</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Navbahor.png" alt="" loading="lazy" onerror="this.remove()"><b>Navbahor</b></td><td class='r'>25</td><td class='r'>2</td><td class='r'>0</td><td class='r'>2250</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Navbahor.png" alt="" loading="lazy" onerror="this.remove()"><b>Navbahor</b></td><td class='r'>24</td><td class='r'>1</td><td class='r'>0</td><td class='r'>2160</td></tr><tr><td class='fk-mav'><b>2021</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Navbahor.png" alt="" loading="lazy" onerror="this.remove()"><b>Navbahor</b></td><td class='r'>19</td><td class='r'>1</td><td class='r'>0</td><td class='r'>1591</td></tr><tr><td class='fk-mav'><b>2020</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Navbahor.png" alt="" loading="lazy" onerror="this.remove()"><b>Navbahor</b></td><td class='r'>22</td><td class='r'>2</td><td class='r'>0</td><td class='r'>1980</td></tr></table></div><h2>So&#8216;nggi o&#8216;yinlar</h2><div class="jadval-o fk-oyin"><table><tr><th>Sana</th><th>Raqib</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Daqiqa</th><th>Voqea</th></tr><tr class="n-g"><td class="s-sana">2026-08-06</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"><b>Andijon</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-08-02</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Mash_al.png" alt="" loading="lazy" onerror="this.remove()"><b>Mash&#x27;al</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">89&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-07-21</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Neftchi.png" alt="" loading="lazy" onerror="this.remove()"><b>Neftchi</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 5</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-07-16</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Xorazm.png" alt="" loading="lazy" onerror="this.remove()"><b>Xorazm</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>2 : 0</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">89&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-04-07</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Navbahor.png" alt="" loading="lazy" onerror="this.remove()"><b>Navbahor</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>0 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-04-03</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-03-19</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Mash_al.png" alt="" loading="lazy" onerror="this.remove()"><b>Mash&#x27;al</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>2 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-03-10</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Neftchi.png" alt="" loading="lazy" onerror="this.remove()"><b>Neftchi</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">M</i>3 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-03-04</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Qizilqum.png" alt="" loading="lazy" onerror="this.remove()"><b>Qizilqum</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">M</i>2 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-02-27</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/So_g_diyona.png" alt="" loading="lazy" onerror="this.remove()"><b>So‘g‘diyona</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>4 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">90&#39;</td><td class="fk-voqea s-voqea"></td></tr></table></div><div class="izoh">Y &mdash; g&#39;alaba, D &mdash; durang, M &mdash; mag&#39;lubiyat; natija futbolchi o&#39;ynagan jamoa bo&#39;yicha. Daqiqa qaydnomadagi kirish va chiqish daqiqasidan hisoblangan, qo&#39;shimcha vaqt sanalmaydi.</div><h2>Jamoadoshlar</h2><div class="saf"><a class="fk" href="../../futbolchi/eldor-adhamov"><div class="rasm"><div class="raq">1</div><img src="../../futbolchi/Eldor_Adhamov.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Eldor Adhamov</div><div class="poz">Darvozabon</div><div class="qosh">30 yosh · 194 sm</div></div></a><a class="fk" href="../../futbolchi/odilbek-abdumajidov"><div class="rasm"><div class="raq">2</div><div class="gol">1 gol</div><img src="../../futbolchi/Odil_Abdumajidov.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Odilbek Abdumajidov</div><div class="poz">Markaziy himoyachi</div><div class="qosh">185 sm</div></div></a><a class="fk" href="../../futbolchi/ibrohim-yoldoshev"><div class="rasm"><div class="raq">3</div><div class="gol">1 gol</div><div class="yoq">IY</div></div><div class="pas"><div class="ism">Ibrohim Yo&#x27;ldoshev</div><div class="poz">Himoyachi</div></div></a><a class="fk" href="../../futbolchi/abdulvohid-gulomov"><div class="rasm"><div class="raq">5</div><div class="yoq">AG</div></div><div class="pas"><div class="ism">Abdulvohid G‘ulomov</div><div class="poz">O&#x27;ng qanot himoyachi</div><div class="qosh">27 yosh</div></div></a><a class="fk" href="../../futbolchi/aleksandre-andronikashvili"><div class="rasm"><div class="raq">6</div><div class="gol">3 gol</div><img src="../../futbolchi/Aleksandro_Andronikashvili.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Aleksandre Andronikashvili</div><div class="poz">Oporniy yarim himoyachi</div><div class="qosh">27 yosh · 188 sm</div></div></a><a class="fk" href="../../futbolchi/polatxoja-xoldorxonov"><div class="rasm"><div class="raq">7</div><div class="gol">2 gol</div><img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Po‘latxo‘ja Xoldorxonov</div><div class="poz">Markaziy hujumchi</div><div class="qosh">23 yosh · 186 sm</div></div></a><a class="fk" href="../../futbolchi/jamshid-boltaboyev"><div class="rasm"><div class="raq">8</div><div class="yoq">JB</div></div><div class="pas"><div class="ism">Jamshid Boltaboyev</div><div class="poz">Yarim himoyachi</div></div></a><a class="fk" href="../../futbolchi/shoxmalik-komilov"><div class="rasm"><div class="raq">8</div><img src="../../futbolchi/Shoxmalik_Komilov.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Shoxmalik Komilov</div><div class="poz">Hujumkor yarim himoyachi</div><div class="qosh">26 yosh · 177 sm</div></div></a><a class="fk" href="../../futbolchi/imeda-ashortia"><div class="rasm"><div class="raq">9</div><div class="gol">2 gol</div><img src="../../futbolchi/Imeda_Ashortia.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Imeda Ashortia</div><div class="poz">Markaziy hujumchi</div><div class="qosh">29 yosh · 183 sm</div></div></a><a class="fk" href="../../futbolchi/dragan-cheran"><div class="rasm"><div class="raq">10</div><div class="gol">3 gol</div><img src="../../futbolchi/Dragan_Cheran.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Dragan Cheran</div><div class="poz">Markaziy hujumchi</div><div class="qosh">38 yosh · 192 sm</div></div></a><a class="fk" href="../../futbolchi/humoyunmirzo-iminov"><div class="rasm"><div class="raq">11</div><div class="gol">1 gol</div><img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="" loading="lazy" onerror="this.remove()"></div><div class="pas"><div class="ism">Humoyunmirzo Iminov</div><div class="poz">Hujumkor yarim himoyachi</div><div class="qosh">26 yosh · 170 sm</div></div></a><a class="fk" href="../../futbolchi/ilnur-zokirov"><div class="rasm"><div class="raq">12</div><div class="yoq">IZ</div></div><div class="pas"><div class="ism">Ilnur Zokirov</div><div class="poz">Darvozabon</div></div></a></div><div class="tug" style="margin:16px 0 34px"><a class="t1" href="../../jamoa"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.5a3 3 0 0 1 0 5.6M17 13.2a5 5 0 0 1 4 4.8V19"/></svg>Butun saf</a></div></div>
 <footer><div class="q">
   <div class="ust">
     <div>
