@@ -1331,6 +1331,48 @@ img{display:block;max-width:100%}
   background:var(--oltin);opacity:.75;transition:width .5s ease}
 .bsh-j{margin-top:11px;font-size:11.5px;color:rgba(255,255,255,.42);
   font-variant-numeric:tabular-nums}
+/* --- FUTBOLCHIGA BAHO (1—10) ------------------------------------
+   ⚠ O'RTACHA CHAPDA, KATTA. Muxlis ro'yxatni yuqoridan pastga
+     ko'zdan kechirganda avval RAQAMni ko'radi — kim yaxshi
+     o'ynagani bir qarashda ma'lum bo'ladi.
+   ⚠ O'N TA TUGMA 390 px GA SIG'ADI. Kattaroq qilsak telefonda
+     ikkinchi qatorga tushib, qator baland bo'lib ketardi. */
+.bah{max-width:720px;margin:0 auto}
+.bah-x{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 13px;border-radius:14px;margin-bottom:8px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+.bah-o{flex:none;width:52px;text-align:center}
+.bah-o b{display:block;font-family:"Grandis",inherit;font-weight:900;
+  font-size:20px;line-height:1;letter-spacing:-.5px;color:var(--oltin);
+  font-variant-numeric:tabular-nums}
+.bah-o i{display:block;font-style:normal;font-size:9.5px;margin-top:3px;
+  color:rgba(255,255,255,.35);letter-spacing:.3px}
+.bah-o.yoq b{color:rgba(255,255,255,.22)}
+.bah-n{flex:1 1 130px;min-width:0}
+.bah-n b{display:block;font-weight:800;font-size:13.5px;line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bah-n span{display:block;font-size:11px;color:rgba(255,255,255,.42);
+  margin-top:2px}
+.bah-q{display:flex;gap:3px;flex:1 0 100%;margin-top:2px}
+.bah-t{flex:1 1 0;min-width:0;height:28px;border-radius:7px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.62);font-family:"Nekst";font-weight:700;
+  font-size:11.5px;line-height:1;padding:0;
+  font-variant-numeric:tabular-nums;
+  transition:background .14s,border-color .14s,color .14s}
+.bah-t:hover{background:rgba(255,255,255,.09);
+  border-color:rgba(226,186,117,.4);color:#fff}
+.bah-t:active{transform:scale(.92)}
+.bah-t.men{background:var(--oltin);border-color:var(--oltin);
+  color:#03102E;font-weight:900}
+.bah-t[disabled]{cursor:default;opacity:.6}
+/* Telefonda o'n tugma bitta qatorda — shuning uchun ular
+   qatorning O'ZIGA egalik qiladi (`flex:1 0 100%`). */
+@media(min-width:640px){
+  .bah-q{flex:0 1 340px;margin-top:0}
+}
+.bah-izoh{font-size:12px;color:rgba(255,255,255,.42);
+  margin:0 0 14px;line-height:1.5}
 /* --- GOL MUALLIFIGA REAKSIYA ------------------------------------
    ⚠ PROTOKOL LENTASIDA EMAS, ALOHIDA. Operator (2026-08-27)
      aniq aytdi: reaksiya voqealar ro'yxatiga qo'yilmasin. Gol
@@ -2508,11 +2550,66 @@ function bchiz(d){
   var j=document.querySelector('.bsh-j');
   if(j)j.textContent=jami?(jami+' muxlis bashorat qildi'):'';
 }
+/* FUTBOLCHIGA BAHO — o'rtacha va o'zi qo'ygan baho.
+   ⚠ O'RTACHA HAR DOIM KO'RINADI (reaksiyadagidek), chunki bu
+     so'rovnoma emas — baho. Muxlis boshqalarning bahosini
+     ko'rib o'z fikrini shakllantirishi tabiiy.
+   ⚠ HISOB BITTA JOYDA: `knowledge/ovozlar.ortacha()` bilan
+     bir xil qoida — 1..10 oralig'idagi bahogina sanaladi. */
+function hchiz(d,toliq){
+  var q=document.querySelectorAll('.bah-x');
+  for(var i=0;i<q.length;i++){
+    var qat=q[i],mv=qat.getAttribute('data-mavzu');
+    var bor=(d.baho||{}).hasOwnProperty(mv);
+    if(!toliq&&!bor)continue;
+    var s=(d.baho||{})[mv]||{};
+    var meni=((d.meniki||{}).baho||{})[mv]||[];
+    var jami=0,soni=0,k,b,n;
+    for(k in s){if(!s.hasOwnProperty(k))continue;
+      b=parseInt(k,10);n=parseInt(s[k],10)||0;
+      if(!(b>=1&&b<=10)||n<=0)continue;
+      jami+=b*n;soni+=n;}
+    var o=qat.querySelector('.bah-o');
+    if(o){
+      var ort=soni?Math.round(jami*10/soni)/10:0;
+      o.className='bah-o'+(soni?'':' yoq');
+      o.querySelector('b').textContent=soni?ort.toFixed(1):'—';
+      o.querySelector('i').textContent=soni?(soni+' ovoz'):'BAHO';}
+    var t=qat.querySelectorAll('.bah-t');
+    for(var v=0;v<t.length;v++){
+      var men=meni.indexOf(t[v].getAttribute('data-tanlov'))>=0;
+      t[v].className='bah-t'+(men?' men':'');}}
+}
 fetch(API+'/api/muxlis-ovoz?mid='+encodeURIComponent(MID)+'&kim='+
   encodeURIComponent(kim)).then(function(r){return r.json();})
-  .then(function(j){if(j&&j.ok){chiz(j.ovoz,true);bchiz(j.ovoz);}
+  .then(function(j){if(j&&j.ok){chiz(j.ovoz,true);bchiz(j.ovoz);
+      hchiz(j.ovoz,true);}
     else xato();})
   .catch(function(){xato();});
+/* Baho tugmasi — bitta futbolchiga bitta baho (almashadi). */
+document.addEventListener('click',function(ev){
+  var b=ev.target.closest?ev.target.closest('.bah-t'):null;
+  if(!b||b.disabled)return;
+  var qat=b.closest('.bah-x');if(!qat)return;
+  var mv=qat.getAttribute('data-mavzu');
+  var t=qat.querySelectorAll('.bah-t');
+  for(var i=0;i<t.length;i++)t[i].disabled=true;
+  fetch(API+'/api/muxlis-ovoz',{method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({tur:'baho',mavzu:mv,
+      tanlov:b.getAttribute('data-tanlov'),kim:kim,manba:'sayt'})})
+   .then(function(r){return r.json();})
+   .then(function(j){
+     for(var i=0;i<t.length;i++)t[i].disabled=false;
+     if(!j||!j.ok){xato();return;}
+     var d={baho:{},meniki:{baho:{}}};
+     d.baho[mv]=j.sanoq||{};
+     d.meniki.baho[mv]=j.meniki||[];
+     hchiz(d);})
+   .catch(function(){
+     for(var i=0;i<t.length;i++)t[i].disabled=false;
+     xato();});
+});
 /* Bashorat tugmasi — o'z ishlovchisi: bu yerda sanoq emas,
    FOIZ chiziladi va tanlov almashadi (bittasi tanlanadi). */
 document.addEventListener('click',function(ev){
