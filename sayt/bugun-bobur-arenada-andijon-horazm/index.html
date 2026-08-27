@@ -1288,6 +1288,46 @@ img{display:block;max-width:100%}
 .rx-xato{display:none;margin:14px 0;padding:10px 13px;border-radius:11px;
   border:1px solid rgba(235,31,40,.35);background:rgba(235,31,40,.08);
   font-size:12.5px;color:rgba(255,255,255,.75)}
+/* --- JONLI SHARH ------------------------------------------------
+   ⚠ BU O'YIN SAHIFASINING ENG JONLI QISMI. Operator kanalga
+     daqiqama-daqiqa yozgan matn; muxlis reaksiyani shu yerda
+     bosadi. Shuning uchun lenta emas, O'QISH uchun ustun:
+     chapda daqiqa, o'ngda matn — kanaldagi kabi tepadan
+     pastga. */
+.shrh{max-width:720px;margin:0 auto}
+.shrh-q{display:grid;grid-template-columns:52px 1fr;gap:12px;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.shrh-q:last-child{border-bottom:0}
+.shrh-d{font-family:"Nekst";font-weight:900;font-size:13px;
+  color:var(--oltin);padding-top:11px;text-align:right;
+  letter-spacing:.02em}
+.shrh-m{position:relative;padding:11px 14px 12px 42px;border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07)}
+.shrh-m > .ik-k{position:absolute;left:14px;top:13px;
+  width:18px;height:18px;color:rgba(255,255,255,.45)}
+.shrh-t p{margin:0 0 6px;font-size:14.5px;line-height:1.5;
+  color:rgba(255,255,255,.9);overflow-wrap:anywhere}
+.shrh-t p:last-child{margin-bottom:0}
+/* Gol — yashil, kartochka — o'z rangida: ko'z lentani
+   o'qimasdan ham muhim daqiqani topadi. */
+.shrh-q.gol .shrh-m,.shrh-q.gol_bosh .shrh-m{
+  background:rgba(46,204,132,.10);border-color:rgba(46,204,132,.30)}
+.shrh-q.gol .shrh-m > .ik-k,.shrh-q.gol_bosh .shrh-m > .ik-k{color:#2ECC84}
+.shrh-q.sariq .shrh-m > .ik-k{color:#F2C94C}
+.shrh-q.qizil .shrh-m > .ik-k{color:var(--qizil)}
+.shrh-q.alm .shrh-m > .ik-k,.shrh-q.ralm .shrh-m > .ik-k{color:#6AB3F3}
+.shrh-q.seyv .shrh-m > .ik-k,
+.shrh-q.super_seyv .shrh-m > .ik-k{color:var(--oltin)}
+.shrh-m .rx{margin-top:10px;padding-top:9px;
+  border-top:1px solid rgba(255,255,255,.06)}
+@media(max-width:640px){
+  .shrh-q{grid-template-columns:38px 1fr;gap:8px;padding:11px 0}
+  .shrh-d{font-size:11.5px;padding-top:10px}
+  .shrh-m{padding:10px 11px 11px 36px;border-radius:12px}
+  .shrh-m > .ik-k{left:11px;top:12px;width:16px;height:16px}
+  .shrh-t p{font-size:13.5px;line-height:1.45}
+}
 /* Turnir jadvalidagi nom — ikonka bilan bir qatorda. */
 .trn-nom{white-space:nowrap}
 .trn-nom .ik-k{width:15px;height:15px;margin-right:8px;
