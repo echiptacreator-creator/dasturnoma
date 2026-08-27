@@ -1478,6 +1478,42 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .stat-tur b{display:block;font-size:26px;font-weight:800}
 .stat-tur span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(255,255,255,.5)}
+/* ⚠ DARVOZA DAHLSIZLIGI — KARYERA KATAKLARIDAN ALOHIDA CHIZIQ.
+   Sababi qamrov: karyera raqamlari butun faoliyat bo'yicha,
+   PFL ning darvozabonlar ro'yxati esa faqat joriy mavsum.
+   Bir qatorda tursa, muxlis ularni bir xil deb o'qirdi. */
+/* ⚠ TO'R EMAS, LENTA. `auto-fit` da bitta kartochka butun
+   kenglikka cho'zilib, ichida bitta raqam bilan bo'm-bo'sh
+   turardi (2026-08-27). Endi kartochka o'z eniga ega. */
+.fk-dv-ust{display:flex;flex-wrap:wrap;gap:10px;margin:-22px 0 12px}
+.fk-dv{flex:0 1 220px;padding:14px 16px;border-radius:13px;
+  border:1px solid rgba(226,186,117,.32);background:rgba(226,186,117,.08)}
+.fk-dv i{display:block;font-style:normal;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+.fk-dv b{display:block;margin-top:6px;font-family:"Nekst";font-weight:900;
+  font-size:30px;line-height:1;color:var(--oltin)}
+.fk-dv span{display:block;margin-top:3px;font-size:11.5px;
+  color:rgba(255,255,255,.6)}
+.fk-dv em{display:block;margin-top:5px;font-style:normal;font-size:11.5px;
+  color:rgba(255,255,255,.4)}
+/* Mavsum katagi: yil katta, turnir kichik — ikkovi bir ustunda. */
+.fk-mav b{display:block;font-family:"Nekst";font-weight:700;font-size:14px}
+.fk-mav span{display:block;margin-top:2px;font-size:11.5px;
+  color:rgba(255,255,255,.45)}
+/* Tarkibdagi o'rni — matn emas, belgi. */
+.fk-asosiy,.fk-zaxira{display:inline-block;padding:2px 9px;border-radius:99px;
+  font-size:11px;letter-spacing:.04em}
+.fk-asosiy{background:rgba(226,186,117,.14);color:var(--oltin)}
+.fk-zaxira{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)}
+/* O'yindagi shaxsiy voqealar. */
+.fk-voqea{white-space:nowrap}
+.fk-voqea i{display:inline-block;margin-right:6px;font-style:normal;
+  padding:2px 9px;border-radius:99px;font-size:11.5px}
+.fk-gol{background:rgba(226,186,117,.16);color:var(--oltin);
+  font-family:"Nekst";font-weight:700}
+.fk-sariq{background:rgba(240,200,60,.16);color:rgba(240,200,60,.9)}
+.fk-qizil{background:rgba(235,31,40,.18);color:rgba(255,120,125,.95)}
 /* ⚠ JADVAL TELEFONDA SIG'MAYDI — o'z ichida suriladi. Aks holda
    butun sahifa yon tomonga surilib ketardi. */
 .jadval-o{overflow-x:auto;margin-bottom:34px}
@@ -1488,6 +1524,36 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .jadval-o th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(255,255,255,.5);font-weight:700}
 .jadval-o .r{text-align:right}
+/* ⚠ TELEFONDA O'YINLAR JADVALI KARTOCHKAGA AYLANADI. Olti
+   ustunli jadval 390px ga sig'maydi va o'z ichida yon tomonga
+   suriladi — natijada eng qimmatli ustun («Voqea»: gol va uning
+   daqiqasi) ekrandan tashqarida qolardi va muxlis uni umuman
+   ko'rmasdi (2026-08-27 da telefon suratida shunday chiqdi).
+   Endi har o'yin ikki-uch qatorli kartochka bo'ladi.
+   ⚠ TARTIB MUHIM: bu blok `.jadval-o` QOIDALARIDAN KEYIN
+     turishi shart. Media so'rovi maxsuslikni oshirmaydi —
+     oldinroq tursa, `.jadval-o table{min-width:460px}` uni
+     bosib ketardi. */
+@media(max-width:640px){
+  .fk-oyin{overflow:visible}
+  .fk-oyin table{min-width:0}
+  .fk-oyin tr:first-child{display:none}
+  .fk-oyin tr{display:flex;flex-wrap:wrap;align-items:center;
+    gap:6px 10px;padding:12px 0;
+    border-bottom:1px solid var(--chiziq)}
+  .fk-oyin td{display:block;border:0;padding:0;text-align:left}
+  .fk-oyin .s-sana{order:1;font-size:11.5px;
+    color:rgba(255,255,255,.45)}
+  .fk-oyin .s-hisob{order:2;margin-left:auto;font-family:"Nekst";
+    font-weight:900;font-size:15px;text-align:right}
+  .fk-oyin .s-uch{order:3;flex:1 0 100%;font-size:14.5px;
+    line-height:1.3}
+  .fk-oyin .s-tarkib{order:4}
+  .fk-oyin .s-daq{order:5;font-family:"Nekst";font-weight:700;
+    font-size:13px;color:rgba(255,255,255,.65)}
+  .fk-oyin .s-voqea{order:6;white-space:normal}
+  .fk-oyin .s-voqea i{margin:0 6px 0 0}
+}
 
 /* --- TELEFON VA PLANSHET: pastki menyu ishga tushadi ------------- */
 @media(max-width:860px){
