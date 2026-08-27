@@ -1331,6 +1331,55 @@ img{display:block;max-width:100%}
   background:var(--oltin);opacity:.75;transition:width .5s ease}
 .bsh-j{margin-top:11px;font-size:11.5px;color:rgba(255,255,255,.42);
   font-variant-numeric:tabular-nums}
+/* --- MUXLIS SO'ZI -----------------------------------------------
+   ⚠ SHAKL TEPADA, LENTA PASTDA. Muxlis bu bo'limga YOZISH uchun
+     keladi; avval boshqalarnikini o'qitib, keyin shaklni
+     ko'rsatsak, ko'pchilik yozmay ketardi.
+   ⚠ TASDIQ HAQIDA OCHIQ YOZILADI. «Chiqmadi-ku?» degan savol
+     bo'lmasin — shakl ostida moderatsiya borligi aytiladi. */
+.mst{max-width:720px;margin:0 auto}
+.mst-f{padding:16px 16px 14px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(160deg,rgba(255,255,255,.05) 0%,
+    rgba(255,255,255,.015) 100%)}
+.mst-f textarea,.mst-f input{width:100%;box-sizing:border-box;
+  border-radius:11px;padding:11px 13px;font-family:"Nekst";font-size:14px;
+  color:#fff;border:1px solid rgba(255,255,255,.13);
+  background:rgba(3,16,46,.55);resize:vertical}
+.mst-f textarea{min-height:78px;line-height:1.5}
+.mst-f textarea:focus,.mst-f input:focus{outline:none;
+  border-color:rgba(226,186,117,.55)}
+.mst-f textarea::placeholder,.mst-f input::placeholder{
+  color:rgba(255,255,255,.32)}
+.mst-r{display:flex;gap:9px;align-items:center;margin-top:9px;
+  flex-wrap:wrap}
+.mst-r input{flex:1 1 160px;width:auto}
+.mst-y{flex:0 0 auto;padding:11px 22px;border:0;border-radius:999px;
+  cursor:pointer;font-family:"Nekst";font-weight:800;font-size:13.5px;
+  color:#fff;background:linear-gradient(100deg,#EB1F28 0%,#0A2A63 100%);
+  box-shadow:0 6px 18px rgba(235,31,40,.24)}
+.mst-y:disabled{background:rgba(255,255,255,.09);
+  color:rgba(255,255,255,.4);box-shadow:none;cursor:default}
+.mst-h{margin-top:9px;font-size:11.5px;line-height:1.5;
+  color:rgba(255,255,255,.40)}
+.mst-h b{color:rgba(255,255,255,.62);font-weight:700}
+/* Javob — yashil (qabul) yoki qizil (xato). */
+.mst-j{display:none;margin-top:11px;padding:10px 13px;border-radius:11px;
+  font-size:12.5px;line-height:1.5}
+.mst-j.ok{display:block;border:1px solid rgba(95,208,138,.35);
+  background:rgba(95,208,138,.10);color:#BFE8CE}
+.mst-j.xato{display:block;border:1px solid rgba(235,31,40,.35);
+  background:rgba(235,31,40,.09);color:rgba(255,255,255,.8)}
+.mst-l{margin-top:22px}
+.mst-s{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+  font-weight:700;color:var(--oltin);margin-bottom:11px}
+.mst-x{padding:13px 15px;border-radius:14px;margin-bottom:9px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+.mst-x p{margin:0;font-size:14px;line-height:1.55;
+  color:rgba(255,255,255,.88);word-break:break-word}
+.mst-x cite{display:block;margin-top:7px;font-style:normal;font-size:11.5px;
+  color:var(--oltin);font-weight:700}
+.mst-bosh{font-size:13px;color:rgba(255,255,255,.42);line-height:1.55}
 /* --- FUTBOLCHIGA BAHO (1—10) ------------------------------------
    ⚠ O'RTACHA CHAPDA, KATTA. Muxlis ro'yxatni yuqoridan pastga
      ko'zdan kechirganda avval RAQAMni ko'radi — kim yaxshi
