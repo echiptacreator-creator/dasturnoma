@@ -1060,11 +1060,19 @@ img{display:block;max-width:100%}
    ⚠ KOMPYUTERDA CHO'ZILMAYDI. `flex:1` bilan uchta tugma 1440px
    ni bo'lib olardi va har biri yarim ekran kenglikda chiqardi —
    telefonda to'g'ri, kompyuterda esa xunuk. */
+/* ⚠ `justify-content:center` O'RNIGA `margin:auto`. Flexbox
+   markazlashtirilgan qatorda tugmalar SIG'MASA, ortiqcha
+   qism IKKALA CHETGA ham chiqib ketadi va boshidagisiga
+   surib ham yetib bo'lmaydi — «O'yin sharhi» bo'limi
+   qo'shilib beshta tugma bo'lgach, telefonda birinchi tugma
+   «...ARHI» bo'lib qirqilib qoldi (2026-08-27). `margin:auto`
+   esa joy yetganda markazlaydi, yetmaganda chapdan boshlaydi. */
 .tablar{position:sticky;top:72px;z-index:8;display:flex;gap:6px;
-  justify-content:center;
   background:rgba(3,16,46,.94);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--chiziq);padding:8px 22px;
   overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablar button:first-child{margin-left:auto}
+.tablar button:last-child{margin-right:auto}
 .tablar button{flex:0 0 auto;min-width:172px;display:inline-flex;
   align-items:center;justify-content:center;gap:8px;cursor:pointer;
   padding:11px 12px;border:0;border-radius:11px;background:transparent;
@@ -1943,8 +1951,16 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .mch .orta .vs{font-size:19px}
   .mch .past{margin-top:20px;padding-top:16px;gap:7px}
   .mch .past span{padding:7px 11px;font-size:11.5px}
-  .tablar{padding:7px 12px;gap:4px}
-  .tablar button{flex:1;min-width:0;padding:10px 7px;font-size:10px;gap:6px}
+  /* ⚠ TELEFONDA TUGMALAR QISILMAYDI, SURILADI. `flex:1` uchta
+     bo'limga to'g'ri kelardi; «O'yin sharhi» qo'shilgach beshta
+     bo'ldi va 390px ekranda har biriga ~70px qoldi — ikonka
+     matn ustiga chiqib ketdi (2026-08-27, telefon ko'rinishi).
+     Endi tugma o'z eniga ega, qator esa yon tomonga suriladi. */
+  .tablar{padding:7px 10px;gap:5px;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tablar::-webkit-scrollbar{display:none}
+  .tablar button{flex:0 0 auto;min-width:0;padding:10px 13px;
+    font-size:10px;gap:6px;white-space:nowrap}
   .tabich{padding-top:22px}
   .vq{grid-template-columns:1fr 46px 1fr;gap:5px;padding:6px 0}
   .vq .d{height:26px;font-size:11.5px}
