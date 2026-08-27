@@ -1093,6 +1093,17 @@ img{display:block;max-width:100%}
 .vq.chapda .v{grid-column:1;grid-row:1;flex-direction:row-reverse;
   text-align:right}
 .vq.ongda .v{grid-column:3;grid-row:1}
+/* ⚠ REAKSIYA QATORI VOQEA OSTIDA, YONIDA EMAS. `.v` — flex
+   qator (ikonka + matn); reaksiya uchinchi bola bo'lib o'sha
+   qatorga tushib qolgandi va emojilar ism bilan yonma-yon,
+   ikki satrga o'ralib turardi (2026-08-27, brauzerda
+   ko'rindi). `flex-basis:100%` uni butun kenglikka olib
+   tushadi. */
+.vq .v{flex-wrap:wrap}
+.vq .v .rx{flex:1 0 100%;margin-top:8px;
+  padding-top:8px;border-top:1px solid rgba(255,255,255,.06)}
+/* Chapdagi voqeada matn o'ngga tekislangan — emoji ham. */
+.vq.chapda .v .rx{justify-content:flex-end}
 .vq .v b{font-family:"Nekst";font-weight:700;font-size:14.5px;display:block;
   line-height:1.25;overflow-wrap:anywhere}
 .vq .v i{font-style:normal;font-size:11px;letter-spacing:.07em;
@@ -1246,6 +1257,37 @@ img{display:block;max-width:100%}
 }
 .saf-izoh{font-size:13px;color:rgba(255,255,255,.45);
   margin:-8px 0 20px;max-width:640px;line-height:1.5}
+/* --- MUXLIS REAKSIYASI ------------------------------------------
+   ⚠ VOQEANI BOSIB QO'YMASIN. Reaksiya qatori voqeaning O'ZIDAN
+     kichik va xira turadi; bosilganda yoki sanoq paydo
+     bo'lganda jonlanadi. Aks holda lentaga qaragan ko'z avval
+     emojilarni, keyin golni ko'rardi. */
+.rx{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.rx-t{display:inline-flex;align-items:center;gap:5px;
+  padding:4px 8px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.75);font-family:"Nekst";font-weight:700;
+  font-size:11.5px;line-height:1;
+  transition:background .16s,border-color .16s,transform .12s}
+.rx-t .e{font-size:14px;line-height:1;filter:grayscale(.45);
+  transition:filter .16s,transform .16s}
+.rx-t .n{min-width:0}
+.rx-t:hover{background:rgba(255,255,255,.08);
+  border-color:rgba(226,186,117,.4)}
+.rx-t:hover .e{filter:none;transform:scale(1.14)}
+.rx-t:active{transform:scale(.94)}
+.rx-t.bor .e{filter:none}
+/* Bosilgani — oltin halqa. Rang emas, halqa: kartochka fonida
+   rang o'zgarishi bilinmasdi. */
+.rx-t.men{background:rgba(226,186,117,.14);
+  border-color:rgba(226,186,117,.65);color:#fff}
+.rx-t.men .e{filter:none}
+.rx-t[disabled]{opacity:.55;cursor:default}
+/* ⚠ XATO JIMGINA O'TMAYDI. Agent o'chiq bo'lsa tugma bosiladi-yu
+   hech narsa bo'lmaydi; muxlis buni bilishi kerak. */
+.rx-xato{display:none;margin:14px 0;padding:10px 13px;border-radius:11px;
+  border:1px solid rgba(235,31,40,.35);background:rgba(235,31,40,.08);
+  font-size:12.5px;color:rgba(255,255,255,.75)}
 /* Turnir jadvalidagi nom — ikonka bilan bir qatorda. */
 .trn-nom{white-space:nowrap}
 .trn-nom .ik-k{width:15px;height:15px;margin-right:8px;
