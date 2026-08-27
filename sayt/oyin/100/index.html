@@ -364,12 +364,37 @@ img{display:block;max-width:100%}
 .tx-raq span{font-size:11.5px;color:rgba(255,255,255,.4);white-space:nowrap;
   flex:none}
 /* ============ KLUB TARIXI: 1964-YILDAN ============ */
-/* Hikoya matni. ⚠ En cheklangan: 100% enli qatorni katta
-   ekranda o'qib bo'lmaydi — ko'z qator boshiga qaytolmaydi. */
-.tx-matn{max-width:74ch;font-size:15.5px;line-height:1.72;
+/* Hikoya matni — jurnal terimi.
+   ⚠ EN CHEKLANADI, LEKIN USTUN BILAN. 100% enli qatorni katta
+     ekranda o'qib bo'lmaydi (ko'z qator boshiga qaytolmaydi);
+     bitta tor ustun esa sahifaning o'ng yarmini bo'sh
+     qoldirardi. Yechim — ikki ustun: qator ham qisqa, sahifa
+     ham to'la. */
+.tx-matn{font-size:15.5px;line-height:1.72;
   color:rgba(255,255,255,.82)}
 .tx-matn p{margin:0 0 14px}
 .tx-matn p:last-child{margin-bottom:0}
+/* Kirish abzatsi — o'qishni boshlaydigan joy. */
+.tx-lede{max-width:60ch;font-size:19px;line-height:1.6;
+  color:#fff;padding-left:18px;position:relative;
+  margin-bottom:22px !important}
+.tx-lede::before{content:"";position:absolute;left:0;top:6px;bottom:6px;
+  width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--oltin),rgba(226,186,117,.15))}
+/* ⚠ BOSH HARF KATTALASHTIRILMAYDI. `::first-letter` sinab
+   ko'rildi (2026-08-27) va tashlandi: abzats «Andijon» so'zi
+   qo'shtirnoq bilan boshlanadi, CSS esa tirnoqni ham harf deb
+   oladi — ekranda «A + ndijon» bo'lib ikkiga bo'linib
+   ko'rinardi. Kirish abzatsini oltin chiziq va kattaroq
+   harf ajratib turibdi, bu yetarli. */
+.tx-ikki{column-count:2;column-gap:38px;
+  border-top:1px solid var(--chiziq);padding-top:18px}
+.tx-ikki p{break-inside:avoid}
+/* Shior — hikoyaning yakuni. Klubning o'z gapi, izoh emas. */
+.tx-shior-past{margin-top:20px;padding-top:16px;
+  border-top:1px solid var(--chiziq);font-family:"Nekst";font-weight:900;
+  font-size:15px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--oltin)}
 /* Tarixiy jamoa suratlari. */
 .tx-sur-ust{display:grid;
   grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
@@ -595,19 +620,116 @@ img{display:block;max-width:100%}
   font-weight:700;font-size:13px;line-height:1.3}
 .tx-mb figcaption span{display:block;margin-top:auto;padding-top:5px;
   font-size:11.5px;color:rgba(255,255,255,.45)}
-/* Afsona — Hamidullayev. */
-.tx-afs{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
-.tx-afs img{width:190px;border-radius:16px;display:block;
-  background:rgba(255,255,255,.05);flex:none}
-.tx-afs-m{flex:1;min-width:260px}
-.tx-afs-m b{display:block;font-family:"Nekst";font-weight:700;font-size:19px;
-  margin-bottom:10px}
-.tx-afs-m p{margin:0 0 14px;font-size:14.5px;line-height:1.7;
-  color:rgba(255,255,255,.78);max-width:66ch}
-.tx-afs-m dl{margin:0;display:grid;grid-template-columns:auto 1fr;
-  gap:7px 14px;font-size:13.5px;max-width:420px}
-.tx-afs-m dt{color:rgba(255,255,255,.45)}
-.tx-afs-m dd{margin:0;text-align:right;font-family:"Nekst";font-weight:700}
+/* ============ AFSONA — BARCHA DAVRLARNING TO'PURARI ============
+   ⚠ SAHIFADAGI ENG KATTA YUZ. Klubning butun tarixidagi eng zo'r
+     to'purari ilgari 190px li surat va to'rt qatorli lug'atda
+     turardi — qolgan bo'limlardan hech farqi yo'q edi. Endi
+     bo'lim o'z foniga ega, surat katta, «200+» esa sahifadagi
+     eng yirik yozuv. */
+.afs-blok{background:
+  radial-gradient(1100px 340px at 12% 0%,rgba(226,186,117,.10),
+    transparent 62%),rgba(255,255,255,.035)}
+.afs{display:grid;grid-template-columns:270px 1fr;gap:28px;
+  align-items:start}
+.afs-r{margin:0;border-radius:18px;overflow:hidden;position:relative;
+  aspect-ratio:4/5;background:rgba(255,255,255,.05);
+  border:1px solid rgba(226,186,117,.30)}
+.afs-r img{width:100%;height:100%;object-fit:cover;display:block;
+  object-position:center 22%}
+.afs-r::after{content:"";position:absolute;inset:auto 0 0 0;height:42%;
+  background:linear-gradient(180deg,rgba(3,16,46,0),rgba(3,16,46,.6));
+  pointer-events:none}
+.afs-r.rasmsiz img{display:none}
+.afs-yoq{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;font-family:"Nekst";font-weight:900;font-size:56px;
+  color:rgba(255,255,255,.20)}
+.afs-m{min-width:0}
+.afs-katta{display:flex;align-items:baseline;gap:10px;line-height:1}
+.afs-katta b{font-family:"Nekst";font-weight:900;font-size:78px;
+  line-height:.9;color:var(--oltin);letter-spacing:-.02em}
+.afs-katta i{font-style:normal;font-family:"Nekst";font-weight:700;
+  font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+.afs-m h4{margin:10px 0 0;font-family:"Nekst";font-weight:700;
+  font-size:24px;line-height:1.15}
+/* «8 marta mavsum to'purari» — raqam arxivdan sanaladi. */
+.afs-nishon{display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+  margin-top:14px;padding:9px 14px;border-radius:99px;
+  border:1px solid rgba(226,186,117,.42);background:rgba(226,186,117,.10)}
+.afs-nishon b{font-family:"Nekst";font-weight:900;font-size:15px;
+  color:var(--oltin)}
+.afs-nishon span{font-size:13px;color:rgba(255,255,255,.8)}
+.afs-nishon i{font-style:normal;font-size:11.5px;
+  color:rgba(255,255,255,.42)}
+.afs-plita{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;margin-top:18px}
+.afs-plita div{padding:13px 15px;border-radius:13px;
+  border:1px solid var(--chiziq);background:rgba(255,255,255,.04)}
+.afs-plita b{display:block;font-family:"Nekst";font-weight:900;font-size:21px;
+  line-height:1}
+.afs-plita span{display:block;margin-top:5px;font-size:11.5px;
+  color:rgba(255,255,255,.45)}
+/* «Yaqqol to'purar» — o'lchov emas, izoh: alohida chiziq. */
+.afs-tag{display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;margin-top:12px;padding:12px 15px;
+  border-radius:13px;border:1px dashed rgba(226,186,117,.34);
+  background:rgba(226,186,117,.05)}
+.afs-tag span{font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+.afs-tag b{font-family:"Nekst";font-weight:700;font-size:14px;
+  color:var(--oltin)}
+.afs-m p{margin:16px 0 0;font-size:14.5px;line-height:1.7;
+  color:rgba(255,255,255,.72);max-width:70ch}
+/* ============ HAR MAVSUMNING TO'PURARI ============
+   ⚠ JADVAL EMAS, TO'R. Qirq sakkiz qatorli jadvalning «Izoh»
+     ustuni sahifaning uchdan birini egallab, ichida BITTA
+     qiymat bor edi; jadvalning eng muhim gapi (bir odam sakkiz
+     marta to'purar) esa umuman ko'rinmasdi. */
+.tpr-bosh{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:16px 18px;border-radius:14px;margin-bottom:14px;
+  border:1px solid rgba(226,186,117,.32);background:rgba(226,186,117,.08)}
+.tpr-bosh b{font-family:"Nekst";font-weight:900;font-size:40px;line-height:1;
+  color:var(--oltin)}
+.tpr-bosh span{font-size:14px;color:rgba(255,255,255,.82);max-width:52ch}
+.tpr-bosh u{text-decoration:none;font-family:"Nekst";font-weight:700;
+  color:#fff}
+.tpr-legenda{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tpr-l{font-size:11.5px;padding:5px 10px;border-radius:99px;
+  border:1px solid var(--chiziq);color:rgba(255,255,255,.5)}
+.tpr-l-rek{border-color:rgba(226,186,117,.45);color:var(--oltin)}
+.tpr-l-x{border-color:rgba(226,186,117,.30)}
+.tpr-l-past{border-style:dashed}
+.tpr-l-yoq{opacity:.6}
+.tpr-onyil{margin-bottom:20px}
+.tpr-onyil:last-of-type{margin-bottom:0}
+.tpr-onyil h4{margin:0 0 10px;font-family:"Nekst";font-weight:900;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.34);display:flex;align-items:center;gap:12px}
+.tpr-onyil h4::after{content:"";flex:1;height:1px;
+  background:var(--chiziq)}
+.tpr-ust{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:9px}
+.tpr{position:relative;padding:12px 14px;border-radius:12px;
+  border:1px solid var(--chiziq);background:rgba(255,255,255,.04)}
+.tpr b{display:block;font-family:"Nekst";font-weight:900;font-size:15px;
+  color:var(--oltin);line-height:1}
+.tpr span{display:block;margin-top:6px;font-size:13px;line-height:1.35;
+  color:rgba(255,255,255,.88)}
+/* Necha marta to'purar bo'lgani — o'ng yuqori burchakda. */
+.tpr-x{position:absolute;top:10px;right:12px;font-style:normal;
+  font-family:"Nekst";font-weight:900;font-size:11px;padding:2px 7px;
+  border-radius:99px;background:rgba(226,186,117,.16);color:var(--oltin)}
+/* Rekord mavsum — izohi kartochka ichida, alohida ustunda emas. */
+.tpr-rek{border-color:rgba(226,186,117,.48);
+  background:rgba(226,186,117,.10)}
+.tpr-rek i{display:block;margin-top:7px;font-style:normal;font-size:11.5px;
+  font-family:"Nekst";font-weight:700;color:var(--oltin)}
+/* Uzilish yillari — sababiga qarab uch xil. */
+.tpr-uz b{color:rgba(255,255,255,.55)}
+.tpr-uz span{font-size:12px;color:rgba(255,255,255,.42);font-style:italic}
+.tpr-past{border-style:dashed;background:transparent}
+.tpr-yoq{background:transparent;opacity:.55}
+.tpr-nomalum{background:transparent}
 /* Fahriylar zali. */
 .tx-fah{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
   gap:10px}
@@ -644,8 +766,25 @@ img{display:block;max-width:100%}
 .tx-gerb figure.rasmsiz{opacity:.4}
 @media(max-width:640px){
   .tx-gv b{width:130px;font-size:13px}
-  .tx-afs img{width:132px}
   .tx-or-ust{grid-template-columns:repeat(auto-fill,minmax(62px,1fr))}
+  /* ⚠ HIKOYA TELEFONDA BIR USTUN. Ikki ustun 390px da har
+     qatorga uch-to'rt so'z sig'dirardi — o'qib bo'lmasdi. */
+  .tx-ikki{column-count:1}
+  .tx-lede{font-size:17px;padding-left:14px}
+  .tx-lede::first-letter{font-size:44px}
+  /* Afsona — surat tepada, raqam ostida. */
+  .afs{grid-template-columns:1fr;gap:18px}
+  .afs-r{max-width:230px;margin:0 auto}
+  .afs-katta b{font-size:60px}
+  .afs-m h4{font-size:20px}
+  .afs-plita{grid-template-columns:1fr 1fr}
+  /* To'purarlar to'ri — telefonda ikki ustun. */
+  .tpr-ust{grid-template-columns:1fr 1fr;gap:8px}
+  .tpr{padding:10px 11px}
+  .tpr span{font-size:12px}
+  .tpr-x{top:8px;right:8px}
+  .tpr-bosh b{font-size:32px}
+  .tpr-bosh span{font-size:13px}
   /* ⚠ TELEFONDA GALEREYA — YON SURILADIGAN LENTA.
      Otuz uchta surat butun kenglikda tepadan pastga terilsa,
      tarix sahifasi telefonda 8000 pikselga cho'zilardi va
