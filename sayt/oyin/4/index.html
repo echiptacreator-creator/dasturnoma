@@ -1093,6 +1093,17 @@ img{display:block;max-width:100%}
 .vq.chapda .v{grid-column:1;grid-row:1;flex-direction:row-reverse;
   text-align:right}
 .vq.ongda .v{grid-column:3;grid-row:1}
+/* ⚠ REAKSIYA QATORI VOQEA OSTIDA, YONIDA EMAS. `.v` — flex
+   qator (ikonka + matn); reaksiya uchinchi bola bo'lib o'sha
+   qatorga tushib qolgandi va emojilar ism bilan yonma-yon,
+   ikki satrga o'ralib turardi (2026-08-27, brauzerda
+   ko'rindi). `flex-basis:100%` uni butun kenglikka olib
+   tushadi. */
+.vq .v{flex-wrap:wrap}
+.vq .v .rx{flex:1 0 100%;margin-top:8px;
+  padding-top:8px;border-top:1px solid rgba(255,255,255,.06)}
+/* Chapdagi voqeada matn o'ngga tekislangan — emoji ham. */
+.vq.chapda .v .rx{justify-content:flex-end}
 .vq .v b{font-family:"Nekst";font-weight:700;font-size:14.5px;display:block;
   line-height:1.25;overflow-wrap:anywhere}
 .vq .v i{font-style:normal;font-size:11px;letter-spacing:.07em;
@@ -1246,6 +1257,37 @@ img{display:block;max-width:100%}
 }
 .saf-izoh{font-size:13px;color:rgba(255,255,255,.45);
   margin:-8px 0 20px;max-width:640px;line-height:1.5}
+/* --- MUXLIS REAKSIYASI ------------------------------------------
+   ⚠ VOQEANI BOSIB QO'YMASIN. Reaksiya qatori voqeaning O'ZIDAN
+     kichik va xira turadi; bosilganda yoki sanoq paydo
+     bo'lganda jonlanadi. Aks holda lentaga qaragan ko'z avval
+     emojilarni, keyin golni ko'rardi. */
+.rx{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.rx-t{display:inline-flex;align-items:center;gap:5px;
+  padding:4px 8px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.75);font-family:"Nekst";font-weight:700;
+  font-size:11.5px;line-height:1;
+  transition:background .16s,border-color .16s,transform .12s}
+.rx-t .e{font-size:14px;line-height:1;filter:grayscale(.45);
+  transition:filter .16s,transform .16s}
+.rx-t .n{min-width:0}
+.rx-t:hover{background:rgba(255,255,255,.08);
+  border-color:rgba(226,186,117,.4)}
+.rx-t:hover .e{filter:none;transform:scale(1.14)}
+.rx-t:active{transform:scale(.94)}
+.rx-t.bor .e{filter:none}
+/* Bosilgani — oltin halqa. Rang emas, halqa: kartochka fonida
+   rang o'zgarishi bilinmasdi. */
+.rx-t.men{background:rgba(226,186,117,.14);
+  border-color:rgba(226,186,117,.65);color:#fff}
+.rx-t.men .e{filter:none}
+.rx-t[disabled]{opacity:.55;cursor:default}
+/* ⚠ XATO JIMGINA O'TMAYDI. Agent o'chiq bo'lsa tugma bosiladi-yu
+   hech narsa bo'lmaydi; muxlis buni bilishi kerak. */
+.rx-xato{display:none;margin:14px 0;padding:10px 13px;border-radius:11px;
+  border:1px solid rgba(235,31,40,.35);background:rgba(235,31,40,.08);
+  font-size:12.5px;color:rgba(255,255,255,.75)}
 /* Turnir jadvalidagi nom — ikonka bilan bir qatorda. */
 .trn-nom{white-space:nowrap}
 .trn-nom .ik-k{width:15px;height:15px;margin-right:8px;
@@ -2095,6 +2137,66 @@ for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
   for(var b=0;b<p.length;b++){
     p[b].style.display=(p[b].id==='t-'+k)?'':'none';}
 });}
+})();
+</script>
+<script>
+(function(){
+var API="https://api-andijon.maladesbola.uz", MID="4";
+if(!API||!MID)return;
+var K='fk_kim';var kim='';
+try{kim=localStorage.getItem(K)||'';}catch(e){}
+if(!kim){kim=Math.random().toString(36).slice(2)+Date.now().toString(36);
+  try{localStorage.setItem(K,kim);}catch(e){}}
+function qat(el,n,men){
+  var b=el.querySelector('.n');if(!b)return;
+  b.textContent=n>0?n:'';
+  el.className='rx-t'+(men?' men':'')+(n>0?' bor':'');}
+/* ⚠ `toliq=false` DA FAQAT KELGAN MAVZU YANGILANADI. Bitta
+   tugma bosilgach javob FAQAT o'sha mavzuning sanog'ini
+   qaytaradi. Ilgari shu javob bilan HAMMA tugma qayta
+   chizilardi va qolganlariga nol yozib ketardi: birinchi
+   emojining raqami ikkinchisini bosgan zahoti yo'qolardi
+   (2026-08-27, brauzerda ko'rindi). Bazada raqam to'g'ri
+   turardi — faqat ekran yolg'on ko'rsatardi. */
+function chiz(d,toliq){
+  var t=document.querySelectorAll('.rx-t');
+  for(var i=0;i<t.length;i++){
+    var el=t[i],tur=el.getAttribute('data-tur'),
+        mv=el.getAttribute('data-mavzu'),tn=el.getAttribute('data-tanlov');
+    var bor=(d[tur]||{}).hasOwnProperty(mv);
+    if(!toliq&&!bor)continue;
+    var s=((d[tur]||{})[mv]||{})[tn]||0;
+    var m=(((d.meniki||{})[tur]||{})[mv]||[]).indexOf(tn)>=0;
+    qat(el,s,m);}}
+function xato(){var q=document.querySelector('.rx-xato');
+  if(q)q.style.display='block';}
+fetch(API+'/api/muxlis-ovoz?mid='+encodeURIComponent(MID)+'&kim='+
+  encodeURIComponent(kim)).then(function(r){return r.json();})
+  .then(function(j){if(j&&j.ok)chiz(j.ovoz,true);else xato();})
+  .catch(function(){xato();});
+document.addEventListener('click',function(ev){
+  var el=ev.target.closest?ev.target.closest('.rx-t'):null;
+  if(!el||el.disabled)return;
+  var n=el.querySelector('.n'),eski=n?n.textContent:'';
+  var men=el.className.indexOf('men')>=0;
+  var son=parseInt(eski||'0',10)||0;
+  qat(el,men?son-1:son+1,!men);
+  el.disabled=true;
+  fetch(API+'/api/muxlis-ovoz',{method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({tur:el.getAttribute('data-tur'),
+      mavzu:el.getAttribute('data-mavzu'),
+      tanlov:el.getAttribute('data-tanlov'),kim:kim,manba:'sayt'})})
+   .then(function(r){return r.json();})
+   .then(function(j){
+     el.disabled=false;
+     if(!j||!j.ok){qat(el,son,men);xato();return;}
+     var mv=el.getAttribute('data-mavzu'),tur=el.getAttribute('data-tur');
+     var d={};d[tur]={};d[tur][mv]=j.sanoq||{};
+     d.meniki={};d.meniki[tur]={};d.meniki[tur][mv]=j.meniki||[];
+     chiz(d);})
+   .catch(function(){el.disabled=false;qat(el,son,men);xato();});
+});
 })();
 </script>
 <div class="q"><a class="orqaga" href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5.4M11.4 5.6 5 12l6.4 6.4"/></svg>Hamma o'yinlar</a></div>
