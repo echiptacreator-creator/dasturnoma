@@ -1296,6 +1296,57 @@ img{display:block;max-width:100%}
 .rx-xato{display:none;margin:14px 0;padding:10px 13px;border-radius:11px;
   border:1px solid rgba(235,31,40,.35);background:rgba(235,31,40,.08);
   font-size:12.5px;color:rgba(255,255,255,.75)}
+/* --- O'YIN OLDIDAN BASHORAT -------------------------------------
+   ⚠ FAQAT O'YNALMAGAN O'YINDA. Natija ma'lum bo'lgach bashorat
+     ma'nosiz — undan ham yomoni, muxlis «bilib turib» ovoz
+     berardi va raqamlar yolg'on chiqardi.
+   ⚠ FOIZ FAQAT O'ZI OVOZ BERGACH KO'RINADI. Aks holda birinchi
+     kelgan odam ko'pchilikka ergashib ketardi; bu so'rovnoma
+     emas, muxlisning O'Z fikri bo'lishi kerak. */
+.bsh{margin:26px auto 0;max-width:720px;padding:18px 18px 16px;
+  border-radius:18px;border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(160deg,rgba(255,255,255,.045) 0%,
+    rgba(255,255,255,.015) 100%)}
+.bsh-s{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+  font-weight:700;color:var(--oltin);margin-bottom:13px}
+.bsh-q{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.bsh-t{position:relative;overflow:hidden;padding:13px 8px 11px;
+  border-radius:13px;cursor:pointer;text-align:center;
+  border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.82);font-family:"Nekst";
+  transition:border-color .16s,background .16s,transform .12s}
+.bsh-t:hover{background:rgba(255,255,255,.07);
+  border-color:rgba(226,186,117,.42)}
+.bsh-t:active{transform:scale(.97)}
+.bsh-t[disabled]{cursor:default}
+.bsh-t b{display:block;font-weight:800;font-size:13px;line-height:1.25;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bsh-t i{display:block;font-style:normal;font-size:11px;
+  color:rgba(255,255,255,.45);margin-top:3px;
+  font-variant-numeric:tabular-nums}
+.bsh-t.men{background:rgba(226,186,117,.15);
+  border-color:rgba(226,186,117,.66);color:#fff}
+/* To'ldiruvchi chiziq — kartochkaning ostidan o'sadi. */
+.bsh-t s{position:absolute;left:0;bottom:0;height:3px;width:0;
+  background:var(--oltin);opacity:.75;transition:width .5s ease}
+.bsh-j{margin-top:11px;font-size:11.5px;color:rgba(255,255,255,.42);
+  font-variant-numeric:tabular-nums}
+/* --- GOL MUALLIFIGA REAKSIYA ------------------------------------
+   ⚠ PROTOKOL LENTASIDA EMAS, ALOHIDA. Operator (2026-08-27)
+     aniq aytdi: reaksiya voqealar ro'yxatiga qo'yilmasin. Gol
+     muallifi esa alohida — bu voqeaga emas, ODAMGA berilgan
+     baho, shuning uchun o'z kartochkasi bor. */
+.glr{margin:22px auto 0;max-width:720px}
+.glr-s{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+  font-weight:700;color:var(--oltin);margin-bottom:11px}
+.glr-x{display:flex;align-items:center;gap:13px;flex-wrap:wrap;
+  padding:13px 15px;border-radius:14px;margin-bottom:9px;
+  border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03)}
+.glr-n{min-width:150px;flex:1 1 150px}
+.glr-n b{display:block;font-weight:800;font-size:14px;line-height:1.3}
+.glr-n span{display:block;font-size:11.5px;color:rgba(255,255,255,.45);
+  margin-top:2px}
+.glr-x .rx{margin-top:0}
 /* --- JONLI SHARH ------------------------------------------------
    ⚠ BU O'YIN SAHIFASINING ENG JONLI QISMI. Operator kanalga
      daqiqama-daqiqa yozgan matn; muxlis reaksiyani shu yerda
@@ -2429,7 +2480,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
       <div>Andijon viloyati futbol klubi. O'zbekiston Superligasi,
         U21 va U19 chempionatlari.</div>
     </div>
-    <div><h4>Bo'limlar</h4><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>So&#x27;nggi yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal lentasi</a></div>
+    <div><h4>Bo'limlar</h4><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>So&#x27;nggi yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a><a href="../../lenta"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Kanal lentasi</a><a href="../../media"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.6h3.4L8.2 6h7.6l1.8 2.6H21v10.8H3z"/><circle cx="12" cy="13.7" r="3.5"/></svg>Media markazi</a></div>
     <div><h4>Klub</h4><a href="../../jamoa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa safi</a><a href="../../tarix"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Klub tarixi</a><a href="../../stadion"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Bobur Arena</a><a href="../../homiylar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></svg>Homiylar</a><a href="../../chiptalar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.4a2.2 2.2 0 0 0 0 4.4v1.4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.4a2.2 2.2 0 0 0 0-4.4z"/><path d="M14.2 6.4v1.8M14.2 11.1v1.8M14.2 15.8v1.8"/></svg>Chiptalar</a><a href="../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Turnir jadvali</a><a href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>O&#x27;yinlar kalendari</a></div>
   </div>
   <div class="past q" style="padding:20px 0 0;display:flex;flex-wrap:wrap;
