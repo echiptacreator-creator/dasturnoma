@@ -1753,8 +1753,15 @@ article p.savol{font-family:"Nekst";font-weight:700;color:var(--oltin);
 /* --- MATN ICHIDAGI BEZAKLAR --------------------------------------
    Muharrirdagi asboblar shu elementlarni yasaydi
    (`_matn_html` dagi qoidalarga qarang). */
+/* ⚠ UMUMIY `h2` QOIDASI BEKOR QILINADI. Saytda `h2` — BO'LIM
+   yorlig'i: kichik, katta harfli, qizil chiziqchali. Maqola
+   ICHIDA esa u matnning bir qismi va shunday ko'rinishi kerak —
+   aks holda o'qiyotgan odam har kichik sarlavhada yangi
+   bo'limga tushib qolgandek his qiladi. */
 article h2{font-family:"Nekst";font-weight:900;font-size:26px;
-  line-height:1.25;margin:40px 0 16px;text-wrap:balance}
+  line-height:1.25;margin:40px 0 16px;text-wrap:balance;
+  letter-spacing:0;text-transform:none;padding-left:0}
+article h2:before{display:none}
 article blockquote{margin:30px 0;padding:4px 0 4px 22px;
   border-left:3px solid var(--oltin);font-size:20px;line-height:1.55;
   color:rgba(255,255,255,.9)}
@@ -2055,6 +2062,22 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .alq-b:hover{transform:translateY(-3px);border-color:var(--oltin);
   background:rgba(255,255,255,.075)}
 .alq-b b{color:var(--oltin)}
+
+/* --- STATISTIKA: MAVSUM TANLOVI -------------------------------------
+   ⚠ `.tanlov` NING QATORI — bo'limlar menyusi bilan bir xil ko'rinsin,
+     lekin yorlig'i bor («Mavsum»), chunki bu yerda bandlar shunchaki
+     raqam: yorliqsiz odam ularni nimaligini bilmaydi.
+   ⚠ TELEFONDA YON SURILADI. Olti mavsum 390px ga sig'maydi; qatorni
+     buklab tashlasak sarlavha ostidagi joy ikki barobar o'sardi. */
+.st-yil{display:flex;align-items:center;gap:14px;margin:18px 0 26px;
+  min-width:0}
+.st-yil>span{flex:none;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.45)}
+.st-t{overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none}
+.st-t::-webkit-scrollbar{display:none}
+.st-t a{white-space:nowrap;font-family:"Nekst";font-weight:700;
+  letter-spacing:.02em}
 /* Klub gerbi — jadval qatorlarida va hero'da bir xil sinf.
    ⚠ `display:inline-block` MAJBURIY. Global qoida `img{display:
      block}` bo'lgani uchun gerb o'z qatorini egallab, klub nomi
