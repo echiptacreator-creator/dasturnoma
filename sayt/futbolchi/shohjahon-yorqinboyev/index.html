@@ -1618,6 +1618,14 @@ h2{position:relative;font-family:"Nekst";font-weight:900;font-size:15px;
   margin:46px 0 20px;padding-left:15px}
 h2:before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:4px;
   border-radius:3px;background:var(--qizil)}
+/* `h1.sarl` — SEO uchun `h2` dan ko'tarilgan bo'lim sarlavhasi
+   (`_h1_qil`). Ko'rinishi h2 bilan AYNAN bir xil bo'lishi kerak:
+   bu tuzatish qidiruv tizimi uchun, dizayn uchun emas. */
+h1.sarl{position:relative;font-family:"Nekst";font-weight:900;
+  font-size:15px;letter-spacing:.15em;text-transform:uppercase;color:#fff;
+  margin:46px 0 20px;padding-left:15px;line-height:inherit}
+h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
+  width:4px;border-radius:3px;background:var(--qizil)}
 .lenta{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   gap:20px}
 /* MAQOLA KARTOCHKASI. Rasm ustida to'q gradient («scrim») —

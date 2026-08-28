@@ -4,15 +4,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#021B53">
 <title>O&#x27;yinlar — FK Andijon</title>
-<meta name="description" content="">
+<meta name="description" content="FK Andijonning o&#x27;yin kalendari — kelgusi va o&#x27;tgan uchrashuvlar, sana, stadion va hisob.">
 <meta property="og:title" content="O&#x27;yinlar — FK Andijon">
-<meta property="og:description" content="">
+<meta property="og:description" content="FK Andijonning o&#x27;yin kalendari — kelgusi va o&#x27;tgan uchrashuvlar, sana, stadion va hisob.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FK Andijon">
 <meta property="og:locale" content="uz_UZ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="O&#x27;yinlar — FK Andijon">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="FK Andijonning o&#x27;yin kalendari — kelgusi va o&#x27;tgan uchrashuvlar, sana, stadion va hisob.">
 <meta property="og:image" content="https://andijonfk.uz/sayt/ulash.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -1618,6 +1618,14 @@ h2{position:relative;font-family:"Nekst";font-weight:900;font-size:15px;
   margin:46px 0 20px;padding-left:15px}
 h2:before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:4px;
   border-radius:3px;background:var(--qizil)}
+/* `h1.sarl` — SEO uchun `h2` dan ko'tarilgan bo'lim sarlavhasi
+   (`_h1_qil`). Ko'rinishi h2 bilan AYNAN bir xil bo'lishi kerak:
+   bu tuzatish qidiruv tizimi uchun, dizayn uchun emas. */
+h1.sarl{position:relative;font-family:"Nekst";font-weight:900;
+  font-size:15px;letter-spacing:.15em;text-transform:uppercase;color:#fff;
+  margin:46px 0 20px;padding-left:15px;line-height:inherit}
+h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
+  width:4px;border-radius:3px;background:var(--qizil)}
 .lenta{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   gap:20px}
 /* MAQOLA KARTOCHKASI. Rasm ustida to'q gradient («scrim») —
@@ -2842,7 +2850,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../oyin/2"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../gerb/Xorazm.png" alt="Xorazm" title="Xorazm" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Xorazm</span></span></span></a><a class="tsm" href="../oyin/3"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Paxtakor.png" alt="Paxtakor" title="Paxtakor" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Paxtakor</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
 <div class="q" style="padding-top:34px">
 <div class="tanlov"><a href="../oyinlar" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalendar</a><a href="../arxiv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg>Arxiv</a><a href="../uchrashuvlar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Uchrashuvlar</a></div>
-<h2>Kelgusi o'yinlar</h2>
+<h1 class="sarl">Kelgusi o'yinlar</h1>
 <div class="oy-set">
 <a class="oy " href="../oyin/3"><div class="ust"><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>Superliga · 20-tur</span><span class="joy"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Mehmon</span></div><div class="jang"><div class="t"><img src="../gerb/Paxtakor.png" alt="" onerror="this.style.visibility='hidden'"><span>Paxtakor</span></div><div class="n"><div class="v">VS</div><div class="k"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>4-sentabr, 2026 · 20:15</div></div><div class="t"><img src="../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'"><span>Andijon</span></div></div></a>
 <a class="oy " href="../oyin/4"><div class="ust"><span><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>Superliga · 21-tur</span><span class="joy uy"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Uy</span></div><div class="jang"><div class="t"><img src="../gerb/Andijon.png" alt="" onerror="this.style.visibility='hidden'"><span>Andijon</span></div><div class="n"><div class="v">VS</div><div class="k"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>10-sentabr, 2026</div></div><div class="t"><img src="../gerb/Qo_qon_1912.png" alt="" onerror="this.style.visibility='hidden'"><span>Qo‘qon-1912</span></div></div></a>
