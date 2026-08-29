@@ -1876,6 +1876,61 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .tbl-izoh span{display:inline-flex;align-items:center;gap:7px}
 .tbl-izoh i{width:11px;height:11px;border-radius:4px;font-style:normal}
 
+/* --- MAVSUM REYTINGLARI ------------------------------------------
+   Yevropa klub saytlaridagi ko'rinish: yetakchi alohida katta
+   kartochkada, qolgani ixcham raqamli qatorda. Hammasi bir xil
+   qator bo'lsa ro'yxat jadvalga aylanadi va «kim oldinda» degan
+   savolga bir qarashda javob bo'lmaydi. */
+.rt-nav{display:flex;gap:8px;overflow-x:auto;padding:0 0 16px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rt-nav::-webkit-scrollbar{display:none}
+.rt-nav button{display:inline-flex;align-items:center;gap:7px;flex:none;
+  padding:9px 15px;border-radius:99px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.68);
+  font-family:"Nekst";font-weight:700;font-size:12px;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s,
+  border-color .15s}
+.rt-nav button:hover{border-color:var(--oltin);color:#fff}
+.rt-nav button.faol{background:var(--oltin);border-color:var(--oltin);
+  color:#0A1F44}
+.rt{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:16px;
+  align-items:start}
+.rt-bosh{display:flex;flex-direction:column;gap:10px;padding:22px 24px;
+  border-radius:16px;border:1px solid rgba(226,186,117,.30);
+  background:linear-gradient(160deg,rgba(226,186,117,.14),
+    rgba(2,27,83,.30) 70%)}
+.rt-raqam{display:flex;align-items:baseline;gap:8px;font-family:"Nekst";
+  font-weight:900;font-size:52px;line-height:1;color:var(--oltin)}
+.rt-raqam i{font-style:normal;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(226,186,117,.7)}
+.rt-kim b{display:block;font-family:"Nekst";font-weight:700;font-size:19px;
+  line-height:1.25}
+.rt-kim span{display:block;margin-top:4px;font-size:12.5px;
+  color:rgba(255,255,255,.5)}
+.rt-qator{display:grid;gap:4px;align-content:start}
+.rt-qator div{display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-radius:11px;background:rgba(255,255,255,.035);font-size:14px}
+.rt-qator div:hover{background:rgba(255,255,255,.07)}
+.rt-qator i{flex:none;width:20px;font-style:normal;font-family:"Nekst";
+  font-weight:700;font-size:12px;color:rgba(255,255,255,.32);
+  text-align:center}
+.rt-qator b{font-weight:400;min-width:0;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.rt-qator span{flex:none;font-size:11.5px;color:rgba(255,255,255,.38)}
+.rt-qator em{margin-left:auto;flex:none;font-style:normal;
+  font-family:"Nekst";font-weight:900;font-size:15px;color:var(--oltin);
+  font-variant-numeric:tabular-nums}
+.rt-blok > .izoh{margin-top:14px}
+@media (max-width:720px){
+  .rt{grid-template-columns:1fr}
+  .rt-bosh{padding:18px 20px}
+  .rt-raqam{font-size:42px}
+  .rt-kim b{font-size:17px}
+  .rt-qator div{padding:9px 12px;font-size:13.5px;gap:9px}
+  .rt-qator span{display:none}
+}
+
 /* --- TURNIR JADVALI: SHAKL USTUNI VA TANLOVLAR -------------------
    Operator (2026-08-29): «turnir jadval sahifasini ham chiroyli
    qilib qoy, uy o'yinlari bo'yicha, safar o'yinlari bo'yicha
@@ -2962,6 +3017,41 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/2"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../../gerb/Xorazm.png" alt="Xorazm" title="Xorazm" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Xorazm</span></span></span></a><a class="tsm" href="../../oyin/3"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/Paxtakor.png" alt="Paxtakor" title="Paxtakor" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Paxtakor</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
 <div class="q" style="padding-top:34px"><h1 class="sarl">Statistika</h1>
 <div class="st-yil"><span>Mavsum</span><div class="tanlov st-t"><a href="../../statistika/2026">2026</a><a href="../../statistika/2025" class="faol">2025</a><a href="../../statistika/2024">2024</a><a href="../../statistika/2023">2023</a><a href="../../statistika/2021">2021</a><a href="../../statistika/2020">2020</a></div></div>
+<h2>Mavsum reytinglari</h2></div>
+<div class="tablar">
+<button type="button" data-t="rt-asosiy" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Asosiy jamoa</button>
+<button type="button" data-t="rt-u21"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>U21 jamoasi</button>
+</div>
+<div class="tabich q" id="t-rt-asosiy"><div class="rt-blok"><div class="rt-nav"><button type="button" data-r="gol" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg>To&#x27;purarlar</button><button type="button" data-r="uzatma"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c3.5 0 4.5-7 8-7"/><path d="M14 7.5 17 10l-3 2.5"/><circle cx="19.5" cy="17" r="2.2"/></svg>Uzatmalar</button><button type="button" data-r="oyin"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yin soni</button><button type="button" data-r="daqiqa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.6l3.6 2.1"/></svg>Maydondagi daqiqa</button><button type="button" data-r="kartochka"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg>Kartochkalar</button><button type="button" data-r="quruq"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19V7h18v12"/><path d="M7 19V11h10v8"/><path d="M3 19h18"/></svg>Quruq o&#x27;yinlar</button></div><div class="rt-ich" data-r="gol"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">6<i>gol</i></div><div class="rt-kim"><b>Doniyor Abdumannopov</b><span>2 penaltidan</span></div></div><div class="rt-qator"><div><i>2</i><b>Damir Temirov</b><em>5</em></div><div><i>3</i><b>Usmonali Ismonaliyev</b><em>5</em></div><div><i>4</i><b>Bektemir Abdumannonov</b><em>4</em></div><div><i>5</i><b>Luka Uskokovich</b><em>3</em></div><div><i>6</i><b>Abdulvohid G‘ulomov</b><em>2</em></div><div><i>7</i><b>Islombek Mamatkazin</b><em>2</em></div><div><i>8</i><b>Ismoil Akinade</b><em>2</em></div><div><i>9</i><b>Rustam Turdimurodov</b><em>2</em></div><div><i>10</i><b>Abdurahmon Abdullayev</b><em>1</em></div><div><i>11</i><b>Altin Kryeziu</b><em>1</em></div><div><i>12</i><b>Ilhom Abdug‘aniyev</b><em>1</em></div></div></div></div><div class="rt-ich" data-r="uzatma" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">8<i>uzatma</i></div><div class="rt-kim"><b>Bektemir Abdumannonov</b></div></div><div class="rt-qator"><div><i>2</i><b>Altin Kryeziu</b><em>4</em></div><div><i>3</i><b>Damir Temirov</b><em>3</em></div><div><i>4</i><b>Abdulvohid G‘ulomov</b><em>2</em></div><div><i>5</i><b>Doniyor Abdumannopov</b><em>1</em></div><div><i>6</i><b>Ilhom Abdug‘aniyev</b><em>1</em></div><div><i>7</i><b>Islam Mashukov</b><em>1</em></div><div><i>8</i><b>Ismoil Akinade</b><em>1</em></div><div><i>9</i><b>Mirzad Mehanovich</b><em>1</em></div><div><i>10</i><b>Muhammadkarim Toirov</b><em>1</em></div><div><i>11</i><b>Oleg Zoteyev</b><em>1</em></div><div><i>12</i><b>Otabek Jo‘raqo‘ziyev</b><em>1</em></div></div></div></div><div class="rt-ich" data-r="oyin" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">33<i>o&#x27;yin</i></div><div class="rt-kim"><b>Bektemir Abdumannonov</b><span>2218 daqiqa</span></div></div><div class="rt-qator"><div><i>2</i><b>Doniyor Abdumannopov</b><span>2049 daqiqa</span><em>31</em></div><div><i>3</i><b>Damir Temirov</b><span>1671 daqiqa</span><em>28</em></div><div><i>4</i><b>Usmonali Ismonaliyev</b><span>1759 daqiqa</span><em>28</em></div><div><i>5</i><b>Islombek Mamatkazin</b><span>1712 daqiqa</span><em>23</em></div><div><i>6</i><b>Muhammadkarim Toirov</b><span>1971 daqiqa</span><em>23</em></div><div><i>7</i><b>Sardor Azimov</b><span>1289 daqiqa</span><em>20</em></div><div><i>8</i><b>Ilhom Abdug‘aniyev</b><span>1102 daqiqa</span><em>18</em></div><div><i>9</i><b>Rustam Turdimurodov</b><span>1128 daqiqa</span><em>18</em></div><div><i>10</i><b>Altin Kryeziu</b><span>1054 daqiqa</span><em>17</em></div><div><i>11</i><b>Abdulvohid G‘ulomov</b><span>1324 daqiqa</span><em>16</em></div><div><i>12</i><b>Abdurahmon Komilov</b><span>997 daqiqa</span><em>15</em></div></div></div></div><div class="rt-ich" data-r="daqiqa" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">2218<i>daqiqa</i></div><div class="rt-kim"><b>Bektemir Abdumannonov</b><span>33 o&#x27;yin</span></div></div><div class="rt-qator"><div><i>2</i><b>Doniyor Abdumannopov</b><span>31 o&#x27;yin</span><em>2049</em></div><div><i>3</i><b>Muhammadkarim Toirov</b><span>23 o&#x27;yin</span><em>1971</em></div><div><i>4</i><b>Usmonali Ismonaliyev</b><span>28 o&#x27;yin</span><em>1759</em></div><div><i>5</i><b>Islombek Mamatkazin</b><span>23 o&#x27;yin</span><em>1712</em></div><div><i>6</i><b>Damir Temirov</b><span>28 o&#x27;yin</span><em>1671</em></div><div><i>7</i><b>Abdulvohid G‘ulomov</b><span>16 o&#x27;yin</span><em>1324</em></div><div><i>8</i><b>Sardor Azimov</b><span>20 o&#x27;yin</span><em>1289</em></div><div><i>9</i><b>Sunnatulloh Hamidjonov</b><span>15 o&#x27;yin</span><em>1256</em></div><div><i>10</i><b>Kristian Novak</b><span>14 o&#x27;yin</span><em>1207</em></div><div><i>11</i><b>Rustam Turdimurodov</b><span>18 o&#x27;yin</span><em>1128</em></div><div><i>12</i><b>Ilhom Abdug‘aniyev</b><span>18 o&#x27;yin</span><em>1102</em></div></div></div></div><div class="rt-ich" data-r="kartochka" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">9<i>ta</i></div><div class="rt-kim"><b>Doniyor Abdumannopov</b><span>9 sariq</span></div></div><div class="rt-qator"><div><i>2</i><b>Shahzod Azmiddinov</b><span>5 sariq · 1 qizil</span><em>6</em></div><div><i>3</i><b>Muhammadkarim Toirov</b><span>5 sariq</span><em>5</em></div><div><i>4</i><b>Islombek Mamatkazin</b><span>4 sariq</span><em>4</em></div><div><i>5</i><b>Abdurahmon Komilov</b><span>3 sariq</span><em>3</em></div><div><i>6</i><b>Eldor Adhamov</b><span>3 sariq</span><em>3</em></div><div><i>7</i><b>Miomir Durichkovich</b><span>2 sariq · 1 qizil</span><em>3</em></div><div><i>8</i><b>Altin Kryeziu</b><span>2 sariq</span><em>2</em></div><div><i>9</i><b>Damir Temirov</b><span>2 sariq</span><em>2</em></div><div><i>10</i><b>Ilhom Abdug‘aniyev</b><span>2 sariq</span><em>2</em></div><div><i>11</i><b>Iskandar Shayqulov</b><span>2 sariq</span><em>2</em></div><div><i>12</i><b>Ismoil Akinade</b><span>1 sariq · 1 qizil</span><em>2</em></div></div></div></div><div class="rt-ich" data-r="quruq" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">2<i>o&#x27;yin</i></div><div class="rt-kim"><b>Erjan Tokotayev</b><span>12 o&#x27;yin</span></div></div><div class="rt-qator"><div><i>2</i><b>Eldor Adhamov</b><span>13 o&#x27;yin</span><em>1</em></div></div></div></div><div class="izoh">2025 mavsumida o&#8216;ynalgan 33 ta o&#8216;yin bo&#8216;yicha &mdash; barcha musobaqalar qo&#8216;shib hisoblangan. Manba: PFL qaydnomalari.</div></div></div>
+<div class="tabich q" id="t-rt-u21" style="display:none"><div class="rt-blok"><div class="rt-nav"><button type="button" data-r="gol" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg>To&#x27;purarlar</button><button type="button" data-r="uzatma"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c3.5 0 4.5-7 8-7"/><path d="M14 7.5 17 10l-3 2.5"/><circle cx="19.5" cy="17" r="2.2"/></svg>Uzatmalar</button><button type="button" data-r="oyin"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg>O&#x27;yin soni</button><button type="button" data-r="daqiqa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.6l3.6 2.1"/></svg>Maydondagi daqiqa</button><button type="button" data-r="kartochka"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg>Kartochkalar</button></div><div class="rt-ich" data-r="gol"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">1<i>gol</i></div><div class="rt-kim"><b>Bekzod Sulaymonov</b></div></div><div class="rt-qator"><div><i>2</i><b>Muhammadyusuf Mirqodirov</b><em>1</em></div><div><i>3</i><b>Rustam Turdimurodov</b><em>1</em></div></div></div></div><div class="rt-ich" data-r="uzatma" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">1<i>uzatma</i></div><div class="rt-kim"><b>Asatilla G‘ayratillayev</b></div></div><div class="rt-qator"><div><i>2</i><b>Nuriddin Bahodirov</b><em>1</em></div></div></div></div><div class="rt-ich" data-r="oyin" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">2<i>o&#x27;yin</i></div><div class="rt-kim"><b>Abbosbek Abdug‘afforov</b><span>180 daqiqa</span></div></div><div class="rt-qator"><div><i>2</i><b>Asatilla G‘ayratillayev</b><span>134 daqiqa</span><em>2</em></div><div><i>3</i><b>Hamidullo Karimov</b><span>180 daqiqa</span><em>2</em></div><div><i>4</i><b>Mohir Komilov</b><span>180 daqiqa</span><em>2</em></div><div><i>5</i><b>Shohjahon Yorqinboyev</b><span>180 daqiqa</span><em>2</em></div><div><i>6</i><b>Sirojiddin Solijonov</b><span>134 daqiqa</span><em>2</em></div><div><i>7</i><b>Abdurahmon Abdullayev</b><span>90 daqiqa</span><em>1</em></div><div><i>8</i><b>Abubakir Ashurov</b><span>46 daqiqa</span><em>1</em></div><div><i>9</i><b>Asadbek Habibullayev</b><span>90 daqiqa</span><em>1</em></div><div><i>10</i><b>Asilbek Tojiddinov</b><span>20 daqiqa</span><em>1</em></div><div><i>11</i><b>Bektemir Abdumannonov</b><span>90 daqiqa</span><em>1</em></div><div><i>12</i><b>Bekzod Sulaymonov</b><span>90 daqiqa</span><em>1</em></div></div></div></div><div class="rt-ich" data-r="daqiqa" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">180<i>daqiqa</i></div><div class="rt-kim"><b>Abbosbek Abdug‘afforov</b><span>2 o&#x27;yin</span></div></div><div class="rt-qator"><div><i>2</i><b>Hamidullo Karimov</b><span>2 o&#x27;yin</span><em>180</em></div><div><i>3</i><b>Mohir Komilov</b><span>2 o&#x27;yin</span><em>180</em></div><div><i>4</i><b>Shohjahon Yorqinboyev</b><span>2 o&#x27;yin</span><em>180</em></div><div><i>5</i><b>Asatilla G‘ayratillayev</b><span>2 o&#x27;yin</span><em>134</em></div><div><i>6</i><b>Sirojiddin Solijonov</b><span>2 o&#x27;yin</span><em>134</em></div><div><i>7</i><b>Abdurahmon Abdullayev</b><span>1 o&#x27;yin</span><em>90</em></div><div><i>8</i><b>Asadbek Habibullayev</b><span>1 o&#x27;yin</span><em>90</em></div><div><i>9</i><b>Bektemir Abdumannonov</b><span>1 o&#x27;yin</span><em>90</em></div><div><i>10</i><b>Bekzod Sulaymonov</b><span>1 o&#x27;yin</span><em>90</em></div><div><i>11</i><b>Jamshidbek Ko‘paysinov</b><span>1 o&#x27;yin</span><em>90</em></div><div><i>12</i><b>Muhammadyusuf Mirqodirov</b><span>1 o&#x27;yin</span><em>90</em></div></div></div></div><div class="rt-ich" data-r="kartochka" style="display:none"><div class="rt"><div class="rt-bosh"><div class="rt-raqam">1<i>ta</i></div><div class="rt-kim"><b>Asatilla G‘ayratillayev</b><span>1 sariq</span></div></div><div class="rt-qator"><div><i>2</i><b>Nuriddin Bahodirov</b><span>1 sariq</span><em>1</em></div><div><i>3</i><b>Sirojiddin Solijonov</b><span>1 sariq</span><em>1</em></div></div></div></div><div class="izoh">2025 mavsumida o&#8216;ynalgan 30 ta o&#8216;yin bo&#8216;yicha &mdash; barcha musobaqalar qo&#8216;shib hisoblangan. Manba: PFL qaydnomalari.</div></div></div>
+<script>
+(function(){
+var t=document.querySelectorAll('.tablar button');
+var p=document.querySelectorAll('.tabich');
+for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
+  var k=this.getAttribute('data-t');
+  for(var a=0;a<t.length;a++){
+    t[a].className=(t[a].getAttribute('data-t')===k)?'faol':'';}
+  for(var b=0;b<p.length;b++){
+    p[b].style.display=(p[b].id==='t-'+k)?'':'none';}
+});}
+})();
+</script>
+<script>
+(function(){
+ document.querySelectorAll('.rt-blok').forEach(function(b){
+  var k=b.querySelectorAll('.rt-nav button');
+  k.forEach(function(t){t.addEventListener('click',function(){
+   k.forEach(function(x){x.classList.remove('faol');});
+   t.classList.add('faol');
+   var kod=t.getAttribute('data-r');
+   b.querySelectorAll('.rt-ich').forEach(function(d){
+    d.style.display=(d.getAttribute('data-r')===kod)?'':'none';});
+  });});
+ });
+})();
+</script>
+<div class="q">
 <div class="blok"><h3><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>2025 mavsumi — futbolchilar</h3><div class="jd-o"><table class="jd"><tr><th>#</th><th>Futbolchi</th><th>O'yin</th><th>Gol</th><th>Uzatma</th><th class="dq">Daqiqa</th></tr>
 <tr><td class="n">1</td><td class="ism">Rustam Turdimurodov</td><td class="r">30</td><td class="r">8</td><td class="r">2</td><td class="r dq">2309</td></tr>
 <tr><td class="n">2</td><td class="ism">Doniyor Abdumannopov</td><td class="r">28</td><td class="r">5</td><td class="r">1</td><td class="r dq">1876</td></tr>

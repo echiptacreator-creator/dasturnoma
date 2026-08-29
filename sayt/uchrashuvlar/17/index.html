@@ -1876,6 +1876,61 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .tbl-izoh span{display:inline-flex;align-items:center;gap:7px}
 .tbl-izoh i{width:11px;height:11px;border-radius:4px;font-style:normal}
 
+/* --- MAVSUM REYTINGLARI ------------------------------------------
+   Yevropa klub saytlaridagi ko'rinish: yetakchi alohida katta
+   kartochkada, qolgani ixcham raqamli qatorda. Hammasi bir xil
+   qator bo'lsa ro'yxat jadvalga aylanadi va «kim oldinda» degan
+   savolga bir qarashda javob bo'lmaydi. */
+.rt-nav{display:flex;gap:8px;overflow-x:auto;padding:0 0 16px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rt-nav::-webkit-scrollbar{display:none}
+.rt-nav button{display:inline-flex;align-items:center;gap:7px;flex:none;
+  padding:9px 15px;border-radius:99px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.68);
+  font-family:"Nekst";font-weight:700;font-size:12px;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s,
+  border-color .15s}
+.rt-nav button:hover{border-color:var(--oltin);color:#fff}
+.rt-nav button.faol{background:var(--oltin);border-color:var(--oltin);
+  color:#0A1F44}
+.rt{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:16px;
+  align-items:start}
+.rt-bosh{display:flex;flex-direction:column;gap:10px;padding:22px 24px;
+  border-radius:16px;border:1px solid rgba(226,186,117,.30);
+  background:linear-gradient(160deg,rgba(226,186,117,.14),
+    rgba(2,27,83,.30) 70%)}
+.rt-raqam{display:flex;align-items:baseline;gap:8px;font-family:"Nekst";
+  font-weight:900;font-size:52px;line-height:1;color:var(--oltin)}
+.rt-raqam i{font-style:normal;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(226,186,117,.7)}
+.rt-kim b{display:block;font-family:"Nekst";font-weight:700;font-size:19px;
+  line-height:1.25}
+.rt-kim span{display:block;margin-top:4px;font-size:12.5px;
+  color:rgba(255,255,255,.5)}
+.rt-qator{display:grid;gap:4px;align-content:start}
+.rt-qator div{display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-radius:11px;background:rgba(255,255,255,.035);font-size:14px}
+.rt-qator div:hover{background:rgba(255,255,255,.07)}
+.rt-qator i{flex:none;width:20px;font-style:normal;font-family:"Nekst";
+  font-weight:700;font-size:12px;color:rgba(255,255,255,.32);
+  text-align:center}
+.rt-qator b{font-weight:400;min-width:0;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.rt-qator span{flex:none;font-size:11.5px;color:rgba(255,255,255,.38)}
+.rt-qator em{margin-left:auto;flex:none;font-style:normal;
+  font-family:"Nekst";font-weight:900;font-size:15px;color:var(--oltin);
+  font-variant-numeric:tabular-nums}
+.rt-blok > .izoh{margin-top:14px}
+@media (max-width:720px){
+  .rt{grid-template-columns:1fr}
+  .rt-bosh{padding:18px 20px}
+  .rt-raqam{font-size:42px}
+  .rt-kim b{font-size:17px}
+  .rt-qator div{padding:9px 12px;font-size:13.5px;gap:9px}
+  .rt-qator span{display:none}
+}
+
 /* --- TURNIR JADVALI: SHAKL USTUNI VA TANLOVLAR -------------------
    Operator (2026-08-29): «turnir jadval sahifasini ham chiroyli
    qilib qoy, uy o'yinlari bo'yicha, safar o'yinlari bo'yicha
