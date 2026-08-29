@@ -18,6 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://andijonfk.uz/sayt/ulash.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsTeam", "name": "FK Andijon", "alternateName": "Andijon futbol klubi", "sport": "Football", "url": "https://andijonfk.uz/", "logo": "https://andijonfk.uz/sayt/gerb/Andijon.png", "image": "https://andijonfk.uz/sayt/ulash.jpg", "location": {"@type": "Place", "name": "Bobur Arena", "address": {"@type": "PostalAddress", "addressLocality": "Andijon", "addressCountry": "UZ"}}, "sameAs": ["https://t.me/andijonpfc", "https://t.me/echipta_bot", "https://t.me/fcandijanstorebot"]}</script>
+<link rel="alternate" type="application/rss+xml" title="FK Andijon — yangiliklar" href="https://andijonfk.uz/lenta.xml">
+<link rel="alternate" type="text/calendar" title="FK Andijon — o&#39;yinlar kalendari" href="https://andijonfk.uz/kalendar.ics">
 <style>
 @font-face{font-family:"Nekst";src:url("/shrift/Nekst-Black.ttf");
   font-weight:900;font-display:swap}
@@ -1703,6 +1705,22 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
    Telefonda tugmalar yon tomonga suriladi: uchta-to'rtta musobaqa
    nomi bitta qatorga sig'maydi va qatorga tushirilsa sarlavha
    pastga siljib ketardi. */
+/* KALENDARGA OBUNA — sarlavha ostidagi tugma va bir qator izoh.
+   Telefonda tugma tepaga, izoh pastga tushadi. */
+.kal-obuna{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:14px 18px;margin:0 0 6px;border-radius:14px;
+  border:1px solid rgba(226,186,117,.26);background:rgba(226,186,117,.07)}
+.kal-obuna .tug{flex:none;gap:8px;background:var(--oltin);
+  border-color:var(--oltin);color:#0A1F44}
+.kal-obuna .tug:hover{background:#f0cd8a;border-color:#f0cd8a;
+  color:#0A1F44}
+.kal-obuna .tug .ik-k{width:15px;height:15px}
+.kal-obuna span{flex:1;min-width:200px;font-size:13px;line-height:1.5;
+  color:rgba(255,255,255,.6)}
+@media (max-width:560px){
+  .kal-obuna{padding:13px 15px;gap:11px}
+  .kal-obuna span{font-size:12.5px}
+}
 .kal-sar{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;
   -webkit-overflow-scrolling:touch;scrollbar-width:none}
 .kal-sar::-webkit-scrollbar{display:none}
@@ -2944,7 +2962,9 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../oyin/2"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../gerb/Xorazm.png" alt="Xorazm" title="Xorazm" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Xorazm</span></span></span></a><a class="tsm" href="../oyin/3"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Paxtakor.png" alt="Paxtakor" title="Paxtakor" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Paxtakor</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
 <div class="q" style="padding-top:34px">
 <div class="tanlov"><a href="../oyinlar" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalendar</a><a href="../arxiv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg>Arxiv</a><a href="../uchrashuvlar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Uchrashuvlar</a></div>
-<h1 class="sarl">O'yinlar</h1></div>
+<h1 class="sarl">O'yinlar</h1>
+<div class="kal-obuna"><a class="tug" href="https://andijonfk.uz/kalendar.ics" download="fk-andijon.ics"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalendarga qo&#8216;shish</a><span>Telefoningiz kalendariga obuna bo&#8216;ling &mdash; mavsumning barcha o&#8216;yinlari o&#8216;zi qo&#8216;shiladi va sana o&#8216;zgarsa o&#8216;zi to&#8216;g&#8216;rilanadi.</span></div>
+</div>
 <div class="tablar">
 <button type="button" data-t="asosiy" class="faol"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Asosiy jamoa</button>
 <button type="button" data-t="u21"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>U21 jamoasi</button>

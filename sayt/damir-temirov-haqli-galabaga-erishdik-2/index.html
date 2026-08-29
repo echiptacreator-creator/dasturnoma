@@ -18,6 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://andijonfk.uz/sayt/media/2026-08/_1_1787912004.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsTeam", "name": "FK Andijon", "alternateName": "Andijon futbol klubi", "sport": "Football", "url": "https://andijonfk.uz/", "logo": "https://andijonfk.uz/sayt/gerb/Andijon.png", "image": "https://andijonfk.uz/sayt/ulash.jpg", "location": {"@type": "Place", "name": "Bobur Arena", "address": {"@type": "PostalAddress", "addressLocality": "Andijon", "addressCountry": "UZ"}}, "sameAs": ["https://t.me/andijonpfc", "https://t.me/echipta_bot", "https://t.me/fcandijanstorebot"]}</script>
+<link rel="alternate" type="application/rss+xml" title="FK Andijon — yangiliklar" href="https://andijonfk.uz/lenta.xml">
+<link rel="alternate" type="text/calendar" title="FK Andijon — o&#39;yinlar kalendari" href="https://andijonfk.uz/kalendar.ics">
 <style>
 @font-face{font-family:"Nekst";src:url("/shrift/Nekst-Black.ttf");
   font-weight:900;font-display:swap}
@@ -1703,6 +1705,22 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
    Telefonda tugmalar yon tomonga suriladi: uchta-to'rtta musobaqa
    nomi bitta qatorga sig'maydi va qatorga tushirilsa sarlavha
    pastga siljib ketardi. */
+/* KALENDARGA OBUNA — sarlavha ostidagi tugma va bir qator izoh.
+   Telefonda tugma tepaga, izoh pastga tushadi. */
+.kal-obuna{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:14px 18px;margin:0 0 6px;border-radius:14px;
+  border:1px solid rgba(226,186,117,.26);background:rgba(226,186,117,.07)}
+.kal-obuna .tug{flex:none;gap:8px;background:var(--oltin);
+  border-color:var(--oltin);color:#0A1F44}
+.kal-obuna .tug:hover{background:#f0cd8a;border-color:#f0cd8a;
+  color:#0A1F44}
+.kal-obuna .tug .ik-k{width:15px;height:15px}
+.kal-obuna span{flex:1;min-width:200px;font-size:13px;line-height:1.5;
+  color:rgba(255,255,255,.6)}
+@media (max-width:560px){
+  .kal-obuna{padding:13px 15px;gap:11px}
+  .kal-obuna span{font-size:12.5px}
+}
 .kal-sar{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;
   -webkit-overflow-scrolling:touch;scrollbar-width:none}
 .kal-sar::-webkit-scrollbar{display:none}
