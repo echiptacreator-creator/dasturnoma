@@ -366,6 +366,13 @@ img{display:block;max-width:100%}
 
 .dn-manba{font-size:12px;color:rgba(255,255,255,.35);
   border-top:1px solid var(--chiziq);padding-top:12px}
+/* O'tib ketgan o'yin prevyusidagi ogohlantirish: raqamlar
+   BUGUNGI holatga ko'ra. Oltin chiziq bilan ajratiladi —
+   o'qimay o'tib ketilmasin. */
+.dn-eski{font-size:13px;line-height:1.5;color:rgba(255,255,255,.72);
+  background:rgba(226,186,117,.09);border-left:3px solid var(--oltin);
+  border-radius:0 10px 10px 0;padding:11px 14px;margin-bottom:16px}
+.dn-eski b{color:var(--oltin)}
 
 /* ============ KLUB TARIXI VA STADION ============ */
 .tx-rek-ust{display:grid;
@@ -1692,6 +1699,23 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
    yutilganini bir qarashda ayta olmasdi. */
 .oy-set{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
   gap:16px}
+/* --- KALENDAR SARALAGICHI (musobaqa bo'yicha) --------------------
+   Telefonda tugmalar yon tomonga suriladi: uchta-to'rtta musobaqa
+   nomi bitta qatorga sig'maydi va qatorga tushirilsa sarlavha
+   pastga siljib ketardi. */
+.kal-sar{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.kal-sar::-webkit-scrollbar{display:none}
+.kal-sar button{display:inline-flex;align-items:center;gap:7px;flex:none;
+  padding:9px 15px;border-radius:99px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.7);
+  font-family:"Nekst";font-weight:700;font-size:12px;cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s}
+.kal-sar button:hover{border-color:var(--oltin);color:#fff}
+.kal-sar button.faol{background:var(--oltin);border-color:var(--oltin);
+  color:#0A1F44}
+.kal-sar button img{width:16px;height:16px;object-fit:contain}
+.kal-sar button .ik-k{width:14px;height:14px}
 .oy{position:relative;display:block;color:#fff;border-radius:16px;
   overflow:hidden;background:linear-gradient(180deg,#08204F,#04143A);
   border:1px solid var(--chiziq);transition:transform .18s,
