@@ -1858,6 +1858,35 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .tbl-izoh span{display:inline-flex;align-items:center;gap:7px}
 .tbl-izoh i{width:11px;height:11px;border-radius:4px;font-style:normal}
 
+/* --- TURNIR JADVALI: SHAKL USTUNI VA TANLOVLAR -------------------
+   Operator (2026-08-29): «turnir jadval sahifasini ham chiroyli
+   qilib qoy, uy o'yinlari bo'yicha, safar o'yinlari bo'yicha
+   qilib ham ajratsa bo'ladigan qilib, keyin u21 ni tanlasa ham
+   bo'lsin».
+
+   ⚠ SHAKL — NUQTA, HARF EMAS. Besh natija besh harf bilan
+     yozilsa («GGDMG») ustun kengayib ketardi va telefonda
+     jadval yana surilardi. Rang ko'rmaydigan odam uchun har
+     nuqtada `title` bor va shakli ham farq qiladi: g'alaba
+     to'ldirilgan, durang ichi bo'sh, mag'lubiyat ingichka. */
+.jd-t .jd-sh{width:96px;text-align:center;padding-left:4px;
+  padding-right:4px}
+.jd-shakl{display:inline-flex;gap:4px;align-items:center}
+.jd-shakl i{width:9px;height:9px;border-radius:50%;font-style:normal;
+  flex:none;box-sizing:border-box}
+.jd-shakl i.g{background:#2ecc84}
+.jd-shakl i.d{background:transparent;border:2px solid rgba(255,255,255,.45)}
+.jd-shakl i.m{background:var(--qizil);transform:scale(.8)}
+/* Ikkinchi tanlov qatori tepasidagisiga yopishmasin. */
+.jd-joy{margin-top:-4px}
+.jd-sahifa .jd-nav{padding-bottom:10px}
+.jd-sahifa .jd-nav:last-of-type{padding-bottom:18px}
+@media (max-width:560px){
+  .jd-t .jd-sh{width:74px}
+  .jd-shakl{gap:3px}
+  .jd-shakl i{width:8px;height:8px}
+}
+
 /* --- FUTER ------------------------------------------------------
    ⚠ QAYTA YOZILDI (2026-08-28, operator: «footer bo'limini
      yaxshilab qoy»). Ilgari uch ustun edi va ichida faqat
