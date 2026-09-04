@@ -3166,6 +3166,11 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
  border-radius:999px;padding:3px 12px;display:inline-block;
  font-weight:700;letter-spacing:.02em}
 .orta .holat.jn-tirik .jn-puls{background:#fff}
+/* Bosh sahifa lentasidagi «Jonli» — fon och, nuqta qizil. */
+.lenta .jn-qora{background:var(--qizil,#C8102E)}
+/* Jonli paytda hero'dagi hisob VS o'rnida turadi — o'lchami
+   sana qatoriga yaqin bo'lsin, blok sakramasin. */
+.hero .orta .vs.hisob{letter-spacing:.01em}
 @keyframes jn-puls{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.jn-puls{animation:none}}
 </style>
@@ -3189,16 +3194,109 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   function q(s){ return (s==null?"":String(s))
       .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
-  /* 1) TESKARI SANOQ -> JONLI HOLAT.
-     Katakchalar o'sha joyda, o'sha shaklda qoladi; ichidagi
-     raqam almashadi. Sanoqni yurgizadigan sayt skripti bilan
-     urishmasin uchun element `data-vaqt` dan ajratiladi. */
+  /* Jonli holat yozuvi — UCHALA joyda BIR XIL ko'rinadi.
+     ⚠ Ilgari uch joyda uch xil edi (tepadagi tasma, bosh
+       sahifa, o'yin sahifasi) va operator «chalkashib ketdi»
+       dedi. Endi matn bitta funksiyadan chiqadi. */
+  function belgi(d){
+    var t = ["JONLI"];
+    if (d.daqiqa) t.push(q(d.daqiqa));
+    if (d.faza_nom) t.push(q(d.faza_nom));
+    return '<i class="jn-puls"></i>' + t.join(" &middot; ");
+  }
+
+  /* 1) TEPADAGI TASMA (.tsm.jonli) — hisob raqamlari.
+     Bu blokni saytning O'ZI chizadi; nashr paytidagi hisob
+     ichida qotib qoladi. Faqat ikkita raqam yangilanadi. */
+  function tasma(d){
+    var a = document.querySelector(".tsm.jonli");
+    if (!a) return;
+    var b = a.querySelectorAll(".v > b");
+    if (b.length >= 2){
+      b[0].textContent = d.chap_gol;
+      b[1].textContent = d.ong_gol;
+    }
+  }
+
+  /* Tasmadagi gerb rasmlari va o'yin havolasi — bosh sahifadagi
+     blokni to'ldirish uchun MANBA. Yangi rasm yo'li quriladi
+     emas: sahifada tayyori bor. */
+  function tasmaGerb(){
+    var a = document.querySelector(".tsm.jonli");
+    if (!a) return null;
+    var im = a.querySelectorAll("img");
+    return {chap: im[0] ? im[0].getAttribute("src") : "",
+            ong:  im[1] ? im[1].getAttribute("src") : "",
+            havola: a.getAttribute("href") || ""};
+  }
+
+  /* 2) BOSH SAHIFA — «Keyingi o'yin» bloki jonli o'yinga o'tadi.
+     ⚠ ILGARI XATO BOR EDI: faqat teskari sanoq almashardi va
+       blok «Andijon — Qo'qon, 10-sentabr» deb turaverib, ichida
+       Paxtakor o'yinining hisobi ko'rinardi. Operator shuni
+       ko'rsatdi. Endi butun blok jonli o'yinga o'tadi: sarlavha,
+       jamoalar, gerblar, hisob va tugma havolasi. O'yin tugashi
+       bilan sahifa qayta chiqariladi va blok o'z holiga qaytadi. */
+  function hero(d){
+    var he = document.querySelector(".hero");
+    if (!he) return false;
+    var jang = he.querySelector(".jang");
+    if (!jang) return false;
+    var g = tasmaGerb() || {chap:"", ong:"", havola:""};
+
+    var lz = he.querySelectorAll(".lenta > span");
+    if (lz[0]) lz[0].innerHTML = '<i class="jn-puls jn-qora"></i>Jonli';
+    if (lz[1]) lz[1].textContent =
+        (d.turnir || "") + (d.tur ? " \u00b7 " + d.tur : "");
+    if (lz[2]) lz[2].textContent = d.uy ? "Uy maydoni" : "Mehmonda";
+
+    var tm = jang.querySelectorAll(".tomon");
+    function tomon(el, nom, gerb, joy){
+      if (!el) return;
+      var n = el.querySelector(".nomi"); if (n) n.textContent = nom;
+      var j = el.querySelector(".joy");  if (j) j.textContent = joy;
+      var im = el.querySelector("img");
+      if (im && gerb){ im.setAttribute("src", gerb);
+                       im.style.visibility = ""; }
+    }
+    /* Mezbon doim CHAPDA — tizimdagi umumiy qoida. */
+    tomon(tm[0], d.chap, g.chap, "Uy");
+    tomon(tm[1], d.ong,  g.ong,  "Mehmon");
+
+    var o = he.querySelector(".orta");
+    if (o){
+      var v = o.querySelector(".vs") || o.querySelector(".hisob");
+      if (v){ v.textContent = d.chap_gol + " : " + d.ong_gol;
+              v.classList.remove("aniqlanmoqda");
+              v.classList.add("hisob"); }
+      var sa = o.querySelector(".sana");
+      if (sa){ sa.classList.add("holat", "jn-tirik");
+               sa.innerHTML = belgi(d); }
+      /* ⚠ `hidden` YETMAYDI: saytning CSS sida bu elementlarga
+         `display` berilgan va u `hidden` dan kuchli. Shuning
+         uchun to'g'ridan-to'g'ri `style.display`. */
+      var so = o.querySelector(".soat");
+      if (so) so.style.display = "none";
+    }
+
+    /* Teskari sanoq endi keraksiz — hisob va daqiqa yuqorida. */
+    var sn = he.querySelector(".sanoq");
+    if (sn){ sn.style.display = "none"; sn.removeAttribute("data-vaqt"); }
+
+    var tg = he.querySelector(".tugmalar a");
+    if (tg && g.havola) tg.setAttribute("href", g.havola);
+    return true;
+  }
+
+  /* 3) TESKARI SANOQ (hero'siz sahifalarda) -> JONLI HOLAT. */
   function sanoq(d){
     var el = document.querySelectorAll(".sanoq");
     for (var i = 0; i < el.length; i++){
       var s = el[i];
+      if (s.closest && s.closest(".hero")) continue;
       s.removeAttribute("data-vaqt");
       s.hidden = false;
+      s.style.display = "";
       s.innerHTML =
         '<div class="jn-tirik"><b><i class="jn-puls"></i>' +
         (d.jonli ? "JONLI" : "TUGADI") + '</b><span>hozir</span></div>' +
@@ -3209,7 +3307,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     }
   }
 
-  /* 2) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -3243,7 +3341,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     }
   }
 
-  /* 3) O'YIN SAHIFASI — hisob va holat qatori.
+  /* 5) O'YIN SAHIFASI — hisob va holat qatori.
      Statik nusxa o'yin PAYTIDA yozilgan bo'lsa, sahifada
      «Yakunlandi» va o'sha lahzadagi hisob qotib qoladi. Shuning
      uchun jonli o'yinning O'Z sahifasida bu ikkisi almashadi.
@@ -3274,15 +3372,15 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     if (d.tugadi){ s.classList.remove("jn-tirik");
                    s.textContent = "Yakunlandi"; return; }
     s.classList.add("jn-tirik");
-    var qism = ["JONLI"];
-    if (d.daqiqa) qism.push(q(d.daqiqa));
-    if (d.faza_nom) qism.push(q(d.faza_nom));
-    s.innerHTML = '<i class="jn-puls"></i>' + qism.join(" &middot; ");
+    s.innerHTML = belgi(d);
   }
 
   function chiz(d){
     if (!d || (!d.jonli && !d.tugadi)) return;
-    try { sanoq(d); } catch(e){}
+    try { tasma(d); } catch(e){}
+    var h0 = false;
+    try { h0 = hero(d); } catch(e){}
+    if (!h0){ try { sanoq(d); } catch(e){} }
     try { sharh(d); } catch(e){}
     try { oyin(d); } catch(e){}
   }
