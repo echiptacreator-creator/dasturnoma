@@ -3523,9 +3523,17 @@ document.addEventListener('click',function(ev){
   }
   function oyin(d){
     if (!d.mid || !shusahifami(d.mid)) return;
-    var h = document.querySelector(".jang .orta .hisob") ||
-            document.querySelector(".orta .hisob");
-    if (h) h.textContent = d.chap_gol + " : " + d.ong_gol;
+    /* Hisob katakchasi ikki xil bo'ladi: `.hisob` (ma'lum) va
+       `.vs.aniqlanmoqda` («? : ?» — o'yin hali tugamagani
+       uchun sayt hisobni yashiradi). Jonli paytda ikkalasiga
+       ham haqiqiy hisob yoziladi. */
+    var h = document.querySelector(".orta .hisob") ||
+            document.querySelector(".orta .vs");
+    if (h){
+      h.textContent = d.chap_gol + " : " + d.ong_gol;
+      h.classList.remove("aniqlanmoqda");
+      h.classList.add("hisob");
+    }
     var s = document.querySelector(".jang .orta .holat") ||
             document.querySelector(".orta .holat");
     if (!s) return;
