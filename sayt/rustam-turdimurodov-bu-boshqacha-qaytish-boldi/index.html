@@ -3014,7 +3014,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
        qoladi (menyu yashiringanda ham ko'rinadi). -->
   <a class="qd-tug" href="../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a>
 </div></header>
-<div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../oyin/2"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../gerb/Xorazm.png" alt="Xorazm" title="Xorazm" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Xorazm</span></span></span></a><a class="tsm" href="../oyin/3"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Paxtakor.png" alt="Paxtakor" title="Paxtakor" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Paxtakor</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>4-sentabr, 2026 · 20:15</em></span></a></div></div>
+<div class="tasma bor-jonli"><div class="q tasma-ich"><a class="tsm jonli" href="../oyin/3"><span class="k"><i class="nuqta"></i>Jonli</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Paxtakor.png" alt="Paxtakor" title="Paxtakor" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Paxtakor</span></span><b>2</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span></span></a><a class="tsm" href="../oyin/2"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>0</b><span class="t ong"><img class="tsm-g" src="../gerb/Xorazm.png" alt="Xorazm" title="Xorazm" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Xorazm</span></span></span></a><a class="tsm" href="../oyin/4"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../gerb/Qo_qon_1912.png" alt="Qo‘qon-1912" title="Qo‘qon-1912" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Qo‘qon-1912</span></span> <em>10-sentabr, 2026 · 19:00</em></span></a></div></div>
 <article>
 <div class="tur">Intervyu · Rustam Turdimurodov</div>
 <h1>Rustam Turdimurodov: «Bu boshqacha qaytish bo&#x27;ldi»</h1>
@@ -3118,4 +3118,105 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   setInterval(chiz, 1000);
 })();
 </script>
+
+<style id="jn-uslub">
+/* Sanoq katakchasi jonli holatda — o'sha shakl, faqat qizil. */
+.sanoq div.jn-tirik{background:var(--qizil,#C8102E);border-color:transparent}
+.sanoq div.jn-tirik b,.sanoq div.jn-tirik span{color:#fff}
+.jn-puls{display:inline-block;width:7px;height:7px;border-radius:50%;
+ background:#fff;margin-right:6px;vertical-align:middle;
+ animation:jn-puls 1.15s infinite}
+@keyframes jn-puls{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.jn-puls{animation:none}}
+</style>
+<script>
+(function(){
+  /* ⚠ MANZIL: STATIK NUSXA BOSHQA DOMENDA TURADI.
+     Sayt ikki joyda yashaydi: shu serverda (`/sayt`) va
+     GitHub Pages'dagi statik nusxada (andijonfk.uz). Nisbiy
+     manzil («/api/sayt») faqat birinchisida ishlaydi — statik
+     nusxada u andijonfk.uz/api/sayt ga borib 404 olardi va
+     jonli rejim JIMGINA ishlamasdi. Aynan shu bo'ldi:
+     kompyuterda ishladi, telefonda (andijonfk.uz) yo'q.
+     Endi manzil sahifa qayerda ochilganiga qarab tanlanadi. */
+  var ICHKI = "/api/sayt", TASHQI = "https://api-andijon.maladesbola.uz/api/sayt";
+  var h = location.hostname || "";
+  var ozimizda = (h === "" || h === "localhost" || h === "127.0.0.1" ||
+                  h.indexOf("maladesbola.uz") >= 0 ||
+                  h.indexOf("trycloudflare") >= 0);
+  var API = (ozimizda && ICHKI) ? ICHKI : (TASHQI || ICHKI);
+  var YANGI = 15 * 1000;
+  function q(s){ return (s==null?"":String(s))
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  /* 1) TESKARI SANOQ -> JONLI HOLAT.
+     Katakchalar o'sha joyda, o'sha shaklda qoladi; ichidagi
+     raqam almashadi. Sanoqni yurgizadigan sayt skripti bilan
+     urishmasin uchun element `data-vaqt` dan ajratiladi. */
+  function sanoq(d){
+    var el = document.querySelectorAll(".sanoq");
+    for (var i = 0; i < el.length; i++){
+      var s = el[i];
+      s.removeAttribute("data-vaqt");
+      s.hidden = false;
+      s.innerHTML =
+        '<div class="jn-tirik"><b><i class="jn-puls"></i>' +
+        (d.jonli ? "JONLI" : "TUGADI") + '</b><span>hozir</span></div>' +
+        '<div class="jn-tirik"><b>' + q(d.daqiqa) + '</b><span>' +
+        q(d.faza_nom || "daqiqa") + '</span></div>' +
+        '<div class="jn-tirik"><b>' + d.chap_gol + ' : ' + d.ong_gol +
+        '</b><span>' + q(d.chap) + ' — ' + q(d.ong) + '</span></div>';
+    }
+  }
+
+  /* 2) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+     Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
+     .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
+     farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
+     ular sahifa yasalganda serverdan keladi va keyingi
+     yangilanishda o'z joyiga tushadi. */
+  function sharh(d){
+    var ram = document.querySelector(".shrh");
+    if (!ram || !d.voqealar || !d.voqealar.length) return;
+    var bor = {};
+    var q0 = ram.querySelectorAll(".shrh-q");
+    for (var i = 0; i < q0.length; i++){
+      var dq = q0[i].querySelector(".shrh-d");
+      var mq = q0[i].querySelector(".shrh-t");
+      if (dq && mq) bor[(dq.textContent||"").trim() + "|" +
+                        (mq.textContent||"").trim().slice(0,40)] = 1;
+    }
+    /* Eng eskisidan boshlab qo'shamiz — tartib buzilmasin. */
+    var yangi = d.voqealar.slice().reverse();
+    for (var j = 0; j < yangi.length; j++){
+      var v = yangi[j];
+      var kalit = (v.daqiqa||"").trim() + "|" +
+                  (v.matn||"").trim().slice(0,40);
+      if (bor[kalit]) continue;
+      var el = document.createElement("div");
+      el.className = "shrh-q " + q(v.tur||"text") + " jn-yangi";
+      el.innerHTML = '<div class="shrh-d">' + (q(v.daqiqa)||"&middot;") +
+        '</div><div class="shrh-m"><div class="shrh-t"><p>' +
+        q(v.matn) + '</p></div></div>';
+      ram.appendChild(el);
+      bor[kalit] = 1;
+    }
+  }
+
+  function chiz(d){
+    if (!d || (!d.jonli && !d.tugadi)) return;
+    try { sanoq(d); } catch(e){}
+    try { sharh(d); } catch(e){}
+  }
+  function ol(){
+    fetch(API + "/jonli", {cache:"no-store"})
+      .then(function(r){ return r.json(); })
+      .then(chiz)
+      .catch(function(){ /* tarmoq uzilsa sahifa o'z holida qoladi */ });
+  }
+  ol();
+  setInterval(ol, YANGI);
+})();
+</script>
+
 </body></html>
