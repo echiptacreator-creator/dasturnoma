@@ -29,12 +29,18 @@
   font-weight:700;font-display:swap}
 @font-face{font-family:"Coolvetica";src:url("/shrift/Coolvetica-Regular.otf");
   font-display:swap}
+/* MATN SHRIFTI — INTER (2026-09-25, operator: «mayda yozuvlardagi
+   Coolvetica o'qilmayapti»). Coolvetica faqat katta raqamlar uchun
+   qoladi (`.hisob`, sanoq); butun matn Inter'da. */
+@font-face{font-family:"Inter";src:url("/shrift/Inter.ttf");
+  font-weight:100 900;font-display:swap}
 :root{--kok:#021B53;--fon:#03102E;--qizil:#EB1F28;--oltin:#E2BA75;
   --chiziq:rgba(226,186,117,.20)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--fon);color:#fff;
-  font-family:"Coolvetica",-apple-system,BlinkMacSystemFont,"Segoe UI",
-  Arial,sans-serif;font-size:17px;line-height:1.6}
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",
+  Arial,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:var(--oltin);text-decoration:none}
 img{display:block;max-width:100%}
 .q{max-width:1240px;margin:0 auto;padding:0 22px}
@@ -60,10 +66,476 @@ img{display:block;max-width:100%}
     linear-gradient(180deg,#0A2260 0%,var(--kok) 55%,#031539 100%);
   border-bottom:1px solid var(--chiziq)}
 .hero .q{position:relative;padding-top:46px;padding-bottom:40px}
+/* --- HERO FONI: Higgsfield stadion kadri (2026-09-25) -------------
+   Rasm eng ostda, sekin «nafas oladi» (Ken Burns), ustida to'q
+   parda — matn va gerblar o'qilaveradi. `prefers-reduced-motion`
+   da harakat o'chadi. */
+.hero .hero-fon{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 35%;opacity:.62;
+  filter:saturate(1.1);
+  transform:scale(1.04);animation:heroNafas 28s ease-in-out infinite alternate;
+  will-change:transform}
+/* Parda: matn turadigan markaz va pastki qism to'qroq, tribunalar
+   ko'rinib turadi. */
+.hero .hero-parda{position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(3,21,57,.55) 0%,rgba(3,21,57,.42) 40%,
+                    rgba(3,21,57,.96) 100%),
+    radial-gradient(48% 60% at 50% 50%,rgba(2,27,83,.45),rgba(2,27,83,0) 100%)}
+.hero.bor-fon .yoy{opacity:.22}
+/* --- SKROLL-FILM (2026-09-25) --------------------------------------
+   `.hero-kino` baland (260vh), ichidagi `.hero` yopishib turadi; JS
+   skroll darajasini `--p` ga yozadi va videoning `currentTime` ini
+   suradi. Video tayyor bo'lguncha poster ko'rinadi. */
+.hero-kino{position:relative}
+.hero-kino[data-kino] {height:260vh}
+.hero-kino[data-kino] .hero{position:sticky;top:0;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center}
+.hero-kino[data-kino] .hero .q{padding-top:88px;padding-bottom:70px}
+.hero .hero-kino-v{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 30%;opacity:.72;
+  filter:saturate(1.05)}
+.hero.bor-kino .yoy{opacity:.16}
+.hero.bor-kino .tomon .gerbjoy{
+  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.16),
+             rgba(255,255,255,.03) 70%);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.2)}
+.hero.bor-kino .sanoq > div,.hero.bor-kino .past > span{
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  background:rgba(3,21,57,.45)}
+/* Skroll boblari: hero matni film o'ynagan sari so'nadi (0→0.3),
+   o'rniga raqib bilan ma'lumot boblari birma-bir chiqadi.
+   Har bob `--a..--b` oralig'ida ko'rinadi. */
+.hero-kino[data-kino] .hero .q{
+  opacity:clamp(0,calc(1 - var(--p,0) * 3.4),1);
+  transform:translateY(calc(var(--p,0) * -60px))}
+.hero-kino.kino-ketdi .hero .q{pointer-events:none}
+.kino-boblar{position:absolute;inset:0;pointer-events:none}
+.kino-bob{position:absolute;left:50%;top:50%;width:min(860px,calc(100% - 44px));
+  transform:translate(-50%,-50%) translateY(calc((1 - var(--k,0)) * 24px));
+  --k:clamp(0,calc((var(--p,0) - var(--a)) * 10),1);
+  --y:clamp(0,calc((var(--b) - var(--p,0)) * 10),1);
+  opacity:calc(var(--k) * var(--y));pointer-events:none}
+.kino-bob-ich{background:rgba(3,21,57,.80);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);
+  border-radius:20px;padding:22px 26px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.kino-bob-ich .fmk{background:transparent;border:0;padding:0;margin:0}
+.kino-bob-ich .fmk .qtr,.kino-bob-ich .fmk .qtr .joy{font-size:15px}
+.kino-bob-s{display:flex;align-items:baseline;gap:14px;margin:0 0 12px 6px}
+.kino-bob-s b{font-family:"Nekst";font-weight:900;font-size:clamp(26px,3.4vw,44px);
+  line-height:1;letter-spacing:-.01em;color:#fff;text-transform:uppercase}
+.kino-bob-s i{font-family:"Nekst";font-style:normal;font-weight:700;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--oltin)}
+.kino-bob .dn-frm{margin:0}
+/* «OLDINDA» sahnasi: --p 0.30..0.55 da paydo bo'ladi, oxirigacha qoladi. */
+.yz{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;max-width:1180px;margin:0 auto;padding:96px 24px 4vh;
+  --k:clamp(0,calc((var(--p,0) - 0.30) * 4),1);opacity:var(--k);pointer-events:none}
+.hero-kino.kino-ketdi .yz{pointer-events:auto}
+.yz-ust{margin-bottom:26px;transform:translateY(calc((1 - var(--k)) * 30px))}
+.yz-ust i{display:block;font-style:normal;font-family:"Nekst";font-weight:700;font-size:12px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--oltin);margin-bottom:8px}
+.yz-ust b{display:block;font-family:"Nekst";font-weight:900;font-size:clamp(36px,5vw,72px);
+  line-height:1;text-transform:uppercase;color:#fff;letter-spacing:-.01em;
+  text-shadow:0 20px 60px rgba(0,0,0,.6)}
+.yz-kartalar{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%}
+.yz-karta{position:relative;padding:22px 20px 20px;border-radius:22px;text-align:center;
+  background:rgba(3,21,57,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 60px rgba(0,0,0,.45);
+  transform:translateY(calc((1 - var(--k)) * (40px + var(--i,0) * 24px)))}
+.yz-karta.kubok{border-color:rgba(226,186,117,.55);
+  background:linear-gradient(180deg,rgba(60,42,10,.55),rgba(3,21,57,.7))}
+.yz-karta.kubok:before{content:"Kubok";position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  padding:4px 12px;border-radius:999px;background:var(--oltin);color:#1b1408;font-family:"Nekst";
+  font-weight:900;font-size:10px;letter-spacing:.22em;text-transform:uppercase}
+.yz-sana{display:flex;align-items:baseline;justify-content:center;gap:8px}
+.yz-sana b{font-family:"Nekst";font-weight:900;font-size:clamp(44px,5vw,72px);line-height:1;color:#fff}
+.yz-sana span{font-family:"Nekst";font-weight:700;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oltin)}
+.yz-mus{margin-top:6px;font-size:12.5px;letter-spacing:.06em;color:rgba(255,255,255,.65)}
+.yz-gerblar{display:flex;align-items:center;justify-content:center;gap:16px;margin:16px 0 10px}
+.yz-gerblar img{width:clamp(56px,6vw,84px);height:clamp(56px,6vw,84px);object-fit:contain;
+  filter:drop-shadow(0 12px 24px rgba(0,0,0,.6))}
+.yz-gerblar em{font-style:normal;font-family:"Nekst";font-weight:900;font-size:18px;
+  color:rgba(255,255,255,.4);text-transform:uppercase}
+.yz-raqib{font-family:"Nekst";font-weight:800;font-size:15px;text-transform:uppercase;
+  letter-spacing:.04em;color:#fff}
+.yz-joy{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;
+  font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.55)}
+.yz-karta.uy .yz-joy{color:var(--oltin)}
+.yz-tug{display:inline-block;margin-top:16px;padding:11px 20px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);font-family:"Nekst";font-weight:800;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  background:rgba(3,21,57,.45)}
+.yz-tug:hover{background:var(--qizil);border-color:var(--qizil)}
+.yz-tug-q{background:var(--qizil);border-color:var(--qizil)}
+.yz-hammasi{margin-top:22px;font-family:"Nekst";font-weight:700;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.75);transform:translateY(calc((1 - var(--k)) * 20px))}
+.yz-hammasi:hover{color:var(--oltin)}
+@media(max-width:900px){
+  .yz-kartalar{grid-template-columns:1fr 1fr}
+  .yz-karta:nth-child(3){grid-column:1/3}
+}
+@media(max-width:720px){
+  .hero-kino[data-kino]{height:200vh}
+  .hero-kino[data-kino] .hero .q{padding-top:70px;padding-bottom:110px}
+  .yz{padding:76px 12px calc(88px + env(safe-area-inset-bottom,0px));justify-content:flex-start;overflow:hidden}
+  .yz-ust{margin-bottom:12px}.yz-ust b{font-size:26px}.yz-ust i{font-size:10px;margin-bottom:4px}
+  .yz-kartalar{grid-template-columns:1fr;gap:8px}
+  .yz-karta,.yz-karta:nth-child(3){grid-column:auto;padding:10px 12px;border-radius:14px;
+    display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"sana gerb tug" "sana mus tug" "sana raqib tug" "sana joy tug";
+    align-items:center;column-gap:12px;text-align:left}
+  .yz-karta.kubok:before{left:auto;right:10px;transform:none;top:-9px}
+  .yz-sana{grid-area:sana;flex-direction:column;gap:0;align-items:center;min-width:54px}
+  .yz-sana b{font-size:34px}.yz-sana span{font-size:10px}
+  .yz-gerblar{grid-area:gerb;justify-content:flex-start;margin:0;gap:8px}
+  .yz-gerblar img{width:30px;height:30px}.yz-gerblar em{font-size:12px}
+  .yz-mus{grid-area:mus;margin-top:2px;font-size:11px}
+  .yz-raqib{grid-area:raqib;font-size:13px}
+  .yz-joy{grid-area:joy;justify-content:flex-start;margin-top:2px;font-size:9.5px}
+  .yz-tug{grid-area:tug;margin-top:0;padding:9px 12px;font-size:10px;letter-spacing:.08em}
+  .yz-hammasi{margin-top:12px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-kino[data-kino]{height:auto}
+  .hero-kino[data-kino] .hero{position:relative;min-height:0}
+  .hero-kino[data-kino] .hero .q{opacity:1;transform:none}
+  .kino-boblar{display:none}
+}
+.tr-av{flex:none;width:44px;height:44px;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(255,255,255,.35);background:#071a45;margin:0 4px}
+.tr-av img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;display:block}
+/* --- MAYDONDA — oxirgi o'yin tarkibi (2026-09-25) --- */
+.md{margin:18px 0 34px}
+.md-bosh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.md-bosh i{display:block;font-style:normal;font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--oltin);margin-bottom:4px}
+.md-bosh b{font-family:"Nekst";font-weight:900;font-size:clamp(22px,2.6vw,34px);text-transform:uppercase;color:#fff}
+.md-tablo{display:flex;align-items:center;gap:12px;padding:8px 14px;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid var(--chiziq)}
+.md-tablo span{display:flex;align-items:center;gap:8px;font-family:"Nekst";font-weight:800;font-size:13px;
+  text-transform:uppercase;color:#fff}
+.md-tablo span img{width:30px;height:30px;object-fit:contain}
+.md-tablo > b{font-family:"Nekst";font-weight:900;font-size:26px;color:#fff;line-height:1}
+.md-tablo > b u{text-decoration:none;color:rgba(255,255,255,.4);margin:0 3px}
+.md-sx{margin-left:6px;padding:5px 12px;border-radius:999px;background:rgba(226,186,117,.14);
+  border:1px solid rgba(226,186,117,.4);color:var(--oltin);font-family:"Nekst";font-weight:700;font-size:12px;
+  font-style:normal;letter-spacing:.1em}
+/* Sahna: stadion foni + perspektiv maydon + tekis o'yinchilar qatlami */
+.md-sahna{position:relative;width:100%;aspect-ratio:16/11;border-radius:24px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 80px rgba(0,0,0,.55);background:#04122a;
+  perspective:1100px}
+.md-fon{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:50% 30%;
+  filter:blur(2px) brightness(.62) saturate(.85)}
+.md-nur{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(255,255,255,.16),transparent 70%),
+    linear-gradient(180deg,rgba(4,18,42,.1),rgba(4,18,42,.55) 100%)}
+.md-maydon{position:absolute;left:2%;right:2%;top:0;bottom:0;transform-origin:50% 100%;
+  transform:rotateX(20deg) scale(1.06);border-radius:6px 6px 0 0;
+  background:
+    repeating-linear-gradient(180deg,rgba(255,255,255,.05) 0 10%,rgba(255,255,255,0) 10% 20%),
+    radial-gradient(80% 60% at 50% 100%,rgba(60,170,90,.5),transparent 70%),
+    linear-gradient(180deg,#0d4a34,#0a3a28);
+  box-shadow:0 -20px 60px rgba(0,0,0,.4),inset 0 0 0 2px rgba(255,255,255,.18)}
+.md-chiziq{position:absolute;inset:6% 5%;border:2px solid rgba(255,255,255,.35);pointer-events:none}
+.md-chiziq:before{content:"";position:absolute;left:50%;top:50%;width:26%;aspect-ratio:1;transform:translate(-50%,-50%);
+  border:2px solid rgba(255,255,255,.35);border-radius:50%}
+.md-chiziq:after{content:"";position:absolute;left:28%;right:28%;bottom:-2px;height:24%;
+  border:2px solid rgba(255,255,255,.35);border-bottom:0}
+.md-qatlam{position:absolute;inset:0}
+.md-f{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);text-align:center;
+  text-decoration:none;color:#fff;width:120px;
+  animation:mdKel .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 60ms)}
+@keyframes mdKel{from{opacity:0;transform:translate(-50%,-30%)}to{opacity:1;transform:translate(-50%,-50%)}}
+.md-av{position:relative;display:block;width:clamp(52px,7.4vw,90px);height:clamp(52px,7.4vw,90px);margin:0 auto;
+  border-radius:50%;background:radial-gradient(circle at 50% 30%,#1a3f8a,#071a45);
+  border:3px solid rgba(255,255,255,.85);box-shadow:0 16px 34px rgba(0,0,0,.6),0 0 0 6px rgba(0,0,0,.18);
+  transition:transform .35s,border-color .35s,box-shadow .35s}
+.md-f.gk .md-av{border-color:var(--oltin)}
+.md-av img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 8%;display:block}
+.md-av.yoq img{display:none}
+.md-av > b{position:absolute;right:-8px;bottom:-4px;min-width:26px;height:26px;padding:0 7px;border-radius:13px;
+  background:var(--qizil);color:#fff;font-family:"Nekst";font-weight:900;font-size:12.5px;line-height:26px;
+  border:2px solid #04122a}
+.md-belgi{position:absolute;left:-6px;top:-6px;display:flex;flex-direction:column;gap:3px}
+.md-belgi i{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;
+  background:#fff;color:#04122a;border:2px solid #04122a;font-style:normal;font-family:"Nekst";font-weight:900;font-size:11px}
+.md-belgi i .ik{width:12px;height:12px}
+.md-belgi .md-gol.avto{background:#ff8a8a}
+.md-belgi .md-kart{width:13px;height:18px;border-radius:3px;background:#ffd23f;margin-left:3px}
+.md-belgi .md-kart.qizil{background:#e8232c}
+.md-belgi .md-chiq{background:#ffb4b4;color:#8a1a1a}
+.md-f em{display:block;margin-top:7px;font-style:normal;font-family:"Nekst";font-weight:900;font-size:12.5px;
+  letter-spacing:.04em;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.9);white-space:nowrap}
+.md-f small{display:block;font-family:"Inter";font-size:10.5px;color:rgba(255,255,255,.7);
+  text-shadow:0 2px 8px rgba(0,0,0,.9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.md-f:hover .md-av{transform:scale(1.12);border-color:var(--oltin);box-shadow:0 20px 40px rgba(0,0,0,.7),0 0 0 8px rgba(226,186,117,.25)}
+/* Zaxira qatori */
+.md-zaxira{margin-top:14px;padding:14px 16px;border-radius:18px;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.035)}
+.md-zaxira > i{display:block;font-style:normal;font-family:"Nekst";font-weight:700;font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--oltin);margin-bottom:10px}
+.md-zl{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.md-zl::-webkit-scrollbar{display:none}
+.md-z{flex:none;width:72px;text-align:center;text-decoration:none;color:#fff}
+.md-z .md-av{width:48px;height:48px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.md-z .md-av > b{min-width:20px;height:20px;font-size:10px;line-height:20px;right:-6px;bottom:-3px}
+.md-z em{display:block;margin-top:6px;font-style:normal;font-family:"Nekst";font-weight:700;font-size:10.5px;
+  text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:rgba(255,255,255,.8)}
+.md .bs-hav{display:flex;width:max-content;margin:16px auto 0}
+@media(max-width:720px){
+  .md-sahna{aspect-ratio:3/4.4;border-radius:18px}.md-maydon{transform:rotateX(20deg) scale(1.06)}
+  .md-f{width:84px}.md-av{width:54px;height:54px;border-width:2px}
+  .md-av > b{font-size:10px;height:20px;line-height:20px;min-width:20px;right:-5px}
+  .md-belgi i{width:16px;height:16px}.md-belgi .md-kart{width:10px;height:14px}
+  .md-f em{font-size:10px;margin-top:5px}.md-f small{display:none}
+  .md-bosh b{font-size:20px}.md-tablo{gap:8px;padding:6px 10px}.md-tablo > b{font-size:20px}
+  .md-tablo span{font-size:11px}.md-tablo span img{width:22px;height:22px}.md-sx{font-size:10px;padding:4px 8px}
+}
+/* --- KUBOK + MAVSUMIY KARTA (2026-09-25) --- */
+.kw-blok{margin-top:54px}
+.kw-ich{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+.kw{position:relative;display:block;min-height:340px;border-radius:24px;overflow:hidden;
+  border:1px solid var(--chiziq);color:#fff;text-decoration:none;
+  box-shadow:0 30px 60px rgba(0,0,0,.4);transform-style:preserve-3d}
+.kw-kubok{background:#000}
+.kw-kubok video{position:absolute;right:-6%;top:0;height:100%;width:auto;object-fit:cover;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 35%);mask-image:linear-gradient(90deg,transparent 0,#000 35%);
+  transform:scale(1.02);transition:transform 1.4s ease}
+.kw-kubok:hover video{transform:scale(1.08)}
+.kw-parda{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,0) 80%)}
+.kw-t{position:absolute;left:30px;bottom:28px;right:30px;z-index:2}
+.kw-t i{display:block;font-style:normal;font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--oltin);margin-bottom:8px}
+.kw-t b{display:block;font-family:"Nekst";font-weight:900;font-size:clamp(30px,3.4vw,48px);line-height:.95;
+  text-transform:uppercase;letter-spacing:-.01em}
+.kw-kubok .kw-t b{background:linear-gradient(180deg,#fff2c9,#e2ba75 55%,#b98a3c);-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.kw-t span{display:block;margin-top:10px;font-size:14px;color:rgba(255,255,255,.78)}
+.kw-t em{display:inline-block;margin-top:14px;font-style:normal;font-family:"Nekst";font-weight:800;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--oltin);padding-bottom:3px;
+  transition:color .3s}
+.kw-kubok:hover .kw-t em{color:var(--oltin)}
+.kw-mavsum{background:radial-gradient(70% 100% at 100% 50%,rgba(235,31,40,.28),transparent 70%),
+  linear-gradient(160deg,#0a2a63,#04143a)}
+.kw-mavsum .kw-t{right:46%;bottom:auto;top:50%;transform:translateY(-50%)}
+.kw-tug{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.kw-chek{position:absolute;right:-8px;top:50%;width:48%;transform:translateY(-50%) rotate(6deg) translateZ(40px);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.kw-mavsum:hover .kw-chek{transform:translateY(-52%) rotate(2deg) translateZ(60px) scale(1.04)}
+.kw-chek img{display:block;width:100%;height:auto;border-radius:14px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}
+.kw-yalt{position:absolute;inset:0;border-radius:14px;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.28) 48%,rgba(255,255,255,.05) 52%,transparent 70%);
+  background-size:250% 100%;background-position:120% 0;transition:background-position 1.1s ease}
+.kw-mavsum:hover .kw-yalt{background-position:-40% 0}
+@media(max-width:900px){.kw-ich{grid-template-columns:1fr}.kw{min-height:280px}}
+@media(max-width:720px){
+  .kw-blok{margin-top:34px}.kw{min-height:250px}.kw-t{left:18px;right:18px;bottom:18px}
+  .kw-kubok video{right:-20%}
+  .kw-mavsum{min-height:420px}.kw-mavsum .kw-t{right:18px;top:auto;bottom:18px;transform:none}
+  .kw-chek{right:auto;left:50%;top:20px;width:58%;transform:translateX(-50%) rotate(-4deg)}
+  .kw-mavsum:hover .kw-chek{transform:translateX(-50%) rotate(-4deg)}
+}
+/* --- GERB EVOLYUTSIYASI (2026-09-25) --- */
+.tx-gm{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;margin:18px 0 22px;
+  padding:26px;border-radius:22px;border:1px solid var(--chiziq);
+  background:radial-gradient(60% 90% at 30% 50%,rgba(226,186,117,.12),transparent 70%),
+    linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01))}
+.tx-gm-sahna{position:relative;height:min(46vw,300px)}
+.tx-gm-sahna img{position:absolute;left:50%;top:50%;height:100%;width:auto;max-width:100%;
+  object-fit:contain;transform:translate(-50%,-50%) scale(.92);opacity:0;
+  transition:opacity .9s ease,transform 1.2s cubic-bezier(.2,.8,.2,1);
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+.tx-gm-sahna img.faol{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.tx-gm-yil b{display:block;font-family:"Nekst";font-weight:900;font-size:clamp(64px,8vw,120px);line-height:.9;
+  color:#fff;letter-spacing:-.03em}
+.tx-gm-yil span{display:block;margin-top:6px;font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--oltin)}
+.tx-gm-yillar{grid-column:1/3;display:flex;flex-wrap:wrap;gap:6px}
+.tx-gm-yillar button{padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+  background:transparent;color:rgba(255,255,255,.6);font-family:"Nekst";font-weight:700;font-size:12px;
+  letter-spacing:.1em;cursor:pointer;transition:all .3s}
+.tx-gm-yillar button.faol{background:var(--oltin);border-color:var(--oltin);color:#1b1408}
+@media(max-width:720px){.tx-gm{grid-template-columns:1fr;padding:18px;text-align:center}
+  .tx-gm-sahna{height:44vw}.tx-gm-yillar{grid-column:auto;justify-content:center}}
+/* --- O'RINLAR GRAFIGI (2026-09-25) --- */
+.tx-grf{margin:6px 0 18px;padding:16px 12px 8px;border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  border:1px solid var(--chiziq)}
+.tx-grf svg{display:block;width:100%;height:auto;overflow:visible}
+.tx-grf-t{stroke:rgba(255,255,255,.08);stroke-width:1}
+.tx-grf-y,.tx-grf-x{font-family:"Nekst";font-weight:700;font-size:11px;fill:rgba(255,255,255,.45);
+  letter-spacing:.06em}
+.tx-grf-y{text-anchor:end}.tx-grf-x{text-anchor:middle}
+.tx-grf-chiziq{fill:none;stroke:var(--oltin);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:2400;stroke-dashoffset:2400;transition:stroke-dashoffset 3.2s cubic-bezier(.3,.6,.2,1)}
+.tx-grf-soya{fill:none;stroke:rgba(226,186,117,.25);stroke-width:10;stroke-linejoin:round;stroke-linecap:round;
+  filter:blur(6px);stroke-dasharray:2400;stroke-dashoffset:2400;transition:stroke-dashoffset 3.2s cubic-bezier(.3,.6,.2,1)}
+.tx-grf.chiz .tx-grf-chiziq,.tx-grf.chiz .tx-grf-soya{stroke-dashoffset:0}
+.tx-grf-n{fill:#fff;opacity:0;transition:opacity .6s ease 2.4s}
+.tx-grf.chiz .tx-grf-n{opacity:1}
+.tx-grf-n.eng{fill:var(--oltin);stroke:rgba(226,186,117,.35);stroke-width:8}
+.tx-grf-eng{font-family:"Nekst";font-weight:900;font-size:14px;fill:var(--oltin);text-anchor:middle;
+  opacity:0;transition:opacity .6s ease 2.8s}
+.tx-grf.chiz .tx-grf-eng{opacity:1}
+@media(max-width:720px){.tx-grf{padding:10px 6px 4px}.tx-grf-y,.tx-grf-x{font-size:15px}.tx-grf-eng{font-size:18px}}
+/* --- TARIX KINO-HIKOYASI (2026-09-25) --------------------------------
+   `.tx-kino` balandligi n*100vh; `.tx-kino-sahna` yopishib turadi;
+   `.tx-kino-b` bosqichlari (har biri 100vh) IntersectionObserver
+   bilan faol davrni belgilaydi. Davr almashuvi - yumshoq krossfeyd. */
+.tx-kino{position:relative;width:100vw;margin-left:calc(50% - 50vw);
+  height:calc(var(--n,11) * 100vh);background:#02091f}
+.tx-kino-sahna{position:sticky;top:0;height:100vh;overflow:hidden}
+.tx-kino-b{position:absolute;left:0;width:100%;height:100vh;pointer-events:none}
+.tx-kd{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;
+  will-change:opacity}
+.tx-kd.faol{opacity:1;z-index:2}
+/* Fon: xira, to'q nusxa (ekranni to'ldiradi) */
+.tx-kd-fonx{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;
+  filter:blur(26px) brightness(.38) saturate(.6);transform:scale(1.04);transition:transform 9s linear}
+.tx-kd.faol .tx-kd-fonx{transform:scale(1.14)}
+/* Ramka: surat butunligicha (contain), eski fotoqog'oz hoshiyasi */
+.tx-kd-ramka{position:absolute;left:50%;top:calc(50% - 34px);transform:translate(-50%,-50%) translateY(24px) scale(.98);
+  width:min(78vw,calc((100vh - 300px) * var(--r,1.42)));aspect-ratio:var(--r,1.42);height:auto;
+  padding:10px;background:#f3ecd9;border-radius:4px;
+  box-shadow:0 40px 90px rgba(0,0,0,.65),inset 0 0 0 1px rgba(0,0,0,.08);
+  opacity:0;transition:opacity 1s ease .1s,transform 1.2s cubic-bezier(.2,.8,.2,1) .1s;z-index:2}
+.tx-kd.faol .tx-kd-ramka{opacity:1;transform:translate(-50%,-50%)}
+.tx-kd-ramka video,.tx-kd-ramka img{display:block;width:100%;height:100%;object-fit:cover;
+  background:#0a0a0a;filter:contrast(1.05) sepia(.18) saturate(.9)}
+/* Film donadorligi (SVG turbulence, yengil) + vinyet */
+.tx-kd-don{position:absolute;inset:10px;pointer-events:none;mix-blend-mode:overlay;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  box-shadow:inset 0 0 80px rgba(0,0,0,.55)}
+.tx-kd-muhr{position:absolute;right:18px;bottom:-14px;transform:rotate(-4deg);
+  font-family:"Nekst";font-weight:900;font-size:13px;letter-spacing:.2em;color:#7a1e1e;
+  border:2px solid #7a1e1e;border-radius:4px;padding:3px 8px;background:rgba(243,236,217,.9)}
+.tx-kd video.tx-kd-kv{position:absolute}
+.tx-kd-parda{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,9,31,.55) 0%,rgba(2,9,31,.05) 35%,
+    rgba(2,9,31,.25) 65%,rgba(2,9,31,.97) 100%)}
+.tx-kd-t{position:absolute;left:max(24px,calc(50% - 600px));right:24px;
+  bottom:clamp(28px,5vh,56px);z-index:3;display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;
+  transform:translateY(30px);opacity:0;transition:transform 1s ease .25s,opacity 1s ease .25s}
+.tx-kd.faol .tx-kd-t{transform:none;opacity:1}
+.tx-kd-yil{font-family:"Nekst";font-weight:900;font-size:clamp(64px,8vw,110px);
+  line-height:.86;letter-spacing:-.03em;color:#fff;
+  text-shadow:0 20px 60px rgba(0,0,0,.6);margin-left:-.04em}
+.tx-kd-nom{display:flex;align-items:center;gap:14px;margin-top:0;
+  font-family:"Nekst";font-weight:800;font-size:clamp(22px,3vw,38px);
+  text-transform:uppercase;letter-spacing:.04em;color:var(--oltin)}
+.tx-kd-nom img{width:56px;height:56px;object-fit:contain;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.6))}
+.tx-kd-izoh{margin-top:0;font-size:15px;color:rgba(255,255,255,.75);flex-basis:100%}
+.tx-kino-yol{position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:6px;z-index:4;
+  font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.12em;
+  color:rgba(255,255,255,.35)}
+.tx-kino-yol span{padding:3px 0 3px 14px;position:relative;transition:color .4s}
+.tx-kino-yol span:before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;
+  background:currentColor}
+.tx-kino-yol span.faol{color:var(--oltin)}
+.tx-kino-yol span.faol:before{width:10px;height:2px;margin-top:-1px}
+.tx-kino-ish{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  z-index:4;font-family:"Nekst";font-weight:700;font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);animation:txIsh 2.2s ease-in-out infinite}
+@keyframes txIsh{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,6px);opacity:1}}
+/* Final - kubok */
+.tx-kd-kubok .tx-kd-fon{filter:saturate(.7) brightness(.55);transform:scale(1.04)}
+.tx-kd-kubok.faol .tx-kd-fon{transform:scale(1.1)}
+.tx-kd-nur{position:absolute;inset:0;
+  background:radial-gradient(38% 55% at 62% 48%,rgba(226,186,117,.45),rgba(226,186,117,0) 100%);
+  mix-blend-mode:screen}
+.tx-kd-kub{position:absolute;right:clamp(24px,12vw,220px);top:50%;margin-top:-30vh;height:64vh;width:auto;
+  z-index:2;filter:drop-shadow(0 40px 80px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(226,186,117,.25));
+  transform:translateY(60px) scale(.94);opacity:0;transition:transform 1.4s cubic-bezier(.2,.8,.2,1) .2s,opacity 1s ease .2s}
+.tx-kd-kubok.faol .tx-kd-kub{transform:none;opacity:1}
+.tx-kd-kubok .tx-kd-yil{color:var(--oltin)}
+.tx-kino.oxiri .tx-kino-ish{opacity:0;animation:none}
+/* Final 2024 — kubok klipi o'ngda, tablo chapda, oltin zarrachalar */
+.tx-kd-kubok{background:#000}
+.tx-kd .tx-kd-kv,.tx-kd.faol .tx-kd-kv{position:absolute;top:0;bottom:0;right:0;width:auto;height:100%;left:auto;transform:none;filter:none;
+  object-fit:cover;object-position:50% 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.tx-kd-parda-k{background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,0) 75%),
+  linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 70%,rgba(2,9,31,.98) 100%)}
+.tx-kd-zar{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.tx-kd-t-k{bottom:auto;top:50%;transform:translateY(-50%) translateY(30px);right:auto;width:min(620px,calc(100% - 48px));display:block}
+.tx-kd.faol .tx-kd-t-k{transform:translateY(-50%)}
+.tx-kd-ust{font-family:"Nekst";font-weight:700;font-size:12px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--oltin);margin-bottom:6px}
+.tx-kd-kubok .tx-kd-yil{font-size:clamp(88px,13vw,180px);
+  background:linear-gradient(180deg,#fff2c9 0%,#e2ba75 45%,#9a6f2a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+.tx-kd-kubok .tx-kd-nom{color:#fff}
+.tx-kd-tablo{display:flex;align-items:center;gap:18px;margin-top:18px;padding:14px 18px;
+  border:1px solid rgba(226,186,117,.35);border-radius:16px;width:max-content;max-width:100%;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(10px)}
+.tx-kd-tablo .tk{display:flex;align-items:center;gap:10px;font-family:"Nekst";font-weight:800;
+  font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:#fff}
+.tx-kd-tablo .tk img{width:36px;height:36px;object-fit:contain}
+.tx-kd-tablo b{font-family:"Nekst";font-weight:900;font-size:44px;line-height:1;color:var(--oltin)}
+.tx-kd-tablo b i{font-style:normal;color:rgba(255,255,255,.5);margin:0 4px}
+.tx-kd-kubok .tx-kd-izoh{margin-top:12px;color:rgba(255,255,255,.85)}
+.tx-kd-chip{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tx-kd-chip span{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.2);
+  font-family:"Nekst";font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);background:rgba(255,255,255,.05)}
+@media(max-width:720px){
+  .tx-kd .tx-kd-kv,.tx-kd.faol .tx-kd-kv{width:100%;height:70%;top:0;left:0;object-position:50% 20%;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
+  .tx-kd-parda-k{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 62%,#02091f 100%)}
+  .tx-kd-t-k{top:auto;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateY(30px);width:auto;left:16px;right:16px}
+  .tx-kd.faol .tx-kd-t-k{transform:none}
+  .tx-kd-kubok .tx-kd-yil{font-size:72px}
+  .tx-kd-tablo{gap:10px;padding:10px 12px;margin-top:10px}.tx-kd-tablo b{font-size:30px}
+  .tx-kd-tablo .tk{font-size:12px}.tx-kd-tablo .tk img{width:26px;height:26px}
+  .tx-kd-chip span{font-size:9px;padding:5px 9px}
+}
+@media(max-width:720px){
+  .tx-kd-t{left:18px;right:18px;bottom:calc(96px + env(safe-area-inset-bottom,0px));gap:10px}
+  .tx-kd-yil{font-size:52px}
+  .tx-kd-ramka{top:42%;width:min(calc(100vw - 28px),calc((100vh - 330px) * var(--r,1.42)));padding:6px}
+  .tx-kd-muhr{font-size:10px;bottom:-12px;right:10px}
+  .tx-kd-nom{font-size:20px}.tx-kd-nom img{width:40px;height:40px}
+  .tx-kd-izoh{font-size:14px}
+  .tx-kino-yol{display:none}
+  .tx-kd-kub{height:46vh;right:10px;bottom:auto;top:10vh}
+}
+@media(prefers-reduced-motion:reduce){
+  .tx-kd,.tx-kd-t,.tx-kd video,.tx-kd > img{transition:none}
+  .tx-kino-ish{animation:none}
+}
+@keyframes heroNafas{from{transform:scale(1.04) translateY(0)}
+  to{transform:scale(1.12) translateY(-1.5%)}}
+/* Gerb yostig'i — shisha (glass) va sekin suzish. */
+.hero.bor-fon .tomon .gerbjoy{
+  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.16),
+             rgba(255,255,255,.03) 70%);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.2);
+  animation:gerbSuz 6s ease-in-out infinite}
+.hero.bor-fon .tomon:last-child .gerbjoy{animation-delay:-3s}
+.hero.bor-fon .tomon img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.55))}
+@keyframes gerbSuz{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero.bor-fon .sanoq > div,.hero.bor-fon .past > span{
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  background:rgba(3,21,57,.45)}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-fon,.hero.bor-fon .tomon .gerbjoy{animation:none}
+}
 .hero .lenta{display:flex;align-items:center;justify-content:center;
   gap:12px;flex-wrap:wrap;margin-bottom:30px}
 .hero .lenta span{display:inline-flex;align-items:center;gap:6px;
-  font-family:"Nekst";font-weight:700;font-size:10.5px;
+  font-family:"Nekst";font-weight:700;font-size:12px;
   letter-spacing:.15em;text-transform:uppercase;color:var(--oltin);
   padding:6px 13px;border-radius:99px;
   border:1px solid rgba(226,186,117,.3);background:rgba(226,186,117,.07)}
@@ -82,7 +554,7 @@ img{display:block;max-width:100%}
 .hero .tomon img{width:82px;height:82px;object-fit:contain}
 .hero .tomon .nomi{font-family:"Nekst";font-weight:900;font-size:19px;
   text-align:center;letter-spacing:.01em}
-.hero .tomon .joy{font-family:"Nekst";font-weight:700;font-size:10px;
+.hero .tomon .joy{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.42)}
 .hero .orta{text-align:center;min-width:150px}
@@ -138,7 +610,7 @@ img{display:block;max-width:100%}
 .mch .lenta{display:flex;align-items:center;justify-content:center;gap:9px;
   flex-wrap:wrap;margin-bottom:24px}
 .mch .lenta span{display:inline-flex;align-items:center;gap:6px;
-  font-family:"Nekst";font-weight:700;font-size:10px;
+  font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--oltin);
   padding:6px 12px;border-radius:99px;
   border:1px solid rgba(226,186,117,.3);background:rgba(226,186,117,.07)}
@@ -155,12 +627,31 @@ img{display:block;max-width:100%}
 .mch .tomon img{width:70px;height:70px;object-fit:contain}
 .mch .tomon .nomi{font-family:"Nekst";font-weight:900;font-size:17px;
   text-align:center;line-height:1.2}
-.mch .tomon .joy{font-family:"Nekst";font-weight:700;font-size:9.5px;
+.mch .tomon .joy{font-family:"Nekst";font-weight:700;font-size:11px;
   letter-spacing:.14em;text-transform:uppercase;text-align:center;
   color:rgba(255,255,255,.4)}
 .mch .orta{text-align:center;min-width:118px}
 .mch .orta .hisob{font-family:"Nekst";font-weight:900;font-size:52px;
   line-height:1;letter-spacing:.01em}
+/* Hisob ostidagi gol mualliflari (2026-09-25): mezbon chapda,
+   mehmon o'ngda, o'rtada to'p. Telefonda ham ikki ustun —
+   ismlar qisqa, daqiqa oltin. */
+.mch .gollar{display:grid;grid-template-columns:1fr 26px 1fr;gap:6px 10px;
+  align-items:start;margin:14px auto 0;max-width:720px;padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08)}
+.mch .gl{display:flex;flex-direction:column;gap:4px;font-size:13.5px;
+  color:rgba(255,255,255,.78);line-height:1.35}
+.mch .gl.chap{text-align:right;align-items:flex-end}
+.mch .gl.ong{text-align:left;align-items:flex-start}
+.mch .gl span{display:block}
+.mch .gl i{font-style:normal;font-family:"Nekst";font-weight:700;
+  font-size:11.5px;color:var(--oltin);margin-left:4px}
+.mch .gl-ik{display:flex;justify-content:center;padding-top:2px;
+  color:rgba(255,255,255,.45)}
+@media(max-width:560px){
+  .mch .gollar{grid-template-columns:1fr 20px 1fr;gap:4px 6px}
+  .mch .gl{font-size:12.5px}
+}
 /* ====================== O'YIN TASMASI ======================
    Menyu tagida, har sahifada. Uch band: oldingi natija, jonli
    hisob, keyingi o'yin. Tor ekranda yon tomonga suriladi —
@@ -174,7 +665,7 @@ img{display:block;max-width:100%}
   border-right:1px solid rgba(255,255,255,.14)}
 .tsm:last-child{border-right:0;margin-right:0}
 .tsm .k{display:flex;align-items:center;gap:6px;font-family:"Nekst";
-  font-weight:700;font-size:9px;letter-spacing:.16em;
+  font-weight:700;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(255,255,255,.55)}
 /* ⚠ NOM EMAS, FAQAT GERB (2026-08-28, operator: «nomlar
    kerakmas, logolar bo'lsa tushunarliroq»). Ilgari tasmada
@@ -309,7 +800,7 @@ img{display:block;max-width:100%}
 
 /* --- JADVAL / RO'YXAT --- */
 .dn-tab{width:100%;border-collapse:collapse;font-size:14px}
-.dn-tab th{font-family:"Nekst";font-weight:700;font-size:10px;
+.dn-tab th{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.12em;text-transform:uppercase;
   color:rgba(255,255,255,.4);text-align:right;padding:0 6px 8px;
   font-weight:700}
@@ -331,7 +822,7 @@ img{display:block;max-width:100%}
   padding:12px 8px;text-align:center;background:rgba(255,255,255,.03)}
 .dn-son b{display:block;font-family:"Nekst";font-weight:900;font-size:24px;
   line-height:1.1;font-variant-numeric:tabular-nums}
-.dn-son span{font-family:"Nekst";font-weight:700;font-size:9px;
+.dn-son span{font-family:"Nekst";font-weight:700;font-size:11px;
   letter-spacing:.12em;text-transform:uppercase;
   color:rgba(255,255,255,.45)}
 .dn-son .qizil b{color:var(--qizil)}
@@ -350,7 +841,7 @@ img{display:block;max-width:100%}
 .dn-p u{text-decoration:none;font-size:12px;
   color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
 .dn-p em{font-style:normal;font-size:12px;color:var(--oltin)}
-.dn-guruh{font-family:"Nekst";font-weight:700;font-size:10px;
+.dn-guruh{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.35);margin:14px 0 2px}
 .dn-guruh:first-child{margin-top:0}
@@ -384,7 +875,7 @@ img{display:block;max-width:100%}
   margin-top:14px}
 .tx-rek{border:1px solid var(--chiziq);border-radius:14px;padding:16px 18px;
   background:rgba(255,255,255,.035)}
-.tx-sarl{font-family:"Nekst";font-weight:700;font-size:10px;
+.tx-sarl{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.4)}
 .tx-hisob{font-family:"Nekst";font-weight:900;font-size:34px;line-height:1.1;
@@ -493,7 +984,7 @@ img{display:block;max-width:100%}
 .tx-gerb figure.hozir img{width:80px;height:80px}
 .tx-gerb figure.hozir figcaption{color:var(--oltin)}
 .tx-gerb figure.hozir figcaption i{display:block;margin-top:2px;
-  font-style:normal;font-family:"Nekst";font-weight:700;font-size:10px;
+  font-style:normal;font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.06em;text-transform:uppercase;
   color:rgba(226,186,117,.72)}
 /* Chempionatdagi o'rinlar — yil kataklari. */
@@ -572,7 +1063,7 @@ img{display:block;max-width:100%}
 .trn-say{display:grid;grid-template-columns:repeat(3,1fr);
   gap:12px 10px}
 .trn-say b{display:block;font-family:"Nekst";font-weight:900;font-size:17px}
-.trn-say span{display:block;margin-top:2px;font-size:10.5px;
+.trn-say span{display:block;margin-top:2px;font-size:12px;
   color:rgba(255,255,255,.45);letter-spacing:.05em;text-transform:uppercase}
 /* Raqiblar — to'liq tarix raqami bilan. */
 .rq-legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;
@@ -893,7 +1384,7 @@ img{display:block;max-width:100%}
 .oym{display:grid;gap:12px;margin-bottom:26px}
 .oym-k{border:1px solid var(--chiziq);border-radius:16px;
   background:rgba(255,255,255,.04);padding:15px 18px}
-.oym-sarl{font-family:"Nekst";font-weight:700;font-size:10px;
+.oym-sarl{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.15em;text-transform:uppercase;
   color:rgba(255,255,255,.4);margin-bottom:11px}
 /* Shakl: chapda mezbon, o'rtada VS, o'ngda mehmon.
@@ -953,7 +1444,7 @@ img{display:block;max-width:100%}
   line-height:1;font-variant-numeric:tabular-nums}
 .msm-juft .s.chap{text-align:left;color:#fff}
 .msm-juft .s.ong{text-align:right;color:var(--oltin)}
-.msm-juft .n{font-family:"Nekst";font-weight:700;font-size:10px;
+.msm-juft .n{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.13em;text-transform:uppercase;
   color:rgba(255,255,255,.4);text-align:center;white-space:nowrap}
 /* G'alaba-durang-mag'lubiyat ustuni. */
@@ -983,7 +1474,7 @@ img{display:block;max-width:100%}
 .hkm .dn-av{width:62px;height:62px;margin:0 auto 10px;font-size:17px}
 .hkm b{display:block;font-size:14px;font-weight:400;line-height:1.3}
 .hkm span{display:block;margin-top:5px;font-family:"Nekst";
-  font-weight:700;font-size:9.5px;letter-spacing:.13em;
+  font-weight:700;font-size:11px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--oltin)}
 
 /* ====================== MAYDON KO'RINISHI ======================
@@ -1037,7 +1528,7 @@ img{display:block;max-width:100%}
   overflow-wrap:anywhere;min-height:2.5em}
 .mdn-p .raq{position:absolute;top:-4px;left:50%;margin-left:8px;
   min-width:19px;height:19px;border-radius:6px;background:var(--qizil);
-  color:#fff;font-family:"Nekst";font-weight:800;font-size:10px;
+  color:#fff;font-family:"Nekst";font-weight:800;font-size:11.5px;
   display:flex;align-items:center;justify-content:center;z-index:3;
   font-variant-numeric:tabular-nums}
 /* Voqea belgilari — gol, kartochka, almashtirish. */
@@ -1057,7 +1548,7 @@ img{display:block;max-width:100%}
 @media(max-width:640px){
   .mdn-p{width:58px}
   .mdn-p .dn-av{width:36px;height:36px}
-  .mdn-p b{font-size:10.5px}
+  .mdn-p b{font-size:12px}
 }
 
 @media(max-width:720px){
@@ -1077,7 +1568,7 @@ img{display:block;max-width:100%}
   letter-spacing:.14em;text-transform:uppercase;color:var(--oltin);
   margin-bottom:14px;display:flex;justify-content:space-between;
   align-items:center;gap:10px}
-.fmk .fsarl a{font-family:"Coolvetica";font-weight:400;font-size:13px;
+.fmk .fsarl a{font-family:"Inter";font-weight:500;font-size:13px;
   letter-spacing:.04em;text-transform:none;white-space:nowrap}
 .fm-bosh{display:flex;justify-content:space-between;align-items:center;
   gap:10px;margin-bottom:12px}
@@ -1154,7 +1645,7 @@ img{display:block;max-width:100%}
   text-align:center}
 .sanoq b{display:block;font-family:"Nekst";font-weight:900;font-size:26px;
   line-height:1;font-variant-numeric:tabular-nums}
-.sanoq span{font-family:"Nekst";font-weight:700;font-size:9px;
+.sanoq span{font-family:"Nekst";font-weight:700;font-size:11px;
   letter-spacing:.13em;text-transform:uppercase;
   color:rgba(255,255,255,.5)}
 
@@ -1178,7 +1669,7 @@ img{display:block;max-width:100%}
   letter-spacing:.02em}
 .mch .orta .holat{display:inline-block;margin-top:10px;padding:5px 12px;
   border-radius:99px;background:rgba(255,255,255,.08);
-  font-family:"Nekst";font-weight:700;font-size:10.5px;
+  font-family:"Nekst";font-weight:700;font-size:12px;
   letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .mch .past{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
   margin-top:26px;padding-top:20px;
@@ -1350,21 +1841,27 @@ img{display:block;max-width:100%}
    portret bilan bir qatlamda ishlaydi. */
 .fk .raq{position:absolute;top:2px;right:10px;z-index:2;
   font-family:"Nekst";font-weight:900;font-size:62px;line-height:1;
-  color:rgba(255,255,255,.13);letter-spacing:-.04em;pointer-events:none}
+  color:rgba(255,255,255,.3);letter-spacing:-.04em;pointer-events:none;
+  text-shadow:0 6px 20px rgba(0,0,0,.5)}
+.fk .fk-holat{position:absolute;top:11px;left:11px;z-index:3;padding:3px 9px;border-radius:7px;
+  font-family:"Nekst";font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.fk .fk-holat.jarohat{background:rgba(232,35,44,.92);color:#fff}
+.fk .fk-holat.yangi{background:var(--oltin);color:#1b1408}
+.fk .fk-u21 + .fk-holat{top:40px}
 .fk .fk-u21{position:absolute;top:11px;left:11px;z-index:3;
   padding:3px 8px;border-radius:7px;border:1px solid rgba(226,186,117,.55);
   background:rgba(2,27,83,.55);color:var(--oltin);
-  font-family:"Nekst";font-weight:800;font-size:9.5px;letter-spacing:.1em}
+  font-family:"Nekst";font-weight:800;font-size:11px;letter-spacing:.1em}
 .fk .gol{position:absolute;top:11px;right:11px;z-index:3;padding:3px 8px;
   border-radius:7px;background:var(--oltin);color:var(--kok);
-  font-family:"Nekst";font-weight:800;font-size:10.5px}
+  font-family:"Nekst";font-weight:800;font-size:12px}
 .fk .ustki{position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:14px 14px 15px;transition:transform .28s ease}
 .fk .ism{font-family:"Nekst";line-height:1.15;color:#fff}
 .fk .ism span{display:block;font-weight:600;font-size:11.5px;
   color:rgba(255,255,255,.62);letter-spacing:.02em;margin-bottom:1px}
 .fk .ism b{display:block;font-weight:900;font-size:17px;letter-spacing:-.01em}
-.fk .poz{font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+.fk .poz{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
   color:var(--oltin);margin-top:6px;font-family:"Nekst";font-weight:700;
   opacity:.9}
 /* ⚠ RAQAMLAR PANELI — HOVERDA. Uch turnir yonma-yon; kartochka
@@ -1527,7 +2024,7 @@ img{display:block;max-width:100%}
 .bah-o b{display:block;font-family:"Grandis",inherit;font-weight:900;
   font-size:20px;line-height:1;letter-spacing:-.5px;color:var(--oltin);
   font-variant-numeric:tabular-nums}
-.bah-o i{display:block;font-style:normal;font-size:9.5px;margin-top:3px;
+.bah-o i{display:block;font-style:normal;font-size:11px;margin-top:3px;
   color:rgba(255,255,255,.35);letter-spacing:.3px}
 .bah-o.yoq b{color:rgba(255,255,255,.22)}
 .bah-n{flex:1 1 130px;min-width:0}
@@ -1631,7 +2128,7 @@ header .q{display:flex;align-items:center;gap:14px;height:72px}
 header img{height:44px;width:auto}
 header b{font-family:"Nekst";font-weight:900;font-size:17px;
   letter-spacing:.02em;line-height:1.1;display:block}
-header .sub{font-family:"Nekst";font-size:9.5px;letter-spacing:.16em;
+header .sub{font-family:"Nekst";font-size:11px;letter-spacing:.16em;
   color:var(--oltin);display:flex;align-items:center;gap:5px}
 header .sub i{width:5px;height:5px;border-radius:50%;
   background:var(--qizil);display:inline-block}
@@ -1663,7 +2160,12 @@ header nav a:hover{color:#fff}
 header nav a:hover .ik{opacity:1}
 header nav a.faol{color:#fff}
 header nav a.faol .ik{opacity:1}
-header nav a.faol:after{content:"";position:absolute;left:10px;right:10px;
+/* ⚠ `:before`, `:after` EMAS (2026-09-25 auditi). Guruhli band
+   (`.nv-g>a:after`) o'zining `:after` ini STRELKA uchun ishlatadi;
+   faol holatda ikki qoida bir psevdoelementga tushib, tag chiziq
+   o'rniga burchakda kichkina qizil nuqta chiqardi (O'yinlar va
+   Klub bandlarida ko'rindi). Endi chiziq alohida psevdoelementda. */
+header nav a.faol:before{content:"";position:absolute;left:10px;right:10px;
   bottom:-1px;height:2px;border-radius:2px;background:var(--qizil)}
 /* Gerb — havola. Bosiladigan joyni ko'rsatish uchun ustiga
    kelganda ozgina yorishadi, xolos: logotip miltillamasin. */
@@ -1742,6 +2244,25 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
 .kar .rasm img{width:100%;height:100%;object-fit:cover;
   transition:transform .5s}
 .kar:hover .rasm img{transform:scale(1.06)}
+/* Muqovasiz maqola — brendli o'rinbosar (gerb ravog'i + gerb).
+   `.yoy` bu yerda ham ishlaydi: `.rasm` position:relative. */
+.kar .rasm.rasm-brend{display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(90% 80% at 50% 0%,rgba(235,31,40,.22),rgba(2,27,83,0) 60%),
+    linear-gradient(160deg,#0B2568,#031539)}
+.kar .rasm.rasm-brend .yoy{opacity:.75}
+.kar .rasm.rasm-brend .rb-gerb{position:relative;z-index:1;width:72px;
+  height:72px;object-fit:contain;opacity:.92;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.55));transition:transform .5s}
+.kar:hover .rasm.rasm-brend .rb-gerb{transform:scale(1.08)}
+/* 3D to'p (Higgsfield, qora fon) — `screen` bilan qora shaffof bo'ladi. */
+.kar .rasm.rasm-brend .rb-top{position:relative;z-index:1;width:auto;
+  height:74%;max-height:220px;object-fit:contain;
+  filter:drop-shadow(0 16px 26px rgba(0,0,0,.6));
+  animation:topSuz 7s ease-in-out infinite;transition:transform .5s}
+.kar:hover .rasm.rasm-brend .rb-top{transform:scale(1.06) rotate(-6deg)}
+@keyframes topSuz{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media(prefers-reduced-motion:reduce){.kar .rasm.rasm-brend .rb-top{animation:none}}
 /* «Video bor» belgisi — muqova ustidagi o'ynatish tugmasi.
    `z-index` kerak: `.rasm:after` qorayish qatlami ustida tursin. */
 .kar .oynat{position:absolute;left:50%;top:50%;z-index:2;
@@ -1757,7 +2278,7 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
 .kar .rasm-yoq{aspect-ratio:16/5;
   background:linear-gradient(135deg,#08204F,#03102E)}
 .kar .ich{padding:17px 19px 20px;display:flex;flex-direction:column;flex:1}
-.kar .tur{align-self:flex-start;font-family:"Nekst";font-size:10px;
+.kar .tur{align-self:flex-start;font-family:"Nekst";font-size:11.5px;
   font-weight:700;letter-spacing:.13em;color:var(--oltin);
   text-transform:uppercase;padding:5px 10px;border-radius:99px;
   background:rgba(226,186,117,.12);border:1px solid rgba(226,186,117,.28)}
@@ -1790,6 +2311,208 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
    yutilganini bir qarashda ayta olmasdi. */
 .oy-set{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
   gap:16px}
+
+/* --- ICHKI SAHIFA BANNERI (2026-09-25) ----------------------------
+   Higgsfield foni + o'ngda 3D bezak (qora fonli kadr `screen` bilan).
+   Sarlavha katta, ustunchasiz — banner o'zi ajratib turadi. */
+.sb{position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#0A2260 0%,var(--kok) 55%,#031539 100%);
+  border-bottom:1px solid var(--chiziq)}
+.sb .sb-fon{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 45%;opacity:.55}
+.sb .sb-parda{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(3,21,57,.94) 0%,rgba(3,21,57,.62) 55%,
+    rgba(3,21,57,.42) 100%),
+    linear-gradient(180deg,rgba(3,21,57,0) 60%,rgba(3,21,57,.9) 100%)}
+.sb .yoy{opacity:.25}
+.sb .sb-ich{position:relative;display:flex;align-items:center;
+  justify-content:space-between;gap:24px;min-height:270px;
+  padding-top:34px;padding-bottom:34px}
+.sb .sb-matn{max-width:640px;flex:1 1 auto;min-width:0}
+.sb h2.sb-h,.sb h1.sb-h{font-size:40px;letter-spacing:.02em;line-height:1.05;
+  margin:0 0 10px;padding-left:0;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+.sb h2.sb-h:before,.sb h1.sb-h:before{content:none}
+.sb .sb-matn p{margin:0;font-size:15.5px;color:rgba(255,255,255,.7);
+  max-width:520px}
+.sb .sb-3d{flex:none;height:200px;width:auto;max-width:42%;
+  object-fit:contain;filter:drop-shadow(0 22px 34px rgba(0,0,0,.6));
+  animation:topSuz 7s ease-in-out infinite}
+/* Karta ko'rinishidagi bezak (mavsumiy chipta namunasi) — 3D og'gan */
+.sb .sb-3d.sb-karta{height:auto;width:min(360px,42%);border-radius:14px;
+  transform:perspective(900px) rotateY(-16deg) rotateX(6deg);
+  box-shadow:0 26px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);
+  animation:kartaSuz 7s ease-in-out infinite}
+@keyframes kartaSuz{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@media(max-width:720px){
+  .sb .sb-3d.sb-karta{width:40%}
+  .sb .sb-ich{min-height:0;padding-top:26px;padding-bottom:22px;gap:12px}
+  .sb h2.sb-h,.sb h1.sb-h{font-size:27px}
+  .sb .sb-matn p{font-size:14px}
+  .sb .sb-3d{height:120px}
+}
+@media(max-width:430px){.sb .sb-3d{height:96px}}
+@media(prefers-reduced-motion:reduce){.sb .sb-3d{animation:none}}
+
+/* --- 3D TILT (2026-09-25) — JS `.tilt` sinfini faqat sichqonchali
+   qurilmada qo'yadi; bu yerda faqat ko'rinish. `--rx/--ry` og'ish,
+   `--mx/--my` yorug' dog' o'rni. */
+.tilt{position:relative;transform-style:preserve-3d;
+  transition:transform .18s ease,border-color .18s,box-shadow .18s}
+.tilt.tilt:hover{transform:perspective(900px) rotateX(var(--rx,0deg))
+  rotateY(var(--ry,0deg)) translateY(-4px)}
+.tilt::before{content:"";position:absolute;inset:0;z-index:3;
+  pointer-events:none;border-radius:inherit;opacity:0;
+  transition:opacity .25s;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.13),rgba(255,255,255,0) 46%)}
+.tilt:hover::before{opacity:1}
+
+/* --- BOSH SAHIFA: «BIR QARASHDA» BLOKI (2026-09-25) --------------
+   Yangiliklar ostida uch ustun: kelgusi o'yinlar · jadval ·
+   to'purarlar. Alohida to'q tasma — yangiliklardan ajralib turadi,
+   ichidagi kartochkalar esa saytning mavjud uslubida. */
+.bs-hav{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oltin);
+  padding:9px 14px;border-radius:99px;border:1px solid rgba(226,186,117,.3);
+  background:rgba(226,186,117,.06);transition:background .18s,color .18s}
+/* Strelka — tizim shriftida: Nekst'da «→» glifi yo'q, uchburchak
+   chiqardi. */
+.bs-hav i{font-style:normal;font-family:Arial,"Segoe UI",sans-serif;
+  font-size:13px;line-height:1;transition:transform .18s}
+.bs-hav:hover{background:var(--oltin);color:var(--kok)}
+.bs-hav:hover i{transform:translateX(3px)}
+.bs-hav-q{margin-top:22px}
+.bs-blok{margin-top:48px;padding:44px 0 50px;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0));
+  border-top:1px solid var(--chiziq);border-bottom:1px solid var(--chiziq)}
+.bs-3{display:grid;grid-template-columns:1.15fr 1fr .95fr;gap:26px;
+  align-items:start}
+.bs-k{min-width:0}
+.bs-k h2{margin-top:0}
+.bs-oy{grid-template-columns:1fr;gap:12px}
+.bs-oy .oy .jang{padding:16px 14px 18px}
+/* Ixcham jadval */
+.bs-tab{border:1px solid var(--chiziq);border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#08204F,#04143A)}
+.bs-th,.bs-tr{display:grid;grid-template-columns:34px 1fr 40px 46px 56px;
+  align-items:center;gap:8px;padding:0 14px}
+.bs-th{height:38px;font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);
+  border-bottom:1px solid var(--chiziq)}
+.bs-th span:nth-child(n+3),.bs-tr span:nth-child(n+3){text-align:center}
+.bs-tr{height:50px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.bs-tr:last-child{border-bottom:0}
+.bs-tr.biz{background:rgba(235,31,40,.13);box-shadow:inset 3px 0 0 var(--qizil)}
+.bs-tr .bs-o i{display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:7px;font-style:normal;
+  font-family:"Nekst";font-weight:800;font-size:12px;
+  background:rgba(255,255,255,.08)}
+.bs-tr .bs-o i.z1{background:#2ecc84;color:#04143A}
+.bs-tr.biz .bs-o i{background:var(--qizil);color:#fff}
+.bs-tr .bs-n{display:flex;align-items:center;gap:10px;min-width:0;
+  font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bs-tr .bs-n img{width:24px;height:24px;object-fit:contain;flex:none}
+.bs-tr .bs-p{font-family:"Nekst";font-weight:900;font-size:15px;
+  color:var(--oltin)}
+.bs-uz{text-align:center;color:rgba(255,255,255,.3);font-size:14px;
+  line-height:1;padding:5px 0;letter-spacing:.2em;
+  border-bottom:1px solid rgba(255,255,255,.05)}
+/* To'purarlar */
+.bs-ts{border:1px solid var(--chiziq);border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#08204F,#04143A)}
+.bs-tsr{display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
+.bs-tsr:last-child{border-bottom:0}
+.bs-tsr>i{width:22px;flex:none;font-style:normal;font-family:"Nekst";
+  font-weight:800;font-size:12px;color:rgba(255,255,255,.4);text-align:center}
+.bs-tsr>b{flex:1;min-width:0;font-weight:600;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.bs-tsr>em{font-style:normal;display:flex;align-items:baseline;gap:4px;
+  font-family:"Nekst";font-weight:900;font-size:17px;color:var(--oltin)}
+.bs-tsr>em span{font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.bs-tsr.bosh{padding:14px;background:rgba(226,186,117,.06)}
+.bs-tsr.bosh .dn-av{width:48px;height:48px;font-size:14px}
+.bs-tsr.bosh>b{font-family:"Nekst";font-weight:900;font-size:16px;
+  white-space:normal;line-height:1.25}
+.bs-tsr.bosh>em{font-size:26px}
+.bs-tsr.bosh>i{color:var(--oltin)}
+/* Ulkan raqamlar — jadval ustuni tepasida */
+.bs-raqam{display:flex;gap:18px;margin:0 0 18px}
+.bs-raqam div{flex:1;display:flex;flex-direction:column;gap:2px;
+  padding:10px 0 12px;border-top:2px solid rgba(255,255,255,.14)}
+.bs-raqam b{font-family:"Nekst";font-weight:900;font-size:clamp(40px,4.6vw,64px);
+  line-height:.95;letter-spacing:-.01em}
+.bs-raqam span{font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.bs-raqam div:first-child{border-top-color:var(--qizil)}
+
+/* --- JAMOA — EDITORIAL BO'LIM (2026-09-25) ------------------------
+   Chapda ulkan sarlavha va ro'yxat, o'ngda bitta katta portret.
+   Real Madrid/PSG uslubidagi bo'shliq va oq tipografika, lekin
+   saytning o'z ko'k palitrasida. */
+.bj{margin-top:54px;border-top:1px solid var(--chiziq);
+  background:linear-gradient(180deg,#031539,#020F2C);overflow:hidden}
+.bj-ich{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(20px,4vw,64px);
+  align-items:end;padding-top:64px}
+.bj-h{font-size:clamp(64px,11vw,168px);line-height:.9;letter-spacing:-.02em;
+  margin:0 0 18px;padding-left:0}
+.bj-h:before{content:none}
+.bj-matn>p{max-width:46ch;color:rgba(255,255,255,.66);margin:0 0 26px;font-size:16px}
+.bj-royxat{list-style:none;margin:0 0 26px;padding:0;max-width:440px;
+  border-top:2px solid var(--qizil)}
+.bj-royxat li a{display:grid;grid-template-columns:44px 1fr auto;gap:12px;
+  align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);
+  color:#fff;transition:padding-left .2s}
+.bj-royxat li a:hover{padding-left:6px}
+.bj-royxat .raq{font-family:"Nekst";font-weight:700;font-size:12px;color:rgba(255,255,255,.45)}
+.bj-royxat .ism{font-family:"Nekst";font-weight:800;font-size:13px;
+  letter-spacing:.04em;text-transform:uppercase}
+.bj-royxat .poz{font-size:12px;color:rgba(255,255,255,.45)}
+.bj-matn{padding-bottom:64px}
+.bj-portret{margin:0;position:relative;align-self:stretch;display:flex;
+  align-items:flex-end;justify-content:center;min-height:460px}
+.bj-portret img{width:auto;max-height:min(760px,82vh);
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));
+  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 82%,transparent 100%)}
+.bj-portret figcaption{position:absolute;right:0;bottom:22px;
+  font-family:"Nekst";font-weight:700;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,255,255,.45)}
+@media(max-width:860px){
+  .bj-ich{grid-template-columns:1fr;padding-top:44px}
+  .bj-matn{padding-bottom:20px}
+  .bj-portret{min-height:0}
+  .bj-portret img{max-height:62vh}
+}
+/* Homiylar tasmasi */
+.bs-homiy{margin-top:54px;padding:34px 0 40px;
+  border-top:1px solid var(--chiziq)}
+.bs-hs{font-family:"Nekst";font-weight:700;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);
+  text-align:center;margin-bottom:20px}
+.bs-hm{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+/* ⚠ TO'Q KARTA. Homiy logolari OQ variantda (posterlar uchun) —
+   oq fonda ko'rinmasdi (sinovda to'rtta bo'sh oq quti chiqdi). */
+.bs-hm a{display:flex;align-items:center;justify-content:center;
+  height:66px;padding:12px 24px;border-radius:14px;
+  background:rgba(255,255,255,.045);border:1px solid var(--chiziq);
+  opacity:.88;transition:opacity .18s,transform .18s,border-color .18s}
+.bs-hm a:hover{opacity:1;transform:translateY(-2px);border-color:var(--oltin)}
+.bs-hm img{max-height:38px;max-width:150px;width:auto;object-fit:contain}
+.bs-homiy .bs-hav{display:flex;width:max-content;margin:22px auto 0}
+@media(max-width:1000px){
+  .bs-3{grid-template-columns:1fr 1fr}
+  .bs-3 .bs-k:first-child{grid-column:1/-1}
+  .bs-oy{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+}
+@media(max-width:640px){
+  .bs-3{grid-template-columns:1fr;gap:34px}
+  .bs-blok{margin-top:36px;padding:34px 0 40px}
+  .bs-hm a{height:56px;padding:10px 16px}
+  .bs-hm img{max-height:30px;max-width:120px}
+}
 /* --- KALENDAR SARALAGICHI (musobaqa bo'yicha) --------------------
    Telefonda tugmalar yon tomonga suriladi: uchta-to'rtta musobaqa
    nomi bitta qatorga sig'maydi va qatorga tushirilsa sarlavha
@@ -1831,7 +2554,7 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
   box-shadow:0 14px 32px rgba(0,0,0,.4)}
 .oy .ust{display:flex;align-items:center;gap:9px;padding:11px 15px;
   border-bottom:1px solid rgba(255,255,255,.07);font-family:"Nekst";
-  font-weight:700;font-size:10px;letter-spacing:.13em;
+  font-weight:700;font-size:11.5px;letter-spacing:.13em;
   text-transform:uppercase;color:rgba(255,255,255,.5)}
 .oy .ust > span{display:inline-flex;align-items:center;gap:6px;min-width:0}
 /* MUSOBAQA LOGOSI — ikonka o'rnida turadi, shuning uchun o'lchami
@@ -1934,7 +2657,7 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .tbl-o{overflow-x:auto;border:1px solid var(--chiziq);border-radius:16px;
   background:linear-gradient(180deg,#08204F,#04143A)}
 .tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
-.tbl th{font-family:"Nekst";font-weight:700;font-size:10px;
+.tbl th{font-family:"Nekst";font-weight:700;font-size:11.5px;
   letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);
   padding:14px 10px;text-align:right;
   border-bottom:1px solid rgba(255,255,255,.09);white-space:nowrap}
@@ -2010,6 +2733,12 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .rt-qator em{margin-left:auto;flex:none;font-style:normal;
   font-family:"Nekst";font-weight:900;font-size:15px;color:var(--oltin);
   font-variant-numeric:tabular-nums}
+/* Reytingdagi portretlar (2026-09-25). `.rt-qator span` qoidasi
+   `.dn-av` ga ham tushadi — shuning uchun aniq qayta yoziladi. */
+.rt-kim{display:flex;align-items:center;gap:14px}
+.rt-kim>div{min-width:0}
+.rt-kim .dn-av{width:58px;height:58px;font-size:16px;flex:none}
+.rt-qator .dn-av{width:32px;height:32px;font-size:11px;color:#fff;flex:none}
 .rt-blok > .izoh{margin-top:14px}
 @media (max-width:720px){
   .rt{grid-template-columns:1fr}
@@ -2018,6 +2747,8 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
   .rt-kim b{font-size:17px}
   .rt-qator div{padding:9px 12px;font-size:13.5px;gap:9px}
   .rt-qator span{display:none}
+  .rt-qator .dn-av{display:flex;width:28px;height:28px}
+  .rt-kim .dn-av{width:48px;height:48px}
 }
 
 /* --- TURNIR JADVALI: SHAKL USTUNI VA TANLOVLAR -------------------
@@ -2053,7 +2784,7 @@ article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
 .jd-guruh{display:flex;flex-direction:column;align-items:flex-start;
   gap:9px;min-width:0;margin-bottom:22px}
 .jd-yorliq{display:inline-flex;align-items:center;gap:6px;
-  font-family:"Nekst";font-weight:700;font-size:10px;letter-spacing:.15em;
+  font-family:"Nekst";font-weight:700;font-size:11.5px;letter-spacing:.15em;
   text-transform:uppercase;color:rgba(255,255,255,.38)}
 .jd-yorliq .ik-k{width:13px;height:13px}
 /* Musobaqa logosi `.tablar` ichida ikonka o'lchamida turadi. */
@@ -2114,7 +2845,7 @@ footer .klub{display:flex;align-items:center;gap:13px;margin-bottom:14px}
 footer .klub img{height:46px;width:auto}
 footer .klub b{font-family:"Nekst";font-weight:900;font-size:16px;
   color:#fff;display:block;line-height:1.2}
-footer .klub span{font-family:"Nekst";font-size:9.5px;letter-spacing:.16em;
+footer .klub span{font-family:"Nekst";font-size:11px;letter-spacing:.16em;
   color:var(--oltin)}
 footer .ft-klub p{margin:0 0 18px;max-width:340px;line-height:1.7;
   font-size:13.5px;color:rgba(255,255,255,.5)}
@@ -2180,7 +2911,7 @@ footer .ft-tepa:hover{color:#fff}
 .lk .rasm{aspect-ratio:4/5;overflow:hidden;background:rgba(0,0,0,.3)}
 .lk .rasm img{width:100%;height:100%;object-fit:contain;display:block}
 .lk .ich{padding:13px 14px 15px}
-.lk .tur{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+.lk .tur{font-size:12px;letter-spacing:.11em;text-transform:uppercase;
   color:var(--oltin);font-weight:700;margin-bottom:7px}
 .lk h3{margin:0;font-size:15px;line-height:1.32}
 .lk p{margin:7px 0 0;font-size:13px;line-height:1.5;
@@ -2248,6 +2979,27 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 /* Landshaft kadr `.yoq` sinfi bilan keladi — yuqoridagi qoida
    uni yashiradi va o'rniga xira gerb chiqadi. Alohida uslub
    kerak emas. */
+/* KINO-KARTA hero (2026-09-25): render o'ngda, butun balandlikda */
+.fkh-kino{min-height:min(78vh,760px);background:#04122f}
+.fkh-kino .fkh-kk{position:absolute;right:max(0px,calc(50% - 640px));top:0;height:100%;width:auto;
+  max-width:56%;object-fit:contain;object-position:100% 0;z-index:1;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 86%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 86%,transparent 100%)}
+.fkh-kino .fkh-kk-parda{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(4,18,47,.9) 0%,rgba(4,18,47,.35) 45%,rgba(4,18,47,0) 70%),
+  linear-gradient(180deg,rgba(4,18,47,0) 60%,var(--fon) 100%)}
+.fkh-kino .fkh-ich{grid-template-columns:1fr;min-height:min(78vh,760px);align-items:end;padding-top:40px}
+.fkh-kino .fkh-raq{left:auto;right:6%;top:50%;font-size:clamp(200px,32vw,460px);
+  color:rgba(255,255,255,.05);z-index:0}
+.fkh-kino .fkh-matn{max-width:640px;position:relative;z-index:2}
+.fkh-kino h1 b{font-size:clamp(48px,7vw,104px)}
+@media(max-width:720px){
+  .fkh-kino .fkh-kk{max-width:100%;width:100%;height:70%;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
+  .fkh-kino .fkh-kk-parda{background:linear-gradient(180deg,rgba(4,18,47,.2) 0%,rgba(4,18,47,0) 30%,rgba(4,18,47,.85) 62%,var(--fon) 100%)}
+  .fkh-kino{min-height:92vh}.fkh-kino .fkh-ich{min-height:92vh}
+  .fkh-kino .fkh-raq{right:10px;top:22%;font-size:160px}
+}
 .fkh-matn{min-width:0;padding-bottom:30px}
 .fkh-gerb{margin-bottom:12px}
 .fkh-gerb .fk-g{width:56px;height:56px}
@@ -2384,7 +3136,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   white-space:nowrap}
 /* Turi — o'ng chetda, kichik va xira: u qidiruvda yordam beradi,
    lekin nomni bosib ketmasligi kerak. */
-.qd-r i{flex:none;font-style:normal;font-size:10px;letter-spacing:.08em;
+.qd-r i{flex:none;font-style:normal;font-size:11.5px;letter-spacing:.08em;
   text-transform:uppercase;color:rgba(255,255,255,.32)}
 .qd-yoq{padding:26px 20px;border-radius:14px;text-align:center;
   background:rgba(255,255,255,.04);border:1px solid var(--chiziq);
@@ -2454,7 +3206,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
    101/65 ni bo'lib ko'radi va raqamlarimizga ishonmay qoladi.
    Aslida o'tkazgan gol boshqa qamrovda (qaydnomadagi 81 o'yin)
    sanaladi. Shu ikki katakning tagiga o'z bazasi yoziladi. */
-.stat-tur i{display:block;margin-top:4px;font-size:9.5px;font-style:normal;
+.stat-tur i{display:block;margin-top:4px;font-size:11px;font-style:normal;
   letter-spacing:.06em;text-transform:uppercase;
   color:rgba(255,255,255,.3)}
 /* ⚠ DARVOZA DAHLSIZLIGI — KARYERA KATAKLARIDAN ALOHIDA CHIZIQ.
@@ -2598,7 +3350,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .fk-mavj .s-son{order:3;font-family:"Nekst";font-weight:700;
     font-size:13.5px}
   .fk-mavj .s-son::before{content:attr(data-y) " ";
-    font-weight:600;font-size:9.5px;letter-spacing:.06em;
+    font-weight:600;font-size:11px;letter-spacing:.06em;
     text-transform:uppercase;color:rgba(255,255,255,.4)}
 }
 
@@ -2616,7 +3368,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     flex-direction:column;align-items:center;
     gap:4px;padding:7px 2px;border-radius:12px;border:0;background:none;
     color:rgba(255,255,255,.5);font-family:"Nekst";font-weight:700;
-    font-size:9px;letter-spacing:.07em;text-transform:uppercase;
+    font-size:11px;letter-spacing:.07em;text-transform:uppercase;
     cursor:pointer}
   .pastnav a .ik,.pastnav .yn-tug .ik{width:21px;height:21px}
   .pastnav a.faol{color:#fff;background:rgba(235,31,40,.16)}
@@ -2643,7 +3395,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .yn-uy.faol{background:rgba(235,31,40,.16);color:#fff}
   .yn-uy .ik{width:16px;height:16px;opacity:.6}
   .yn-tor{display:grid;gap:16px;grid-template-columns:1fr 1fr}
-  .yn-g h4{margin:0 0 6px;font-family:"Nekst";font-size:10.5px;
+  .yn-g h4{margin:0 0 6px;font-family:"Nekst";font-size:12px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--oltin)}
   .yn-g a{display:flex;align-items:center;gap:9px;padding:9px 8px;
     border-radius:10px;font-size:13.5px;color:rgba(255,255,255,.82)}
@@ -2674,7 +3426,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .fk .raq{font-size:44px;top:4px;right:8px}
   .fk .ustki{padding:11px 10px 12px}
   .fk .ism b{font-size:14px}
-  .fk .ism span{font-size:10px}
+  .fk .ism span{font-size:11.5px}
   .fk .poz{font-size:8.5px;letter-spacing:.06em;margin-top:4px}
   .fk .fk-u21{font-size:8.5px;padding:2px 6px;top:8px;left:8px}
   .fk .ustki,.fk:hover .ustki{transform:translateY(-52px)}
@@ -2726,13 +3478,13 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     -webkit-overflow-scrolling:touch;scrollbar-width:none}
   .tablar::-webkit-scrollbar{display:none}
   .tablar button{flex:0 0 auto;min-width:0;padding:10px 13px;
-    font-size:10px;gap:6px;white-space:nowrap}
+    font-size:11.5px;gap:6px;white-space:nowrap}
   .tabich{padding-top:22px}
   .vq{grid-template-columns:1fr 46px 1fr;gap:5px;padding:6px 0}
   .vq .d{height:26px;font-size:11.5px}
   .vq .v{padding:8px 10px;gap:8px;border-radius:11px}
   .vq .v b{font-size:13px}
-  .vq .v i{font-size:9.5px}
+  .vq .v i{font-size:11px}
   .vq .v .ik{width:18px;height:18px}
   .stq .n b{font-size:16px}
   /* ⚠ JADVAL TELEFONDA YON TOMONGA SURILMASIN. Ilgari jadval
@@ -2958,7 +3710,24 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   color:rgba(255,255,255,.58)}
 .ch-tor{display:grid;gap:12px;
   grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.ch-yol{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+/* echipta ilova tugmalari va mavsumiy chipta bloki (2026-09-25) */
+.ch-ilova{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ch-ilova a{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;
+  border-radius:10px;border:1px solid rgba(255,255,255,.16);color:#fff;
+  background:rgba(255,255,255,.06);font-family:"Nekst";font-weight:700;
+  font-size:11.5px;letter-spacing:.06em;transition:background .18s}
+.ch-ilova a:hover{background:rgba(255,255,255,.14)}
+.ch-mv{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}
+.ch-mv p{margin:0 0 12px;color:rgba(255,255,255,.8);font-size:15px}
+.ch-mv .ch-mv-rasm{width:100%;border-radius:14px;
+  box-shadow:0 20px 44px rgba(0,0,0,.5);
+  transform:perspective(900px) rotateY(-6deg) rotateX(2deg) scale(.96)}
+@media(max-width:720px){
+  .ch-mv{grid-template-columns:1fr}
+  .ch-mv .ch-mv-rasm{transform:none;max-width:420px}
+}
+.ch-yol{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr}
+@media(max-width:960px){.ch-yol{grid-template-columns:1fr 1fr}}
 .ch-yol>div{border:1px solid var(--chiziq);border-radius:14px;padding:17px;
   background:rgba(255,255,255,.03)}
 .ch-yol b{font-family:"Nekst";font-size:13px;letter-spacing:.06em;
@@ -3022,7 +3791,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 /* Oddiy ma'lumot jadvali (to'purarlar, darvozabonlar, tarix) */
 .jd{width:100%;border-collapse:collapse;font-size:14.5px}
 .jd th{text-align:left;padding:9px 8px;font-family:"Nekst";
-  font-weight:700;font-size:10.5px;letter-spacing:.12em;
+  font-weight:700;font-size:12px;letter-spacing:.12em;
   text-transform:uppercase;color:rgba(255,255,255,.45);
   border-bottom:1px solid var(--chiziq)}
 .jd td{padding:11px 8px;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -3057,7 +3826,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   background:rgba(255,255,255,.05);text-align:center}
 .h2h .say b{display:block;font-family:"Nekst";font-weight:900;
   font-size:26px;line-height:1.1}
-.h2h .say span{font-size:10.5px;letter-spacing:.12em;
+.h2h .say span{font-size:12px;letter-spacing:.12em;
   text-transform:uppercase;color:rgba(255,255,255,.5)}
 
 /* Rekord kartochkalari */
@@ -3065,7 +3834,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   minmax(240px,1fr));gap:14px}
 .rek div{padding:16px;border-radius:14px;background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.06)}
-.rek span{display:block;font-size:10.5px;letter-spacing:.12em;
+.rek span{display:block;font-size:12px;letter-spacing:.12em;
   text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
 .rek b{font-family:"Nekst";font-weight:900;font-size:17px;
   display:block;line-height:1.3}
@@ -3131,7 +3900,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   <a class="qd-tug" href="../../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a>
 </div></header>
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/235"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>1</b>:<b>4</b><span class="t ong"><img class="tsm-g" src="../../gerb/Nasaf.png" alt="Nasaf" title="Nasaf" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Nasaf</span></span></span></a><a class="tsm" href="../../oyin/265"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/Buxoro.png" alt="Buxoro" title="Buxoro" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Buxoro</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>9-oktabr, 2026</em></span></a></div></div>
-<section class="fkh"><div class="yoy"><svg viewBox="0 0 400 520" aria-hidden="true"><path d="M200 8C200 8 372 168 372 330v182H28V330C28 168 200 8 200 8Z"/><path d="M200 78C200 78 320 208 320 336v176H80V336C80 208 200 78 200 78Z"/><path d="M200 148C200 148 268 248 268 342v170H132V342C132 248 200 148 200 148Z"/></svg></div><div class="q fkh-ich"><figure class="fkh-r"><span class="fkh-raq" aria-hidden="true">9</span><img src="../../futbolchi/Imeda_Ashortia.png" alt="Imeda Ashortia" onerror="this.closest('figure').classList.add('yoq')"><span class="fkh-zaxira"><img src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"></span></figure><div class="fkh-matn"><div class="fkh-chiplar"><span class="fkh-chip"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Hujumchi</span><span class="fkh-chip fkh-num">#9</span></div><div class="fkh-gerb"><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"></div><h1><span>Imeda</span><b>Ashortia</b></h1><div class="fkh-may"><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Klubda</span><b>31.12.2025</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5a13 13 0 0 1 0 17a13 13 0 0 1 0-17z"/></svg><span>Fuqaroligi</span><b>Gruziya</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="m8.5 7.5 3.5-3.5 3.5 3.5"/><path d="m8.5 16.5 3.5 3.5 3.5-3.5"/></svg><span>Bo&#8216;yi</span><b>183 sm</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V7h4l3 3.5 5 1.6A4 4 0 0 1 19 16v1H4z"/><path d="M4 17h15"/></svg><span>Kuchli oyoq</span><b>chap</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 16.5c1.5-2.5 2.5-2.5 3 0s1.5 2.5 3 0"/></svg><span>Shartnoma</span><b>30.12.2026</b></div></div></div></div></section><div class="q"><div class="stat-tur"><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><b>47</b><span>o&#8216;yin</span></div><div class="fk-oltin"><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg><b>13</b><span>gol</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c3.5 0 4.5-7 8-7"/><path d="M14 7.5 17 10l-3 2.5"/><circle cx="19.5" cy="17" r="2.2"/></svg><b>4</b><span>uzatma</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5.4 4.2 5.4 9a5.4 5.4 0 1 1-10.8 0c0-2 1-3.4 1.9-4.4.3 1.4 1.2 2.1 2 2.1 1.6 0 1.5-3.4 1.5-6.7z"/></svg><b>17</b><span>gol + uzatma</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg><b>0.36</b><span>o&#8216;yiga o&#8216;rtacha</span><i>gol + uzatma</i></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.6l3.6 2.1"/></svg><b>3218</b><span>daqiqa</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><b>2</b><span>sariq</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><b>0</b><span>qizil</span></div></div><h2>Joriy mavsum &mdash; turnirlar bo&#8216;yicha</h2><div class="jadval-o fk-mavj fk-trnj"><table><tr><th>Turnir</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='trn-nom'><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Superliga</td><td class='r s-son' data-y='o&#8216;yin'>17</td><td class='r s-son' data-y='gol'>3</td><td class='r s-son' data-y='uzatma'>1</td><td class='r s-son' data-y='daqiqa'>886</td></tr><tr><td class='trn-nom'><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5v1.5A3.5 3.5 0 0 0 8 11M17 6h2.5v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v4M9 20h6"/></svg>O&#x27;zbekiston kubogi</td><td class='r s-son' data-y='o&#8216;yin'>3</td><td class='r s-son' data-y='gol'>1</td><td class='r s-son' data-y='uzatma'>1</td><td class='r s-son' data-y='daqiqa'>110</td></tr></table></div><div class="izoh">Bu raqamlar qaydnomadan sanalgan va FAQAT joriy mavsumdagi, FAQAT FK Andijon safidagi o&#8216;yinlarni qamraydi &mdash; yuqoridagi karyera kataklaridan boshqa qamrov. Boshqa klubdagi mavsumi quyidagi &laquo;Mavsumlar&raquo; jadvalida, klub gerbi bilan ko&#8216;rinadi. Futbolchi maydonga chiqqan o&#8216;yinlar hisoblanadi, zaxirada o&#8216;tirgani emas.</div><h2>Karyera bosqichlari</h2><div class="fkb"><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5v1.5A3.5 3.5 0 0 0 8 11M17 6h2.5v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v4M9 20h6"/></svg><span>Eng samarali mavsum</span><b>10 gol</b><i>2025 &middot; Superliga</i></div><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><span>Eng ko&#8216;p o&#8216;ynagan mavsum</span><b>30 o&#8216;yin</b><i>2025 &middot; 2 326 daqiqa</i></div><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg><span>Professional karyera</span><b>2025&ndash;2026</b><i>2 klub</i></div></div><div class="izoh" style="margin:-14px 0 34px">Raqamlar pfl.uz rasmiy bazasidagi mavsum jadvalidan hisoblangan.</div><h2>Mavsumlar</h2><div class="jadval-o fk-mavj"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='fk-mav'><b>2026</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"><b>Andijon</b></td><td class='r s-son' data-y='o&#8216;yin'>17</td><td class='r s-son' data-y='gol'>3</td><td class='r s-son' data-y='uzatma'>2</td><td class='r s-son' data-y='daqiqa'>892</td></tr><tr><td class='fk-mav'><b>2025</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Bunyodkor.png" alt="" loading="lazy" onerror="this.remove()"><b>Bunyodkor</b></td><td class='r s-son' data-y='o&#8216;yin'>30</td><td class='r s-son' data-y='gol'>10</td><td class='r s-son' data-y='uzatma'>2</td><td class='r s-son' data-y='daqiqa'>2326</td></tr></table></div><h2>So&#8216;nggi o&#8216;yinlar</h2><div class="jadval-o fk-oyin"><table><tr><th>Sana</th><th>Raqib</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Daqiqa</th><th>Voqea</th></tr><tr class="n-m"><td class="s-sana">2026-09-20</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 4</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">31&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-d"><td class="s-sana">2026-09-15</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Olimpik_MobiUz.png" alt="" loading="lazy" onerror="this.remove()"><b>Olimpik MobiUz</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">D</i>2 : 2</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">59&#39;</td><td class="fk-voqea s-voqea"><i class="fk-gol">1 gol &middot; 43&#39;</i></td></tr><tr class="n-g"><td class="s-sana">2026-09-10</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Qo_qon_1912.png" alt="" loading="lazy" onerror="this.remove()"><b>Qo‘qon-1912</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>2 : 1</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">24&#39;</td><td class="fk-voqea s-voqea"><i class="fk-gol">1 gol &middot; 90+1&#39;</i></td></tr><tr class="n-m"><td class="s-sana">2026-09-04</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Paxtakor.png" alt="" loading="lazy" onerror="this.remove()"><b>Paxtakor</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">M</i>3 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">46&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-08-25</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Xorazm.png" alt="" loading="lazy" onerror="this.remove()"><b>Xorazm</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">74&#39;</td><td class="fk-voqea s-voqea"><i class="fk-sariq">sariq</i></td></tr><tr class="n-g"><td class="s-sana">2026-08-19</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Mash_al.png" alt="" loading="lazy" onerror="this.remove()"><b>Mash&#x27;al</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>0 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">74&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-08-13</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Neftchi.png" alt="" loading="lazy" onerror="this.remove()"><b>Neftchi</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>0 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">27&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-07-18</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Surxon.png" alt="" loading="lazy" onerror="this.remove()"><b>Surxon</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 2</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">83&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-d"><td class="s-sana">2026-05-21</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">D</i>1 : 1</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">26&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-05-15</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Sho_rtan.png" alt="" loading="lazy" onerror="this.remove()"><b>Sho‘rtan</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">25&#39;</td><td class="fk-voqea s-voqea"></td></tr></table></div><div class="izoh">Y &mdash; g&#39;alaba, D &mdash; durang, M &mdash; mag&#39;lubiyat; natija futbolchi o&#39;ynagan jamoa bo&#39;yicha. Daqiqa qaydnomadagi kirish va chiqish daqiqasidan hisoblangan, qo&#39;shimcha vaqt sanalmaydi.</div><h2>Jamoadoshlar</h2><div class="saf"><a class="fk" href="../../futbolchi/eldor-adhamov"><div class="rasm"><img src="../../futbolchi/Eldor_Adhamov.png" alt="Eldor Adhamov" loading="lazy" onerror="this.remove()"><div class="raq">1</div><div class="ustki"><div class="ism"><span>Eldor</span><b>Adhamov</b></div><div class="poz">Darvozabon</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>13</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/odilbek-abdumajidov"><div class="rasm"><img src="../../futbolchi/Odilbek_Abdumajidov.png" alt="Odilbek Abdumajidov" loading="lazy" onerror="this.remove()"><div class="raq">2</div><div class="ustki"><div class="ism"><span>Odilbek</span><b>Abdumajidov</b></div><div class="poz">Markaziy himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>14</b><span>1 gol</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>1 gol · 1 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/abdulvohid-gulomov"><div class="rasm"><img src="../../futbolchi/Abdulvohid_G_ulomov.png" alt="Abdulvohid G‘ulomov" loading="lazy" onerror="this.remove()"><div class="raq">5</div><div class="ustki"><div class="ism"><span>Abdulvohid</span><b>G‘ulomov</b></div><div class="poz">O&#x27;ng qanot himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>3</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/aleksandre-andronikashvili"><div class="rasm"><img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="Aleksandre Andronikashvili" loading="lazy" onerror="this.remove()"><div class="raq">6</div><div class="ustki"><div class="ism"><span>Aleksandre</span><b>Andronikashvili</b></div><div class="poz">Oporniy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>19</b><span>3 gol · 2 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/polatxoja-xoldorxonov"><div class="rasm"><img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="Po‘latxo‘ja Xoldorxonov" loading="lazy" onerror="this.remove()"><div class="raq">7</div><div class="ustki"><div class="ism"><span>Po‘latxo‘ja</span><b>Xoldorxonov</b></div><div class="poz">Markaziy hujumchi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>21</b><span>2 gol · 4 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>4 gol</span></div></div></div></a><a class="fk" href="../../futbolchi/shoxmalik-komilov"><div class="rasm"><img src="../../futbolchi/Shoxmalik_Komilov.png" alt="Shoxmalik Komilov" loading="lazy" onerror="this.remove()"><div class="raq">8</div><div class="ustki"><div class="ism"><span>Shoxmalik</span><b>Komilov</b></div><div class="poz">Hujumkor yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>3</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/dragan-cheran"><div class="rasm"><img src="../../futbolchi/Dragan_Cheran.png" alt="Dragan Cheran" loading="lazy" onerror="this.remove()"><div class="raq">10</div><div class="ustki"><div class="ism"><span>Dragan</span><b>Cheran</b></div><div class="poz">Markaziy hujumchi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>20</b><span>3 gol · 1 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/humoyunmirzo-iminov"><div class="rasm"><img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="Humoyunmirzo Iminov" loading="lazy" onerror="this.remove()"><div class="raq">11</div><div class="ustki"><div class="ism"><span>Humoyunmirzo</span><b>Iminov</b></div><div class="poz">Hujumkor yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>19</b><span>1 gol · 2 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>3</b><span>1 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/ilnur-zokirov"><div class="rasm"><img src="../../futbolchi/Ilnur_Zokirov.png" alt="Ilnur Zokirov" loading="lazy" onerror="this.remove()"><div class="raq">12</div><span class="fk-u21">U21</span><div class="ustki"><div class="ism"><span>Ilnur</span><b>Zokirov</b></div><div class="poz">Darvozabon</div></div><div class="fk-stat"><div class="fk-tq"><i>U21</i><b>3</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>U19</i><b>8</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/abdurahmon-komilov"><div class="rasm"><img src="../../futbolchi/Abdurahmon_Komilov.png" alt="Abdurahmon Komilov" loading="lazy" onerror="this.remove()"><div class="raq">14</div><div class="ustki"><div class="ism"><span>Abdurahmon</span><b>Komilov</b></div><div class="poz">Markaziy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>5</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>3</b><span>2 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/nemanya-chalasan"><div class="rasm"><img src="../../futbolchi/Nemanya_Chalasan.png" alt="Nemanya Chalasan" loading="lazy" onerror="this.remove()"><div class="raq">15</div><div class="ustki"><div class="ism"><span>Nemanya</span><b>Chalasan</b></div><div class="poz">Markaziy himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>21</b><span>1 gol</span></div><div class="fk-tq"><i>Kubok</i><b>1</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/azizbek-turgunboyev"><div class="rasm"><img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="Azizbek Turg‘unboyev" loading="lazy" onerror="this.remove()"><div class="raq">17</div><div class="ustki"><div class="ism"><span>Azizbek</span><b>Turg‘unboyev</b></div><div class="poz">Markaziy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>16</b><span>1 gol · 1 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>2 gol · 2 uzatma</span></div></div></div></a></div><div class="tug" style="margin:16px 0 34px"><a class="t1" href="../../jamoa"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.5a3 3 0 0 1 0 5.6M17 13.2a5 5 0 0 1 4 4.8V19"/></svg>Butun saf</a></div></div>
+<section class="fkh fkh-kino"><img class="fkh-kk" src="../../media/sayt_art/kk_imeda_ashortia.jpg" alt="Imeda Ashortia" decoding="async" onerror="this.remove()"><div class="fkh-kk-parda"></div><div class="yoy"><svg viewBox="0 0 400 520" aria-hidden="true"><path d="M200 8C200 8 372 168 372 330v182H28V330C28 168 200 8 200 8Z"/><path d="M200 78C200 78 320 208 320 336v176H80V336C80 208 200 78 200 78Z"/><path d="M200 148C200 148 268 248 268 342v170H132V342C132 248 200 148 200 148Z"/></svg></div><div class="q fkh-ich"><span class="fkh-raq" aria-hidden="true">9</span><div class="fkh-matn"><div class="fkh-chiplar"><span class="fkh-chip"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3.4" width="18" height="17.2" rx="2"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2.7"/><path d="M8.4 3.4v3.2h7.2V3.4M8.4 20.6v-3.2h7.2v3.2"/></svg>Hujumchi</span><span class="fkh-chip fkh-num">#9</span></div><div class="fkh-gerb"><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"></div><h1><span>Imeda</span><b>Ashortia</b></h1><div class="fkh-may"><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Klubda</span><b>31.12.2025</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5a13 13 0 0 1 0 17a13 13 0 0 1 0-17z"/></svg><span>Fuqaroligi</span><b>Gruziya</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="m8.5 7.5 3.5-3.5 3.5 3.5"/><path d="m8.5 16.5 3.5 3.5 3.5-3.5"/></svg><span>Bo&#8216;yi</span><b>183 sm</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V7h4l3 3.5 5 1.6A4 4 0 0 1 19 16v1H4z"/><path d="M4 17h15"/></svg><span>Kuchli oyoq</span><b>chap</b></div><div class="fkh-m"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 16.5c1.5-2.5 2.5-2.5 3 0s1.5 2.5 3 0"/></svg><span>Shartnoma</span><b>30.12.2026</b></div></div></div></div></section><div class="q"><div class="stat-tur"><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><b>47</b><span>o&#8216;yin</span></div><div class="fk-oltin"><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z" fill="currentColor" stroke="none"/></svg><b>13</b><span>gol</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c3.5 0 4.5-7 8-7"/><path d="M14 7.5 17 10l-3 2.5"/><circle cx="19.5" cy="17" r="2.2"/></svg><b>4</b><span>uzatma</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5.4 4.2 5.4 9a5.4 5.4 0 1 1-10.8 0c0-2 1-3.4 1.9-4.4.3 1.4 1.2 2.1 2 2.1 1.6 0 1.5-3.4 1.5-6.7z"/></svg><b>17</b><span>gol + uzatma</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg><b>0.36</b><span>o&#8216;yiga o&#8216;rtacha</span><i>gol + uzatma</i></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.6l3.6 2.1"/></svg><b>3218</b><span>daqiqa</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><b>2</b><span>sariq</span></div><div><svg class="ik ik-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.6" y="3.4" width="9" height="17.2" rx="2" fill="currentColor" stroke="none" transform="rotate(10 12 12)"/></svg><b>0</b><span>qizil</span></div></div><h2>Joriy mavsum &mdash; turnirlar bo&#8216;yicha</h2><div class="jadval-o fk-mavj fk-trnj"><table><tr><th>Turnir</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='trn-nom'><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Superliga</td><td class='r s-son' data-y='o&#8216;yin'>17</td><td class='r s-son' data-y='gol'>3</td><td class='r s-son' data-y='uzatma'>1</td><td class='r s-son' data-y='daqiqa'>886</td></tr><tr><td class='trn-nom'><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5v1.5A3.5 3.5 0 0 0 8 11M17 6h2.5v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v4M9 20h6"/></svg>O&#x27;zbekiston kubogi</td><td class='r s-son' data-y='o&#8216;yin'>3</td><td class='r s-son' data-y='gol'>1</td><td class='r s-son' data-y='uzatma'>1</td><td class='r s-son' data-y='daqiqa'>110</td></tr></table></div><div class="izoh">Bu raqamlar qaydnomadan sanalgan va FAQAT joriy mavsumdagi, FAQAT FK Andijon safidagi o&#8216;yinlarni qamraydi &mdash; yuqoridagi karyera kataklaridan boshqa qamrov. Boshqa klubdagi mavsumi quyidagi &laquo;Mavsumlar&raquo; jadvalida, klub gerbi bilan ko&#8216;rinadi. Futbolchi maydonga chiqqan o&#8216;yinlar hisoblanadi, zaxirada o&#8216;tirgani emas.</div><h2>Karyera bosqichlari</h2><div class="fkb"><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5v1.5A3.5 3.5 0 0 0 8 11M17 6h2.5v1.5A3.5 3.5 0 0 1 16 11"/><path d="M12 14v4M9 20h6"/></svg><span>Eng samarali mavsum</span><b>10 gol</b><i>2025 &middot; Superliga</i></div><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><span>Eng ko&#8216;p o&#8216;ynagan mavsum</span><b>30 o&#8216;yin</b><i>2025 &middot; 2 326 daqiqa</i></div><div class="fkb-k"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg><span>Professional karyera</span><b>2025&ndash;2026</b><i>2 klub</i></div></div><div class="izoh" style="margin:-14px 0 34px">Raqamlar pfl.uz rasmiy bazasidagi mavsum jadvalidan hisoblangan.</div><h2>Mavsumlar</h2><div class="jadval-o fk-mavj"><table><tr><th>Mavsum</th><th>Klub</th><th class="r">O&#8216;yin</th><th class="r">Gol</th><th class="r">Uzatma</th><th class="r">Daqiqa</th></tr><tr><td class='fk-mav'><b>2026</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Andijon.png" alt="" loading="lazy" onerror="this.remove()"><b>Andijon</b></td><td class='r s-son' data-y='o&#8216;yin'>17</td><td class='r s-son' data-y='gol'>3</td><td class='r s-son' data-y='uzatma'>2</td><td class='r s-son' data-y='daqiqa'>892</td></tr><tr><td class='fk-mav'><b>2025</b><span>Superliga</span></td><td class='fk-klub'><img class="fk-g" src="../../gerb/Bunyodkor.png" alt="" loading="lazy" onerror="this.remove()"><b>Bunyodkor</b></td><td class='r s-son' data-y='o&#8216;yin'>30</td><td class='r s-son' data-y='gol'>10</td><td class='r s-son' data-y='uzatma'>2</td><td class='r s-son' data-y='daqiqa'>2326</td></tr></table></div><h2>So&#8216;nggi o&#8216;yinlar</h2><div class="jadval-o fk-oyin"><table><tr><th>Sana</th><th>Raqib</th><th class="r">Hisob</th><th class="r">Tarkib</th><th class="r">Daqiqa</th><th>Voqea</th></tr><tr class="n-m"><td class="s-sana">2026-09-20</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 4</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">31&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-d"><td class="s-sana">2026-09-15</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Olimpik_MobiUz.png" alt="" loading="lazy" onerror="this.remove()"><b>Olimpik MobiUz</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">D</i>2 : 2</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">59&#39;</td><td class="fk-voqea s-voqea"><i class="fk-gol">1 gol &middot; 43&#39;</i></td></tr><tr class="n-g"><td class="s-sana">2026-09-10</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Qo_qon_1912.png" alt="" loading="lazy" onerror="this.remove()"><b>Qo‘qon-1912</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>2 : 1</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">24&#39;</td><td class="fk-voqea s-voqea"><i class="fk-gol">1 gol &middot; 90+1&#39;</i></td></tr><tr class="n-m"><td class="s-sana">2026-09-04</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Paxtakor.png" alt="" loading="lazy" onerror="this.remove()"><b>Paxtakor</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">M</i>3 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">46&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-08-25</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Xorazm.png" alt="" loading="lazy" onerror="this.remove()"><b>Xorazm</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 0</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">74&#39;</td><td class="fk-voqea s-voqea"><i class="fk-sariq">sariq</i></td></tr><tr class="n-g"><td class="s-sana">2026-08-19</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Mash_al.png" alt="" loading="lazy" onerror="this.remove()"><b>Mash&#x27;al</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>0 : 1</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">74&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-08-13</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Neftchi.png" alt="" loading="lazy" onerror="this.remove()"><b>Neftchi</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>0 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">27&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-m"><td class="s-sana">2026-07-18</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Surxon.png" alt="" loading="lazy" onerror="this.remove()"><b>Surxon</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">M</i>1 : 2</td><td class="r s-tarkib"><span class="fk-asosiy">asosiy</span></td><td class="r s-daq">83&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-d"><td class="s-sana">2026-05-21</td><td class="s-raqib"><span class="fk-vs">vs</span><img class="fk-g" src="../../gerb/Nasaf.png" alt="" loading="lazy" onerror="this.remove()"><b>Nasaf</b><em>uyda</em></td><td class="r s-hisob"><i class="fk-n">D</i>1 : 1</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">26&#39;</td><td class="fk-voqea s-voqea"></td></tr><tr class="n-g"><td class="s-sana">2026-05-15</td><td class="s-raqib"><span class="fk-vs">@</span><img class="fk-g" src="../../gerb/Sho_rtan.png" alt="" loading="lazy" onerror="this.remove()"><b>Sho‘rtan</b><em>mehmonda</em></td><td class="r s-hisob"><i class="fk-n">Y</i>1 : 3</td><td class="r s-tarkib"><span class="fk-zaxira">zaxira</span></td><td class="r s-daq">25&#39;</td><td class="fk-voqea s-voqea"></td></tr></table></div><div class="izoh">Y &mdash; g&#39;alaba, D &mdash; durang, M &mdash; mag&#39;lubiyat; natija futbolchi o&#39;ynagan jamoa bo&#39;yicha. Daqiqa qaydnomadagi kirish va chiqish daqiqasidan hisoblangan, qo&#39;shimcha vaqt sanalmaydi.</div><h2>Jamoadoshlar</h2><div class="saf"><a class="fk" href="../../futbolchi/eldor-adhamov"><div class="rasm"><img src="../../futbolchi/Eldor_Adhamov.png" alt="Eldor Adhamov" loading="lazy" onerror="this.remove()"><div class="raq">1</div><div class="ustki"><div class="ism"><span>Eldor</span><b>Adhamov</b></div><div class="poz">Darvozabon</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>13</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/odilbek-abdumajidov"><div class="rasm"><img src="../../futbolchi/Odilbek_Abdumajidov.png" alt="Odilbek Abdumajidov" loading="lazy" onerror="this.remove()"><div class="raq">2</div><div class="ustki"><div class="ism"><span>Odilbek</span><b>Abdumajidov</b></div><div class="poz">Markaziy himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>14</b><span>1 gol</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>1 gol · 1 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/abdulvohid-gulomov"><div class="rasm"><img src="../../futbolchi/Abdulvohid_G_ulomov.png" alt="Abdulvohid G‘ulomov" loading="lazy" onerror="this.remove()"><div class="raq">5</div><div class="ustki"><div class="ism"><span>Abdulvohid</span><b>G‘ulomov</b></div><div class="poz">O&#x27;ng qanot himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>3</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/aleksandre-andronikashvili"><div class="rasm"><img src="../../futbolchi/Aleksandre_Andronikashvili.png" alt="Aleksandre Andronikashvili" loading="lazy" onerror="this.remove()"><div class="raq">6</div><span class="fk-holat jarohat">&#10010; Jarohat</span><div class="ustki"><div class="ism"><span>Aleksandre</span><b>Andronikashvili</b></div><div class="poz">Oporniy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>19</b><span>3 gol · 2 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/polatxoja-xoldorxonov"><div class="rasm"><img src="../../futbolchi/Po_latxo_ja_Xoldorxonov.png" alt="Po‘latxo‘ja Xoldorxonov" loading="lazy" onerror="this.remove()"><div class="raq">7</div><div class="ustki"><div class="ism"><span>Po‘latxo‘ja</span><b>Xoldorxonov</b></div><div class="poz">Markaziy hujumchi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>21</b><span>2 gol · 4 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>4 gol</span></div></div></div></a><a class="fk" href="../../futbolchi/shoxmalik-komilov"><div class="rasm"><img src="../../futbolchi/Shoxmalik_Komilov.png" alt="Shoxmalik Komilov" loading="lazy" onerror="this.remove()"><div class="raq">8</div><div class="ustki"><div class="ism"><span>Shoxmalik</span><b>Komilov</b></div><div class="poz">Hujumkor yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>3</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/dragan-cheran"><div class="rasm"><img src="../../futbolchi/Dragan_Cheran.png" alt="Dragan Cheran" loading="lazy" onerror="this.remove()"><div class="raq">10</div><div class="ustki"><div class="ism"><span>Dragan</span><b>Cheran</b></div><div class="poz">Markaziy hujumchi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>20</b><span>3 gol · 1 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>2</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/humoyunmirzo-iminov"><div class="rasm"><img src="../../futbolchi/Humoyunmirzo_Iminov.png" alt="Humoyunmirzo Iminov" loading="lazy" onerror="this.remove()"><div class="raq">11</div><div class="ustki"><div class="ism"><span>Humoyunmirzo</span><b>Iminov</b></div><div class="poz">Hujumkor yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>19</b><span>1 gol · 2 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>3</b><span>1 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/ilnur-zokirov"><div class="rasm"><img src="../../futbolchi/Ilnur_Zokirov.png" alt="Ilnur Zokirov" loading="lazy" onerror="this.remove()"><div class="raq">12</div><span class="fk-u21">U21</span><div class="ustki"><div class="ism"><span>Ilnur</span><b>Zokirov</b></div><div class="poz">Darvozabon</div></div><div class="fk-stat"><div class="fk-tq"><i>U21</i><b>3</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>U19</i><b>8</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/abdurahmon-komilov"><div class="rasm"><img src="../../futbolchi/Abdurahmon_Komilov.png" alt="Abdurahmon Komilov" loading="lazy" onerror="this.remove()"><div class="raq">14</div><div class="ustki"><div class="ism"><span>Abdurahmon</span><b>Komilov</b></div><div class="poz">Markaziy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>5</b><span>o&#8216;yin</span></div><div class="fk-tq"><i>Kubok</i><b>3</b><span>2 uzatma</span></div></div></div></a><a class="fk" href="../../futbolchi/nemanya-chalasan"><div class="rasm"><img src="../../futbolchi/Nemanya_Chalasan.png" alt="Nemanya Chalasan" loading="lazy" onerror="this.remove()"><div class="raq">15</div><div class="ustki"><div class="ism"><span>Nemanya</span><b>Chalasan</b></div><div class="poz">Markaziy himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>21</b><span>1 gol</span></div><div class="fk-tq"><i>Kubok</i><b>1</b><span>o&#8216;yin</span></div></div></div></a><a class="fk" href="../../futbolchi/azizbek-turgunboyev"><div class="rasm"><img src="../../futbolchi/Azizbek_Turg_unboyev.png" alt="Azizbek Turg‘unboyev" loading="lazy" onerror="this.remove()"><div class="raq">17</div><div class="ustki"><div class="ism"><span>Azizbek</span><b>Turg‘unboyev</b></div><div class="poz">Markaziy yarim himoyachi</div></div><div class="fk-stat"><div class="fk-tq"><i>Superliga</i><b>16</b><span>1 gol · 1 uzatma</span></div><div class="fk-tq"><i>Kubok</i><b>4</b><span>2 gol · 2 uzatma</span></div></div></div></a></div><div class="tug" style="margin:16px 0 34px"><a class="t1" href="../../jamoa"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.5a3 3 0 0 1 0 5.6M17 13.2a5 5 0 0 1 4 4.8V19"/></svg>Butun saf</a></div></div>
 <footer><div class="q">
   <div class="ust">
     <div class="ft-klub">
@@ -3191,22 +3960,117 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
    ⚠ Element `hidden` bo'lib keladi va faqat JS ishlagandagina
      ochiladi: aks holda «— kun — soat» degan bo'sh quti qolardi. */
 (function(){
-  var q = document.querySelector(".sanoq");
-  if (!q) return;
-  var nishon = new Date(q.dataset.vaqt).getTime();
-  if (!nishon) return;
-  q.hidden = false;
-  function chiz(){
-    var qoldi = nishon - Date.now();
-    if (qoldi <= 0) { q.hidden = true; return; }
-    var v = {d: Math.floor(qoldi/864e5), h: Math.floor(qoldi/36e5)%24,
-             m: Math.floor(qoldi/6e4)%60, s: Math.floor(qoldi/1e3)%60};
-    q.querySelectorAll("[data-s]").forEach(function(el){
-      el.textContent = String(v[el.dataset.s]).padStart(2, "0");
+  /* Bir sahifada bir nechta sanoq bo'lishi mumkin (hero + yuzma-yuz). */
+  var ql = Array.prototype.slice.call(document.querySelectorAll(".sanoq[data-vaqt]"));
+  if (!ql.length) return;
+  ql.forEach(function(q){
+    var nishon = new Date(q.dataset.vaqt).getTime();
+    if (!nishon) return;
+    q.hidden = false;
+    function chiz(){
+      var qoldi = nishon - Date.now();
+      if (qoldi <= 0) { q.hidden = true; return; }
+      var v = {d: Math.floor(qoldi/864e5), h: Math.floor(qoldi/36e5)%24,
+               m: Math.floor(qoldi/6e4)%60, s: Math.floor(qoldi/1e3)%60};
+      q.querySelectorAll("[data-s]").forEach(function(el){
+        el.textContent = String(v[el.dataset.s]).padStart(2, "0");
+      });
+    }
+    chiz();
+    setInterval(chiz, 1000);
+  });
+})();
+</script>
+<script>
+/* 3D TILT (2026-09-25). Kartochka sichqoncha ostida biroz og'adi va
+   ustida yorug' dog' yuradi — «shisha plastinka» hissi. Faqat aniq
+   ko'rsatkichli (sichqonchali) qurilmada va harakat cheklanmagan
+   bo'lsa: telefonda va reduced-motion da UMUMAN yoqilmaydi.
+   Kutubxona yo'q; JS o'chsa kartochka oddiy qoladi. */
+(function(){
+  if (!window.matchMedia) return;
+  if (!matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  var K = document.querySelectorAll(".kar, .oy, .bs-tab, .bs-ts, .rt-bosh");
+  K.forEach(function(el){
+    el.classList.add("tilt");
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--rx", ((0.5 - y) * 6).toFixed(2) + "deg");
+      el.style.setProperty("--ry", ((x - 0.5) * 8).toFixed(2) + "deg");
+      el.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+      el.style.setProperty("--my", (y * 100).toFixed(1) + "%");
     });
+    el.addEventListener("pointerleave", function(){
+      el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg");
+    });
+  });
+})();
+</script>
+<script>
+/* SKROLL-FILM (2026-09-25). Bosh sahifadagi Bobur Arena filmi skroll
+   bilan o'ynaydi. Video Blob sifatida yuklanadi (currentTime har
+   brauzerda ishonchli surilsin), tayyor bo'lguncha poster turadi.
+   Reduced-motion yoki JS o'chgan holda hech narsa yuklanmaydi.
+   Statik nusxada ham ishlaydi: manzillar <source> ichida, ularni
+   nashr o'zi qayta yozadi. */
+(function(){
+  var qobiq = document.querySelector(".hero-kino[data-kino]");
+  if (!qobiq || !window.matchMedia) return;
+  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  var v = qobiq.querySelector("video.hero-kino-v");
+  if (!v) return;
+  var mobil = matchMedia("(max-width:720px), (hover:none) and (pointer:coarse)").matches;
+  var src = null;
+  qobiq.querySelectorAll("source").forEach(function(s){
+    if (s.dataset.tur === (mobil ? "mobil" : "desktop")) src = s.getAttribute("src");
+  });
+  if (!src) return;
+  var tayyor = false, joriy = 0, nishon = 0, davomiylik = 0, raf = 0;
+  function daraja(){
+    var r = qobiq.getBoundingClientRect();
+    var yol = qobiq.offsetHeight - window.innerHeight;
+    if (yol <= 0) return 0;
+    var p = -r.top / yol;
+    return p < 0 ? 0 : (p > 1 ? 1 : p);
   }
-  chiz();
-  setInterval(chiz, 1000);
+  function yangila(){
+    var p = daraja();
+    qobiq.style.setProperty("--p", p.toFixed(3));
+    qobiq.classList.toggle("kino-ketdi", p > 0.3);
+    nishon = p;
+  }
+  function halqa(){
+    raf = requestAnimationFrame(halqa);
+    if (!tayyor) return;
+    joriy += (nishon - joriy) * 0.16;
+    if (Math.abs(nishon - joriy) < 0.0004) joriy = nishon;
+    if (!v.seeking) {
+      var t = Math.min(joriy, 0.999) * davomiylik;
+      if (Math.abs(v.currentTime - t) > 0.02) { try { v.currentTime = t; } catch (e) {} }
+    }
+  }
+  window.addEventListener("scroll", yangila, {passive:true});
+  window.addEventListener("resize", yangila);
+  yangila();
+  raf = requestAnimationFrame(halqa);
+  function yukla(){
+    fetch(src).then(function(r){ return r.ok ? r.blob() : Promise.reject(); })
+      .then(function(b){
+        v.innerHTML = "";
+        v.src = URL.createObjectURL(b);
+        v.addEventListener("loadedmetadata", function(){
+          davomiylik = v.duration || 15;
+          v.addEventListener("seeked", function(){ v.classList.add("tayyor"); }, {once:true});
+          tayyor = true;
+          try { v.currentTime = Math.min(nishon, 0.999) * davomiylik; } catch (e) {}
+        }, {once:true});
+        v.load();
+      }).catch(function(){ cancelAnimationFrame(raf); });
+  }
+  if (document.readyState === "complete") setTimeout(yukla, 300);
+  else window.addEventListener("load", function(){ setTimeout(yukla, 300); });
 })();
 </script>
 
