@@ -9,12 +9,18 @@ Ikki sevishgan uchun iPhone'ga o'rnatiladigan yopiq ilova. Server yozish shart e
 | **Yurak** | Bosish: "sog'indim" yetib boradi, uning ekranida "bugun sizni N marta sog'indi" ko'rinadi. Bosib turish: yurak urishi uning telefonida ovoz bilan uradi. Ikkovingiz bir vaqtda bosib tursangiz: "Yuraklaringiz ulandi". Hissiyot yuborish: Mehr, Yurakdan va Ehtiros bo'limlari, o'z so'zlaringiz, kayfiyat. |
 | **Teginish** | Barmog'ingizning izi uning ekranida jonli ko'rinadi. Barmoqlar uchrashsa, uchqun chiqadi va yurak uradi. Ikki marta tegish: o'pich izi 💋. U ilovada bo'lmasa, "Uni chaqirish" tugmasi chiqadi. |
 | **Lahzalar** | Dumaloq video (old kameradan 30 soniyagacha, Telegramdagidek), galereyadan rasm yoki video (15 MB gacha), muhrlangan xat (hozir, bugun 21:00, ertaga 08:00 yoki tanlangan sana), shivir (30 soniyagacha ovoz). Yuboruvchi "Yetkazildi" va "Ko'rildi ❤️" ni ko'radi. |
+| **Biz** | Reelslar: Instagram havolasini qo'yish yoki nusxadan bitta tugma bilan yuborish. Reels ilova ichida ochiladi, unga 😂❤️🔥 reaksiya bosiladi, yuboruvchi "Ko'rildi" va reaksiyani ko'radi. Sevgi kuponlari ("10 ta o'pich", "Massaj", "Janjalda men yutqazaman"…): u ishlatsa, sizga "va'dangizni bajaring 😏" chiqadi. "Birga qilamiz" orzular ro'yxati: ikkovingiz qo'shasiz va belgilaysiz. |
 | **O'yin** | Ehtiros, Yaqinlik va Orzular kartalari: tortilgan karta ikki ekranda bir vaqtda ochiladi va reaksiya yuborish mumkin. Kunlik savol: sevgilingizning javobi o'zingiz javob bergandan keyin ochiladi. |
 
 Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki "Oxirgi marta 18:05".
 
 Qo'shimcha hissiyotlar:
 
+- **Oramizda (GPS):** ikkovingiz ham joylashuvni yoqsangiz, oradagi masofa va u qaysi tomonda ekani ko'rinadi:
+  "5,0 km · Aziz sharqda". Yaqinlashsangiz, ekrandagi ikki nuqta ham bir-biriga yaqinlashadi. 300 metrdan yaqin kelsangiz,
+  ikkalangizga ham to'liq ekranli ogohlantirish chiqadi, ilovasi yopiq bo'lsa unga bildirishnoma boradi.
+  Joylashuv shifrlab yuboriladi va faqat masofa ko'rsatiladi. iPhone joylashuvni faqat ilova ochiq turganda beradi.
+- **Uchrashuvgacha:** keyingi uchrashuv vaqti va joyi belgilanadi, ikkala telefonda ham soniyalari bilan sanoq ketadi.
 - **Kim ko'proq sevadi?** Har bir harakat ball beradi: sog'inch 1, hissiyot 3, teginish 4, yurak ulanishi 6, xat 10,
   shivir 8, rasm 8, video 15. Haftalik arqon tortish ko'rinadi, yetakchiga toj 👑 beriladi. Kim o'zib ketsa, xabar chiqadi.
   O'tgan hafta g'olibi ham ko'rsatiladi. Ikkovingiz har kuni nimadir yuborsangiz, "🔥 N kun ketma-ket" seriyasi o'sadi.
@@ -50,6 +56,12 @@ Telefon A ── ntfy.sh ──────────────────�
    obuna bo'ling.
 
 Havola `#k=<kod>&n=<ism>&p=<sevgili>&s=<sana>` ko'rinishida bo'ladi va sozlamalar uning ichida turadi.
+
+## Instagram'dan to'g'ridan-to'g'ri yuborish
+
+iPhone veb-ilovalarni Ulashish menyusiga qo'shishga ruxsat bermaydi. Shuning uchun Shortcuts orqali bir marta sozlanadi
+(qadamlari ilovaning "Biz" bo'limida yozilgan). Shortcut `…#k=…&reel=<havola>` manzilini ochadi, ilova esa havolani
+o'zi sevgilingizga yuboradi.
 
 ## Cheklovlar
 
