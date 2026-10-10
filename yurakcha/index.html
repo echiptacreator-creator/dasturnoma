@@ -213,6 +213,36 @@ details.yoriq summary{font-weight:700;cursor:pointer}
 details.yoriq ol{padding-left:20px;margin:10px 0}
 details.yoriq li{margin-bottom:6px}
 
+/* Sevgi bankasi */
+.banka{display:flex;flex-direction:column;gap:10px;background:linear-gradient(160deg,#2a1a0c,#1a0d0a);border-color:#4a3218}
+.banka .kSar b{color:#f3dcb6}
+.sababQogoz{background:linear-gradient(170deg,#fbf1e3,#efdcc2);color:#3b1d12;border-radius:8px;padding:26px 22px;max-width:360px;font-family:var(--qol);font-size:28px;line-height:1.3;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.8);animation:qog .7s cubic-bezier(.2,.8,.2,1);overflow-wrap:anywhere}
+.banka-ke{font-size:90px;line-height:1;animation:silk .9s ease-in-out}
+@keyframes silk{20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+/* Bir xil o'ylaymizmi */
+.birxil{display:flex;flex-direction:column;gap:10px}
+.birxil .q{font-family:var(--sarlavha);font-size:24px;line-height:1.25}
+.bxJavoblar{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bxJavoblar div{background:var(--tun);border:1px solid var(--chiziq);border-radius:14px;padding:10px;text-align:center;overflow-wrap:anywhere}
+.bxJavoblar small{display:block;color:var(--xira);font-size:12px}
+.bxJavoblar b{font-family:var(--sarlavha);font-size:22px}
+.bxJavoblar.mos div{border-color:var(--oltin);box-shadow:0 0 18px rgba(233,184,114,.35)}
+/* Birga tinglash */
+.tingla{display:flex;flex-direction:column;gap:10px}
+.ytJoy{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;background:#000}
+.ytJoy iframe,.ytJoy #ytPleyer{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* Birga nafas */
+.sahna.nafas{background:radial-gradient(circle at 50% 45%,#2a1030,#0a0306 70%)}
+.nafasDoira{width:min(62vw,250px);aspect-ratio:1;max-width:100%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,170,195,.95),rgba(255,77,125,.45) 55%,rgba(255,77,125,0) 72%);transform:scale(.55);will-change:transform}
+.nafasFaza{font-family:var(--sarlavha);font-style:italic;font-size:30px}
+/* Yonib ketadigan xat */
+.qogoz.yonmoqda{animation:yonish 2.4s ease-in forwards}
+@keyframes yonish{0%{filter:none}40%{filter:sepia(1) saturate(3) brightness(.85) contrast(1.3)}75%{filter:sepia(1) saturate(4) brightness(.4) contrast(1.8);transform:scale(.97) rotate(-1deg)}
+  100%{filter:sepia(1) brightness(.1) blur(6px);opacity:0;transform:translateY(-40px) scale(.85) rotate(-3deg)}}
+.yonIzoh{color:#ffb38a;font-size:13px;text-align:center}
+
 /* TEGINISH ekrani */
 #ekranTeg{padding:0;overflow:hidden;touch-action:none}
 #tegKanva{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
@@ -437,6 +467,17 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
           <div class="seriya" id="seriya" hidden></div>
         </div>
 
+        <div class="karta banka" id="bankaK">
+          <div class="kSar"><b>🫙 Sevgi bankasi</b><span class="kichik xira" id="bankaSon"></span></div>
+          <p class="kichik xira" id="bankaIzoh" style="margin:0"></p>
+          <button class="tugma oltin" id="bankaOch" type="button">🫙 Bugungi sababni ochish</button>
+          <form class="qator" id="sababForma" style="flex-wrap:nowrap">
+            <input class="kirit" id="sababInp" maxlength="200" placeholder="Seni sevaman, chunki…" autocomplete="off" style="flex:1">
+            <button class="tugma" type="submit" style="flex:none">Tashlash</button>
+          </form>
+          <div class="kichik xira" id="bankaMen"></div>
+        </div>
+
         <div class="karta tunKarta" id="tunKarta" hidden>
           <div class="oy" id="tunOy">🌙</div>
           <div class="t"><b id="tunSar">Uxlashga yotyapsizmi?</b><div class="kichik xira" id="tunMatn"></div></div>
@@ -460,6 +501,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
         <h2 id="tegSar">Teginish</h2>
         <span class="kichik xira" id="tegHol"></span>
         <button class="tugma" id="chaqirBtn" type="button" hidden>Uni chaqirish</button>
+        <button class="tugma ikki" id="nafasBtn" type="button">🌬 Birga nafas olaylik</button>
       </div>
       <div class="tegPast">Barmog'ingizni qo'ying: u teginishingizni jonli ko'radi. Barmoqlaringiz uchrashsa, uchqun chiqadi.<br>Ikki marta tegsangiz, o'pich izi qoladi 💋</div>
     </section>
@@ -473,8 +515,10 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
           <button class="tugma oltin" id="yozBtn" type="button">✒️ Muhrlangan xat</button>
           <button class="tugma" id="shivirBtn" type="button">🎙 Bosib turib shivir</button>
           <button class="tugma ikki" id="faylBtn" type="button">🖼 Rasm yoki video</button>
+          <button class="tugma ikki" id="hozirBtn" type="button" style="grid-column:1/-1">📸 Hozir nima qilyapsan? (2 daqiqa)</button>
         </div>
         <input type="file" id="faylInp" accept="image/*,video/*" hidden>
+        <input type="file" id="hozirInp" accept="image/*" capture="environment" hidden>
         <p class="kichik xira" style="margin:-6px 0 0">Dumaloq video va shivir 30 soniyagacha. Xatni kelajakdagi vaqtda ochiladigan qilib muhrlash mumkin.</p>
         <div id="xatRoyxat" style="display:flex;flex-direction:column;gap:10px"></div>
         <p class="bosh" id="xatBosh">Hali hech narsa yo'q. Birinchi lahzani siz yuboring.</p>
@@ -484,6 +528,17 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <!-- BIZ -->
     <section class="ekran" id="ekranBiz" hidden>
       <div class="ichki">
+        <div class="karta tingla" id="tinglaK">
+          <div class="kSar"><b>🎵 Birga tinglash</b><span class="kichik xira" id="tinglaHol">YouTube</span></div>
+          <form class="qator" id="tinglaForma" style="flex-wrap:nowrap">
+            <input class="kirit" id="tinglaInp" placeholder="YouTube havolasi: qo'shiq yoki video" inputmode="url" autocomplete="off" style="flex:1">
+            <button class="tugma" type="submit" style="flex:none">Qo'yish</button>
+          </form>
+          <div class="ytJoy" id="ytJoy" hidden><div id="ytPleyer"></div></div>
+          <button class="tugma" id="tinglaQosh" type="button" hidden>▶️ Birga tinglashga qo'shilish</button>
+          <div class="kichik xira">Biringiz qo'ysangiz, ikkovingizda bir vaqtda o'ynaydi. Pauza va oldinga o'tkazish ham birga.</div>
+        </div>
+
         <div class="bolim-sar"><h2>Reelslar</h2><span class="kichik xira">bir-biringizga yuboring</span></div>
         <form class="qator" id="reelForma" style="flex-wrap:nowrap">
           <input class="kirit" id="reelInp" placeholder="Instagram havolasini qo'ying" inputmode="url" autocomplete="off" style="flex:1">
@@ -523,6 +578,13 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <!-- 4. O'YIN -->
     <section class="ekran" id="ekranOyin" hidden>
       <div class="ichki">
+        <div class="karta birxil" id="bxK">
+          <div class="kSar"><b>🧠 Bir xil o'ylaymizmi?</b><span class="kichik xira" id="bxBall"></span></div>
+          <div class="q" id="bxQ"></div>
+          <div id="bxJoy"></div>
+          <button class="tugma ikki" id="bxYangi" type="button">🎲 Yangi savol</button>
+        </div>
+
         <div class="bolim-sar"><h2>Ikkovlon kartalar</h2><span class="kichik xira">ikki ekranda bir vaqtda ochiladi</span></div>
         <div class="decklar" id="decklar"></div>
         <div class="oyinKarta" id="oyinKarta">
@@ -585,6 +647,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
       <div class="chiplar" id="ochVaqt" style="margin-top:8px"></div>
       <input class="kirit" id="ochSana" type="datetime-local" hidden style="margin-top:8px">
     </div>
+    <button class="chip" id="yonChip" type="button" aria-pressed="false" style="align-self:flex-start">🔥 O'qilgach yonib ketsin</button>
     <button class="tugma oltin" id="xatYubBtn" type="button">Muhrlash va yuborish</button>
   </div>
 </div>
@@ -689,8 +752,8 @@ var BROKERLAR = window.YK_BROKERLAR || ["wss://broker.emqx.io:8084/mqtt", "wss:/
 var ONLAYN_MS = 45000;
 var FAYL_MAX = 15*1024*1024;
 // "Kim ko'proq sevadi" ballari
-var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3, hikoya:6};
-var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv", hikoya:"hikoya"};
+var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3, hikoya:6, sabab:3, bf:3, bfmos:5, hozir:8, nafas:4, tingla:3};
+var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv", hikoya:"hikoya", sabab:"sabab", bfmos:"bir xil fikr", hozir:"hozirgi surat", nafas:"birga nafas", tingla:"birga tinglash"};
 
 var HISLAR = {
   mehr: [
@@ -1312,12 +1375,16 @@ function ochilishVaqti(){
   if(tanlanganOch==="sana"){ var v=$("ochSana").value; return v ? new Date(v).getTime() : Date.now(); }
   return Date.now();
 }
-$("yozBtn").addEventListener("click", function(){ tanlanganOch="hozir"; $("ochSana").hidden=true; ochVaqtChiz(); varaqOch("varaqXat"); });
+var yonsin=false;
+function yonChipChiz(){ $("yonChip").setAttribute("aria-pressed", yonsin?"true":"false"); }
+$("yonChip").addEventListener("click", function(){ yonsin=!yonsin; yonChipChiz(); });
+$("yozBtn").addEventListener("click", function(){ yonsin=false; yonChipChiz(); tanlanganOch="hozir"; $("ochSana").hidden=true; ochVaqtChiz(); varaqOch("varaqXat"); });
 $("xatYubBtn").addEventListener("click", function(){
   var m=$("xatMatn").value.trim(); if(!m){ bildir("Avval xat yozing"); return; }
   var id=tasodifiy(8), och=ochilishVaqti();
-  nashr("x/"+id, {t:"xat", id:id, matn:m, och:och}, true).then(function(o){
-    xatlar.unshift({id:id, tur:"xat", men:true, matn:m, och:och, vaqt:o.v, holat:"yuborildi"}); xatSaqla(); xatChiz();
+  var yon=yonsin; yonsin=false;
+  nashr("x/"+id, {t:"xat", id:id, matn:m, och:och, yon:yon}, true).then(function(o){
+    xatlar.unshift({id:id, tur:"xat", men:true, matn:m, och:och, yon:yon, vaqt:o.v, holat:"yuborildi"}); xatSaqla(); xatChiz();
   });
   ballQosh("xat");
   ntfy("💌", och>Date.now()+60000 ? "Senga muhrlangan xat yubordim. "+vaqt(och)+" da ochiladi" : "Senga muhrlangan xat yubordim. Ochib o'qi");
@@ -1344,8 +1411,8 @@ function xatChiz(){
       k.className="karta xat"+(x.ochildi||x.men?" ochiq":"");
       var konv=el("div","konvert"); konv.appendChild(el("div","muhr","❤"));
       var t=el("div","t"), hol;
-      t.append(el("b",null, x.men ? "Siz → "+uIsm() : uIsm()+"dan xat"));
-      if(x.men) hol = x.holat==="ochildi" ? "O'qildi ❤️ · "+vaqt(x.ochildiVaqt||x.vaqt)
+      t.append(el("b",null, (x.yon?"🔥 ":"")+(x.men ? "Siz → "+uIsm() : uIsm()+"dan "+(x.yon?"yonuvchi ":"")+"xat")));
+      if(x.men) hol = x.holat==="ochildi" ? (x.yon?"🔥 O'qildi va yonib ketdi · ":"O'qildi ❤️ · ")+vaqt(x.ochildiVaqt||x.vaqt)
         : (x.holat==="yetdi" ? "Yetkazildi" : "Yuborildi")+(kutadi?" · "+vaqt(x.och)+" da ochiladi":"");
       else hol = x.ochildi ? "O'qilgan · "+vaqt(x.vaqt) : kutadi ? "🔒 "+vaqt(x.och)+" da ochiladi" : "Muhrni sindiring";
       t.append(el("div","holat",hol));
@@ -1365,6 +1432,7 @@ function xatChiz(){
       else hol3 = x.saqlandi ? (x.ochildi ? "Ko'rilgan · " : "Ko'rish uchun bosing · ")+vaqt(x.vaqt)
                 : x.eskirgan ? "Muddati o'tdi · qayta so'rash uchun bosing" : x.yuklanyapti ? "Yuklanmoqda…" : "Yuklab olish uchun bosing";
       if(x.tur==="video" && x.dur) hol3=Math.max(1,Math.round(x.dur))+" s · "+hol3;
+      if(x.izoh) hol3=x.izoh+" · "+hol3;
       t3.append(el("div","holat",hol3)); k.append(rc,t3);
       k.addEventListener("click", function(){ lahzaKorish(x); });
     } else {
@@ -1386,7 +1454,20 @@ function xatChiz(){
 function xatOch(x){
   if(x.och>Date.now() && !x.men){ bildir("Bu xat "+vaqt(x.och)+" da ochiladi. Sabr 💌"); return; }
   function qogozKorsat(){
-    var q=el("div","qogoz", x.matn); q.appendChild(el("span","imzo", "— "+(x.men?sozlama.ism:uIsm())));
+    var q=el("div","qogoz", x.matn || "Bu xat o'qildi va yonib ketdi 🔥"); q.appendChild(el("span","imzo", "— "+(x.men?sozlama.ism:uIsm())));
+    if(!x.men && x.yon){
+      var k=el("div","k"), iz=el("div","yonIzoh","🔥 Bu xat 20 soniyadan keyin yonib ketadi");
+      k.append(q, iz); sahnaOch(k);
+      var qoldi=20, t=setInterval(function(){
+        qoldi--; iz.textContent="🔥 "+qoldi+" soniyadan keyin yonib ketadi";
+        if(qoldi<=0 || $("sahna").hidden){ clearInterval(t);
+          q.classList.add("yonmoqda"); iz.textContent="🔥 Yonmoqda…"; uchir("🔥",16); zarba(0,0.5);
+          xatlar=xatlar.filter(function(y){ return y!==x; }); xatSaqla(); xatChiz();
+          setTimeout(function(){ if(!$("sahna").hidden && $("sahna").contains(q)) sahnaYop(); bildir("Xat yonib ketdi. Faqat yuragingizda qoldi 🔥"); }, 2400);
+        }
+      }, 1000);
+      return;
+    }
     sahnaOch(q);
   }
   if(!x.men) faolYubor("kor_xat");
@@ -1496,18 +1577,18 @@ function rasmSiq(f){
       URL.revokeObjectURL(url); c.toBlob(function(b){ res(b||f); },"image/jpeg",0.85); };
     im.onerror=function(){ URL.revokeObjectURL(url); res(f); }; im.src=url; });
 }
-async function lahzaYubor(blob, tur, dumaloq, dur){
+async function lahzaYubor(blob, tur, dumaloq, dur, izoh){
   if(!KALIT) return;
   if(blob.size>FAYL_MAX){ bildir("Fayl juda katta. 15 MB gacha bo'lsin"); return; }
   bildir(tur==="rasm"?"Rasm yuborilmoqda…":"Video yuborilmoqda…");
   var id=tasodifiy(8), mime=(blob.type||(tur==="rasm"?"image/jpeg":"video/mp4")).split(";")[0];
   var bayt=new Uint8Array(await blob.arrayBuffer()), kichik=await kichikRasm(blob, tur);
   try{ await idbQoy("f_"+id, {b:bayt.buffer, mime:mime}); }catch(e){}
-  var x={id:id, tur:tur, men:true, mime:mime, dur:dur||0, dumaloq:!!dumaloq, kichik:kichik, vaqt:Date.now(), holat:"yuklanmoqda", saqlandi:true};
+  var x={id:id, tur:tur, men:true, mime:mime, dur:dur||0, dumaloq:!!dumaloq, kichik:kichik, izoh:izoh||"", vaqt:Date.now(), holat:"yuklanmoqda", saqlandi:true};
   xatlar.unshift(x); xatSaqla(); xatChiz();
   try{
     x.url=await yukla(bayt); x.holat="yuborildi"; xatSaqla(); xatChiz();
-    await nashr("x/"+id, {t:tur, id:id, url:x.url, mime:mime, dur:x.dur, dumaloq:x.dumaloq, kichik:kichik}, true);
+    await nashr("x/"+id, {t:tur, id:id, url:x.url, mime:mime, dur:x.dur, dumaloq:x.dumaloq, kichik:kichik, izoh:x.izoh}, true);
     ntfy(tur==="rasm"?"🖼":"🎥", tur==="rasm" ? "Senga rasm yubordim" : dumaloq ? "Senga dumaloq video yubordim. Ko'r, faqat sen uchun 🥰" : "Senga video yubordim");
     ballQosh(tur); bildir("Yuborildi ❤️");
   }catch(e){ x.holat="xato"; xatSaqla(); xatChiz(); bildir("Yuborilmadi. Internetni tekshiring"); }
@@ -1518,7 +1599,7 @@ async function qaytaYukla(x){
   x.holat="yuklanmoqda"; xatSaqla(); xatChiz();
   try{
     x.url=await yukla(new Uint8Array(d.b)); x.holat="yuborildi"; xatSaqla(); xatChiz();
-    await nashr("x/"+x.id, {t:x.tur, id:x.id, url:x.url, mime:x.mime, dur:x.dur, dumaloq:x.dumaloq, kichik:x.kichik}, true);
+    await nashr("x/"+x.id, {t:x.tur, id:x.id, url:x.url, mime:x.mime, dur:x.dur, dumaloq:x.dumaloq, kichik:x.kichik, izoh:x.izoh||""}, true);
   }catch(e){ x.holat="xato"; xatSaqla(); xatChiz(); }
 }
 async function yuklabOl(x){
@@ -1859,7 +1940,7 @@ var FAOL = {
   kor_reel:{m:"🎬 reelsingizni ko'ryapti", s:20000, x:1}, kor_hik:{m:"👁 hikoyangizni ko'ryapti", s:10000, x:1},
   profil:{m:"👤 profilingizni ko'ryapti", s:8000, x:1}, kuch:{m:"🫳 Teginishda sizni kutyapti", s:60000},
   tab_Yurak:{m:"❤️ Yurak bo'limida", s:60000}, tab_Teg:{m:"🫳 Teginishda sizni kutyapti", s:60000}, tab_Xat:{m:"💌 Lahzalarni ko'ryapti", s:60000},
-  tab_Biz:{m:"🎬 Biz bo'limida", s:60000}, tab_Oyin:{m:"🃏 O'yin bo'limida", s:60000}
+  tab_Biz:{m:"🎬 Biz bo'limida", s:60000}, tingla:{m:"🎧 siz bilan tinglayapti", s:25000}, tab_Oyin:{m:"🃏 O'yin bo'limida", s:60000}
 };
 var oxFaol={}, uFaolHol=null, boshlanganVaqt=Date.now();
 function faolYubor(n){
@@ -2062,6 +2143,207 @@ $("hikYop").addEventListener("click", function(ev){ ev.stopPropagation(); hikYop
 $("hikKeyin").addEventListener("click", hikKeyingi);
 $("hikOldin").addEventListener("click", function(){ if(hikI>0){ hikI--; hikOch(); } else hikOch(); });
 
+// ================= SEVGI BANKASI: "Seni sevaman, chunki…" =================
+var menSabab=ol("menSabab",[]), uSabab=ol("uSabab",[]), sabOch=ol("sabOch",{}), uOchgan=ol("uOchgan",{});
+function sababNashr(){ if(KALIT) nashr("sb/"+QID, {t:"sabablar", l:menSabab.map(function(x){ return {id:x.id, m:x.m}; })}, true).catch(function(){}); }
+function sabOchNashr(){ if(KALIT) nashr("so/"+QID, {t:"ochilgan", o:sabOch}, true).catch(function(){}); }
+function bankaChiz(){
+  var qolgan=uSabab.filter(function(x){ return !sabOch[x.id]; }), bugungi=uSabab.filter(function(x){ return sabOch[x.id]===bugun(); })[0];
+  $("bankaSon").textContent = uSabab.length ? (uSabab.length-qolgan.length)+"/"+uSabab.length+" ochildi" : "";
+  $("bankaIzoh").textContent = !uSabab.length ? uIsm()+" hali sabab tashlamagan. Siz birinchi bo'ling 😉"
+    : bugungi ? "Bugungi sabab ochilgan. Ertaga yana bittasi kutadi 💌"
+    : qolgan.length ? uIsm()+" sizni sevishining "+qolgan.length+" ta sababi bankada kutyapti"
+    : "Hamma sabablar ochildi. "+uIsm()+" yangilarini tashlasin 🥰";
+  $("bankaOch").hidden = !bugungi && !qolgan.length;
+  $("bankaOch").textContent = bugungi ? "💌 Bugungi sababni qayta o'qish" : "🫙 Bugungi sababni ochish";
+  var ochildi=menSabab.filter(function(x){ return uOchgan[x.id]; }).length;
+  $("bankaMen").textContent = menSabab.length ? "Siz "+menSabab.length+" ta sabab tashladingiz · "+uIsm()+" "+ochildi+" tasini ochdi" : "Har kuni bitta sabab tashlang: u har kuni bittadan ochadi";
+}
+function sababKorsat(x, birinchi){
+  var k=el("div","k"); k.append(el("div","banka-ke","🫙"), el("div","kichik xira",uIsm()+" sizni sevadi, chunki…"), el("div","sababQogoz",x.m));
+  sahnaOch(k,"bayram",false,function(){ if(birinchi){ uchir("💖",12); qongiroq(880); } });
+}
+$("bankaOch").addEventListener("click", function(){
+  var bugungi=uSabab.filter(function(x){ return sabOch[x.id]===bugun(); })[0];
+  if(bugungi){ sababKorsat(bugungi,false); return; }
+  var qolgan=uSabab.filter(function(x){ return !sabOch[x.id]; }); if(!qolgan.length) return;
+  var x=qolgan[Math.floor(Math.random()*qolgan.length)];
+  sabOch[x.id]=bugun(); qoy("sabOch",sabOch); sabOchNashr(); bankaChiz(); sababKorsat(x,true);
+});
+$("sababForma").addEventListener("submit", function(e){
+  e.preventDefault(); var m=$("sababInp").value.trim(); if(!m) return;
+  menSabab.push({id:tasodifiy(6), m:m.slice(0,200), v:Date.now()}); qoy("menSabab",menSabab); $("sababInp").value="";
+  sababNashr(); bankaChiz(); ballQosh("sabab"); uchir("💌",5); bildir("Sabab bankaga tushdi 🫙");
+  ntfy("🫙","Sevgi bankasiga yangi sabab tashladim. Ochib ko'r","sabab",3600000);
+});
+
+// ================= BIR XIL O'YLAYMIZMI =================
+var BX=["Bitta so'z: birinchi uchrashuvimiz","Qaysi rang bizni ifodalaydi?","Keyingi sayohatimiz qaysi shaharga?","Bitta emoji: sen men uchun…",
+  "Eng sevimli taomimiz?","Bitta so'z: bizning sevgimiz","Qaysi fasl bizniki?","Birinchi bo'lib kim \"sevaman\" degan?","Qaysi hayvon menga o'xshaydi?",
+  "Bitta so'z: mening eng yaxshi xislatim","Qaysi gul bizga mos?","Bizning qo'shig'imizning ijrochisi?","Kelajakdagi uyimiz qayerda?","Bitta so'z: sening ko'zlaring",
+  "Farzandimizga qanday ism qo'yamiz?","Qaysi desert bizga o'xshaydi?","Bitta so'z: birinchi o'pich","Dam olish kuni nima qilamiz? (bitta so'z)",
+  "Qaysi sayyora bizniki?","Eng ko'p qayerda uchrashganmiz?","Bitta so'z: men seni qanday sevaman","Qaysi meva bizga o'xshaydi?","Qaysi davlatga birga boramiz?","Bitta so'z: bizning kelajak"];
+var bx=ol("bx",null), bxJ=ol("bxJ",{}), bxHisob=ol("bxHisob",{mos:0, jami:0, h:[]});
+function bxNorm(s){ return String(s||"").toLowerCase().replace(/[‘’ʻʼ`´']/g,"").replace(/[\s.,!?;:"«»()\-–—]/g,""); }
+function bxChiz(){
+  $("bxBall").textContent = bxHisob.jami ? "Mos tushdi: "+bxHisob.mos+"/"+bxHisob.jami : "";
+  var joy=$("bxJoy"); joy.textContent="";
+  if(!bx){ $("bxQ").textContent="Savol tashlang: ikkovingiz yashirin javob berasiz, keyin javoblar birga ochiladi"; return; }
+  $("bxQ").textContent=BX[bx.idx % BX.length];
+  var j=bxJ[bx.id]||{};
+  if(!j.men){
+    var f=el("form","qator"); f.style.flexWrap="nowrap";
+    var i=el("input","kirit"); i.id="bxInp"; i.maxLength=60; i.placeholder="Yashirin javobingiz…"; i.autocomplete="off"; i.style.flex="1";
+    var b=el("button","tugma","Javob"); b.type="submit"; b.style.flex="none"; f.append(i,b);
+    f.addEventListener("submit", function(e){ e.preventDefault(); var v=i.value.trim(); if(!v) return; bxJavob(v); });
+    joy.append(f);
+    if(j.u) joy.append(el("div","qulf","🤫 "+uIsm()+" javob berdi. Navbat sizda"));
+  } else if(!j.u){
+    joy.append(el("div","qulf","🔒 Javobingiz yashirin. "+uIsm()+"ni kutyapmiz…"));
+  } else {
+    var mos=bxNorm(j.men)===bxNorm(j.u), g=el("div","bxJavoblar"+(mos?" mos":""));
+    var a=el("div"); a.append(el("small",null,"Siz"), el("b",null,j.men));
+    var c=el("div"); c.append(el("small",null,uIsm()), el("b",null,j.u));
+    g.append(a,c); joy.append(g, el("div","qulf", mos ? "🤯 Bir xil o'ylaysiz!" : "Har xil, lekin juda yoqimli 😄"));
+  }
+}
+function bxTekshir(){
+  if(!bx) return; var j=bxJ[bx.id]||{};
+  if(!j.men || !j.u || bxHisob.h.indexOf(bx.id)>=0) return;
+  bxHisob.h=bxHisob.h.concat([bx.id]).slice(-60); bxHisob.jami++;
+  var mos=bxNorm(j.men)===bxNorm(j.u);
+  if(mos){ bxHisob.mos++; ballQosh("bfmos");
+    var k=el("div","k"); k.append(el("div","ke","🤯"), el("div","km","Bir xil o'ylaysiz!"), el("div",null,"«"+j.men+"»"), el("div","kichik xira","Yuraklaringiz bir xil uradi 💞"));
+    sahnaOch(k,"bayram",true,function(){ uchir("💞",14); uchir("✨",10); qongiroq(990); });
+  } else bildir("Javoblar ochildi 😄");
+  qoy("bxHisob",bxHisob);
+}
+function bxJavob(v){
+  var j=bxJ[bx.id]||{}; j.men=v.slice(0,60); bxJ[bx.id]=j;
+  var k=Object.keys(bxJ); if(k.length>40) k.slice(0,k.length-40).forEach(function(x){ delete bxJ[x]; });
+  qoy("bxJ",bxJ); nashr("bfj/"+QID, {t:"bxj", id:bx.id, j:j.men}, true).catch(function(){});
+  ballQosh("bf"); bxTekshir(); bxChiz();
+  if(!j.u) ntfy("🧠","Yashirin javob berdim. Endi sen: bir xil o'ylarmikanmiz? 🤭","bxj",600000);
+}
+$("bxYangi").addEventListener("click", function(){
+  var idx; do{ idx=Math.floor(Math.random()*BX.length); } while(bx && bx.idx===idx);
+  var id=tasodifiy(6);
+  nashr("bf", {t:"bx", id:id, idx:idx}, true).then(function(o){ bx={id:id, idx:idx, v:o.v}; qoy("bx",bx); bxChiz(); });
+  ntfy("🧠","Yangi savol: "+BX[idx]+". Javobingni yashirin yoz","bx",600000);
+});
+
+// ================= HOZIR NIMA QILYAPSAN? =================
+var hozirSorov=ol("hozirSorov",0);
+$("hozirBtn").addEventListener("click", function(){
+  if(!KALIT) return;
+  nashr("hs/"+QID, {t:"hozirSora"}, true).catch(function(){});
+  ntfy("📸","Hozir nima qilyapsan? 2 daqiqa ichida surat yubor ⏱");
+  bildir("So'rov ketdi. "+uIsm()+" 2 daqiqa ichida suratga oladi ⏱");
+});
+function hozirSahna(vq){
+  var k=el("div","k"), sn=el("div","km",""); k.append(el("div","ke","📸"), el("div",null,uIsm()+" so'rayapti: hozir nima qilyapsan?"), sn);
+  var b=el("button","tugma","📸 Hozir suratga olish"); b.type="button"; b.addEventListener("click", function(){ $("hozirInp").click(); });
+  k.append(b, el("div","kichik xira","Filtrsiz, tayyorlanmasdan. Shunchaki hozirgi lahza"));
+  sahnaOch(k,"",true);
+  var t=setInterval(function(){ var q=Math.max(0,120-Math.floor((Date.now()-vq)/1000));
+    sn.textContent = q>0 ? Math.floor(q/60)+":"+ikki(q%60) : "Vaqt tugadi 😅 Baribir yuboring";
+    if(q<=0 || !document.body.contains(sn)) clearInterval(t); }, 500);
+}
+$("hozirInp").addEventListener("change", async function(){
+  var f=this.files && this.files[0]; this.value=""; if(!f) return;
+  var o=hozirSorov ? Math.floor((Date.now()-hozirSorov)/1000) : 999, vaqtida=o<=120;
+  if($("sahna").querySelector(".ke") && $("sahna").querySelector(".ke").textContent==="📸") sahnaYop();
+  lahzaYubor(await rasmSiq(f), "rasm", false, 0, vaqtida ? "📸 Hozir · "+(o<60 ? o+" soniyada" : Math.floor(o/60)+" daq "+(o%60)+" s da")+" javob berdi" : "📸 Hozir");
+  if(vaqtida) ballQosh("hozir");
+  hozirSorov=0; qoy("hozirSorov",0);
+});
+
+// ================= BIRGA NAFAS =================
+var nafasRaf=null;
+$("nafasBtn").addEventListener("click", function(){
+  var b=Date.now()+2000;
+  nashr("e",{t:"nafas", bosh:b}).catch(function(){}); nafasBoshla(b);
+  ntfy("🌬","Kel, birga nafas olaylik. Ilovaga kir 🤍","nafas",600000); ballQosh("nafas");
+});
+function nafasBoshla(bosh){
+  var k=el("div","k"), d=el("div","nafasDoira"), fz=el("div","nafasFaza","Tayyorlaning…"), u2=el("div","kichik xira","");
+  u2.id="nafasU"; k.append(d, fz, u2); sahnaOch(k,"nafas");
+  cancelAnimationFrame(nafasRaf);
+  (function kadr2(){
+    if($("sahna").hidden || !document.body.contains(d)) return;
+    var s=(Date.now()-bosh)/1000, sc=0.55;
+    if(s<0){ fz.textContent="Tayyorlaning… "+Math.ceil(-s); }
+    else if(s>72){ fz.textContent="Barakalla. Yuraklaringiz tinchlandi 💗"; d.style.transform="scale(.75)"; return; }
+    else { var c=s%12;
+      if(c<4){ sc=0.55+0.45*(c/4); fz.textContent="Nafas oling…"; }
+      else if(c<6){ sc=1; fz.textContent="Ushlab turing"; }
+      else { sc=1-0.45*((c-6)/6); fz.textContent="Sekin chiqaring…"; } }
+    d.style.transform="scale("+sc.toFixed(3)+")";
+    nafasRaf=requestAnimationFrame(kadr2);
+  })();
+}
+
+// ================= BIRGA TINGLASH (YouTube) =================
+var yt=ol("yt",null), ytPleyer=null, ytTayyor=false, ytQollanmoqda=0, ytApiYuklandi=false, ytCb=[];
+function ytId(url){ var m=String(url||"").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{11})/); return m?m[1]:null; }
+function ytApi(cb){
+  if(window.YT && YT.Player){ cb(); return; }
+  ytCb.push(cb);
+  if(!ytApiYuklandi){ ytApiYuklandi=true;
+    window.onYouTubeIframeAPIReady=function(){ ytCb.splice(0).forEach(function(f){ f(); }); };
+    var sc=document.createElement("script"); sc.src="https://www.youtube.com/iframe_api"; sc.onerror=function(){ bildir("YouTube yuklanmadi"); ytApiYuklandi=false; }; document.head.appendChild(sc); }
+}
+function ytHozirgi(){ return yt ? Math.max(0, yt.t + (yt.holat==="play" ? (Date.now()-yt.at)/1000 : 0)) : 0; }
+function ytNashr(holat){
+  if(!ytPleyer || !yt || !KALIT) return;
+  var t=0; try{ t=ytPleyer.getCurrentTime()||0; }catch(e){}
+  yt={vid:yt.vid, holat:holat, t:t, at:Date.now(), by:QID, v:Date.now()}; qoy("yt",yt); tinglaChiz();
+  nashr("yt", {t:"yt", vid:yt.vid, holat:holat, pos:t, at:yt.at}, true).catch(function(){});
+}
+function ytHolat(e){
+  if(Date.now()-ytQollanmoqda<1500) return;
+  if(e.data===1){ ytNashr("play"); faolYubor("tingla"); }
+  else if(e.data===2) ytNashr("pause");
+}
+function ytYarat(){
+  if(!yt || !yt.vid) return;
+  $("ytJoy").hidden=false;
+  ytApi(function(){
+    if(ytPleyer){ ytQolla(); return; }
+    ytQollanmoqda=Date.now();
+    ytPleyer=new YT.Player("ytPleyer", {videoId:yt.vid, playerVars:{playsinline:1, rel:0, start:Math.floor(ytHozirgi())},
+      events:{onReady:function(){ ytTayyor=true; ytQolla(); }, onStateChange:ytHolat}});
+  });
+}
+function ytQolla(){
+  if(!yt || !yt.vid) return;
+  if(!ytPleyer || !ytTayyor){ tinglaChiz(); return; }
+  ytQollanmoqda=Date.now();
+  try{
+    var d=ytPleyer.getVideoData && ytPleyer.getVideoData();
+    if(d && d.video_id && d.video_id!==yt.vid){ ytPleyer.loadVideoById({videoId:yt.vid, startSeconds:ytHozirgi()}); if(yt.holat!=="play") setTimeout(function(){ ytPleyer.pauseVideo(); },700); tinglaChiz(); return; }
+    var m=ytHozirgi(), cur=ytPleyer.getCurrentTime()||0;
+    if(Math.abs(cur-m)>2) ytPleyer.seekTo(m,true);
+    if(yt.holat==="play") ytPleyer.playVideo(); else ytPleyer.pauseVideo();
+  }catch(e){}
+  tinglaChiz();
+}
+function tinglaChiz(){
+  var bor=yt && yt.vid;
+  $("tinglaHol").textContent = !bor ? "YouTube" : (yt.by===QID?"Siz qo'ydingiz":uIsm()+" qo'ydi")+" · "+(yt.holat==="play"?"o'ynayapti 🎶":"pauza");
+  $("tinglaQosh").hidden = !bor || !!ytPleyer;
+}
+$("tinglaForma").addEventListener("submit", function(e){
+  e.preventDefault(); var vid=ytId($("tinglaInp").value);
+  if(!vid){ bildir("YouTube havolasini qo'ying"); return; }
+  $("tinglaInp").value="";
+  yt={vid:vid, holat:"play", t:0, at:Date.now(), by:QID, v:Date.now()}; qoy("yt",yt);
+  nashr("yt", {t:"yt", vid:vid, holat:"play", pos:0, at:yt.at}, true).catch(function(){});
+  ytYarat(); tinglaChiz();
+  ntfy("🎵","Birga tinglaylik! Biz bo'limiga kir 🎧","tingla",600000); ballQosh("tingla");
+});
+$("tinglaQosh").addEventListener("click", function(){ ytYarat(); faolYubor("tingla"); });
+
 // ================= O'YIN: kartalar va kunlik savol =================
 var tanlanganDeck=ol("deck","ehtiros"), joriyKarta=ol("karta",null);
 if(!DECKLAR[tanlanganDeck]) tanlanganDeck="ehtiros";
@@ -2144,17 +2426,18 @@ function qabul(q, o){
     var bor0=xatlar.filter(function(x){ return x.id===o.id; })[0];
     if(!bor0){
       var mime=/^(video|image|audio)\/[\w.+-]+$/.test(o.mime||"") ? o.mime : (o.t==="rasm"?"image/jpeg":o.t==="video"?"video/mp4":"audio/mp4");
-      var x = o.t==="xat" ? {id:o.id, tur:"xat", matn:String(o.matn||""), och:o.och||vq, vaqt:vq}
+      var x = o.t==="xat" ? {id:o.id, tur:"xat", matn:String(o.matn||""), och:o.och||vq, yon:!!o.yon, vaqt:vq}
             : o.t==="ovoz" ? {id:o.id, tur:"ovoz", a:o.a, mime:mime, dur:o.dur, vaqt:vq}
             : o.t==="reel" ? {id:o.id, tur:"reel", url:havolaTozala(o.url)||"", vaqt:vq}
             : o.t==="kupon" ? {id:o.id, tur:"kupon", e:String(o.e||"🎟").slice(0,8), n:String(o.n||"").slice(0,60), vaqt:vq}
-            : {id:o.id, tur:o.t, url:String(o.url||""), mime:mime, dur:+o.dur||0, dumaloq:!!o.dumaloq, kichik:String(o.kichik||""), vaqt:vq};
+            : {id:o.id, tur:o.t, url:String(o.url||""), mime:mime, dur:+o.dur||0, dumaloq:!!o.dumaloq, kichik:String(o.kichik||""), izoh:String(o.izoh||"").slice(0,60), vaqt:vq};
       xatlar.unshift(x); xatlar.sort(function(a,b){ return b.vaqt-a.vaqt; }); xatSaqla(); xatChiz();
       if(o.t==="reel"||o.t==="kupon"){ if(joriy!=="Biz") $("bizNuqta").hidden=false; }
       else if(joriy!=="Xat") $("xatNuqta").hidden=false;
       bildir(o.t==="reel" ? "🎬 "+uIsm()+" sizga reels yubordi" : o.t==="kupon" ? "🎟 "+uIsm()+" sizga kupon sovg'a qildi: "+x.n : o.t==="xat" ? "💌 "+uIsm()+" sizga xat yubordi" : o.t==="ovoz" ? "🎙 "+uIsm()+" sizga shivirladi"
            : o.t==="rasm" ? "🖼 "+uIsm()+" sizga rasm yubordi" : "🎥 "+uIsm()+" sizga video yubordi"); qongiroq(660);
       if(media) yuklabOl(x);
+      if(media && /Hozir/.test(x.izoh||"")) bildir("📸 "+uIsm()+" hozir nima qilayotganini yubordi!");
     } else if(media && !bor0.saqlandi && o.url && o.url!==bor0.url){ bor0.url=String(o.url); bor0.eskirgan=false; xatSaqla(); yuklabOl(bor0); }
     if(!media) nashr("e",{t:"oldim", id:o.id}).catch(function(){});
     return;
@@ -2182,6 +2465,43 @@ function qabul(q, o){
     (o.ids||[]).forEach(function(id){ var x=menHik.filter(function(y){ return y.id===id; })[0];
       if(x && !x.korildi){ x.korildi=vq; if(Date.now()-vq<120000) bildir("👁 "+uIsm()+" hikoyangizni ko'rdi"); } });
     qoy("menHik",menHik); menHikChiz(); return;
+  }
+  if(q.indexOf("sb/")===0){
+    var eski=uSabab.length;
+    uSabab=(o.l||[]).filter(function(y){ return y && y.id; }).map(function(y){ return {id:String(y.id), m:String(y.m||"").slice(0,200)}; });
+    qoy("uSabab",uSabab); bankaChiz();
+    if(uSabab.length>eski && eski>0 && Date.now()-vq<120000) bildir("🫙 "+uIsm()+" bankaga yangi sabab tashladi");
+    return;
+  }
+  if(q.indexOf("so/")===0){
+    Object.keys(o.o||{}).forEach(function(id){
+      var x=menSabab.filter(function(y){ return y.id===id; })[0];
+      if(x && !uOchgan[id]){ uOchgan[id]=vq; if(Date.now()-vq<120000) bildir("🫙 "+uIsm()+" bugungi sababni ochdi: «"+x.m.slice(0,40)+"»"); }
+    });
+    qoy("uOchgan",uOchgan); bankaChiz(); return;
+  }
+  if(q==="bf"){
+    if(!bx || vq>(bx.v||0)){ bx={id:String(o.id), idx:+o.idx||0, v:vq}; qoy("bx",bx); bxChiz();
+      if(o.f!==QID && Date.now()-vq<120000){ bildir("🧠 "+uIsm()+" yangi savol tashladi"); if(joriy!=="Oyin") $("oyinNuqta").hidden=false; } }
+    return;
+  }
+  if(q.indexOf("bfj/")===0){
+    var bj=bxJ[o.id]||{}; bj.u=String(o.j||"").slice(0,60); bxJ[o.id]=bj; qoy("bxJ",bxJ);
+    if(bx && bx.id===o.id){ if(!bj.men && Date.now()-vq<120000) bildir("🤫 "+uIsm()+" javob berdi. Navbat sizda"); bxTekshir(); bxChiz(); }
+    return;
+  }
+  if(q.indexOf("hs/")===0){
+    if(Date.now()-vq<120000 && vq>hozirSorov){ hozirSorov=vq; qoy("hozirSorov",vq); hozirSahna(vq); }
+    return;
+  }
+  if(q==="yt"){
+    if(!yt || vq>(yt.v||0)){
+      var yangiVid=!yt || yt.vid!==o.vid;
+      yt={vid:String(o.vid||"").slice(0,11), holat:o.holat==="play"?"play":"pause", t:+o.pos||0, at:+o.at||vq, by:o.f, v:vq}; qoy("yt",yt);
+      if(ytPleyer) ytQolla(); else tinglaChiz();
+      if(yangiVid && Date.now()-vq<120000){ bildir("🎵 "+uIsm()+" birga tinglashga taklif qildi"); if(joriy!=="Biz") $("bizNuqta").hidden=false; }
+    }
+    return;
   }
   if(q.indexOf("ki/")===0){
     (o.ids||[]).forEach(function(id){ var kp=xatlar.filter(function(x){ return x.id===id && x.men && x.tur==="kupon"; })[0];
@@ -2243,6 +2563,16 @@ function qabul(q, o){
     case "chaqir":
       if(!yangi) break;
       $("tegNuqta").hidden=false; bildir("🫳 "+uIsm()+" sizni Teginishga chaqiryapti"); qongiroq(880); break;
+    case "nafas":
+      if(!yangi) break;
+      var nk=el("div","k"); nk.append(el("div","ke","🌬"), el("div","km",uIsm()+" siz bilan birga nafas olmoqchi"));
+      var nb=el("button","tugma","🤍 Qo'shilish"); nb.type="button";
+      nb.addEventListener("click", function(){ nashr("e",{t:"nafasQosh"}).catch(function(){}); nafasBoshla(+o.bosh||Date.now()); var ue=$("nafasU"); if(ue) ue.textContent="✨ "+uIsm()+" siz bilan nafas olyapti"; });
+      nk.append(nb); sahnaOch(nk,"nafas",true);
+      break;
+    case "nafasQosh":
+      var nu=$("nafasU"); if(nu) nu.textContent="✨ "+uIsm()+" qo'shildi. Birga nafas olyapsiz"; else bildir("🌬 "+uIsm()+" nafasga qo'shildi");
+      break;
     case "faol":
       if(!yangi || !FAOL[o.n]) break;
       uFaolHol={n:o.n, v:Date.now()}; sarlavhaYangila();
@@ -2269,7 +2599,8 @@ function qabul(q, o){
     case "ochildi":
       var bor=xatlar.filter(function(x){ return x.id===o.id && x.men; })[0];
       if(bor){
-        if(o.t==="ochildi"){ bor.holat="ochildi"; bor.ochildiVaqt=vq; if(yangi) bildir(uIsm()+" xatingizni ochdi ❤️"); }
+        if(o.t==="ochildi"){ bor.holat="ochildi"; bor.ochildiVaqt=vq; if(bor.yon) bor.matn="";
+          if(yangi) bildir(bor.yon ? "🔥 "+uIsm()+" yonuvchi xatingizni o'qidi" : uIsm()+" xatingizni ochdi ❤️"); }
         else if(bor.holat!=="ochildi") bor.holat="yetdi";
         xatSaqla(); xatChiz();
         tozala("x/"+o.id);
@@ -2341,7 +2672,7 @@ async function boshla(){
   if(ol("ulandi_"+sozlama.kod,false)) qoy("ulandi",true);
   $("taklif").hidden=!!ol("ulandi",false);
   if(menHolat.sog.kun!==bugun()) menHolat.sog={kun:bugun(), n:0};
-  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); hikTozala(); profilChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
+  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); hikTozala(); profilChiz(); bankaChiz(); bxChiz(); tinglaChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
   await kalitTayyorla(sozlama.kod);
   xatlar.forEach(function(x){ x.yuklanyapti=false; });
   xatlar.filter(function(x){ return !x.men && (x.tur==="video"||x.tur==="rasm") && !x.saqlandi && !x.eskirgan; }).forEach(yuklabOl);
@@ -2350,6 +2681,7 @@ async function boshla(){
   if(gpsYoqiq) gpsBoshla();
   if(menProfil.rasm || menProfil.status.e || menProfil.status.m) profilNashr();
   if(menHik.length) hikNashr();
+  if(menSabab.length) sababNashr();
   hikQaytaYukla();
   uHik.forEach(function(x){ hikYukla(x); });
   if(istaklar.length) istakNashr();
