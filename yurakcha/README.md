@@ -8,10 +8,19 @@ Ikki sevishgan uchun iPhone'ga o'rnatiladigan yopiq ilova. Server yozish shart e
 |---|---|
 | **Yurak** | Bosish: "sog'indim" yetib boradi, uning ekranida "bugun sizni N marta sog'indi" ko'rinadi. Bosib turish: yurak urishi uning telefonida ovoz bilan uradi. Ikkovingiz bir vaqtda bosib tursangiz: "Yuraklaringiz ulandi". Hissiyot yuborish: Mehr, Yurakdan va Ehtiros bo'limlari, o'z so'zlaringiz, kayfiyat. |
 | **Teginish** | Barmog'ingizning izi uning ekranida jonli ko'rinadi. Barmoqlar uchrashsa, uchqun chiqadi va yurak uradi. Ikki marta tegish: o'pich izi 💋. U ilovada bo'lmasa, "Uni chaqirish" tugmasi chiqadi. |
-| **Xatlar** | Muhrlangan xat: hozir, bugun 21:00, ertaga 08:00 yoki tanlangan sanada ochiladi. Qabul qiluvchi muhrni sindirib o'qiydi, yuboruvchi "O'qildi ❤️" ni ko'radi. Shivir: tugmani bosib turib 30 soniyagacha ovoz yuboriladi. |
+| **Lahzalar** | Dumaloq video (old kameradan 30 soniyagacha, Telegramdagidek), galereyadan rasm yoki video (15 MB gacha), muhrlangan xat (hozir, bugun 21:00, ertaga 08:00 yoki tanlangan sana), shivir (30 soniyagacha ovoz). Yuboruvchi "Yetkazildi" va "Ko'rildi ❤️" ni ko'radi. |
 | **O'yin** | Ehtiros, Yaqinlik va Orzular kartalari: tortilgan karta ikki ekranda bir vaqtda ochiladi va reaksiya yuborish mumkin. Kunlik savol: sevgilingizning javobi o'zingiz javob bergandan keyin ochiladi. |
 
 Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki "Oxirgi marta 18:05".
+
+Qo'shimcha hissiyotlar:
+
+- **Kim ko'proq sevadi?** Har bir harakat ball beradi: sog'inch 1, hissiyot 3, teginish 4, yurak ulanishi 6, xat 10,
+  shivir 8, rasm 8, video 15. Haftalik arqon tortish ko'rinadi, yetakchiga toj 👑 beriladi. Kim o'zib ketsa, xabar chiqadi.
+  O'tgan hafta g'olibi ham ko'rsatiladi. Ikkovingiz har kuni nimadir yuborsangiz, "🔥 N kun ketma-ket" seriyasi o'sadi.
+- **Ehtiros xabari** kelganda ekran olovdek yonadi va yurak ovozi eshitiladi.
+- **Bayram kunlari:** 7, 50, 100, 200… kun, har oy va har yil to'lganda bayram ekrani chiqadi va tabrik yuborish mumkin.
+- **Tun marosimi:** 21:00 dan keyin "Yotdim" tugmasi chiqadi. Ikkovingiz ham yotsangiz, "Bir osmon ostida uxlayapsiz 🌌" ko'rinadi.
 
 ## Qanday ishlaydi
 
@@ -27,6 +36,9 @@ Telefon A ── ntfy.sh ──────────────────�
 - Xatlar, shivirlar, kayfiyat, karta va savol javoblari brokerda saqlanadi (retained). Sevgilingiz keyinroq kirsa ham
   ularni oladi. Xat yetib borgach, u brokerdan o'chiriladi.
 - ntfy bildirishnomalari faqat qisqa matnni ko'rsatadi. Xat va shivirning mazmuni bildirishnomaga chiqmaydi.
+- Video va rasmlar telefonda AES-GCM bilan shifrlanadi va ntfy.sh fayl xizmatiga yuklanadi. Fayl u yerda 3 soat turadi.
+  Sevgilingiz ilovani ochishi bilan u yuklab olinadi va telefonning o'ziga (IndexedDB) saqlanadi. 3 soatdan kech qolsa,
+  "qayta so'rash" tugmasi bor: yuboruvchining telefoni ilovani ochganda faylni o'zi qayta yuklaydi.
 - `mqtt.min.js` ilova ichida turadi (MQTT.js 5.10.1, MIT litsenziyasi).
 
 ## O'rnatish
