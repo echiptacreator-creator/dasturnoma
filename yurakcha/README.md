@@ -1,76 +1,47 @@
 # Yurakcha
 
-Ikki iPhone o'rtasida bir tegish bilan hissiyot ulashish uchun kichik veb-ilova.
-Server yozish shart emas: xabarlar bepul [ntfy.sh](https://ntfy.sh) xizmati orqali yuboriladi.
+Ikki sevishgan uchun iPhone'ga o'rnatiladigan yopiq ilova. Server yozish shart emas.
+
+## Bo'limlar
+
+| Bo'lim | Nima qiladi |
+|---|---|
+| **Yurak** | Bosish: "sog'indim" yetib boradi, uning ekranida "bugun sizni N marta sog'indi" ko'rinadi. Bosib turish: yurak urishi uning telefonida ovoz bilan uradi. Ikkovingiz bir vaqtda bosib tursangiz: "Yuraklaringiz ulandi". Hissiyot yuborish: Mehr, Yurakdan va Ehtiros bo'limlari, o'z so'zlaringiz, kayfiyat. |
+| **Teginish** | Barmog'ingizning izi uning ekranida jonli ko'rinadi. Barmoqlar uchrashsa, uchqun chiqadi va yurak uradi. Ikki marta tegish: o'pich izi 💋. U ilovada bo'lmasa, "Uni chaqirish" tugmasi chiqadi. |
+| **Xatlar** | Muhrlangan xat: hozir, bugun 21:00, ertaga 08:00 yoki tanlangan sanada ochiladi. Qabul qiluvchi muhrni sindirib o'qiydi, yuboruvchi "O'qildi ❤️" ni ko'radi. Shivir: tugmani bosib turib 30 soniyagacha ovoz yuboriladi. |
+| **O'yin** | Ehtiros, Yaqinlik va Orzular kartalari: tortilgan karta ikki ekranda bir vaqtda ochiladi va reaksiya yuborish mumkin. Kunlik savol: sevgilingizning javobi o'zingiz javob bergandan keyin ochiladi. |
+
+Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki "Oxirgi marta 18:05".
 
 ## Qanday ishlaydi
 
 ```
-Telefon A ──POST──▶ ntfy.sh/<maxfiy-kod> ──▶ Telefon B
-   (yurak tugmasi)                         ├─ ochiq sahifa: butun ekran yurak animatsiyasi (SSE)
-                                           └─ ntfy ilovasi: iPhone bildirishnomasi (ilova yopiq bo'lsa ham)
+Telefon A ── MQTT (wss, ikki ochiq broker bir vaqtda) ── Telefon B     jonli: teginish, yurak urishi, xatlar, kartalar
+Telefon A ── ntfy.sh ──────────────────────────────────▶ ntfy ilovasi  faqat B ilovada bo'lmaganda bildirishnoma
 ```
 
-- Ikki telefon bitta **maxfiy kod** (masalan `yurak-0q1q2q2h63137022`) bilan bog'lanadi.
-- Katta yurakni bosish: "Seni sevaman ❤️". 1 soniya bosib turish: "Yuragim sen uchun urmoqda 💓".
-- 9 ta tayyor hissiyot, o'z matningiz, birga o'tgan kunlar sanog'i va xabarlar tarixi bor.
-- Ilova yopiq paytda kelgan xabarlar keyingi ochilganda tarixda chiqadi.
-- **Mehr, Hissiyot, Ehtiros** bo'limlari: har birida 9 ta tayyor xabar.
-- **Birga bosib turish:** ikkovingiz bir vaqtda katta yurakni bosib tursangiz, ikkala ekranda "Yuraklaringiz ulandi 💞" chiqadi.
-  Biringiz bosib tursangiz, ikkinchisining ekranida "hozir yurakni bosib turibdi" degan yozuv yonadi.
-- **Chizib yuborish:** barmoq bilan chizilgan rasm sevgilingiz ekranida chizilayotgandek animatsiya bilan ochiladi.
-- **Kayfiyat:** tanlangan kayfiyat sevgilingiz ekranining tepasida ko'rinadi.
-- **Kunlik savol:** har kuni ikkovingizga bir xil savol beriladi. Sevgilingizning javobini faqat o'zingiz javob bergandan keyin ko'rasiz.
-
-Bildirishnoma chiqaradigan xabarlar `<kod>` mavzusiga ketadi. Bosib turish, kayfiyat, savol javoblari va rasmlar
-esa `<kod>-j` mavzusiga ketadi, shuning uchun ntfy ilovasi ular bilan bezovta qilmaydi.
+- Jonli aloqa `broker.emqx.io` va `broker.hivemq.com` orqali ishlaydi. Ikkalasiga bir vaqtda ulaniladi, takroriy xabarlar
+  tashlab yuboriladi. Shunda bittasi ishlamay qolsa ham aloqa uzilmaydi.
+- Barcha jonli xabarlar juftlik kodidan PBKDF2 orqali olingan AES-GCM kalit bilan shifrlanadi. Mavzu nomi kodning
+  SHA-256 xeshidan olinadi. Broker ham, boshqalar ham matnni o'qiy olmaydi.
+- Xatlar, shivirlar, kayfiyat, karta va savol javoblari brokerda saqlanadi (retained). Sevgilingiz keyinroq kirsa ham
+  ularni oladi. Xat yetib borgach, u brokerdan o'chiriladi.
+- ntfy bildirishnomalari faqat qisqa matnni ko'rsatadi. Xat va shivirning mazmuni bildirishnomaga chiqmaydi.
+- `mqtt.min.js` ilova ichida turadi (MQTT.js 5.10.1, MIT litsenziyasi).
 
 ## O'rnatish
 
-1. `yurakcha/` papkasini istalgan statik hostingga joylang (GitHub Pages, Netlify, Cloudflare Pages).
-2. Siz sahifani ochib, o'z ismingiz va sevgilingizning ismini yozasiz. Maxfiy kod avtomatik yaratiladi.
-3. **Havola yuborish** tugmasini bosing va havolani Telegram yoki Instagram orqali yuboring.
-4. Sevgilingiz havolani bosadi va bo'ldi. Hech narsa yozmaydi, ilova o'zi ulanadi va sizga
-   "Ulandim! 🥰" xabari keladi.
+1. `andijonfk.uz/yurakcha/` ni Safari'da oching, ikkala ismni yozing.
+2. **Havolani yuborish** tugmasini bosing va havolani Telegram yoki Instagram orqali yuboring.
+3. Sevgilingiz havolani bosadi. Ilova o'zi ulanadi va qanday qilib bosh ekranga qo'shishni ko'rsatadi.
+4. Ilova yopiq paytda ham bildirishnoma kelishi uchun: App Store'dan **ntfy** ilovasini o'rnatib, Sozlamalardagi kodga
+   obuna bo'ling.
 
-Havola `#k=<kod>&n=<ism>&p=<sevgili>&s=<sana>` ko'rinishida bo'ladi, sozlamalar uning ichida turadi.
-Shuning uchun havola Instagram yoki Telegram ichidagi brauzerda ochilsa ham ishlaydi.
+Havola `#k=<kod>&n=<ism>&p=<sevgili>&s=<sana>` ko'rinishida bo'ladi va sozlamalar uning ichida turadi.
 
-Qo'shimcha (ixtiyoriy):
+## Cheklovlar
 
-- **Bosh ekranga qo'shish:** Safari'da Ulashish → Bosh ekranga qo'shish. Ilova ochiq turgan manzil saqlanadi,
-  shuning uchun bosh ekrandagi belgi ham ulangan holda ochiladi.
-- **Ilova yopiq bo'lsa ham bildirishnoma:** App Store'dan **ntfy** ilovasini o'rnatib, `+` orqali o'sha kodga
-  obuna bo'ling.
-
-## Ilovasiz variant: faqat iPhone Shortcuts
-
-Hosting kerak emas. Har ikki telefonga ntfy ilovasini o'rnatib, bir xil kodga obuna bo'ling.
-Keyin **Shortcuts** ilovasida yangi shortcut yarating:
-
-1. **Get Contents of URL** amalini qo'shing.
-2. URL: `https://ntfy.sh/`
-3. Method: **POST**, Request Body: **JSON**, maydonlar:
-   - `topic`: sizning kodingiz
-   - `title`: `Aziza ❤️`
-   - `message`: `Seni sevaman`
-   - `tags` (Array): `heart`
-
-Shortcut'ni ishga tushirishning qulay yo'llari:
-
-- **Telefon orqasiga ikki marta tegish:** Settings → Accessibility → Touch → Back Tap → Double Tap → shu shortcut.
-- **Bosh ekran vidjeti:** Shortcuts vidjetini qo'shing, bitta tegishda yurak yuboriladi.
-- **Avtomatik:** Shortcuts → Automation. Masalan "uyga yetib kelganimda" yoki "budilnikni o'chirganimda"
-  (Xayrli tong ☀️) yuborilsin.
-- **Siri:** "Hey Siri, yurak yubor".
-
-## Xavfsizlik
-
-ntfy.sh ochiq xizmat. Kodni bilgan har qanday odam xabarlarni o'qiy oladi, shuning uchun uzun va tasodifiy
-kod ishlating. Kodni faqat ikkalangiz biling. Shaxsiy maʼlumot, parol yoki rasm yubormang.
-
-## Instagram haqida
-
-Instagram shaxsiy akkauntlar uchun xabar yuborishni avtomatlashtirishga (API orqali) ruxsat bermaydi.
-Ilovani avtomatik Direct yuboradigan qilib bo'lmaydi. Instagram'da qo'lda ishlatish mumkin bo'lgan narsalar:
-Notes, Close Friends storylari, DM temalari va umumiy saqlanganlar (Collaborative Collection).
+- iPhone ilova yopiq bo'lsa, jonli aloqani uzib qo'yadi. Teginish va yurak urishi faqat ikkovingiz ham ilovani ochib
+  turganingizda ishlaydi.
+- iPhone veb-ilovalarda tebranishga ruxsat bermaydi, shuning uchun yurak urishi ovoz orqali beriladi.
+- Ochiq brokerlar bepul va kafolatsiz ishlaydi.
