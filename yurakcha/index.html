@@ -10,7 +10,6 @@
 <meta name="apple-mobile-web-app-title" content="Yurakcha">
 <meta name="theme-color" content="#2a0f1a">
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="manifest" href="manifest.json">
 <title>Yurakcha</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Manrope:wght@400;600;700&display=swap">
@@ -80,6 +79,11 @@ button{cursor:pointer}
 .tarix time{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .men .t{color:var(--muted)}
 
+/* Taklif */
+.taklif{background:var(--rose-soft);border-radius:18px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.taklif .t{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:2px}
+.taklif input{flex:1 1 100%;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 12px;font:13px ui-monospace,Menlo,monospace}
+
 /* Sozlash */
 form{display:flex;flex-direction:column;gap:14px}
 label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
@@ -113,12 +117,15 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--ro
     <form id="forma">
       <div>
         <h1>Yurakcha</h1>
-        <p class="muted">Ikki telefon bitta maxfiy kod bilan bog'lanadi. Birinchi bo'lib kirgan odam kod yaratadi, ikkinchisi o'sha kodni yozadi.</p>
+        <p class="muted">Ismlarni yozing. Keyin sevgilingizga havola yuborasiz: u havolani bossa, ilova o'zi ulanadi.</p>
       </div>
       <label for="ism">Ismingiz
         <input id="ism" required maxlength="24" placeholder="Masalan: Aziza" autocomplete="given-name">
       </label>
-      <label for="kodInp">Juftlik kodi
+      <label for="sevgili">Sevgilingizning ismi
+        <input id="sevgili" required maxlength="24" placeholder="Masalan: Aziz">
+      </label>
+      <label for="kodInp">Juftlik kodi (avtomatik)
         <span class="kod">
           <input id="kodInp" required minlength="12" maxlength="64" pattern="[A-Za-z0-9_\-]+" placeholder="yurak-...">
           <button type="button" class="ghost" id="yangiKod">Yangi kod</button>
@@ -141,6 +148,12 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--ro
           <div class="pair"><span class="dot" id="holat"></span><span id="holatMatn">Ulanmoqda…</span></div>
         </div>
         <button class="ghost" id="sozlaBtn" type="button">Sozlash</button>
+      </div>
+
+      <div class="taklif" id="taklif">
+        <div class="t"><b>Sevgilingizni ulang</b><span class="small muted">Havolani Telegram yoki Instagram orqali yuboring. U bosishi bilan ulanadi.</span></div>
+        <button class="btn" id="havolaBtn" type="button">Havola yuborish</button>
+        <input id="havola" readonly hidden aria-label="Taklif havolasi">
       </div>
 
       <div class="big">
@@ -315,13 +328,35 @@ function ulan(){
     qoy("oxirgi", d.id);
     var x=ajrat(d);
     if(yuborilgan[d.id] || x.kim===sozlama.ism){ x.men=true; tarixga(x); return; }
+    if(!ol("ulandi_"+sozlama.kod,false)){ qoy("ulandi_"+sozlama.kod,true); $("taklif").hidden=true; }
     var yangi = tarixga(x);
     // Faqat yangi (so'nggi 2 daqiqadagi) xabarda butun ekran animatsiyasi
     if(yangi && Date.now()-x.vaqt < 120000) kelganiniKorsat(x);
   };
 }
 
+// Havola formati: #k=<kod>&n=<ism>&p=<sevgili>&s=<sana>
+function hashdanOl(){
+  var q=new URLSearchParams(location.hash.slice(1));
+  var k=q.get("k")||"";
+  if(!/^[A-Za-z0-9_\-]{12,64}$/.test(k)) return null;
+  return {kod:k, ism:(q.get("n")||"").slice(0,24), sevgili:(q.get("p")||"").slice(0,24),
+          sana:/^\d{4}-\d{2}-\d{2}$/.test(q.get("s")||"") ? q.get("s") : ""};
+}
+function hashYasa(c){
+  var q=new URLSearchParams(); q.set("k",c.kod);
+  if(c.ism) q.set("n",c.ism); if(c.sevgili) q.set("p",c.sevgili); if(c.sana) q.set("s",c.sana);
+  return "#"+q.toString();
+}
+function taklifHavolasi(){
+  // Sevgili uchun: uning ismi n, sizning ismingiz p
+  return location.href.split("#")[0] + hashYasa({kod:sozlama.kod, ism:sozlama.sevgili, sevgili:sozlama.ism, sana:sozlama.sana});
+}
+
 function boshla(){
+  // Joriy manzil har doim sozlamani saqlaydi: "Bosh ekranga qo'shish" shu manzilni oladi
+  try{ history.replaceState(null,"",hashYasa(sozlama)); }catch(e){}
+  $("taklif").hidden = !!ol("ulandi_"+sozlama.kod, false);
   $("sozlash").hidden=true; $("asosiy").hidden=false;
   $("salom").textContent="Salom, "+sozlama.ism;
   $("kodKo").textContent=sozlama.kod;
@@ -357,16 +392,27 @@ $("yozForma").addEventListener("submit", function(e){
 $("keldi").addEventListener("click", function(e){ if(e.target.id!=="javob") $("keldi").hidden=true; });
 $("javob").addEventListener("click", function(){ $("keldi").hidden=true; yubor("❤️","Men ham seni sevaman"); });
 
+$("havolaBtn").addEventListener("click", function(){
+  var url=taklifHavolasi();
+  var matn=(sozlama.sevgili||"Jonim")+", bu havolani bos, senga yurak yuboraman ❤️";
+  var inp=$("havola"); inp.value=url; inp.hidden=false;
+  if(navigator.share){
+    navigator.share({title:"Yurakcha", text:matn, url:url}).catch(function(){});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(function(){ bildir("Havola nusxalandi"); }, function(){ inp.select(); });
+  } else inp.select();
+});
+
 $("yangiKod").addEventListener("click", function(){ $("kodInp").value=tasodifiyKod(); });
 $("sozlaBtn").addEventListener("click", function(){
   if(manba) manba.close();
-  $("ism").value=sozlama.ism; $("kodInp").value=sozlama.kod; $("sana").value=sozlama.sana||"";
+  $("ism").value=sozlama.ism; $("sevgili").value=sozlama.sevgili||""; $("kodInp").value=sozlama.kod; $("sana").value=sozlama.sana||"";
   $("asosiy").hidden=true; $("sozlash").hidden=false;
 });
 $("forma").addEventListener("submit", function(e){
   e.preventDefault();
   var eski = sozlama && sozlama.kod;
-  sozlama={ism:$("ism").value.trim(), kod:$("kodInp").value.trim(), sana:$("sana").value};
+  sozlama={ism:$("ism").value.trim(), sevgili:$("sevgili").value.trim(), kod:$("kodInp").value.trim(), sana:$("sana").value};
   qoy("sozlama", sozlama);
   if(eski!==sozlama.kod){ tarix=[]; qoy("tarix",tarix); qoy("oxirgi","12h"); }
   boshla();
@@ -375,12 +421,24 @@ $("forma").addEventListener("submit", function(e){
 // Ilovaga qaytganda qayta ulanish (iPhone fonda ulanishni uzadi)
 document.addEventListener("visibilitychange", function(){ if(!document.hidden && sozlama) ulan(); });
 
-// Havola orqali kod: index.html#yurak-xxxx
-var h=location.hash.slice(1);
-if(!sozlama){
-  $("kodInp").value = /^[A-Za-z0-9_\-]{12,64}$/.test(h) ? h : "";
+// Ishga tushish: havoladagi sozlama ustun turadi (taklifni bosgan odam hech narsa yozmaydi)
+var h=hashdanOl();
+if(h && h.ism && (!sozlama || sozlama.kod!==h.kod || sozlama.ism!==h.ism)){
+  var yangiUlanish = !sozlama || sozlama.kod!==h.kod;
+  if(yangiUlanish){ tarix=[]; qoy("tarix",tarix); qoy("oxirgi","12h"); }
+  sozlama=h; qoy("sozlama",sozlama);
+  qoy("ulandi_"+h.kod, true);
+  boshla();
+  if(yangiUlanish){
+    bildir((h.sevgili||"Sevgilingiz")+" bilan ulandingiz ❤️");
+    yubor("🥰","Ulandim! Endi senga yurak yubora olaman");
+  }
+} else if(sozlama){
+  boshla();
+} else {
+  $("kodInp").value = h ? h.kod : tasodifiyKod();
   $("sozlash").hidden=false;
-} else boshla();
+}
 })();
 </script>
 </body>

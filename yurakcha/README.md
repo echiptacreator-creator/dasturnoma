@@ -19,11 +19,20 @@ Telefon A ──POST──▶ ntfy.sh/<maxfiy-kod> ──▶ Telefon B
 ## O'rnatish
 
 1. `yurakcha/` papkasini istalgan statik hostingga joylang (GitHub Pages, Netlify, Cloudflare Pages).
-2. Ikkalangiz ham sahifani iPhone'dagi Safari'da oching: **Ulashish → Bosh ekranga qo'shish**.
-3. Biringiz **Yangi kod** tugmasini bosib kod yaratasiz va uni ikkinchi odamga yuborasiz.
-   Havolani `.../yurakcha/#yurak-xxxx` ko'rinishida yuborsangiz, kod o'zi to'ldiriladi.
-4. Ilova yopiq paytda ham bildirishnoma kelishi uchun App Store'dan **ntfy** ilovasini o'rnating
-   va `+` tugmasi orqali shu kodga obuna bo'ling.
+2. Siz sahifani ochib, o'z ismingiz va sevgilingizning ismini yozasiz. Maxfiy kod avtomatik yaratiladi.
+3. **Havola yuborish** tugmasini bosing va havolani Telegram yoki Instagram orqali yuboring.
+4. Sevgilingiz havolani bosadi va bo'ldi. Hech narsa yozmaydi, ilova o'zi ulanadi va sizga
+   "Ulandim! 🥰" xabari keladi.
+
+Havola `#k=<kod>&n=<ism>&p=<sevgili>&s=<sana>` ko'rinishida bo'ladi, sozlamalar uning ichida turadi.
+Shuning uchun havola Instagram yoki Telegram ichidagi brauzerda ochilsa ham ishlaydi.
+
+Qo'shimcha (ixtiyoriy):
+
+- **Bosh ekranga qo'shish:** Safari'da Ulashish → Bosh ekranga qo'shish. Ilova ochiq turgan manzil saqlanadi,
+  shuning uchun bosh ekrandagi belgi ham ulangan holda ochiladi.
+- **Ilova yopiq bo'lsa ham bildirishnoma:** App Store'dan **ntfy** ilovasini o'rnatib, `+` orqali o'sha kodga
+  obuna bo'ling.
 
 ## Ilovasiz variant: faqat iPhone Shortcuts
 
