@@ -16,6 +16,15 @@ Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki
 
 Qo'shimcha hissiyotlar:
 
+- **🫙 Sevgi bankasi:** "Seni sevaman, chunki…" sabablarini bankaga tashlaysiz. Sevgilingiz har kuni bittadan ochadi,
+  siz esa "bugungi sababni ochdi" xabarini olasiz.
+- **🧠 Bir xil o'ylaymizmi?** Ikkovingizga bir xil savol beriladi va ikkalangiz yashirin javob berasiz. Javoblar mos tushsa,
+  "🤯 Bir xil o'ylaysiz!" chiqadi va moslik soni hisoblanadi.
+- **📸 Hozir nima qilyapsan?** Siz so'raysiz, uning ekranida 2 daqiqalik sanoq bilan kamera tugmasi chiqadi. Surat
+  "📸 Hozir · 45 soniyada javob berdi" belgisi bilan keladi.
+- **🔥 Yonib ketadigan xat:** o'qilgach, 20 soniyadan keyin alangalanib yo'qoladi. Yuboruvchida ham matn qolmaydi.
+- **🌬 Birga nafas:** ikkala ekranda bir xil ritmda kattalashib-kichrayadigan doira chiqadi: 4 s nafas olish, 2 s ushlab turish, 6 s chiqarish.
+- **🎵 Birga tinglash:** YouTube qo'shig'i yoki videosi ikkovingizda bir vaqtda o'ynaydi. Pauza va oldinga o'tkazish ham birga bo'ladi.
 - **Jonli harakatlar:** sevgilingiz nima qilayotganini his qilasiz. Tepada va xabarlarda "✍️ yozmoqda…",
   "💌 sizga hissiyot tanlayapti", "🎥 sizga video yozmoqda", "👀 videongizni ko'ryapti", "📖 xatingizni o'qiyapti",
   "🎧 shiviringizni tinglayapti", "🫳 Teginishda sizni kutyapti" va "🟢 ilovaga kirdi" chiqadi.
