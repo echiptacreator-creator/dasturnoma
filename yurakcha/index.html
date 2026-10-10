@@ -663,6 +663,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <button class="tugma ikki" id="sHavola" type="button">Taklif havolasini qayta yuborish</button>
     <button class="tugma ikki" id="sProfil" type="button">👤 Profilim, status va hikoyalar</button>
     <button class="tugma ikki" id="sOvoz" type="button">Ovozlar: yoqilgan</button>
+    <button class="tugma ikki" id="sYangila" type="button">🔄 Ilovani yangilash</button>
     <div class="karta" style="background:var(--tun)">
       <b>Ilova yopiq bo'lsa ham bildirishnoma</b>
       <ol class="kichik" style="padding-left:18px;margin:8px 0 0">
@@ -747,6 +748,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
 "use strict";
 
 // ================= Sozlamalar =================
+var VERSIYA = "8";
 var NTFY = window.YK_NTFY || "https://ntfy.sh";
 var BROKERLAR = window.YK_BROKERLAR || ["wss://broker.emqx.io:8084/mqtt", "wss://broker.hivemq.com:8884/mqtt"];
 var ONLAYN_MS = 45000;
@@ -2663,6 +2665,22 @@ function ornatishniKorsat(){
   $("ornatQadam").innerHTML=q.map(function(x){ return "<li>"+x+"</li>"; }).join("");
   $("ornat").hidden=false;
 }
+
+// ================= Avtomatik yangilanish =================
+// Bosh ekrandagi ilova eski nusxani keshda ushlab qolmasligi uchun serverdagi versiya tekshiriladi
+var oxirgiTekshiruv=0;
+function versiyaTekshir(majburiy){
+  if(!majburiy && Date.now()-oxirgiTekshiruv<60000) return;
+  oxirgiTekshiruv=Date.now();
+  fetch(location.pathname+"?v="+Date.now(), {cache:"no-store"}).then(function(r){ return r.ok ? r.text() : ""; }).then(function(t){
+    var m=t.match(/var VERSIYA = "([^"]+)"/);
+    if(m && m[1]!==VERSIYA){ bildir("Yangi versiya topildi. Yangilanmoqda…"); setTimeout(function(){ location.reload(); }, 900); }
+    else if(majburiy) bildir("Sizda eng yangi versiya ("+VERSIYA+")");
+  }).catch(function(){ if(majburiy) bildir("Internetni tekshiring"); });
+}
+$("sYangila").addEventListener("click", function(){ versiyaTekshir(true); });
+document.addEventListener("visibilitychange", function(){ if(!document.hidden) versiyaTekshir(false); });
+setTimeout(function(){ versiyaTekshir(false); }, 3000);
 
 // ================= Ishga tushish =================
 async function boshla(){
