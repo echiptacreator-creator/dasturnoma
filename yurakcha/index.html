@@ -121,6 +121,57 @@ main{flex:1;min-height:0;position:relative}
 .tunKarta .t{flex:1;min-width:0}
 .tunKarta .tugma{padding:10px 14px;background:#3b3f8f;box-shadow:none}
 
+/* Masofa va uchrashuv */
+.kSar{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.kSar b{font-family:var(--sarlavha);font-style:italic;font-size:22px;font-weight:600}
+.kichikBtn{border:1px solid var(--chiziq);background:var(--tun);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700}
+.kichikBtn.on{border-color:var(--yashil);color:var(--yashil)}
+.masofa,.uchrashuv{display:flex;flex-direction:column;gap:8px}
+.masChiziq{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.masChiziq .nq{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;font-family:var(--sarlavha);font-style:italic;font-size:18px;font-weight:600}
+.masChiziq .nq.men{background:rgba(255,77,125,.2);border:1px solid var(--atirgul);color:var(--atirgul2)}
+.masChiziq .nq.u{background:rgba(233,184,114,.18);border:1px solid var(--oltin);color:var(--oltin)}
+.masChiziq i{height:2px;width:var(--yol,30%);background:repeating-linear-gradient(90deg,var(--xira) 0 6px,transparent 6px 12px);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.masChiziq .yr{font-size:20px;animation:urish 1.2s ease-in-out infinite}
+.masSon{text-align:center;font-family:var(--sarlavha);font-size:42px;line-height:1;color:var(--matn);font-variant-numeric:tabular-nums}
+.masIzoh{text-align:center;font-family:var(--sarlavha);font-style:italic;font-size:19px;color:var(--atirgul2)}
+.masVaqt{text-align:center;font-size:12px;color:var(--xira)}
+.uchSon{text-align:center;font-family:var(--sarlavha);font-size:34px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--oltin)}
+.uchJoy{text-align:center;font-size:13px;color:var(--xira)}
+.sahna.yaqin{background:radial-gradient(circle at 50% 50%,rgba(76,211,138,.35),rgba(10,3,6,.92) 65%)}
+
+/* BIZ ekrani */
+.reel{display:flex;gap:12px;align-items:center;cursor:pointer}
+.reel .ig{width:52px;height:52px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:24px;
+  background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.reel .t{flex:1;min-width:0}
+.reel .t b{display:block}
+.reel .t .h{font-size:12px;color:var(--xira);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reel .rk{font-size:22px}
+.igKadr{width:min(92vw,400px);height:min(72vh,640px);border:0;border-radius:16px;background:#fff}
+.havola{color:var(--atirgul2);font-weight:700}
+.kuponlar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kuponTanla{border:1px dashed var(--oltin);background:linear-gradient(160deg,#2a1a0c,#1a0f07);border-radius:14px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:#f3dcb6;min-width:0;text-align:center}
+.kuponTanla span{font-size:24px}
+.kupon{position:relative;display:flex;gap:12px;align-items:center;border:1.5px dashed var(--oltin);background:linear-gradient(160deg,#2a1a0c,#1a0f07)}
+.kupon .e{font-size:30px}
+.kupon .t{flex:1;min-width:0}
+.kupon .t b{display:block;color:#f3dcb6}
+.kupon .tugma{padding:9px 14px;flex:none}
+.kupon.ishlatildi{opacity:.55}
+.istaklar{list-style:none;margin:0;padding:0}
+.istaklar li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--chiziq)}
+.istaklar li:last-child{border-bottom:0}
+.istaklar .bel{width:28px;height:28px;flex:none;border-radius:50%;border:1.5px solid var(--xira);background:none;display:grid;place-items:center;font-size:14px}
+.istaklar li.ok .bel{background:var(--atirgul);border-color:var(--atirgul)}
+.istaklar li.ok .t{text-decoration:line-through;color:var(--xira)}
+.istaklar .t{flex:1;min-width:0;overflow-wrap:anywhere}
+.istaklar .t small{display:block;color:var(--xira);font-size:12px;text-decoration:none}
+.istaklar .och{border:0;background:none;color:var(--xira);font-size:18px;padding:4px 8px}
+details.yoriq summary{font-weight:700;cursor:pointer}
+details.yoriq ol{padding-left:20px;margin:10px 0}
+details.yoriq li{margin-bottom:6px}
+
 /* TEGINISH ekrani */
 #ekranTeg{padding:0;overflow:hidden;touch-action:none}
 #tegKanva{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
@@ -311,6 +362,20 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
           <div class="karta"><b id="kunSon">—</b><span>kun birgasiz</span></div>
         </div>
 
+        <div class="karta masofa" id="masofaK">
+          <div class="kSar"><b>Oramizda</b><button class="kichikBtn" id="gpsBtn" type="button">📍 Yoqish</button></div>
+          <div class="masChiziq" id="masChiziq"><span class="nq men" id="masMen">S</span><i></i><span class="yr" id="masYr">❤️</span><i></i><span class="nq u" id="masU">U</span></div>
+          <div class="masSon" id="masSon">—</div>
+          <div class="masIzoh" id="masIzoh"></div>
+          <div class="masVaqt" id="masVaqt"></div>
+        </div>
+
+        <div class="karta uchrashuv" id="uchK">
+          <div class="kSar"><b>Uchrashuvgacha</b><button class="kichikBtn" id="uchBtn" type="button">Belgilash</button></div>
+          <div class="uchSon" id="uchSon">—</div>
+          <div class="uchJoy" id="uchJoy"></div>
+        </div>
+
         <div class="karta olchov" id="olchov">
           <div class="sar"><b>Kim ko'proq sevadi?</b><span class="kichik xira" id="olHafta">bu hafta</span></div>
           <div class="ismlar"><span id="olMenIsm">Siz</span><span id="olUIsm">U</span></div>
@@ -365,6 +430,45 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
       </div>
     </section>
 
+    <!-- BIZ -->
+    <section class="ekran" id="ekranBiz" hidden>
+      <div class="ichki">
+        <div class="bolim-sar"><h2>Reelslar</h2><span class="kichik xira">bir-biringizga yuboring</span></div>
+        <form class="qator" id="reelForma" style="flex-wrap:nowrap">
+          <input class="kirit" id="reelInp" placeholder="Instagram havolasini qo'ying" inputmode="url" autocomplete="off" style="flex:1">
+          <button class="tugma" type="submit" style="flex:none">Yubor</button>
+        </form>
+        <button class="tugma ikki" id="reelQoy" type="button">📋 Nusxalangan havolani yuborish</button>
+        <details class="karta yoriq">
+          <summary>Instagram'dan to'g'ridan-to'g'ri yuborish</summary>
+          <p class="kichik xira" style="margin:8px 0 0">Bir marta sozlanadi. Keyin Reels ostidagi <b>Ulashish → Yurakcha</b> ni bossangiz, u darhol sevgilingizga ketadi.</p>
+          <ol class="kichik">
+            <li>Pastdagi tugma bilan maxsus havolani nusxalang.</li>
+            <li><b>Shortcuts</b> ilovasini oching, <b>+</b> bilan yangi shortcut yarating va nomini <b>Yurakcha</b> qo'ying.</li>
+            <li>Sozlamalarda (ⓘ) <b>Show in Share Sheet</b> ni yoqing, qabul qilinadigan turi <b>URLs</b> bo'lsin.</li>
+            <li><b>URL Encode</b> amalini qo'shing (kirish: Shortcut Input).</li>
+            <li><b>Text</b> amalini qo'shing: nusxalangan havolani joylang, oxiriga <b>URL Encoded Text</b> o'zgaruvchisini qo'ying.</li>
+            <li><b>Open URLs</b> amalini qo'shing (kirish: Text).</li>
+          </ol>
+          <button class="tugma ikki" id="reelShortNusxa" type="button" style="width:100%">Maxsus havolani nusxalash</button>
+        </details>
+        <div id="reelRoyxat" style="display:flex;flex-direction:column;gap:10px"></div>
+        <p class="bosh" id="reelBosh">Hali reels yo'q. Kulgili yoki romantik reelsni birinchi bo'lib siz yuboring.</p>
+
+        <div class="bolim-sar"><h2>Sevgi kuponlari</h2><span class="kichik xira">bosing va yuboring</span></div>
+        <div class="kuponlar" id="kuponTanla"></div>
+        <div id="kuponRoyxat" style="display:flex;flex-direction:column;gap:10px"></div>
+
+        <div class="bolim-sar"><h2>Birga qilamiz</h2><span class="kichik xira">orzular ro'yxati</span></div>
+        <form class="qator" id="istakForma" style="flex-wrap:nowrap">
+          <input class="kirit" id="istakInp" maxlength="120" placeholder="Masalan: Samarqandga birga borish" autocomplete="off" style="flex:1">
+          <button class="tugma" type="submit" style="flex:none">Qo'shish</button>
+        </form>
+        <ul class="istaklar" id="istakRoyxat"></ul>
+        <p class="bosh" id="istakBosh">Birga qilmoqchi bo'lgan narsalaringizni yozing. Bajarilganda belgilang 🎉</p>
+      </div>
+    </section>
+
     <!-- 4. O'YIN -->
     <section class="ekran" id="ekranOyin" hidden>
       <div class="ichki">
@@ -392,6 +496,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <button role="tab" type="button" data-e="Yurak" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8.4 3 4.6 6.6 4.6c2.1 0 3.5 1.2 5.4 3.4 1.9-2.2 3.3-3.4 5.4-3.4 3.6 0 5.4 3.8 3.9 6.7C19 15.7 12 20 12 20z"/></svg>Yurak</button>
     <button role="tab" type="button" data-e="Teg" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L4.3 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/></svg>Teginish<span class="nuqta" id="tegNuqta" hidden></span></button>
     <button role="tab" type="button" data-e="Xat" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Lahzalar<span class="nuqta" id="xatNuqta" hidden></span></button>
+    <button role="tab" type="button" data-e="Biz" aria-selected="false"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3.2"/><circle cx="15.5" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.5-6 5.5-6 1.4 0 2.6.5 3.5 1.4.9-.9 2.1-1.4 3.5-1.4 3 0 5.5 2.7 5.5 6"/></svg>Biz<span class="nuqta" id="bizNuqta" hidden></span></button>
     <button role="tab" type="button" data-e="Oyin" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2" transform="rotate(8 12 12)"/><path d="M12 9.5c-1-1.2-3-.6-3 1 0 1.5 3 3.2 3 3.2s3-1.7 3-3.2c0-1.6-2-2.2-3-1z"/></svg>O'yin<span class="nuqta" id="oyinNuqta" hidden></span></button>
   </nav>
 </div>
@@ -469,6 +574,16 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <button class="tugma" id="vYub" type="button">Yuborish ❤️</button>
   </div>
 </div>
+<div class="varaq" id="varaqUch" hidden role="dialog" aria-label="Uchrashuv">
+  <div class="ichki">
+    <div class="tutqich"></div>
+    <h2>Keyingi uchrashuv</h2>
+    <label class="mayd" for="uchVaqt">Qachon?<input class="kirit" id="uchVaqt" type="datetime-local"></label>
+    <label class="mayd" for="uchJoyInp">Qayerda? (ixtiyoriy)<input class="kirit" id="uchJoyInp" maxlength="60" placeholder="Masalan: Bobur bog'i"></label>
+    <button class="tugma oltin" id="uchSaqla" type="button">Saqlash va unga aytish</button>
+    <button class="tugma ikki" id="uchOchir" type="button">Bekor qilish</button>
+  </div>
+</div>
 <div class="sahna" id="sahna" hidden></div>
 <div id="xabar" hidden></div>
 
@@ -483,8 +598,8 @@ var BROKERLAR = window.YK_BROKERLAR || ["wss://broker.emqx.io:8084/mqtt", "wss:/
 var ONLAYN_MS = 45000;
 var FAYL_MAX = 15*1024*1024;
 // "Kim ko'proq sevadi" ballari
-var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2};
-var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun"};
+var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3};
+var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv"};
 
 var HISLAR = {
   mehr: [
@@ -756,7 +871,7 @@ function sarlavhaYangila(){
   $("uHolatEl").textContent=s;
   $("uSogSon").textContent = u.sog && u.sog.kun===bugun() ? u.sog.n : 0;
   $("uSogMatn").textContent=uIsm()+" bugun sizni sog'indi";
-  olchovChiz(); tunChiz();
+  olchovChiz(); tunChiz(); masofaChiz();
   tegHolatYangila();
 }
 setInterval(sarlavhaYangila, 15000);
@@ -948,11 +1063,12 @@ $("hisBtn").addEventListener("click", function(){ varaqOch("varaqHis"); });
 var joriy="Yurak";
 function ekranOch(nom){
   joriy=nom;
-  ["Yurak","Teg","Xat","Oyin"].forEach(function(n){ $("ekran"+n).hidden = n!==nom; });
+  ["Yurak","Teg","Xat","Biz","Oyin"].forEach(function(n){ $("ekran"+n).hidden = n!==nom; });
   Array.prototype.forEach.call($("menyu").children, function(b){ b.setAttribute("aria-selected", b.dataset.e===nom?"true":"false"); });
   if(nom==="Teg"){ $("tegNuqta").hidden=true; kanvaOlcham(); }
   if(nom==="Xat") $("xatNuqta").hidden=true;
   if(nom==="Oyin") $("oyinNuqta").hidden=true;
+  if(nom==="Biz") $("bizNuqta").hidden=true;
 }
 Array.prototype.forEach.call($("menyu").children, function(b){ b.addEventListener("click", function(){ ekranOch(b.dataset.e); }); });
 
@@ -1120,7 +1236,10 @@ function xatSaqla(){
 var tolqinNaqsh=[6,12,18,10,20,14,8,16,22,12,7,15,19,9,13];
 function xatChiz(){
   var r=$("xatRoyxat"); r.textContent="";
+  var soni=0;
   xatlar.forEach(function(x){
+    if(x.tur==="reel" || x.tur==="kupon") return;
+    soni++;
     var k=el("div","karta");
     if(x.tur==="xat"){
       var kutadi=x.och>Date.now();
@@ -1163,7 +1282,8 @@ function xatChiz(){
     }
     r.appendChild(k);
   });
-  $("xatBosh").hidden=xatlar.length>0;
+  $("xatBosh").hidden=soni>0;
+  bizChiz();
 }
 function xatOch(x){
   if(x.och>Date.now() && !x.men){ bildir("Bu xat "+vaqt(x.och)+" da ochiladi. Sabr 💌"); return; }
@@ -1400,6 +1520,233 @@ $("faylInp").addEventListener("change", async function(){
   else bildir("Faqat rasm yoki video");
 });
 
+// ================= MASOFA (GPS) =================
+var gpsYoqiq=ol("gps",false), gpsKuzat=null, menG=ol("menG",null), oxirgiGNashr=0, oldingiMas=null;
+function masofaM(a,b){
+  var R=6371000, r=Math.PI/180, dLa=(b.lat-a.lat)*r, dLo=(b.lon-a.lon)*r;
+  var h=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return 2*R*Math.asin(Math.min(1,Math.sqrt(h)));
+}
+function yonalish(a,b){
+  var r=Math.PI/180, y=Math.sin((b.lon-a.lon)*r)*Math.cos(b.lat*r), x=Math.cos(a.lat*r)*Math.sin(b.lat*r)-Math.sin(a.lat*r)*Math.cos(b.lat*r)*Math.cos((b.lon-a.lon)*r);
+  var d=(Math.atan2(y,x)/r+360)%360;
+  return ["shimolda","shimoli-sharqda","sharqda","janubi-sharqda","janubda","janubi-g'arbda","g'arbda","shimoli-g'arbda"][Math.round(d/45)%8];
+}
+function masMatn(d){
+  if(d<1000) return Math.max(10,Math.round(d/10)*10)+" m";
+  if(d<10000) return (d/1000).toFixed(1).replace(".",",")+" km";
+  return Math.round(d/1000).toLocaleString("uz")+" km";
+}
+function uGFaol(){ return u.g && !u.g.off && Date.now()-u.g.v < 30*60000 ? u.g : null; }
+function gpsBoshla(){
+  if(!navigator.geolocation){ bildir("Bu telefonda joylashuv aniqlanmaydi"); return; }
+  if(gpsKuzat!=null) return;
+  gpsKuzat=navigator.geolocation.watchPosition(function(p){
+    var g={lat:+p.coords.latitude.toFixed(5), lon:+p.coords.longitude.toFixed(5), acc:Math.round(p.coords.accuracy||0), v:Date.now()};
+    var kochdi=!menG || masofaM(menG,g)>25 || Date.now()-oxirgiGNashr>60000;
+    menG=g; qoy("menG",g);
+    if(kochdi && KALIT){ oxirgiGNashr=Date.now(); nashr("g/"+QID, {t:"joy", lat:g.lat, lon:g.lon, acc:g.acc}, true).catch(function(){}); }
+    masofaChiz();
+  }, function(e){
+    if(e.code===1){ bildir("Sozlamalarda joylashuvga ruxsat bering"); gpsYoqiq=false; qoy("gps",false); gpsKuzat=null; masofaChiz(); }
+  }, {enableHighAccuracy:true, maximumAge:15000, timeout:30000});
+}
+function gpsToxtat(){
+  if(gpsKuzat!=null && navigator.geolocation) navigator.geolocation.clearWatch(gpsKuzat); gpsKuzat=null;
+  menG=null; qoy("menG",null); if(KALIT) nashr("g/"+QID, {t:"joy", off:1}, true).catch(function(){});
+}
+$("gpsBtn").addEventListener("click", function(){
+  gpsYoqiq=!gpsYoqiq; qoy("gps",gpsYoqiq);
+  if(gpsYoqiq){ gpsBoshla(); bildir("Joylashuv faqat "+uIsm()+" bilan ulashiladi"); } else gpsToxtat();
+  masofaChiz();
+});
+function masofaChiz(){
+  $("gpsBtn").textContent = gpsYoqiq ? "📍 Yoqilgan" : "📍 Yoqish"; $("gpsBtn").classList.toggle("on", gpsYoqiq);
+  $("masMen").textContent=((sozlama&&sozlama.ism)||"S")[0].toUpperCase(); $("masU").textContent=(uIsm()[0]||"U").toUpperCase();
+  var ug=uGFaol(), son="—", iz="", vq="", yol=30;
+  if(!gpsYoqiq) iz = ug ? uIsm()+" joylashuvini ulashgan. Siz ham yoqing" : "Ikkovingiz ham yoqsangiz, oradagi masofa ko'rinadi";
+  else if(!menG) iz="Joylashuvingiz aniqlanmoqda…";
+  else if(!ug) iz = u.g && !u.g.off ? uIsm()+"ning oxirgi joylashuvi eskirgan" : uIsm()+" hali joylashuvni yoqmagan";
+  else {
+    var d=masofaM(menG, ug);
+    son=masMatn(d);
+    iz = d<50 ? "Yonma-yonsiz 💞" : d<300 ? "Juda yaqinsiz! Atrofga qarang 👀" : d<2000 ? "Bir necha qadam qoldi 🏃" : d<30000 ? "Bir shahardasiz" :
+         d<500000 ? "Uzoqdasiz, lekin yuraklar yaqin" : "Oramizda "+son+", lekin sevgi masofani tanimaydi";
+    if(d>=50) iz+=" · "+uIsm()+" "+yonalish(menG, ug);
+    var eng=Math.min(menG.v, ug.v); vq="Yangilandi: "+vaqt(eng)+(Math.max(menG.acc||0,ug.acc||0)>150?" · taxminiy":"");
+    if(oldingiMas!=null && Math.abs(oldingiMas-d)>40) vq += oldingiMas>d ? " · yaqinlashyapsiz 💗" : " · uzoqlashyapsiz";
+    oldingiMas=d;
+    yol=Math.max(3, Math.min(34, 34*Math.log10(1+d/50)/Math.log10(1+2000000/50)));
+    var zona=ol("yaqinZona",false);
+    if(d<300 && !zona){ qoy("yaqinZona",true); yaqinOgoh(d, menG, ug); }
+    else if(d>500 && zona) qoy("yaqinZona",false);
+  }
+  $("masChiziq").style.setProperty("--yol", yol+"%");
+  $("masSon").textContent=son; $("masIzoh").textContent=iz; $("masVaqt").textContent=vq;
+}
+function yaqinOgoh(d, a, b){
+  var k=el("div","k");
+  k.append(el("div","ke","📍"), el("div","km",uIsm()+" juda yaqin!"), el("div",null,"Atigi "+masMatn(d)+" · "+yonalish(a,b)));
+  var t=el("button","tugma","💞 Unga \"Men yaqindaman\" deyish"); t.type="button";
+  t.addEventListener("click", function(){ sahnaYop(); hisYubor("📍","Men sendan atigi "+masMatn(d)+" uzoqlikdaman. Seni ko'rgim kelyapti 💞"); });
+  k.append(t);
+  sahnaOch(k, "yaqin", true, function(){ uchir("💞",14); yurakUrishOvozi(); setTimeout(yurakUrishOvozi,850); setTimeout(yurakUrishOvozi,1700); });
+  ntfy("📍","Men sendan atigi "+masMatn(d)+" uzoqlikdaman! 💞", "yaqin", 1800000);
+}
+
+// ================= UCHRASHUVGACHA =================
+var uchrashuv=ol("uchrashuv",null), uchKeldiKorsatildi=false;
+function uchChiz(){
+  var son="—", joy="Keyingi uchrashuvingizni belgilang";
+  if(uchrashuv && uchrashuv.vaqt){
+    var q=uchrashuv.vaqt-Date.now();
+    if(q>0){
+      var kun=Math.floor(q/864e5), s=Math.floor(q%864e5/36e5), m=Math.floor(q%36e5/6e4), sek=Math.floor(q%6e4/1000);
+      son=(kun?kun+" kun ":"")+ikki(s)+":"+ikki(m)+":"+ikki(sek); uchKeldiKorsatildi=false;
+    } else if(q>-4*36e5){
+      son="Hozir birgasiz 💃";
+      if(!uchKeldiKorsatildi && q>-60000){ uchKeldiKorsatildi=true; var x=el("div","k"); x.append(el("div","ke","💃"), el("div","km","Uchrashuv vaqti keldi!"), el("div","kichik xira",uchrashuv.joy||""));
+        sahnaOch(x,"bayram",true,function(){ uchir("💖",14); }); }
+    } else son="O'tib ketdi";
+    joy=(uchrashuv.joy?"📍 "+uchrashuv.joy+" · ":"")+vaqt(uchrashuv.vaqt);
+  }
+  $("uchSon").textContent=son; $("uchJoy").textContent=joy;
+}
+setInterval(function(){ if(joriy==="Yurak" && !$("ilova").hidden) uchChiz(); }, 1000);
+$("uchBtn").addEventListener("click", function(){
+  var d=uchrashuv&&uchrashuv.vaqt ? new Date(uchrashuv.vaqt) : new Date(Date.now()+864e5);
+  $("uchVaqt").value=d.getFullYear()+"-"+ikki(d.getMonth()+1)+"-"+ikki(d.getDate())+"T"+ikki(d.getHours())+":"+ikki(d.getMinutes());
+  $("uchJoyInp").value=uchrashuv&&uchrashuv.joy||""; varaqOch("varaqUch");
+});
+$("uchSaqla").addEventListener("click", function(){
+  var v=$("uchVaqt").value; if(!v){ bildir("Vaqtni tanlang"); return; }
+  var t=new Date(v).getTime(), j=$("uchJoyInp").value.trim();
+  nashr("m", {t:"uch", vaqt:t, joy:j}, true).then(function(o){ uchrashuv={vaqt:t, joy:j, v:o.v}; qoy("uchrashuv",uchrashuv); uchChiz(); });
+  ntfy("📅","Keyingi uchrashuvimiz: "+vaqt(t)+(j?", "+j:"")+". Sanoq boshlandi 💃");
+  ballQosh("uch"); varaqYop(); bildir("Uchrashuv belgilandi 💃");
+});
+$("uchOchir").addEventListener("click", function(){
+  nashr("m", {t:"uch", vaqt:0, joy:""}, true).then(function(o){ uchrashuv={vaqt:0, joy:"", v:o.v}; qoy("uchrashuv",uchrashuv); uchChiz(); });
+  varaqYop();
+});
+
+// ================= REELS =================
+function havolaTozala(s){
+  var m=String(s||"").match(/https?:\/\/[^\s<>"']+/); if(!m) return null;
+  try{ var h=new URL(m[0]); return h.protocol==="https:"||h.protocol==="http:" ? h.href : null; }catch(e){ return null; }
+}
+function igKod(url){
+  var m=String(url||"").match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:[\w.]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]+)/);
+  return m ? {tur:m[1]==="reels"?"reel":m[1], kod:m[2]} : null;
+}
+function reelYubor(url){
+  url=havolaTozala(url); if(!url){ bildir("Havola topilmadi"); return; }
+  if(!KALIT) return;
+  var id=tasodifiy(8);
+  nashr("x/"+id, {t:"reel", id:id, url:url}, true).then(function(o){
+    xatlar.unshift({id:id, tur:"reel", men:true, url:url, vaqt:o.v, holat:"yuborildi"}); xatSaqla(); bizChiz();
+  });
+  ntfy("🎬", igKod(url) ? "Senga reels yubordim, ko'r 😂" : "Senga havola yubordim");
+  ballQosh("reel"); bildir("Reels yuborildi 🎬"); uchir("🎬",5);
+}
+$("reelForma").addEventListener("submit", function(e){ e.preventDefault(); var v=$("reelInp").value.trim(); if(!v) return; reelYubor(v); $("reelInp").value=""; });
+$("reelQoy").addEventListener("click", function(){
+  if(!navigator.clipboard || !navigator.clipboard.readText){ bildir("Havolani yuqoridagi maydonga joylang"); $("reelInp").focus(); return; }
+  navigator.clipboard.readText().then(function(t){ if(havolaTozala(t)) reelYubor(t); else bildir("Nusxada havola yo'q. Instagram'da \"Havolani nusxalash\" ni bosing"); },
+    function(){ bildir("Havolani yuqoridagi maydonga joylang"); $("reelInp").focus(); });
+});
+$("reelShortNusxa").addEventListener("click", function(){
+  var h=location.href.split("#")[0]+hashYasa(sozlama)+"&reel=";
+  if(navigator.clipboard) navigator.clipboard.writeText(h).then(function(){ bildir("Maxsus havola nusxalandi"); }, function(){ bildir(h); });
+  else bildir(h);
+});
+function reelKorish(x){
+  var k=el("div","k"), ig=igKod(x.url);
+  if(ig){ var f=el("iframe","igKadr"); f.src="https://www.instagram.com/"+ig.tur+"/"+ig.kod+"/embed"; f.setAttribute("allow","autoplay; encrypted-media; picture-in-picture"); f.setAttribute("allowfullscreen",""); f.title="Instagram"; k.append(f); }
+  else k.append(el("div","ke","🔗"));
+  var a=el("a","havola", ig ? "Instagram'da ochish ↗" : x.url); a.href=x.url; a.target="_blank"; a.rel="noopener noreferrer"; k.append(a);
+  var rk=el("div","reaksiya");
+  ["😂","❤️","🔥","😍","🥺"].forEach(function(e){ var b=el("button",null,e); b.type="button"; b.setAttribute("aria-label","Reaksiya "+e);
+    b.addEventListener("click", function(){ x.menReak=e; xatSaqla(); bizChiz(); nashr("e",{t:"reelReak", id:x.id, e:e}).catch(function(){}); uchir(e,8); bildir("Reaksiya yuborildi "+e); });
+    rk.appendChild(b); });
+  k.append(rk, el("div","kichik xira",(x.men?"Siz yubordingiz":uIsm()+" yubordi")+" · "+vaqt(x.vaqt)));
+  sahnaOch(k);
+  if(!x.men && !x.ochildi){ x.ochildi=true; xatSaqla(); bizChiz(); nashr("e",{t:"ochildi", id:x.id}).catch(function(){}); }
+}
+
+// ================= SEVGI KUPONLARI =================
+var KUPONLAR=[{e:"🤗",n:"Cheksiz quchoq"},{e:"💋",n:"10 ta o'pich"},{e:"💆",n:"Massaj"},{e:"🍳",n:"Nonushtani men tayyorlayman"},{e:"🎬",n:"Kinoni sen tanlaysan"},
+  {e:"🙊",n:"Janjalda men yutqazaman"},{e:"🌹",n:"Romantik kechki ovqat"},{e:"📞",n:"1 soat qo'ng'iroq"},{e:"✨",n:"Bitta istagingni bajaraman"}];
+function kuponYubor(k){
+  if(!KALIT) return;
+  var id=tasodifiy(8);
+  nashr("x/"+id, {t:"kupon", id:id, e:k.e, n:k.n}, true).then(function(o){
+    xatlar.unshift({id:id, tur:"kupon", men:true, e:k.e, n:k.n, vaqt:o.v, holat:"yuborildi"}); xatSaqla(); bizChiz();
+  });
+  ntfy("🎟","Senga sevgi kuponi yubordim: "+k.e+" "+k.n);
+  ballQosh("kupon"); bildir("Kupon yuborildi 🎟"); uchir(k.e,6);
+}
+function kuponIshlat(x){
+  x.ishlatildi=true; x.ishVaqt=Date.now(); xatSaqla(); bizChiz();
+  nashr("e",{t:"kuponIsh", id:x.id}).catch(function(){});
+  // Saqlanadigan ro'yxat: yuboruvchi ilovani keyinroq ochsa ham biladi
+  nashr("ki/"+QID, {t:"kuponlar", ids:xatlar.filter(function(y){ return y.tur==="kupon" && !y.men && y.ishlatildi; }).map(function(y){ return y.id; }).slice(-50)}, true).catch(function(){});
+  ntfy("🎟","Kuponni ishlatdim: "+x.e+" "+x.n+". Va'dangni bajar 😏");
+  var k=el("div","k"); k.append(el("div","ke",x.e), el("div","km","Kupon ishlatildi!"), el("div",null,x.n), el("div","kichik xira",uIsm()+" endi va'dasini bajarishi kerak 😏"));
+  sahnaOch(k,"bayram",false,function(){ uchir(x.e,12); qongiroq(990); });
+}
+
+// ================= BIRGA QILAMIZ =================
+var istaklar=ol("istaklar",[]);
+function istakNashr(){ qoy("istaklar",istaklar); istakChiz(); if(KALIT) nashr("i", {t:"istak", l:istaklar}, true).catch(function(){}); }
+$("istakForma").addEventListener("submit", function(e){
+  e.preventDefault(); var m=$("istakInp").value.trim(); if(!m) return;
+  istaklar.push({id:tasodifiy(6), m:m.slice(0,120), ok:false, kim:sozlama.ism, v:Date.now()}); $("istakInp").value=""; istakNashr();
+});
+function istakChiz(){
+  var ul=$("istakRoyxat"); ul.textContent="";
+  var royxat=istaklar.filter(function(x){ return !x.o; }).sort(function(a,b){ return (a.ok-b.ok) || (a.v-b.v); });
+  royxat.forEach(function(x){
+    var li=el("li", x.ok?"ok":""), b=el("button","bel", x.ok?"✓":""); b.type="button"; b.setAttribute("aria-label", x.ok?"Bajarilmagan deb belgilash":"Bajarildi deb belgilash");
+    b.addEventListener("click", function(){ x.ok=!x.ok; x.v=Date.now(); if(x.ok){ uchir("🎉",10); ballQosh("istak"); bildir("Barakalla! Yana bitta orzu ushaldi 🎉"); } istakNashr(); });
+    var t=el("span","t", x.m); t.appendChild(el("small",null, (x.kim===sozlama.ism?"Siz":x.kim||uIsm())+" qo'shgan"));
+    var o=el("button","och","✕"); o.type="button"; o.setAttribute("aria-label","O'chirish");
+    o.addEventListener("click", function(){ x.o=1; x.v=Date.now(); istakNashr(); });
+    li.append(b,t,o); ul.appendChild(li);
+  });
+  $("istakBosh").hidden=royxat.length>0;
+}
+
+// ================= BIZ bo'limini chizish =================
+function bizChiz(){
+  var r=$("reelRoyxat"); r.textContent=""; var rs=0;
+  xatlar.filter(function(x){ return x.tur==="reel"; }).forEach(function(x){
+    rs++;
+    var k=el("div","karta reel"), ig=igKod(x.url), t=el("div","t");
+    t.append(el("b",null, x.men ? "Siz → "+uIsm() : uIsm()+" yubordi"), el("div","h", ig ? "Instagram "+(ig.tur==="p"?"post":"reels") : x.url),
+      el("div","holat", x.men ? (x.holat==="ochildi"?"Ko'rildi · ":"")+vaqt(x.vaqt) : (x.ochildi?"Ko'rilgan · ":"Yangi · ")+vaqt(x.vaqt)));
+    k.append(el("div","ig", ig?"🎬":"🔗"), t);
+    var rk = x.men ? x.uReak : x.menReak; if(rk) k.append(el("span","rk",rk));
+    k.addEventListener("click", function(){ reelKorish(x); });
+    r.appendChild(k);
+  });
+  $("reelBosh").hidden=rs>0;
+  var kr=$("kuponRoyxat"); kr.textContent="";
+  xatlar.filter(function(x){ return x.tur==="kupon"; }).forEach(function(x){
+    var k=el("div","karta kupon"+(x.ishlatildi?" ishlatildi":"")), t=el("div","t");
+    t.append(el("b",null, x.n), el("div","holat", x.men ? (x.ishlatildi ? uIsm()+" ishlatdi · "+vaqt(x.ishVaqt||x.vaqt) : uIsm()+"ga yuborildi · "+vaqt(x.vaqt))
+                                                         : (x.ishlatildi ? "Ishlatilgan · "+vaqt(x.ishVaqt||x.vaqt) : uIsm()+"dan sovg'a · "+vaqt(x.vaqt))));
+    k.append(el("span","e",x.e), t);
+    if(!x.men && !x.ishlatildi){ var b=el("button","tugma oltin","Ishlatish"); b.type="button"; b.addEventListener("click", function(){ kuponIshlat(x); }); k.append(b); }
+    kr.appendChild(k);
+  });
+}
+(function(){
+  var g=$("kuponTanla");
+  KUPONLAR.forEach(function(k){ var b=el("button","kuponTanla"); b.type="button"; b.append(el("span",null,k.e), document.createTextNode(k.n));
+    b.addEventListener("click", function(){ kuponYubor(k); }); g.appendChild(b); });
+})();
+
 // ================= O'YIN: kartalar va kunlik savol =================
 var tanlanganDeck=ol("deck","ehtiros"), joriyKarta=ol("karta",null);
 if(!DECKLAR[tanlanganDeck]) tanlanganDeck="ehtiros";
@@ -1483,15 +1830,37 @@ function qabul(q, o){
       var mime=/^(video|image|audio)\/[\w.+-]+$/.test(o.mime||"") ? o.mime : (o.t==="rasm"?"image/jpeg":o.t==="video"?"video/mp4":"audio/mp4");
       var x = o.t==="xat" ? {id:o.id, tur:"xat", matn:String(o.matn||""), och:o.och||vq, vaqt:vq}
             : o.t==="ovoz" ? {id:o.id, tur:"ovoz", a:o.a, mime:mime, dur:o.dur, vaqt:vq}
+            : o.t==="reel" ? {id:o.id, tur:"reel", url:havolaTozala(o.url)||"", vaqt:vq}
+            : o.t==="kupon" ? {id:o.id, tur:"kupon", e:String(o.e||"🎟").slice(0,8), n:String(o.n||"").slice(0,60), vaqt:vq}
             : {id:o.id, tur:o.t, url:String(o.url||""), mime:mime, dur:+o.dur||0, dumaloq:!!o.dumaloq, kichik:String(o.kichik||""), vaqt:vq};
       xatlar.unshift(x); xatlar.sort(function(a,b){ return b.vaqt-a.vaqt; }); xatSaqla(); xatChiz();
-      if(joriy!=="Xat") $("xatNuqta").hidden=false;
-      bildir(o.t==="xat" ? "💌 "+uIsm()+" sizga xat yubordi" : o.t==="ovoz" ? "🎙 "+uIsm()+" sizga shivirladi"
+      if(o.t==="reel"||o.t==="kupon"){ if(joriy!=="Biz") $("bizNuqta").hidden=false; }
+      else if(joriy!=="Xat") $("xatNuqta").hidden=false;
+      bildir(o.t==="reel" ? "🎬 "+uIsm()+" sizga reels yubordi" : o.t==="kupon" ? "🎟 "+uIsm()+" sizga kupon sovg'a qildi: "+x.n : o.t==="xat" ? "💌 "+uIsm()+" sizga xat yubordi" : o.t==="ovoz" ? "🎙 "+uIsm()+" sizga shivirladi"
            : o.t==="rasm" ? "🖼 "+uIsm()+" sizga rasm yubordi" : "🎥 "+uIsm()+" sizga video yubordi"); qongiroq(660);
       if(media) yuklabOl(x);
     } else if(media && !bor0.saqlandi && o.url && o.url!==bor0.url){ bor0.url=String(o.url); bor0.eskirgan=false; xatSaqla(); yuklabOl(bor0); }
     if(!media) nashr("e",{t:"oldim", id:o.id}).catch(function(){});
     return;
+  }
+  if(q.indexOf("ki/")===0){
+    (o.ids||[]).forEach(function(id){ var kp=xatlar.filter(function(x){ return x.id===id && x.men && x.tur==="kupon"; })[0];
+      if(kp && !kp.ishlatildi){ kp.ishlatildi=true; kp.ishVaqt=vq; xatSaqla(); bizChiz(); bildir("🎟 "+uIsm()+" kuponni ishlatdi: "+kp.n); } });
+    return;
+  }
+  if(q.indexOf("g/")===0){ u.g = o.off ? {off:1, v:vq} : {lat:+o.lat, lon:+o.lon, acc:+o.acc||0, v:vq}; uSaqla(); masofaChiz(); return; }
+  if(q==="m"){
+    if(!uchrashuv || vq>(uchrashuv.v||0)){ uchrashuv={vaqt:+o.vaqt||0, joy:String(o.joy||"").slice(0,60), v:vq}; qoy("uchrashuv",uchrashuv); uchChiz();
+      if(uchrashuv.vaqt && Date.now()-vq<60000) bildir("📅 "+uIsm()+" uchrashuv belgiladi: "+vaqt(uchrashuv.vaqt)); }
+    return;
+  }
+  if(q==="i"){
+    (o.l||[]).forEach(function(y){
+      if(!y || !y.id) return; var b=istaklar.filter(function(x){ return x.id===y.id; })[0];
+      var t={id:String(y.id), m:String(y.m||"").slice(0,120), ok:!!y.ok, o:y.o?1:0, kim:String(y.kim||""), v:+y.v||0};
+      if(!b) istaklar.push(t); else if(t.v>b.v) Object.assign(b,t);
+    });
+    qoy("istaklar",istaklar); istakChiz(); return;
   }
   if(q.indexOf("q/")===0){
     (o.ids||[]).forEach(function(id){ var b=xatlar.filter(function(x){ return x.id===id && x.men; })[0];
@@ -1534,6 +1903,16 @@ function qabul(q, o){
     case "chaqir":
       if(!yangi) break;
       $("tegNuqta").hidden=false; bildir("🫳 "+uIsm()+" sizni Teginishga chaqiryapti"); qongiroq(880); break;
+    case "kuponIsh":
+      var kp=xatlar.filter(function(x){ return x.id===o.id && x.men; })[0];
+      if(kp && !kp.ishlatildi){ kp.ishlatildi=true; kp.ishVaqt=vq; xatSaqla(); bizChiz();
+        var kk=el("div","k"); kk.append(el("div","ke",kp.e), el("div","km",uIsm()+" kuponni ishlatdi!"), el("div",null,kp.n), el("div","kichik xira","Endi va'dangizni bajaring 😏"));
+        sahnaOch(kk,"bayram",true,function(){ uchir(kp.e,12); qongiroq(990); }); }
+      break;
+    case "reelReak":
+      var rl=xatlar.filter(function(x){ return x.id===o.id && x.men; })[0];
+      if(rl){ rl.uReak=String(o.e||"").slice(0,8); xatSaqla(); bizChiz(); if(yangi){ bildir(uIsm()+" reelsingizga "+rl.uReak+" qo'ydi"); uchir(rl.uReak,8); } }
+      break;
     case "reak":
       if(yangi) uchir(o.e,10); break;
     case "oldim":
@@ -1612,12 +1991,14 @@ async function boshla(){
   if(ol("ulandi_"+sozlama.kod,false)) qoy("ulandi",true);
   $("taklif").hidden=!!ol("ulandi",false);
   if(menHolat.sog.kun!==bugun()) menHolat.sog={kun:bugun(), n:0};
-  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
+  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
   await kalitTayyorla(sozlama.kod);
   xatlar.forEach(function(x){ x.yuklanyapti=false; });
   xatlar.filter(function(x){ return !x.men && (x.tur==="video"||x.tur==="rasm") && !x.saqlandi && !x.eskirgan; }).forEach(yuklabOl);
   ulanMqtt();
   ntfyQuvish();
+  if(gpsYoqiq) gpsBoshla();
+  if(istaklar.length) istakNashr();
   setInterval(function(){ hozirman(!document.hidden); }, ONLAYN_MS);
 }
 document.addEventListener("visibilitychange", function(){
@@ -1639,6 +2020,13 @@ $("kirishForma").addEventListener("submit", function(e){
   boshla();
 });
 
+// Shortcuts orqali kelgan reels: ...#k=..&reel=<havola>
+var kelganReel=new URLSearchParams(location.hash.slice(1)).get("reel");
+function reelKeldi(){ if(kelganReel){ var r0=kelganReel; kelganReel=null; setTimeout(function(){ reelYubor(r0); }, 600); } }
+window.addEventListener("hashchange", function(){
+  var r1=new URLSearchParams(location.hash.slice(1)).get("reel");
+  if(r1 && KALIT){ reelYubor(r1); try{ history.replaceState(null,"",hashYasa(sozlama)); }catch(e){} }
+});
 var h=hashdanOl();
 if(h && h.ism && (!sozlama || sozlama.kod!==h.kod || sozlama.ism!==h.ism)){
   var yangiJuft = !sozlama || sozlama.kod!==h.kod;
@@ -1646,9 +2034,10 @@ if(h && h.ism && (!sozlama || sozlama.kod!==h.kod || sozlama.ism!==h.ism)){
   if(yangiJuft) qoy("ulandi", true);
   boshla().then(function(){
     if(yangiJuft){ bildir((h.sevgili||"Sevgilingiz")+" bilan ulandingiz ❤️"); setTimeout(function(){ hisYubor("🥰","Ulandim! Endi faqat ikkimizning dunyomiz bor"); }, 1500); }
+    reelKeldi();
   });
 } else if(sozlama){
-  boshla();
+  boshla().then(reelKeldi);
 } else {
   $("kodInp").value = h ? h.kod : tasodifiyKod();
   $("kirish").hidden=false;
