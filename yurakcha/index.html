@@ -66,6 +66,48 @@ button{cursor:pointer}
 .yoz input{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:11px 16px}
 .btn{background:var(--rose);color:#fff;border:0;border-radius:999px;padding:11px 18px;font-weight:700}
 
+/* Bo'limlar */
+.tablar{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px}
+.tab{flex:1;border:0;background:none;border-radius:999px;padding:8px 6px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--rose);color:#fff}
+.grid.ehtiros .his{background:var(--rose-soft);border-color:transparent}
+
+/* Sevgili holati */
+.uholat{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 14px}
+.uholat .e{font-size:28px;line-height:1}
+.uholat .t{flex:1;min-width:0}
+.bosyapti{background:var(--rose);color:#fff;border-radius:16px;padding:12px 14px;text-align:center;font-weight:700;animation:yonish 1.2s ease-in-out infinite}
+@keyframes yonish{50%{opacity:.75}}
+
+/* Kayfiyat */
+.kayf{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:600}
+.chip[aria-pressed="true"]{border-color:var(--rose);background:var(--rose-soft)}
+
+/* Kunlik savol */
+.savol{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.savol .q{font-family:var(--display);font-size:20px;line-height:1.3}
+.savol textarea{font:inherit;color:inherit;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 12px;min-height:70px;resize:vertical}
+.javob{border-left:3px solid var(--rose);padding-left:10px;overflow-wrap:anywhere}
+.qulf{color:var(--muted);font-size:14px}
+.qator{display:flex;gap:10px;flex-wrap:wrap}
+.qator .btn,.qator .ghost2{flex:1}
+.ghost2{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:11px 18px;font-weight:700}
+
+/* Chizish oynasi */
+.oyna{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.oyna canvas{width:min(92vw,420px);aspect-ratio:1;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:20px;touch-action:none}
+.oyna .qator{width:min(92vw,420px)}
+#keldiRasm{width:min(80vw,320px);aspect-ratio:1;max-width:100%;background:var(--surface);border-radius:18px}
+
+/* Birga bosib turish */
+#birga{position:fixed;inset:0;z-index:15;pointer-events:none;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--rose) 40%,var(--bg)),color-mix(in srgb,var(--bg) 94%,transparent) 70%)}
+#birga .k{text-align:center}
+#birga .ke{font-size:110px;animation:urish .8s ease-in-out infinite}
+#birga .km{font-family:var(--display);font-size:26px}
+
 /* Hisoblagich */
 .kun{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .kun b{font-family:var(--display);font-weight:400;font-size:40px;color:var(--rose);font-variant-numeric:tabular-nums}
@@ -168,19 +210,45 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--ro
         <span class="small muted">Bu faqat bir marta qilinadi. Keyin ilovani bosh ekrandagi ❤️ belgisidan ochasiz, havola kerak bo'lmaydi.</span>
       </div>
 
+      <div class="uholat" id="uHolat" hidden>
+        <span class="e" id="uKayfE"></span>
+        <div class="t"><b id="uKayfN"></b><div class="small muted" id="uKayfV"></div></div>
+      </div>
+
+      <div class="bosyapti" id="uBosyapti" hidden></div>
+
       <div class="big">
         <button id="yurak" type="button" aria-label="Yurak yuborish">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.3 4.5 6.2 4.5c2.3 0 3.8 1.3 5.8 3.6 2-2.3 3.5-3.6 5.8-3.6 3.9 0 5.8 4.1 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg>
         </button>
-        <div class="small muted">Bosing: yurak. 1 soniya bosib turing: yurak urishingiz.</div>
+        <div class="small muted" style="text-align:center">Bosing: yurak. Bosib turing: yurak urishi.<br>Ikkovingiz bir vaqtda bosib tursangiz, yuraklaringiz ulanadi 💞</div>
       </div>
 
+      <div class="tablar" role="tablist" id="tablar">
+        <button class="tab" role="tab" type="button" data-b="mehr" aria-selected="true">Mehr</button>
+        <button class="tab" role="tab" type="button" data-b="hissiyot" aria-selected="false">Hissiyot</button>
+        <button class="tab" role="tab" type="button" data-b="ehtiros" aria-selected="false">Ehtiros</button>
+      </div>
       <div class="grid" id="hislar"></div>
 
       <form class="yoz" id="yozForma">
         <input id="matn" maxlength="200" placeholder="O'z so'zlaringiz…" autocomplete="off">
         <button class="btn" type="submit">Yubor</button>
       </form>
+
+      <button class="ghost2" id="chizBtn" type="button">✍️ Barmog'ing bilan chizib yubor</button>
+
+      <div>
+        <h2>Kayfiyatim</h2>
+        <p class="small muted" style="margin:2px 0 10px">Tanlasangiz, sevgilingiz ekranining tepasida ko'rinadi.</p>
+        <div class="kayf" id="kayf"></div>
+      </div>
+
+      <div class="savol">
+        <div class="small muted"><b>Bugungi savol</b> · ikkovingizga bir xil</div>
+        <div class="q" id="savolQ"></div>
+        <div id="savolJoy"></div>
+      </div>
 
       <div class="kun" id="kunBlok" hidden><b id="kunSon">0</b><span class="muted">kun birgasiz</span></div>
 
@@ -212,10 +280,23 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--ro
 <div id="keldi" hidden role="dialog" aria-live="assertive">
   <div class="k">
     <div class="ke" id="keldiE">❤️</div>
+    <canvas id="keldiRasm" width="640" height="640" hidden></canvas>
     <div class="km" id="keldiM"></div>
     <div class="muted small" id="keldiK"></div>
     <button class="btn" id="javob" type="button">❤️ Javob qaytarish</button>
   </div>
+</div>
+<div class="oyna" id="chizOyna" hidden role="dialog" aria-label="Chizish">
+  <h2>Unga chizib yubor</h2>
+  <canvas id="chizKanva" width="640" height="640"></canvas>
+  <div class="qator">
+    <button class="ghost2" id="chizYop" type="button">Yopish</button>
+    <button class="ghost2" id="chizToz" type="button">Tozalash</button>
+    <button class="btn" id="chizYub" type="button">Yubor</button>
+  </div>
+</div>
+<div id="birga" hidden aria-live="polite">
+  <div class="k"><div class="ke">💞</div><div class="km">Yuraklaringiz ulandi</div><div class="small muted" id="birgaM"></div></div>
 </div>
 <div id="xabar" hidden></div>
 
@@ -223,16 +304,76 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--ro
 (function(){
 "use strict";
 var SERVER = "https://ntfy.sh";
-var HISLAR = [
-  {e:"🥺", n:"Sog'indim",        m:"Seni juda sog'indim"},
-  {e:"🤗", n:"Quchoqlash",       m:"Seni mahkam quchoqlayman"},
-  {e:"😘", n:"O'pich",           m:"Senga o'pich yubordim"},
-  {e:"💭", n:"O'ylayapman",      m:"Hozir seni o'ylayapman"},
-  {e:"☀️", n:"Xayrli tong",      m:"Xayrli tong, jonim"},
-  {e:"🌙", n:"Xayrli tun",       m:"Xayrli tun, tushingda ko'ray"},
-  {e:"😔", n:"Kayfiyatim yo'q",  m:"Kayfiyatim yo'q, menga qo'ng'iroq qil"},
-  {e:"🥰", n:"Baxtliman",        m:"Sen bilan baxtliman"},
-  {e:"📞", n:"Qo'ng'iroq qil",   m:"Bo'sh bo'lsang qo'ng'iroq qil"}
+var BOLIMLAR = {
+  mehr: [
+    {e:"🥺", n:"Sog'indim",       m:"Seni juda sog'indim"},
+    {e:"🤗", n:"Quchoqlash",      m:"Seni mahkam quchoqlayman"},
+    {e:"😘", n:"O'pich",          m:"Senga o'pich yubordim"},
+    {e:"☀️", n:"Xayrli tong",     m:"Xayrli tong, jonim. Kuning chiroyli o'tsin"},
+    {e:"🌙", n:"Xayrli tun",      m:"Xayrli tun, tushingda ko'ray"},
+    {e:"🍲", n:"Ovqatlandingmi",  m:"Ovqatlandingmi, jonim? O'zingni ehtiyot qil"},
+    {e:"💪", n:"Sen zo'rsan",     m:"Sen eng zo'risan, senga ishonaman"},
+    {e:"🥰", n:"Baxtliman",       m:"Sen bilan baxtliman"},
+    {e:"📞", n:"Qo'ng'iroq qil",  m:"Bo'sh bo'lsang qo'ng'iroq qil, ovozingni eshitgim keldi"}
+  ],
+  hissiyot: [
+    {e:"💭", n:"O'ylayapman",     m:"Hozir seni o'ylayapman"},
+    {e:"🥹", n:"Rahmat",          m:"Borliging uchun rahmat"},
+    {e:"🙏", n:"Kechir",          m:"Meni kechir, jonim. Seni xafa qilmoqchi emasdim"},
+    {e:"😔", n:"Kayfiyatim yo'q", m:"Kayfiyatim yo'q, menga qo'ng'iroq qil"},
+    {e:"😢", n:"Qiyin",           m:"Bugun qiyin bo'lyapti, yonimda bo'l"},
+    {e:"😤", n:"Xafa bo'ldim",    m:"Xafa bo'ldim. Keyin tinchlab gaplashaylik"},
+    {e:"👀", n:"E'tibor ber",     m:"Menga ozgina e'tibor ber"},
+    {e:"🎉", n:"Yangilik",        m:"Senga aytadigan yaxshi yangiligim bor"},
+    {e:"😴", n:"Uxlolmayapman",   m:"Uxlolmayapman, seni o'ylayapman"}
+  ],
+  ehtiros: [
+    {e:"💋", n:"Lablar",          m:"Lablaringni sog'indim"},
+    {e:"🔥", n:"Yonyapman",       m:"Seni o'ylasam yuragim yonib ketadi"},
+    {e:"🫂", n:"Bag'rimga",       m:"Bag'rimga bosib, hech qo'yib yubormagim keladi"},
+    {e:"👁️", n:"Ko'zlaring",      m:"Ko'zlaringga uzoq tikilgim keladi"},
+    {e:"🌹", n:"Kechqurun",       m:"Bugun kechqurun faqat ikkovimiz bo'laylik"},
+    {e:"💃", n:"Raqs",            m:"Sen bilan sekin raqs tushgim keladi"},
+    {e:"🤫", n:"Shivir",          m:"Qulog'ingga bir gap shivirlagim keladi"},
+    {e:"😏", n:"Tasavvur",        m:"Hozir yonimda bo'lsang nima qilardim, bilasanmi..."},
+    {e:"❤️‍🔥", n:"Xohlayman",      m:"Seni shunchalik xohlaymanki..."}
+  ]
+};
+var KAYFIYAT = [
+  {e:"😊", n:"Yaxshi"}, {e:"🥰", n:"Sevgiga to'la"}, {e:"🔥", n:"Ehtirosli"}, {e:"🥺", n:"Sog'inyapman"},
+  {e:"😴", n:"Charchadim"}, {e:"😔", n:"Xafaman"}, {e:"🤒", n:"Betobman"}, {e:"🤯", n:"Bandman"}
+];
+var SAVOLLAR = [
+  "Meni birinchi ko'rganingda nimani o'ylagansan?",
+  "Menda eng yoqadigan uchta narsa nima?",
+  "Birga o'tkazgan eng baxtli kuning qaysi?",
+  "Qaysi paytda meni eng ko'p sog'inasan?",
+  "Men bilan qayerga sayohat qilishni xohlaysan?",
+  "Sening fikringcha, munosabatimizni nima kuchli qiladi?",
+  "Mendan qanday so'zni ko'proq eshitishni xohlaysan?",
+  "Bizning qo'shig'imiz qaysi bo'lishi kerak?",
+  "Mening qaysi odatim seni kuldiradi?",
+  "Kelajakda birga qilishni orzu qilgan bitta ishing nima?",
+  "Qachon o'zingni men bilan eng xavfsiz his qilasan?",
+  "Menga hali aytmagan bitta siring bormi?",
+  "Ideal kechqurunimiz qanday o'tadi?",
+  "Meni bir so'z bilan ta'riflasang, qaysi so'z?",
+  "Qaysi kichik narsam seni xursand qiladi?",
+  "Xafa bo'lganingda men nima qilishimni xohlaysan?",
+  "Birinchi o'pichimizni eslaysanmi? Nimani his qilgansan?",
+  "Men haqimda tushingda nimani ko'rgansan?",
+  "Qaysi kiyimimda meni eng chiroyli deb bilasan?",
+  "Bizning munosabatimizni film qilishsa, nomi nima bo'lardi?",
+  "Mendan qanday sovg'a kutib yurasan, lekin aytmaysan?",
+  "Qaysi paytda menga eng ko'p g'urur bilan qaragansan?",
+  "10 yildan keyin bizni qayerda tasavvur qilasan?",
+  "Sevgi sen uchun nima degani?",
+  "Men bilan qilgan eng jinnicha ishing nima edi?",
+  "Ovozimning qaysi so'zni aytishi senga yoqadi?",
+  "Bugun men haqimda nima o'ylading?",
+  "Qaysi kunimizni qaytadan yashashni xohlarding?",
+  "Menga qanday laqab qo'yishni xohlaysan?",
+  "Hozir yonimda bo'lsang, birinchi nima qilarding?"
 ];
 
 function $(id){ return document.getElementById(id); }
@@ -268,7 +409,9 @@ function chiz(){
     var t=document.createElement("span"); t.className="t";
     t.textContent=(x.men?"Siz: ":(x.kim?x.kim+": ":""))+x.m;
     var tm=document.createElement("time"); tm.textContent=vaqt(x.vaqt);
-    li.append(e,t,tm); ul.appendChild(li);
+    li.append(e,t,tm);
+    if(x.r){ li.style.cursor="pointer"; li.addEventListener("click", function(){ kelganiniKorsat(x); }); }
+    ul.appendChild(li);
   });
   $("bosh").hidden = tarix.length>0;
 }
@@ -286,7 +429,8 @@ function kunlar(){
 }
 
 // Yuborish: ntfy JSON formati (emoji va o'zbekcha harflar to'g'ri ketadi)
-function yubor(e, m){
+// tarixsiz=true: faqat bildirishnoma uchun (masalan rasm, u jonli kanal orqali tarixga yoziladi)
+function yubor(e, m, tarixsiz){
   var tana = {
     topic: sozlama.kod,
     title: sozlama.ism + " " + e,
@@ -298,10 +442,151 @@ function yubor(e, m){
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
     .then(function(j){
       yuborilgan[j.id]=1;
-      tarixga({id:j.id, e:e, m:m, men:true, vaqt:Date.now()});
+      if(!tarixsiz) tarixga({id:j.id, e:e, m:m, men:true, vaqt:Date.now()});
       bildir("Yuborildi "+e);
     })
     .catch(function(){ bildir("Yuborilmadi. Internetni tekshiring."); });
+}
+
+// Jonli kanal: "<kod>-j" mavzusi. Bildirishnoma chiqmaydi (ntfy ilovasida obuna yo'q)
+function jonliMavzu(){ return sozlama.kod+"-j"; }
+function jonli(obj){
+  obj.f = sozlama.ism;
+  return fetch(SERVER+"/", {method:"POST", body:JSON.stringify({topic:jonliMavzu(), message:JSON.stringify(obj)})})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(j){ yuborilgan[j.id]=1; return j.id; });
+}
+function uIsm(){ return sozlama.sevgili || ol("uIsm","") || "Sevgilingiz"; }
+
+// --- Kayfiyat ---
+function kayfChiz(){
+  var men=ol("kayf_"+sozlama.kod,null), box=$("kayf"); box.textContent="";
+  KAYFIYAT.forEach(function(k){
+    var b=document.createElement("button"); b.type="button"; b.className="chip";
+    b.textContent=k.e+" "+k.n; b.setAttribute("aria-pressed", men&&men.e===k.e ? "true":"false");
+    b.addEventListener("click", function(){
+      qoy("kayf_"+sozlama.kod,{e:k.e,n:k.n}); kayfChiz();
+      jonli({t:"kayf",e:k.e,n:k.n}).catch(function(){});
+      yubor(k.e, "Kayfiyatim: "+k.n);
+    });
+    box.appendChild(b);
+  });
+  var u=ol("ukayf_"+sozlama.kod,null);
+  if(u){ $("uKayfE").textContent=u.e; $("uKayfN").textContent=uIsm()+" hozir: "+u.n; $("uKayfV").textContent=vaqt(u.v); $("uHolat").hidden=false; }
+  else $("uHolat").hidden=true;
+}
+
+// --- Kunlik savol ---
+function bugun(){ var d=new Date(); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
+function savolChiz(){
+  var kun=bugun(), p=kun.split("-");
+  var idx=Math.floor(Date.UTC(+p[0],+p[1]-1,+p[2])/864e5)%SAVOLLAR.length;
+  $("savolQ").textContent=SAVOLLAR[idx];
+  var j=ol("javob_"+sozlama.kod+"_"+kun,{}), joy=$("savolJoy"); joy.textContent="";
+  function satr(kim,t){ var d=document.createElement("div"); d.className="javob"; var b=document.createElement("b"); b.textContent=kim+": "; d.append(b,document.createTextNode(t)); return d; }
+  if(!j.men){
+    var ta=document.createElement("textarea"); ta.id="savolMatn"; ta.maxLength=500; ta.placeholder="Javobingiz…";
+    var btn=document.createElement("button"); btn.className="btn"; btn.type="button"; btn.textContent="Javob berish";
+    btn.addEventListener("click", function(){
+      var t=ta.value.trim(); if(!t) return;
+      j.men=t; qoy("javob_"+sozlama.kod+"_"+kun,j); savolChiz();
+      jonli({t:"javob",kun:kun,j:t}).catch(function(){ bildir("Yuborilmadi. Internetni tekshiring."); });
+      yubor("❓", j.u ? "Bugungi savolga javob berdim. Endi javoblarimizni ko'ramiz" : "Bugungi savolga javob berdim. Sen ham javob ber");
+    });
+    joy.append(ta);
+    if(j.u){ var q=document.createElement("div"); q.className="qulf"; q.textContent="🔒 "+uIsm()+" javob berdi. Ko'rish uchun avval o'zingiz javob bering."; joy.append(q); }
+    joy.append(btn);
+  } else {
+    joy.append(satr("Siz", j.men));
+    if(j.u) joy.append(satr(uIsm(), j.u));
+    else { var w=document.createElement("div"); w.className="qulf"; w.textContent=uIsm()+" hali javob bermadi."; joy.append(w); }
+  }
+}
+
+// --- Chizish: nuqtalar 0..1295 oralig'ida, har bir son 2 ta base36 belgi ---
+var CHIZ_MAX=3400;
+function kodla(chiziqlar){
+  var out=[], uzun=0;
+  for(var i=0;i<chiziqlar.length;i++){
+    var c=chiziqlar[i].map(function(p){ return ("0"+p[0].toString(36)).slice(-2)+("0"+p[1].toString(36)).slice(-2); }).join("");
+    if(uzun+c.length>CHIZ_MAX) break; out.push(c); uzun+=c.length+1;
+  }
+  return out.join(".");
+}
+function dekodla(t){
+  return (t||"").split(".").map(function(c){
+    var a=[]; for(var i=0;i+4<=c.length;i+=4) a.push([parseInt(c.substr(i,2),36),parseInt(c.substr(i+2,2),36)]); return a;
+  }).filter(function(a){ return a.length; });
+}
+function rangi(){ return getComputedStyle(document.documentElement).getPropertyValue("--rose").trim()||"#d6335a"; }
+function chiziqChiz(ctx, a, n){
+  var k=ctx.canvas.width/1296; ctx.beginPath();
+  for(var i=0;i<Math.min(n,a.length);i++){ var x=a[i][0]*k, y=a[i][1]*k; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+  if(a.length===1){ ctx.lineTo(a[0][0]*k+0.1,a[0][1]*k); }
+  ctx.stroke();
+}
+function kanvaTayyor(ctx){ ctx.lineCap="round"; ctx.lineJoin="round"; ctx.lineWidth=ctx.canvas.width/55; ctx.strokeStyle=rangi(); }
+function qaytaChiz(kanva, t){
+  var ctx=kanva.getContext("2d"), ch=dekodla(t); kanvaTayyor(ctx);
+  var jami=ch.reduce(function(s,a){ return s+a.length; },0), qadam=Math.max(2,Math.ceil(jami/90)), n=0;
+  (function kadr(){
+    ctx.clearRect(0,0,kanva.width,kanva.height); n+=qadam; var qoldi=n;
+    for(var i=0;i<ch.length&&qoldi>0;i++){ chiziqChiz(ctx,ch[i],qoldi); qoldi-=ch[i].length; }
+    if(n<jami) requestAnimationFrame(kadr);
+  })();
+}
+var chiziqlar=[], hozirgi=null;
+(function(){
+  var kv=$("chizKanva"), ctx=kv.getContext("2d");
+  function nuqta(ev){ var r=kv.getBoundingClientRect(); return [Math.max(0,Math.min(1295,Math.round((ev.clientX-r.left)/r.width*1295))), Math.max(0,Math.min(1295,Math.round((ev.clientY-r.top)/r.height*1295)))]; }
+  function hammasi(){ kanvaTayyor(ctx); ctx.clearRect(0,0,kv.width,kv.height); chiziqlar.forEach(function(a){ chiziqChiz(ctx,a,a.length); }); }
+  kv.addEventListener("pointerdown", function(ev){ ev.preventDefault(); kv.setPointerCapture(ev.pointerId); hozirgi=[nuqta(ev)]; chiziqlar.push(hozirgi); hammasi(); });
+  kv.addEventListener("pointermove", function(ev){ if(!hozirgi) return; var p=nuqta(ev), o=hozirgi[hozirgi.length-1];
+    if(Math.abs(p[0]-o[0])+Math.abs(p[1]-o[1])<14) return; hozirgi.push(p); hammasi(); });
+  function tugat(){ hozirgi=null; }
+  kv.addEventListener("pointerup", tugat); kv.addEventListener("pointercancel", tugat);
+  $("chizBtn").addEventListener("click", function(){ chiziqlar=[]; hammasi(); $("chizOyna").hidden=false; });
+  $("chizYop").addEventListener("click", function(){ $("chizOyna").hidden=true; });
+  $("chizToz").addEventListener("click", function(){ chiziqlar=[]; hammasi(); });
+  $("chizYub").addEventListener("click", function(){
+    if(!chiziqlar.length){ bildir("Avval nimadir chizing"); return; }
+    var t=kodla(chiziqlar); $("chizOyna").hidden=true;
+    jonli({t:"rasm",r:t}).then(function(id){
+      tarixga({id:id, e:"✍️", m:"Rasm chizdingiz", men:true, vaqt:Date.now(), r:t});
+      yubor("✍️", "Senga nimadir chizdim, ochib ko'r", true);
+    }).catch(function(){ bildir("Yuborilmadi. Internetni tekshiring."); });
+  });
+})();
+
+// --- Birga bosib turish ---
+var menBos=false, uBos=0, bosYangila=null;
+function birgaYangila(){
+  var uFaol = uBos && Date.now()-uBos < 12000;
+  $("birga").hidden = !(menBos && uFaol);
+  if(menBos && uFaol) $("birgaM").textContent="Siz va "+uIsm()+" hozir bir vaqtda bosib turibsiz";
+  var b=$("uBosyapti");
+  if(uFaol && !menBos){ b.textContent="💓 "+uIsm()+" hozir yurakni bosib turibdi. Siz ham bosib turing"; b.hidden=false; }
+  else b.hidden=true;
+}
+setInterval(birgaYangila, 1000);
+
+function jonliKeldi(d){
+  var o; try{ o=JSON.parse(d.message); }catch(e){ return; }
+  var vaqtMs=(d.time||Date.now()/1000)*1000, mening = yuborilgan[d.id] || o.f===sozlama.ism;
+  if(mening) return;
+  if(o.f){ qoy("uIsm", o.f); }
+  if(!ol("ulandi_"+sozlama.kod,false)){ qoy("ulandi_"+sozlama.kod,true); $("taklif").hidden=true; }
+  if(o.t==="hold"){
+    if(Date.now()-vaqtMs < 15000){ uBos = o.on ? Date.now() : 0; birgaYangila(); }
+  } else if(o.t==="kayf"){
+    qoy("ukayf_"+sozlama.kod,{e:o.e,n:o.n,v:vaqtMs}); kayfChiz();
+  } else if(o.t==="javob" && o.kun){
+    var k="javob_"+sozlama.kod+"_"+o.kun, j=ol(k,{}); j.u=String(o.j||"").slice(0,500); qoy(k,j);
+    if(o.kun===bugun()) savolChiz();
+  } else if(o.t==="rasm"){
+    var x={id:d.id, e:"✍️", m:"Senga rasm chizdi", kim:o.f, vaqt:vaqtMs, r:o.r};
+    if(tarixga(x) && Date.now()-vaqtMs < 120000) kelganiniKorsat(x);
+  }
 }
 
 function uchir(e){
@@ -315,8 +600,11 @@ function uchir(e){
 
 function kelganiniKorsat(x){
   $("keldiE").textContent=x.e; $("keldiM").textContent=x.m;
+  $("keldiE").hidden=!!x.r; $("keldiRasm").hidden=!x.r;
+  if(x.r) qaytaChiz($("keldiRasm"), x.r);
   $("keldiK").textContent=(x.kim||"Sevgilingiz")+" · "+vaqt(x.vaqt);
-  $("keldi").hidden=false; uchir(x.e);
+  $("javob").hidden=!!x.men;
+  $("keldi").hidden=false; if(!x.r) uchir(x.e);
   if(navigator.vibrate) navigator.vibrate([80,60,80]);
 }
 
@@ -331,14 +619,18 @@ function ajrat(d){
 function ulan(){
   if(manba) manba.close();
   var since = ol("oxirgi", "12h");
-  manba = new EventSource(SERVER+"/"+encodeURIComponent(sozlama.kod)+"/sse?since="+encodeURIComponent(since));
+  manba = new EventSource(SERVER+"/"+encodeURIComponent(sozlama.kod)+","+encodeURIComponent(jonliMavzu())+"/sse?since="+encodeURIComponent(since));
   manba.onopen=function(){ $("holat").className="dot on"; $("holatMatn").textContent="Ulangan · "+sozlama.kod.slice(0,10)+"…"; };
   manba.onerror=function(){ $("holat").className="dot"; $("holatMatn").textContent="Qayta ulanmoqda…"; };
   manba.onmessage=function(ev){
     var d; try{ d=JSON.parse(ev.data); }catch(e){ return; }
     if(d.event!=="message") return;
     qoy("oxirgi", d.id);
+    if(d.topic===jonliMavzu()){ jonliKeldi(d); return; }
     var x=ajrat(d);
+    if(x.kim && x.kim!==sozlama.ism) qoy("uIsm", x.kim);
+    // Rasm bildirishnomasi: rasmning o'zi jonli kanaldan keladi
+    if(x.e==="✍️" && x.kim!==sozlama.ism) return;
     if(yuborilgan[d.id] || x.kim===sozlama.ism){ x.men=true; tarixga(x); return; }
     if(!ol("ulandi_"+sozlama.kod,false)){ qoy("ulandi_"+sozlama.kod,true); $("taklif").hidden=true; }
     var yangi = tarixga(x);
@@ -393,28 +685,47 @@ function boshla(){
   $("sozlash").hidden=true; $("asosiy").hidden=false;
   $("salom").textContent="Salom, "+sozlama.ism;
   $("kodKo").textContent=sozlama.kod;
-  kunlar(); chiz(); ulan();
+  kunlar(); chiz(); kayfChiz(); savolChiz(); ulan();
 }
 
 // --- Hodisalar ---
-HISLAR.forEach(function(h){
-  var b=document.createElement("button"); b.type="button"; b.className="his";
-  var s=document.createElement("span"); s.textContent=h.e;
-  b.append(s, document.createTextNode(h.n));
-  b.addEventListener("click", function(){ yubor(h.e, h.m); });
-  $("hislar").appendChild(b);
-});
+function bolimChiz(nom){
+  var g=$("hislar"); g.textContent=""; g.className="grid "+nom;
+  BOLIMLAR[nom].forEach(function(h){
+    var b=document.createElement("button"); b.type="button"; b.className="his";
+    var s=document.createElement("span"); s.textContent=h.e;
+    b.append(s, document.createTextNode(h.n));
+    b.addEventListener("click", function(){ yubor(h.e, h.m); });
+    g.appendChild(b);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){ t.setAttribute("aria-selected", t.dataset.b===nom ? "true":"false"); });
+  qoy("bolim", nom);
+}
+Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){ t.addEventListener("click", function(){ bolimChiz(t.dataset.b); }); });
+bolimChiz(BOLIMLAR[ol("bolim","mehr")] ? ol("bolim","mehr") : "mehr");
 
 // Katta yurak: bosish = ❤️, bosib turish = yurak urishi 💓
 var bosT=null, uzun=false;
 var yb=$("yurak");
-function bosBosh(ev){ ev.preventDefault(); uzun=false; yb.classList.add("bos");
+var bosQisqaT=null;
+function bosBosh(ev){ ev.preventDefault(); try{ yb.setPointerCapture(ev.pointerId); }catch(e){}
+  uzun=false; yb.classList.add("bos");
+  bosQisqaT=setTimeout(function(){
+    menBos=true; birgaYangila(); jonli({t:"hold",on:1}).catch(function(){});
+    bosYangila=setInterval(function(){ jonli({t:"hold",on:1}).catch(function(){}); }, 8000);
+  }, 300);
   bosT=setTimeout(function(){ uzun=true; yb.classList.add("urish"); if(navigator.vibrate) navigator.vibrate(200); }, 900); }
-function bosTug(ev){ ev.preventDefault(); clearTimeout(bosT); yb.classList.remove("bos","urish");
-  if(uzun) yubor("💓","Yuragim sen uchun urmoqda"); else yubor("❤️","Seni sevaman"); }
+function bosTug(ev){ if(ev) ev.preventDefault(); clearTimeout(bosT); clearTimeout(bosQisqaT); clearInterval(bosYangila);
+  yb.classList.remove("bos","urish");
+  var edi=menBos; menBos=false; birgaYangila();
+  if(edi) jonli({t:"hold",on:0}).catch(function(){});
+  if(!ev) return;
+  // Sevgili ham bosib turgan bo'lsa, 💓 bildirishnomasi ortiqcha
+  if(uzun){ if(!(uBos && Date.now()-uBos<12000)) yubor("💓","Yuragim sen uchun urmoqda. Kel, sen ham bosib tur"); }
+  else yubor("❤️","Seni sevaman"); }
 yb.addEventListener("pointerdown", bosBosh);
 yb.addEventListener("pointerup", bosTug);
-yb.addEventListener("pointerleave", function(){ clearTimeout(bosT); yb.classList.remove("bos","urish"); });
+yb.addEventListener("pointercancel", function(){ bosTug(null); });
 yb.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); yubor("❤️","Seni sevaman"); } });
 
 $("yozForma").addEventListener("submit", function(e){

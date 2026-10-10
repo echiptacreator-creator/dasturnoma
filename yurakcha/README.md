@@ -15,6 +15,15 @@ Telefon A ──POST──▶ ntfy.sh/<maxfiy-kod> ──▶ Telefon B
 - Katta yurakni bosish: "Seni sevaman ❤️". 1 soniya bosib turish: "Yuragim sen uchun urmoqda 💓".
 - 9 ta tayyor hissiyot, o'z matningiz, birga o'tgan kunlar sanog'i va xabarlar tarixi bor.
 - Ilova yopiq paytda kelgan xabarlar keyingi ochilganda tarixda chiqadi.
+- **Mehr, Hissiyot, Ehtiros** bo'limlari: har birida 9 ta tayyor xabar.
+- **Birga bosib turish:** ikkovingiz bir vaqtda katta yurakni bosib tursangiz, ikkala ekranda "Yuraklaringiz ulandi 💞" chiqadi.
+  Biringiz bosib tursangiz, ikkinchisining ekranida "hozir yurakni bosib turibdi" degan yozuv yonadi.
+- **Chizib yuborish:** barmoq bilan chizilgan rasm sevgilingiz ekranida chizilayotgandek animatsiya bilan ochiladi.
+- **Kayfiyat:** tanlangan kayfiyat sevgilingiz ekranining tepasida ko'rinadi.
+- **Kunlik savol:** har kuni ikkovingizga bir xil savol beriladi. Sevgilingizning javobini faqat o'zingiz javob bergandan keyin ko'rasiz.
+
+Bildirishnoma chiqaradigan xabarlar `<kod>` mavzusiga ketadi. Bosib turish, kayfiyat, savol javoblari va rasmlar
+esa `<kod>-j` mavzusiga ketadi, shuning uchun ntfy ilovasi ular bilan bezovta qilmaydi.
 
 ## O'rnatish
 
