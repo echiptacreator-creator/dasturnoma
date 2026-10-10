@@ -16,6 +16,15 @@ Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki
 
 Qo'shimcha hissiyotlar:
 
+- **Jonli harakatlar:** sevgilingiz nima qilayotganini his qilasiz. Tepada va xabarlarda "✍️ yozmoqda…",
+  "💌 sizga hissiyot tanlayapti", "🎥 sizga video yozmoqda", "👀 videongizni ko'ryapti", "📖 xatingizni o'qiyapti",
+  "🎧 shiviringizni tinglayapti", "🫳 Teginishda sizni kutyapti" va "🟢 ilovaga kirdi" chiqadi.
+  Bu xabarlar faqat ikkovingiz ham ilovada bo'lganda yuboriladi.
+- **Profil va status:** o'z rasmingiz va doim ko'rinib turadigan status (emoji va matn) qo'yiladi. U sevgilingiz
+  ekranining tepasida va Yurak bo'limida turadi.
+- **Hikoyalar:** rasm yoki video 24 soatga joylanadi. Yangi hikoya bo'lsa, rasm atrofida rangli halqa chiqadi.
+  Hikoya progress chiziqli to'liq ekranda ochiladi, unga reaksiya yoki javob yozish mumkin. "👁 Aziz ko'rdi" ko'rinadi.
+  Fayl ntfy'da 3 soat turadi, shuning uchun sevgilingiz hali yuklab olmagan bo'lsa, ilovangiz uni o'zi qayta yuklaydi.
 - **Oramizda (GPS):** ikkovingiz ham joylashuvni yoqsangiz, oradagi masofa va u qaysi tomonda ekani ko'rinadi:
   "5,0 km · Aziz sharqda". Yaqinlashsangiz, ekrandagi ikki nuqta ham bir-biriga yaqinlashadi. 300 metrdan yaqin kelsangiz,
   ikkalangizga ham to'liq ekranli ogohlantirish chiqadi, ilovasi yopiq bo'lsa unga bildirishnoma boradi.
