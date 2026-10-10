@@ -38,9 +38,50 @@ h1,h2,h3{font-family:var(--sarlavha);font-weight:500;margin:0;text-wrap:balance;
 
 /* Tepa */
 .tepa{padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;display:flex;align-items:center;gap:12px}
+/* Halqa: yangi hikoya bo'lsa rangli, ko'rilgan bo'lsa kulrang */
+.halqaAv{position:relative;flex:none;border-radius:50%;padding:2.5px;border:0;background:transparent;cursor:pointer}
+.halqaAv.yangi{background:conic-gradient(from 200deg,#fdf497,#fd5949,#d6249f,#ff4d7d,#fdf497)}
+.halqaAv.korilgan{background:var(--chiziq)}
+.halqaAv .onl{position:absolute;left:1px;bottom:1px;width:12px;height:12px;border-radius:50%;background:var(--yashil);border:2px solid var(--tun);z-index:2}
+.avRasm{display:block;border-radius:50%;background:var(--qat2) center/cover no-repeat;border:2px solid var(--tun)}
 .avatar{position:relative;width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
   font-family:var(--sarlavha);font-size:24px;font-style:italic;background:var(--qat2);border:1px solid var(--chiziq)}
-.avatar.on{box-shadow:0 0 0 2px var(--tun),0 0 0 4px var(--yashil),0 0 22px rgba(76,211,138,.35)}
+.avatar.on{box-shadow:0 0 22px rgba(76,211,138,.35)}
+#avatar{background-size:cover;background-position:center;background-repeat:no-repeat}
+.tepa .ism .status{display:block;color:var(--atirgul2);font-style:italic;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tepa .ism #uHolatEl{display:block}
+.faolMatn{color:var(--oltin)!important}
+.faolMatn::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:nuqtalar 1.2s steps(4) infinite}
+@keyframes nuqtalar{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+/* Hikoyalar qatori */
+.hikBar{display:flex;gap:14px;align-items:center}
+.hikDoira{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;padding:0;font-size:12px;font-weight:600;color:var(--xira);position:relative}
+.hikDoira .avRasm{width:62px;height:62px;display:grid;place-items:center;font-family:var(--sarlavha);font-style:italic;font-size:26px;color:var(--matn)}
+.hikDoira .plus{position:absolute;right:-2px;top:44px;width:22px;height:22px;border-radius:50%;background:var(--atirgul);color:#fff;font-size:16px;line-height:20px;border:2px solid var(--tun);font-weight:700}
+.uStatusK{flex:1;min-width:0;background:var(--qat);border:1px solid var(--chiziq);border-radius:18px 18px 18px 4px;padding:10px 12px;font-size:13.5px;overflow-wrap:anywhere}
+.uStatusK b{display:block;font-size:12px;color:var(--xira);font-weight:600}
+/* Hikoya ko'rish */
+.hikOyna{position:fixed;inset:0;z-index:55;background:#000;display:flex;flex-direction:column}
+.hikTepa{position:absolute;left:0;right:0;top:0;z-index:3;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px;background:linear-gradient(rgba(0,0,0,.55),transparent)}
+.hikChiz{display:flex;gap:4px}
+.hikChiz i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.hikChiz i b{display:block;height:100%;width:0;background:#fff}
+.hikKim{display:flex;align-items:center;gap:10px;margin-top:10px;color:#fff}
+.hikKim .avRasm{width:34px;height:34px;flex:none;border-width:1px;display:grid;place-items:center;font-weight:700}
+.hikKim .nomi{flex:1;min-width:0;font-weight:700;font-size:14px}
+.hikKim small{font-weight:400;opacity:.75;margin-left:6px}
+.hikKim button{border:0;background:none;color:#fff;font-size:22px;padding:4px 8px}
+.hikMedia{flex:1;min-height:0;display:grid;place-items:center}
+.hikMedia img,.hikMedia video{max-width:100%;max-height:100%;object-fit:contain}
+.hikBos{position:absolute;inset:0;display:flex;z-index:2}
+.hikBos div{flex:1}
+.hikPast{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:12px 12px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(0,0,0,.6));display:flex;flex-direction:column;gap:10px;color:#fff}
+.hikPast .reaksiya button{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+.hikPast form{display:flex;gap:8px}
+.hikPast input{flex:1;min-width:0;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.3);color:#fff;border-radius:999px;padding:11px 16px}
+.hikPast .kim{text-align:center;font-size:13px}
+.profKatta{width:150px;height:150px;font-size:60px;margin:0 auto}
+.profStatus{text-align:center;font-family:var(--sarlavha);font-style:italic;font-size:24px}
 .avatar .kayfE{position:absolute;right:-6px;bottom:-4px;font-size:18px;font-style:normal}
 .tepa .ism{flex:1;min-width:0}
 .tepa .ism b{font-family:var(--sarlavha);font-size:22px;font-weight:600;font-style:italic;display:block;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -324,8 +365,8 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
 
 <div class="ilova" id="ilova" hidden>
   <header class="tepa">
-    <div class="avatar" id="avatar"><span id="avatarH">?</span><span class="kayfE" id="avatarKayf"></span></div>
-    <div class="ism"><b id="uIsmEl">Sevgilingiz</b><span id="uHolatEl">Ulanmoqda…</span></div>
+    <button class="halqaAv" id="avHalqa" type="button" aria-label="Sevgilingiz profili va hikoyalari"><span class="avatar avRasm" id="avatar"><span id="avatarH">?</span><span class="kayfE" id="avatarKayf"></span></span><span class="onl" id="avOnl" hidden></span></button>
+    <div class="ism"><b id="uIsmEl">Sevgilingiz</b><span class="status" id="uStatusEl" hidden></span><span id="uHolatEl">Ulanmoqda…</span></div>
     <button class="ikonBtn" id="sozlaBtn" type="button" aria-label="Sozlamalar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </header>
 
@@ -343,6 +384,16 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
           <p class="kichik xira" style="margin:4px 0 12px">Havolani yuboring. U bosishi bilan ikkovingiz ulanasiz.</p>
           <button class="tugma" id="havolaBtn" type="button" style="width:100%">Havolani yuborish</button>
           <input class="kirit" id="havola" readonly hidden aria-label="Taklif havolasi" style="margin-top:10px;font:12px ui-monospace,Menlo,monospace">
+        </div>
+
+        <div class="hikBar">
+          <button class="hikDoira" id="hikMenBtn" type="button" aria-label="Hikoyangiz va profilingiz">
+            <span class="halqaAv" id="hikMenHalqa"><span class="avRasm" id="hikMenRasm">S</span></span><span class="plus">+</span>Siz
+          </button>
+          <button class="hikDoira" id="hikUBtn" type="button" aria-label="Sevgilingiz hikoyalari">
+            <span class="halqaAv" id="hikUHalqa"><span class="avRasm" id="hikURasm">U</span></span><span id="hikUIsm">U</span>
+          </button>
+          <div class="uStatusK" id="uStatusK"><b id="uStatusSar">Status</b><span id="uStatusMatn">Hali status qo'ymagan</span></div>
         </div>
 
         <div class="yurakJoy">
@@ -547,6 +598,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <label class="mayd" for="sSana">Tanishgan kuningiz<input class="kirit" id="sSana" type="date"></label>
     <button class="tugma" id="sSaqla" type="button">Saqlash</button>
     <button class="tugma ikki" id="sHavola" type="button">Taklif havolasini qayta yuborish</button>
+    <button class="tugma ikki" id="sProfil" type="button">👤 Profilim, status va hikoyalar</button>
     <button class="tugma ikki" id="sOvoz" type="button">Ovozlar: yoqilgan</button>
     <div class="karta" style="background:var(--tun)">
       <b>Ilova yopiq bo'lsa ham bildirishnoma</b>
@@ -584,6 +636,45 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
     <button class="tugma ikki" id="uchOchir" type="button">Bekor qilish</button>
   </div>
 </div>
+<div class="varaq" id="varaqMen" hidden role="dialog" aria-label="Profilim va hikoyalarim">
+  <div class="ichki">
+    <div class="tutqich"></div>
+    <span class="halqaAv" style="align-self:center"><span class="avRasm profKatta" id="profMenRasm">S</span></span>
+    <div class="qator">
+      <button class="tugma ikki" id="profRasmBtn" type="button">🖼 Rasm tanlash</button>
+      <button class="tugma ikki" id="profRasmOchir" type="button">Rasmni olib tashlash</button>
+    </div>
+    <input type="file" id="profRasmInp" accept="image/*" hidden>
+    <b>Statusim (doim ko'rinib turadi)</b>
+    <div class="chiplar" id="stEmoji"></div>
+    <input class="kirit" id="stMatn" maxlength="60" placeholder="Masalan: Faqat seni o'ylayapman" autocomplete="off">
+    <button class="tugma" id="profSaqla" type="button">Saqlash</button>
+    <hr style="border:0;border-top:1px solid var(--chiziq);width:100%;margin:4px 0">
+    <h2>Hikoyalarim</h2>
+    <button class="tugma oltin" id="hikQoshBtn" type="button">📸 Hikoya qo'shish (24 soat turadi)</button>
+    <input type="file" id="hikInp" accept="image/*,video/*" hidden>
+    <div id="menHikRoyxat" style="display:flex;flex-direction:column;gap:8px"></div>
+  </div>
+</div>
+<div class="varaq" id="varaqU" hidden role="dialog" aria-label="Sevgilingiz profili">
+  <div class="ichki">
+    <div class="tutqich"></div>
+    <span class="halqaAv" style="align-self:center"><span class="avRasm profKatta" id="profURasm">U</span></span>
+    <h2 style="text-align:center" id="profUIsm"></h2>
+    <div class="profStatus" id="profUStatus"></div>
+    <div class="kichik xira" style="text-align:center" id="profUHol"></div>
+  </div>
+</div>
+<div class="hikOyna" id="hikOyna" hidden role="dialog" aria-label="Hikoya">
+  <div class="hikTepa">
+    <div class="hikChiz" id="hikChiz"></div>
+    <div class="hikKim"><span class="avRasm" id="hikKimRasm"></span><span class="nomi"><span id="hikKimIsm"></span><small id="hikKimVaqt"></small></span>
+      <button type="button" id="hikOvoz" aria-label="Ovoz">🔇</button><button type="button" id="hikYop" aria-label="Yopish">✕</button></div>
+  </div>
+  <div class="hikMedia" id="hikMedia"></div>
+  <div class="hikBos"><div id="hikOldin"></div><div id="hikKeyin"></div></div>
+  <div class="hikPast" id="hikPast"></div>
+</div>
 <div class="sahna" id="sahna" hidden></div>
 <div id="xabar" hidden></div>
 
@@ -598,8 +689,8 @@ var BROKERLAR = window.YK_BROKERLAR || ["wss://broker.emqx.io:8084/mqtt", "wss:/
 var ONLAYN_MS = 45000;
 var FAYL_MAX = 15*1024*1024;
 // "Kim ko'proq sevadi" ballari
-var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3};
-var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv"};
+var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3, hikoya:6};
+var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv", hikoya:"hikoya"};
 
 var HISLAR = {
   mehr: [
@@ -860,11 +951,18 @@ function uSaqla(){ qoy("u", u); }
 function uOnlayn(){ return !!u.on && Date.now()-u.oxirgi < ONLAYN_MS*3; }
 function sarlavhaYangila(){
   $("uIsmEl").textContent=uIsm();
-  $("avatarH").textContent=(uIsm()[0]||"?").toUpperCase();
+  var ur=uRasm();
+  $("avatar").style.backgroundImage = ur ? 'url("'+ur+'")' : "";
+  $("avatarH").textContent = ur ? "" : (uIsm()[0]||"?").toUpperCase();
   $("avatarKayf").textContent=u.kayf ? u.kayf.e : "";
-  $("avatar").classList.toggle("on", uOnlayn());
-  var s;
-  if(!onlaynSoni) s="Ulanmoqda…";
+  $("avatar").classList.toggle("on", uOnlayn()); $("avOnl").hidden=!uOnlayn();
+  var st=uStatus();
+  $("uStatusEl").hidden=!st; $("uStatusEl").textContent=st;
+  hikHalqalar(); profilChiz();
+  var s, fl=uFaolMatn();
+  $("uHolatEl").classList.toggle("faolMatn", !!fl);
+  if(fl) s=fl;
+  else if(!onlaynSoni) s="Ulanmoqda…";
   else if(uOnlayn()) s="Hozir ilovada"+(u.kayf?" · "+u.kayf.n:"");
   else if(u.oxirgi) s="Oxirgi marta "+vaqt(u.oxirgi)+(u.kayf?" · "+u.kayf.n:"");
   else s="Hali ulanmagan";
@@ -1057,12 +1155,12 @@ var ochiqVaraq=null;
 function varaqOch(id){ varaqYop(); ochiqVaraq=$(id); ochiqVaraq.hidden=false; $("parda").hidden=false; }
 function varaqYop(){ if(ochiqVaraq) ochiqVaraq.hidden=true; ochiqVaraq=null; $("parda").hidden=true; }
 $("parda").addEventListener("click", varaqYop);
-$("hisBtn").addEventListener("click", function(){ varaqOch("varaqHis"); });
+$("hisBtn").addEventListener("click", function(){ varaqOch("varaqHis"); faolYubor("his"); });
 
 // ================= Menyu =================
 var joriy="Yurak";
 function ekranOch(nom){
-  joriy=nom;
+  joriy=nom; faolYubor("tab_"+nom);
   ["Yurak","Teg","Xat","Biz","Oyin"].forEach(function(n){ $("ekran"+n).hidden = n!==nom; });
   Array.prototype.forEach.call($("menyu").children, function(b){ b.setAttribute("aria-selected", b.dataset.e===nom?"true":"false"); });
   if(nom==="Teg"){ $("tegNuqta").hidden=true; kanvaOlcham(); }
@@ -1291,6 +1389,7 @@ function xatOch(x){
     var q=el("div","qogoz", x.matn); q.appendChild(el("span","imzo", "— "+(x.men?sozlama.ism:uIsm())));
     sahnaOch(q);
   }
+  if(!x.men) faolYubor("kor_xat");
   if(x.men || x.ochildi){ qogozKorsat(); return; }
   var k=el("div","k"), m=el("button","muhrKatta","❤"); m.type="button"; m.setAttribute("aria-label","Muhrni sindirish");
   k.append(m, el("div","km","Muhrni sindiring"), el("div","kichik xira", uIsm()+" sizga yozdi"));
@@ -1309,6 +1408,7 @@ function ovozIjro(x, k){
   k.classList.add("ijroda");
   ijroAudio.onended=function(){ k.classList.remove("ijroda"); };
   ijroAudio.play().catch(function(){ k.classList.remove("ijroda"); bildir("Eshittirib bo'lmadi"); });
+  if(!x.men) faolYubor("kor_ovoz");
   if(!x.men && !x.ochildi){ x.ochildi=true; xatSaqla(); nashr("e",{t:"ochildi", id:x.id}).catch(function(){}); }
 }
 // Shivir: tugmani bosib turib gapiriladi
@@ -1328,7 +1428,8 @@ sb.addEventListener("pointerdown", function(ev){
     yozuvchi=new MediaRecorder(st, mime?{mimeType:mime, audioBitsPerSecond:32000}:{audioBitsPerSecond:32000});
     yozuvchi.ondataavailable=function(e){ if(e.data && e.data.size) bolaklar.push(e.data); };
     yozuvchi.onstop=function(){ st.getTracks().forEach(function(t){ t.stop(); }); shivirYubor(yozuvchi.mimeType||mime||"audio/mp4"); };
-    yozuvchi.start(); yozBosh=Date.now(); sb.classList.add("yozmoqda"); sb.textContent="🔴 Yozilmoqda… qo'yib yuboring";
+    yozuvchi.start(); yozBosh=Date.now(); sb.classList.add("yozmoqda"); faolYubor("ovoz");
+    var fi=setInterval(function(){ if(yozuvchi && yozuvchi.state==="recording") faolYubor("ovoz"); else clearInterval(fi); }, 3600); sb.textContent="🔴 Yozilmoqda… qo'yib yuboring";
     yozT=setTimeout(shivirTugat, 30000);
   }).catch(function(){ sbBosilgan=false; bildir("Mikrofonga ruxsat bering"); });
 });
@@ -1461,6 +1562,7 @@ async function lahzaKorish(x){
     k.append(b); }
   sahnaOch(k); uchir("💗",8);
   if(!x.men && !x.ochildi){ x.ochildi=true; xatSaqla(); xatChiz(); nashr("e",{t:"ochildi", id:x.id}).catch(function(){}); }
+  if(!x.men) faolYubor(x.tur==="rasm"?"kor_rasm":"kor_video");
 }
 // Dumaloq video yozish
 var vSt=null, vRec=null, vBol=[], vYuz="user", vBlob=null, vBosh=0, vT=null, vDur=0;
@@ -1501,10 +1603,10 @@ $("vYoz").addEventListener("click", function(){
     var v=$("vKorish"); v.srcObject=null; v.src=URL.createObjectURL(vBlob); v.muted=false; v.loop=true; v.play().catch(function(){});
     vHolat(true);
   };
-  vRec.start(250); vBosh=Date.now(); $("vYoz").classList.add("yozmoqda");
+  vRec.start(250); vBosh=Date.now(); $("vYoz").classList.add("yozmoqda"); faolYubor("video");
   vT=setInterval(function(){
     var s=(Date.now()-vBosh)/1000; $("vHalqa").style.setProperty("--p", Math.min(100,s/30*100)+"%");
-    $("vVaqt").textContent="0:"+ikki(Math.min(30,Math.floor(s)))+" / 0:30"; if(s>=30) vToxtat();
+    $("vVaqt").textContent="0:"+ikki(Math.min(30,Math.floor(s)))+" / 0:30"; if(s>=30) vToxtat(); faolYubor("video");
   }, 100);
 });
 $("vAylan").addEventListener("click", function(){ vYuz = vYuz==="user" ? "environment" : "user"; vKamera().catch(function(){}); });
@@ -1672,6 +1774,7 @@ function reelKorish(x){
   k.append(rk, el("div","kichik xira",(x.men?"Siz yubordingiz":uIsm()+" yubordi")+" · "+vaqt(x.vaqt)));
   sahnaOch(k);
   if(!x.men && !x.ochildi){ x.ochildi=true; xatSaqla(); bizChiz(); nashr("e",{t:"ochildi", id:x.id}).catch(function(){}); }
+  if(!x.men) faolYubor("kor_reel");
 }
 
 // ================= SEVGI KUPONLARI =================
@@ -1747,6 +1850,218 @@ function bizChiz(){
     b.addEventListener("click", function(){ kuponYubor(k); }); g.appendChild(b); });
 })();
 
+// ================= JONLI HARAKATLAR: bir-biringizni his qilish =================
+var FAOL = {
+  yoz:{m:"✍️ yozmoqda", s:6000}, his:{m:"💌 sizga hissiyot tanlayapti", s:9000},
+  ovoz:{m:"🎙 sizga ovoz yozmoqda", s:6000, x:1}, video:{m:"🎥 sizga video yozmoqda", s:6000, x:1}, hikoya:{m:"📸 hikoya joylayapti", s:9000},
+  kor_video:{m:"👀 videongizni ko'ryapti", s:15000, x:1}, kor_rasm:{m:"👀 rasmingizni ko'ryapti", s:12000, x:1},
+  kor_xat:{m:"📖 xatingizni o'qiyapti", s:20000, x:1}, kor_ovoz:{m:"🎧 shiviringizni tinglayapti", s:15000, x:1},
+  kor_reel:{m:"🎬 reelsingizni ko'ryapti", s:20000, x:1}, kor_hik:{m:"👁 hikoyangizni ko'ryapti", s:10000, x:1},
+  profil:{m:"👤 profilingizni ko'ryapti", s:8000, x:1}, kuch:{m:"🫳 Teginishda sizni kutyapti", s:60000},
+  tab_Yurak:{m:"❤️ Yurak bo'limida", s:60000}, tab_Teg:{m:"🫳 Teginishda sizni kutyapti", s:60000}, tab_Xat:{m:"💌 Lahzalarni ko'ryapti", s:60000},
+  tab_Biz:{m:"🎬 Biz bo'limida", s:60000}, tab_Oyin:{m:"🃏 O'yin bo'limida", s:60000}
+};
+var oxFaol={}, uFaolHol=null, boshlanganVaqt=Date.now();
+function faolYubor(n){
+  if(!KALIT || !FAOL[n] || !uOnlayn()) return;
+  var now=Date.now(); if(now-(oxFaol[n]||0)<3500) return; oxFaol[n]=now;
+  nashr("e",{t:"faol", n:n}).catch(function(){});
+}
+function uFaolMatn(){
+  if(!uFaolHol || !uOnlayn()) return "";
+  var f=FAOL[uFaolHol.n]; if(!f || Date.now()-uFaolHol.v > f.s) return "";
+  return f.m;
+}
+document.addEventListener("input", function(e){
+  if(["matn","xatMatn","savolMatn","reelInp","istakInp","hikJavob"].indexOf(e.target && e.target.id)>=0) faolYubor("yoz");
+});
+
+// ================= PROFIL va STATUS =================
+var menProfil=ol("menProfil",{rasm:"", status:{e:"",m:""}});
+var STATUS_E=["🥰","😊","🔥","🥺","😴","🎧","📚","💼","🏋️","🚗","🤒","😔"];
+function rasmTogri(r){ return typeof r==="string" && r.length<150000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(r) ? r : ""; }
+function uRasm(){ return rasmTogri(u.profil && u.profil.rasm); }
+function uStatus(){ var st=u.profil && u.profil.status; if(!st || !(st.e||st.m)) return ""; return ((st.e||"")+" "+(st.m||"")).trim(); }
+function avKoy(id, rasm, harf){ var e=$(id); e.style.backgroundImage = rasm ? 'url("'+rasm+'")' : ""; e.textContent = rasm ? "" : harf; }
+function profilNashr(){ if(KALIT) nashr("pr/"+QID, {t:"profil", rasm:menProfil.rasm||"", status:menProfil.status}, true).catch(function(){}); }
+function profilChiz(){
+  var mh=((sozlama&&sozlama.ism)||"S")[0].toUpperCase(), uh=(uIsm()[0]||"U").toUpperCase(), mr=rasmTogri(menProfil.rasm), ur=uRasm();
+  avKoy("hikMenRasm", mr, mh); avKoy("hikURasm", ur, uh); avKoy("profMenRasm", mr, mh); avKoy("profURasm", ur, uh);
+  $("hikUIsm").textContent=uIsm();
+  $("uStatusSar").textContent=uIsm()+"ning statusi";
+  $("uStatusMatn").textContent=uStatus() || "Hali status qo'ymagan";
+  ["masMen","masU"].forEach(function(id,i){ var r=i?ur:mr; $(id).style.backgroundImage = r ? 'url("'+r+'")' : ""; $(id).style.backgroundSize="cover"; $(id).style.color = r ? "transparent" : ""; });
+}
+function profilRasmQil(f){
+  return new Promise(function(res){ var im=new Image(), url=URL.createObjectURL(f);
+    im.onload=function(){ var c=document.createElement("canvas"); c.width=c.height=320; var w=im.naturalWidth, h=im.naturalHeight, k=Math.max(320/w,320/h);
+      c.getContext("2d").drawImage(im,(320-w*k)/2,(320-h*k)/2,w*k,h*k); URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg",0.8)); };
+    im.onerror=function(){ URL.revokeObjectURL(url); res(""); }; im.src=url; });
+}
+var tanlanganStE="";
+function stEmojiChiz(){
+  var b=$("stEmoji"); b.textContent="";
+  STATUS_E.forEach(function(e){ var c=el("button","chip",e); c.type="button"; c.setAttribute("aria-pressed", e===tanlanganStE?"true":"false");
+    c.addEventListener("click", function(){ tanlanganStE = tanlanganStE===e ? "" : e; stEmojiChiz(); }); b.appendChild(c); });
+}
+function menVaraqOch(){
+  tanlanganStE=menProfil.status.e||""; $("stMatn").value=menProfil.status.m||""; stEmojiChiz(); menHikChiz(); profilChiz(); varaqOch("varaqMen");
+}
+$("hikMenBtn").addEventListener("click", menVaraqOch);
+$("sProfil").addEventListener("click", menVaraqOch);
+$("profRasmBtn").addEventListener("click", function(){ $("profRasmInp").click(); });
+$("profRasmInp").addEventListener("change", async function(){
+  var f=this.files && this.files[0]; this.value=""; if(!f) return;
+  var r=await profilRasmQil(f); if(!r){ bildir("Rasmni ochib bo'lmadi"); return; }
+  menProfil.rasm=r; qoy("menProfil",menProfil); profilChiz(); profilNashr(); bildir("Rasm yangilandi");
+});
+$("profRasmOchir").addEventListener("click", function(){ menProfil.rasm=""; qoy("menProfil",menProfil); profilChiz(); profilNashr(); });
+$("profSaqla").addEventListener("click", function(){
+  menProfil.status={e:tanlanganStE, m:$("stMatn").value.trim().slice(0,60)}; qoy("menProfil",menProfil); profilNashr();
+  if(menProfil.status.e||menProfil.status.m) ntfy(menProfil.status.e||"💭", "Yangi statusim: "+((menProfil.status.e||"")+" "+menProfil.status.m).trim(), "status", 600000);
+  varaqYop(); bildir("Status saqlandi");
+});
+function uProfilOch(){
+  $("profUIsm").textContent=uIsm(); $("profUStatus").textContent=uStatus()||"Status yo'q";
+  $("profUHol").textContent=$("uHolatEl").textContent; profilChiz(); varaqOch("varaqU"); faolYubor("profil");
+}
+
+// ================= HIKOYALAR (24 soat) =================
+var KUN_MS=864e5, menHik=ol("menHik",[]), uHik=ol("uHik",[]);
+function hikTozala(){
+  var ch=Date.now()-KUN_MS;
+  menHik.filter(function(x){ return x.v<ch; }).forEach(function(x){ idbOchir("h_"+x.id); });
+  uHik.filter(function(x){ return x.v<ch; }).forEach(function(x){ idbOchir("h_"+x.id); });
+  menHik=menHik.filter(function(x){ return x.v>=ch; }); uHik=uHik.filter(function(x){ return x.v>=ch; });
+  qoy("menHik",menHik); qoy("uHik",uHik);
+}
+function idbOchir(k){ idb().then(function(d){ d.transaction("f","readwrite").objectStore("f").delete(k); }).catch(function(){}); }
+function hikNashr(){
+  if(!KALIT) return;
+  nashr("st/"+QID, {t:"hikoyalar", l:menHik.map(function(x){ return {id:x.id, tur:x.tur, mime:x.mime, url:x.url||"", kichik:x.kichik, dur:x.dur, v:x.v}; })}, true).catch(function(){});
+}
+function hikHalqalar(){
+  hikTozala();
+  var yangiBor=uHik.some(function(x){ return !x.korildi; }), bor=uHik.length>0;
+  ["avHalqa","hikUHalqa"].forEach(function(id){ $(id).classList.toggle("yangi", yangiBor); $(id).classList.toggle("korilgan", bor && !yangiBor); });
+  $("hikMenHalqa").classList.toggle("korilgan", menHik.length>0);
+}
+async function hikoyaQosh(f){
+  if(!KALIT || !f) return;
+  var tur=/^image\//.test(f.type) ? "rasm" : /^video\//.test(f.type) ? "video" : null;
+  if(!tur){ bildir("Faqat rasm yoki video"); return; }
+  var blob = tur==="rasm" ? await rasmSiq(f) : f;
+  if(blob.size>FAYL_MAX){ bildir("Fayl juda katta. 15 MB gacha bo'lsin"); return; }
+  faolYubor("hikoya"); bildir("Hikoya joylanmoqda…");
+  var id=tasodifiy(8), mime=(blob.type||(tur==="rasm"?"image/jpeg":"video/mp4")).split(";")[0];
+  var bayt=new Uint8Array(await blob.arrayBuffer()), kichik=await kichikRasm(blob,tur), dur=tur==="video"?await videoUzunligi(blob):0;
+  try{ await idbQoy("h_"+id, {b:bayt.buffer, mime:mime}); }catch(e){}
+  var x={id:id, tur:tur, mime:mime, kichik:kichik, dur:dur, v:Date.now()};
+  try{ x.url=await yukla(bayt); x.yuklandi=Date.now(); }catch(e){ bildir("Yuklanmadi. Internetni tekshiring"); return; }
+  menHik.push(x); qoy("menHik",menHik); hikNashr(); menHikChiz(); hikHalqalar();
+  ntfy("📸","Yangi hikoya joyladim. Ko'r 👀"); ballQosh("hikoya"); bildir("Hikoya joylandi 📸");
+}
+$("hikQoshBtn").addEventListener("click", function(){ $("hikInp").click(); });
+$("hikInp").addEventListener("change", function(){ var f=this.files && this.files[0]; this.value=""; hikoyaQosh(f); });
+function menHikChiz(){
+  var r=$("menHikRoyxat"); r.textContent="";
+  if(!menHik.length){ r.appendChild(el("p","bosh","Hozircha hikoya yo'q")); return; }
+  menHik.slice().reverse().forEach(function(x){
+    var k=el("div","karta lahza"), rc=el("div","rasmcha"); if(rasmTogri(x.kichik)) rc.style.backgroundImage='url("'+x.kichik+'")'; else rc.textContent=x.tur==="video"?"🎥":"🖼";
+    var t=el("div","t"); t.append(el("b",null,vaqt(x.v)+" da joylangan"), el("div","holat", x.korildi ? "👁 "+uIsm()+" ko'rdi · "+vaqt(x.korildi) : "Hali ko'rilmagan · "+Math.max(1,Math.round((x.v+KUN_MS-Date.now())/36e5))+" soat qoldi"));
+    var o=el("button","och","🗑"); o.type="button"; o.setAttribute("aria-label","O'chirish"); o.style.cssText="border:0;background:none;font-size:20px";
+    o.addEventListener("click", function(ev){ ev.stopPropagation(); menHik=menHik.filter(function(y){ return y.id!==x.id; }); idbOchir("h_"+x.id); qoy("menHik",menHik); hikNashr(); menHikChiz(); hikHalqalar(); });
+    k.append(rc,t,o); k.addEventListener("click", function(){ varaqYop(); hikKorsat(menHik, menHik.indexOf(x), true); });
+    r.appendChild(k);
+  });
+}
+// Qabul qiluvchi: yuklab olish
+async function hikYukla(x){
+  if(x.saqlandi || x.yuk || !x.url || !KALIT) return;
+  x.yuk=true;
+  try{
+    var q=await fetch(x.url); if(!q.ok) throw new Error(q.status===404||q.status===410?"eskirgan":"xato");
+    var b=await ochBayt(new Uint8Array(await q.arrayBuffer()));
+    await idbQoy("h_"+x.id, {b:b.buffer, mime:x.mime}); x.saqlandi=true; x.eskirgan=false;
+    nashr("e",{t:"hikOldi", id:x.id}).catch(function(){});
+  }catch(e){ if(e && e.message==="eskirgan") x.eskirgan=true; }
+  x.yuk=false; qoy("uHik",uHik);
+}
+// Egasi: sevgilisi hali yuklab olmagan bo'lsa, fayl muddati (3 soat) tugashidan oldin qayta yuklaydi
+async function hikQaytaYukla(){
+  for(var i=0;i<menHik.length;i++){
+    var x=menHik[i];
+    if(x.oldi || Date.now()-(x.yuklandi||x.v) < 2.5*36e5 || Date.now()-x.v > KUN_MS) continue;
+    try{ var d=await idbOl("h_"+x.id); if(!d) continue; x.url=await yukla(new Uint8Array(d.b)); x.yuklandi=Date.now(); qoy("menHik",menHik); hikNashr(); }catch(e){}
+  }
+}
+setInterval(function(){ if(KALIT) hikQaytaYukla(); }, 10*60000);
+$("hikUBtn").addEventListener("click", function(){ hikTozala(); if(uHik.length){ var i=uHik.findIndex(function(x){ return !x.korildi; }); hikKorsat(uHik, i<0?0:i, false); } else uProfilOch(); });
+$("avHalqa").addEventListener("click", function(){ hikTozala(); if(uHik.some(function(x){ return !x.korildi; })) hikKorsat(uHik, uHik.findIndex(function(x){ return !x.korildi; }), false); else uProfilOch(); });
+// Ko'rish oynasi
+var hikRoy=[], hikI=0, hikMen=false, hikT=null, hikBosh=0, hikUzun=5000, hikURL=null;
+function hikKorsat(roy, i, men){
+  hikRoy=roy.slice(); hikI=Math.max(0,i); hikMen=men; $("hikOyna").hidden=false;
+  var c=$("hikChiz"); c.textContent=""; hikRoy.forEach(function(){ var s=el("i"); s.appendChild(el("b")); c.appendChild(s); });
+  var p=$("hikPast"); p.textContent="";
+  if(men){ p.appendChild(el("div","kim","")); }
+  else {
+    var rk=el("div","reaksiya");
+    ["❤️","🔥","😍","😂","🥺"].forEach(function(e){ var b=el("button",null,e); b.type="button"; b.setAttribute("aria-label","Reaksiya "+e);
+      b.addEventListener("click", function(ev){ ev.stopPropagation(); hisYubor(e, "Hikoyangga "+e); }); rk.appendChild(b); });
+    var f=el("form"), inp=el("input"); inp.id="hikJavob"; inp.placeholder=uIsm()+"ga javob yozing…"; inp.maxLength=200; inp.autocomplete="off";
+    var sb=el("button","tugma","Yubor"); sb.type="submit"; f.append(inp,sb);
+    f.addEventListener("submit", function(ev){ ev.preventDefault(); var m=inp.value.trim(); if(!m) return; hisYubor("📸","Hikoyangga: "+m); inp.value=""; inp.blur(); hikDavom(); });
+    inp.addEventListener("focus", function(){ clearTimeout(hikT); hikPauza=true; });
+    p.append(rk,f);
+  }
+  hikOch();
+}
+var hikPauza=false;
+async function hikOch(){
+  clearTimeout(hikT); hikPauza=false;
+  var x=hikRoy[hikI]; if(!x){ hikYop(); return; }
+  Array.prototype.forEach.call($("hikChiz").children, function(s,i){ var b=s.firstChild; b.style.transition="none"; b.style.width = i<hikI ? "100%" : "0"; });
+  var ism=hikMen?"Siz":uIsm(); $("hikKimIsm").textContent=ism; $("hikKimVaqt").textContent=vaqt(x.v);
+  var r=hikMen?rasmTogri(menProfil.rasm):uRasm(); avKoy("hikKimRasm", r, ism[0]);
+  if(hikMen){ var k=$("hikPast").querySelector(".kim"); if(k) k.textContent = x.korildi ? "👁 "+uIsm()+" ko'rdi · "+vaqt(x.korildi) : "Hali ko'rilmagan"; }
+  var m=$("hikMedia"); m.textContent="";
+  if(hikURL){ URL.revokeObjectURL(hikURL); hikURL=null; }
+  var d=null; try{ d=await idbOl("h_"+x.id); }catch(e){}
+  if(!d){
+    m.appendChild(el("div","kichik", x.eskirgan ? "Bu hikoya endi mavjud emas" : "Yuklanmoqda…"));
+    if(!hikMen && !x.saqlandi){ hikYukla(x).then(function(){ if(hikRoy[hikI]===x && x.saqlandi) hikOch(); }); }
+    hikUzun=4000; hikVaqtBoshla(); return;
+  }
+  hikURL=URL.createObjectURL(new Blob([d.b],{type:d.mime}));
+  if(x.tur==="video"){
+    var v=el("video"); v.src=hikURL; v.playsInline=true; v.setAttribute("playsinline",""); v.muted=hikOvozsiz; v.autoplay=true;
+    v.addEventListener("loadedmetadata", function(){ hikUzun=Math.min(30000, (isFinite(v.duration)&&v.duration?v.duration:8)*1000); hikVaqtBoshla(); });
+    v.addEventListener("ended", hikKeyingi);
+    m.appendChild(v); v.play().catch(function(){});
+    $("hikOvoz").hidden=false;
+  } else {
+    var im=el("img"); im.src=hikURL; im.alt="Hikoya"; m.appendChild(im); hikUzun=5000; hikVaqtBoshla(); $("hikOvoz").hidden=true;
+  }
+  if(!hikMen && !x.korildi){
+    x.korildi=true; qoy("uHik",uHik); hikHalqalar(); faolYubor("kor_hik");
+    nashr("hk/"+QID, {t:"hikKordi", ids:uHik.filter(function(y){ return y.korildi; }).map(function(y){ return y.id; })}, true).catch(function(){});
+  }
+}
+var hikOvozsiz=true;
+$("hikOvoz").addEventListener("click", function(ev){ ev.stopPropagation(); hikOvozsiz=!hikOvozsiz; $("hikOvoz").textContent=hikOvozsiz?"🔇":"🔊"; var v=$("hikMedia").querySelector("video"); if(v){ v.muted=hikOvozsiz; v.play().catch(function(){}); } });
+function hikVaqtBoshla(){
+  hikBosh=Date.now(); var b=$("hikChiz").children[hikI]; if(!b) return; b=b.firstChild;
+  b.style.transition="none"; b.style.width="0"; void b.offsetWidth; b.style.transition="width "+hikUzun+"ms linear"; b.style.width="100%";
+  clearTimeout(hikT); hikT=setTimeout(hikKeyingi, hikUzun);
+}
+function hikDavom(){ if(!hikPauza) return; hikPauza=false; hikT=setTimeout(hikKeyingi, 2500); }
+function hikKeyingi(){ if(hikI<hikRoy.length-1){ hikI++; hikOch(); } else hikYop(); }
+function hikYop(){ clearTimeout(hikT); $("hikOyna").hidden=true; var v=$("hikMedia").querySelector("video"); if(v) v.pause(); $("hikMedia").textContent=""; if(hikURL){ URL.revokeObjectURL(hikURL); hikURL=null; } hikHalqalar(); }
+$("hikYop").addEventListener("click", function(ev){ ev.stopPropagation(); hikYop(); });
+$("hikKeyin").addEventListener("click", hikKeyingi);
+$("hikOldin").addEventListener("click", function(){ if(hikI>0){ hikI--; hikOch(); } else hikOch(); });
+
 // ================= O'YIN: kartalar va kunlik savol =================
 var tanlanganDeck=ol("deck","ehtiros"), joriyKarta=ol("karta",null);
 if(!DECKLAR[tanlanganDeck]) tanlanganDeck="ehtiros";
@@ -1811,7 +2126,8 @@ function qabul(q, o){
   var vq=o.v||Date.now();
   if(q.indexOf("p/")===0){
     // Saqlangan eski "onlayn" holatiga ishonmaymiz: u har 45 soniyada yangilanadi
-    if(o.on && Date.now()-vq < ONLAYN_MS*3){ var yangiKeldi=!uOnlayn(); u.on=1; u.oxirgi=Date.now(); if(yangiKeldi) hozirman(true); }
+    if(o.on && Date.now()-vq < ONLAYN_MS*3){ var yangiKeldi=!uOnlayn(); u.on=1; u.oxirgi=Date.now();
+      if(yangiKeldi){ hozirman(true); if(Date.now()-boshlanganVaqt>6000){ bildir("🟢 "+uIsm()+" ilovaga kirdi"); qongiroq(1320); } } }
     else { u.on=0; u.oxirgi=Math.max(u.oxirgi||0, vq); }
     uSaqla(); sarlavhaYangila(); return;
   }
@@ -1842,6 +2158,30 @@ function qabul(q, o){
     } else if(media && !bor0.saqlandi && o.url && o.url!==bor0.url){ bor0.url=String(o.url); bor0.eskirgan=false; xatSaqla(); yuklabOl(bor0); }
     if(!media) nashr("e",{t:"oldim", id:o.id}).catch(function(){});
     return;
+  }
+  if(q.indexOf("pr/")===0){
+    u.profil={rasm:rasmTogri(o.rasm), status:{e:String(o.status&&o.status.e||"").slice(0,8), m:String(o.status&&o.status.m||"").slice(0,60)}};
+    uSaqla(); sarlavhaYangila(); return;
+  }
+  if(q.indexOf("st/")===0){
+    var royxat=(o.l||[]).filter(function(y){ return y && y.id && Date.now()-(+y.v||0) < KUN_MS; }), yangiHik=false;
+    royxat.forEach(function(y){
+      var b=uHik.filter(function(x){ return x.id===y.id; })[0];
+      if(!b){ uHik.push({id:String(y.id), tur:y.tur==="video"?"video":"rasm", mime:/^(video|image)\/[\w.+-]+$/.test(y.mime||"")?y.mime:"image/jpeg", url:String(y.url||""), kichik:rasmTogri(y.kichik), dur:+y.dur||0, v:+y.v}); yangiHik=true; }
+      else if(!b.saqlandi && y.url && y.url!==b.url){ b.url=String(y.url); b.eskirgan=false; }
+    });
+    var idlar=royxat.map(function(y){ return String(y.id); });
+    uHik.filter(function(x){ return idlar.indexOf(x.id)<0; }).forEach(function(x){ idbOchir("h_"+x.id); });
+    uHik=uHik.filter(function(x){ return idlar.indexOf(x.id)>=0; }).sort(function(a,b){ return a.v-b.v; });
+    qoy("uHik",uHik); hikHalqalar();
+    uHik.forEach(function(x){ hikYukla(x); });
+    if(yangiHik && Date.now()-vq<120000){ bildir("📸 "+uIsm()+" yangi hikoya joyladi"); qongiroq(990); }
+    return;
+  }
+  if(q.indexOf("hk/")===0){
+    (o.ids||[]).forEach(function(id){ var x=menHik.filter(function(y){ return y.id===id; })[0];
+      if(x && !x.korildi){ x.korildi=vq; if(Date.now()-vq<120000) bildir("👁 "+uIsm()+" hikoyangizni ko'rdi"); } });
+    qoy("menHik",menHik); menHikChiz(); return;
   }
   if(q.indexOf("ki/")===0){
     (o.ids||[]).forEach(function(id){ var kp=xatlar.filter(function(x){ return x.id===id && x.men && x.tur==="kupon"; })[0];
@@ -1903,6 +2243,16 @@ function qabul(q, o){
     case "chaqir":
       if(!yangi) break;
       $("tegNuqta").hidden=false; bildir("🫳 "+uIsm()+" sizni Teginishga chaqiryapti"); qongiroq(880); break;
+    case "faol":
+      if(!yangi || !FAOL[o.n]) break;
+      uFaolHol={n:o.n, v:Date.now()}; sarlavhaYangila();
+      if(FAOL[o.n].x) bildir(uIsm()+" "+FAOL[o.n].m);
+      if((o.n==="tab_Teg"||o.n==="kuch") && joriy!=="Teg"){ $("tegNuqta").hidden=false; bildir("🫳 "+uIsm()+" Teginishda sizni kutyapti"); }
+      setTimeout(sarlavhaYangila, FAOL[o.n].s+200);
+      break;
+    case "hikOldi":
+      var hx=menHik.filter(function(y){ return y.id===o.id; })[0]; if(hx){ hx.oldi=true; qoy("menHik",menHik); }
+      break;
     case "kuponIsh":
       var kp=xatlar.filter(function(x){ return x.id===o.id && x.men; })[0];
       if(kp && !kp.ishlatildi){ kp.ishlatildi=true; kp.ishVaqt=vq; xatSaqla(); bizChiz();
@@ -1991,13 +2341,17 @@ async function boshla(){
   if(ol("ulandi_"+sozlama.kod,false)) qoy("ulandi",true);
   $("taklif").hidden=!!ol("ulandi",false);
   if(menHolat.sog.kun!==bugun()) menHolat.sog={kun:bugun(), n:0};
-  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
+  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); hikTozala(); profilChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
   await kalitTayyorla(sozlama.kod);
   xatlar.forEach(function(x){ x.yuklanyapti=false; });
   xatlar.filter(function(x){ return !x.men && (x.tur==="video"||x.tur==="rasm") && !x.saqlandi && !x.eskirgan; }).forEach(yuklabOl);
   ulanMqtt();
   ntfyQuvish();
   if(gpsYoqiq) gpsBoshla();
+  if(menProfil.rasm || menProfil.status.e || menProfil.status.m) profilNashr();
+  if(menHik.length) hikNashr();
+  hikQaytaYukla();
+  uHik.forEach(function(x){ hikYukla(x); });
   if(istaklar.length) istakNashr();
   setInterval(function(){ hozirman(!document.hidden); }, ONLAYN_MS);
 }
