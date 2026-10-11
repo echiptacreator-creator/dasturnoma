@@ -99,7 +99,7 @@ main{flex:1;min-height:0;position:relative}
 /* Pastki menyu */
 .menyu{display:flex;border-top:1px solid var(--chiziq);background:rgba(18,7,11,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
-.menyu button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;font-size:11px;font-weight:600;color:var(--xira);position:relative}
+.menyu button{flex:1;min-width:0;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;font-size:10.5px;font-weight:600;color:var(--xira);position:relative}
 .menyu svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7}
 .menyu button[aria-selected="true"]{color:var(--atirgul)}
 .menyu button[aria-selected="true"] svg{fill:rgba(255,77,125,.18)}
@@ -242,6 +242,68 @@ details.yoriq li{margin-bottom:6px}
 @keyframes yonish{0%{filter:none}40%{filter:sepia(1) saturate(3) brightness(.85) contrast(1.3)}75%{filter:sepia(1) saturate(4) brightness(.4) contrast(1.8);transform:scale(.97) rotate(-1deg)}
   100%{filter:sepia(1) brightness(.1) blur(6px);opacity:0;transform:translateY(-40px) scale(.85) rotate(-3deg)}}
 .yonIzoh{color:#ffb38a;font-size:13px;text-align:center}
+
+/* CHAT */
+.chatEkran{display:flex;flex-direction:column;padding:0!important;overflow:hidden!important}
+.chatOqim{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 12px 14px;display:flex;flex-direction:column;gap:3px;overscroll-behavior:contain}
+.kunAj{align-self:center;font-size:11.5px;color:var(--xira);margin:14px 0 6px;background:var(--qat);border:1px solid var(--chiziq);padding:3px 11px;border-radius:999px}
+.xq{display:flex;flex-direction:column;max-width:80%;position:relative;touch-action:manipulation}
+.xq.men{align-self:flex-end;align-items:flex-end}
+.xq.u{align-self:flex-start;align-items:flex-start}
+.xq.reakli{margin-bottom:14px}
+.xq.yangiG{margin-top:8px}
+.pf{padding:9px 13px;border-radius:20px;font-size:15.5px;line-height:1.36;overflow-wrap:anywhere;white-space:pre-wrap;position:relative;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.xq.men .pf{background:linear-gradient(135deg,#ff4d7d,#c2124a);color:#fff;border-bottom-right-radius:6px}
+.xq.u .pf{background:var(--qat2);border:1px solid var(--chiziq);border-bottom-left-radius:6px}
+.pf.katta{background:none!important;border:0!important;font-size:48px;line-height:1.1;padding:0 2px}
+.pf.his{background:linear-gradient(160deg,#3a1222,#1f0a12)!important;border:1px solid #5a2234!important;color:var(--matn)!important;font-family:var(--sarlavha);font-style:italic;font-size:19px;text-align:center}
+.pf.his .he{display:block;font-size:34px;font-style:normal;margin-bottom:2px}
+.pf.lahzaPf{padding:6px;background:var(--qat)!important;border:1px solid var(--chiziq)!important;color:var(--matn)!important;cursor:pointer}
+.lahzaPf .lq{display:flex;gap:10px;align-items:center;min-width:180px;padding-right:6px}
+.lahzaPf .lr{width:54px;height:54px;flex:none;border-radius:12px;background:var(--qat2) center/cover no-repeat;display:grid;place-items:center;font-size:24px}
+.lahzaPf .lr.dumaloq{border-radius:50%;box-shadow:0 0 0 2px var(--atirgul)}
+.lahzaPf .lr.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.lahzaPf .lt{font-size:13.5px;line-height:1.3;min-width:0}
+.lahzaPf .lt b{display:block;font-size:14.5px}
+.lahzaPf .lt small{color:var(--xira)}
+.lahzaPf.rasmKatta{padding:3px}
+.lahzaPf.rasmKatta img{display:block;width:200px;max-width:100%;height:200px;object-fit:cover;border-radius:16px}
+.iqtibos{font-size:12.5px;opacity:.85;border-left:3px solid rgba(255,255,255,.65);padding:1px 0 1px 8px;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}
+.xq.u .iqtibos{border-color:var(--atirgul)}
+.havolaPf{text-decoration:underline;color:inherit}
+.reakB{position:absolute;bottom:-13px;right:10px;background:var(--qat);border:1px solid var(--chiziq);border-radius:999px;font-size:13px;line-height:1;padding:3px 6px;white-space:nowrap}
+.xq.u .reakB{right:auto;left:10px}
+.xHol{font-size:11px;color:var(--xira);margin:3px 6px 0}
+.xVaqt{font-size:10.5px;color:var(--xira);margin:2px 6px 0}
+.yozBubl{align-self:flex-start;background:var(--qat2);border:1px solid var(--chiziq);border-radius:20px;padding:12px 16px;display:flex;gap:5px;margin-top:6px}
+.yozBubl i{width:7px;height:7px;border-radius:50%;background:var(--xira);animation:sakra 1.2s ease-in-out infinite}
+.yozBubl i:nth-child(2){animation-delay:.15s} .yozBubl i:nth-child(3){animation-delay:.3s}
+@keyframes sakra{30%{transform:translateY(-5px);background:var(--atirgul2)}}
+.chatBosh{margin:auto;text-align:center;color:var(--xira);padding:30px 20px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.chatBosh b{font-family:var(--sarlavha);font-style:italic;font-size:26px;color:var(--matn)}
+.chatPast{border-top:1px solid var(--chiziq);background:rgba(18,7,11,.96);padding:8px 10px calc(8px + var(--pastQo,0px));display:flex;flex-direction:column;gap:6px}
+.javobOld{display:flex;gap:8px;align-items:center;font-size:12.5px;border-left:3px solid var(--atirgul);padding:2px 0 2px 9px}
+.javobOld .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.javobOld b{color:var(--atirgul2);margin-right:6px}
+.javobOld button{border:0;background:none;color:var(--xira);font-size:18px;padding:2px 6px}
+.chatQator{display:flex;align-items:flex-end;gap:7px}
+#chatInp{flex:1;min-width:0;height:42px;min-height:42px;max-height:120px;resize:none;border:1px solid var(--chiziq);background:var(--tun);border-radius:22px;padding:10px 15px;line-height:1.35;font-size:16px}
+.chBtn{width:42px;height:42px;flex:none;border-radius:50%;border:0;background:var(--qat2);font-size:19px;display:grid;place-items:center;color:var(--matn);touch-action:none}
+.chBtn.yub{background:var(--atirgul);color:#fff;font-size:18px}
+.chBtn.yozmoqda{background:#c0163f;transform:scale(1.15)}
+.pastgaBtn{position:absolute;left:50%;transform:translateX(-50%);bottom:76px;z-index:5;border:0;border-radius:999px;background:var(--atirgul);color:#fff;font-weight:700;font-size:13px;padding:8px 14px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.amalFon{position:fixed;inset:0;z-index:58;background:rgba(0,0,0,.45)}
+.amalQuti{position:fixed;left:12px;right:12px;z-index:59;display:flex;flex-direction:column;gap:8px;align-items:center}
+.reakQator{display:flex;gap:4px;background:var(--qat);border:1px solid var(--chiziq);border-radius:999px;padding:6px 8px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.reakQator button{font-size:27px;width:44px;height:44px;border:0;background:none;border-radius:50%}
+.reakQator button.tanlangan{background:var(--qat2)}
+.amalRoy{background:var(--qat);border:1px solid var(--chiziq);border-radius:16px;overflow:hidden;min-width:220px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.amalRoy button{display:block;width:100%;border:0;background:none;text-align:left;padding:13px 16px;font-weight:600;border-bottom:1px solid var(--chiziq)}
+.amalRoy button:last-child{border-bottom:0;color:#ff7a8f}
+.ilova.klav .menyu{display:none}
+.menyu .son{position:absolute;top:1px;left:calc(50% + 5px);min-width:17px;height:17px;border-radius:9px;background:var(--atirgul);color:#fff;font-size:10.5px;line-height:17px;padding:0 4px;font-weight:700}
+.plusRoy{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plusRoy .tugma{padding:14px 8px}
 
 /* TEGINISH ekrani */
 #ekranTeg{padding:0;overflow:hidden;touch-action:none}
@@ -402,6 +464,22 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
 
   <main>
     <!-- 1. YURAK -->
+    <!-- CHAT -->
+    <section class="ekran chatEkran" id="ekranChat" hidden>
+      <div class="chatOqim" id="chatOqim" aria-live="polite"></div>
+      <button class="pastgaBtn" id="pastgaBtn" type="button" hidden>↓ Yangi xabar</button>
+      <div class="chatPast">
+        <div class="javobOld" id="javobOld" hidden><div class="t"><b id="javobKim"></b><span id="javobMatn"></span></div><button type="button" id="javobYop" aria-label="Javobni bekor qilish">✕</button></div>
+        <div class="chatQator">
+          <button class="chBtn" id="chPlus" type="button" aria-label="Qo'shimcha">＋</button>
+          <textarea id="chatInp" rows="1" maxlength="2000" placeholder="Xabar…" autocomplete="off"></textarea>
+          <button class="chBtn" id="chMic" type="button" aria-label="Bosib turib ovozli xabar">🎙</button>
+          <button class="chBtn" id="chYurak" type="button" aria-label="Yurak yuborish">❤️</button>
+          <button class="chBtn yub" id="chYub" type="button" aria-label="Yuborish" hidden>➤</button>
+        </div>
+      </div>
+    </section>
+
     <section class="ekran" id="ekranYurak">
       <div class="ichki">
         <div class="ornat" id="ornat" hidden>
@@ -606,6 +684,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
   </main>
 
   <nav class="menyu" role="tablist" id="menyu">
+    <button role="tab" type="button" data-e="Chat" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-5 4z"/></svg>Chat<span class="son" id="chatSon" hidden></span></button>
     <button role="tab" type="button" data-e="Yurak" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8.4 3 4.6 6.6 4.6c2.1 0 3.5 1.2 5.4 3.4 1.9-2.2 3.3-3.4 5.4-3.4 3.6 0 5.4 3.8 3.9 6.7C19 15.7 12 20 12 20z"/></svg>Yurak</button>
     <button role="tab" type="button" data-e="Teg" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L4.3 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/></svg>Teginish<span class="nuqta" id="tegNuqta" hidden></span></button>
     <button role="tab" type="button" data-e="Xat" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Lahzalar<span class="nuqta" id="xatNuqta" hidden></span></button>
@@ -739,6 +818,19 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
   <div class="hikBos"><div id="hikOldin"></div><div id="hikKeyin"></div></div>
   <div class="hikPast" id="hikPast"></div>
 </div>
+<div class="varaq" id="varaqPlus" hidden role="dialog" aria-label="Yuborish">
+  <div class="ichki">
+    <div class="tutqich"></div>
+    <div class="plusRoy">
+      <button class="tugma ikki" type="button" data-p="rasm">🖼 Rasm yoki video</button>
+      <button class="tugma ikki" type="button" data-p="video">🎥 Dumaloq video</button>
+      <button class="tugma ikki" type="button" data-p="his">💌 Hissiyot</button>
+      <button class="tugma ikki" type="button" data-p="xat">✒️ Muhrlangan xat</button>
+      <button class="tugma ikki" type="button" data-p="hozir">📸 Hozir nima qilyapsan?</button>
+      <button class="tugma ikki" type="button" data-p="teg">🫳 Teginish</button>
+    </div>
+  </div>
+</div>
 <div class="sahna" id="sahna" hidden></div>
 <div id="xabar" hidden></div>
 
@@ -748,13 +840,13 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--tu
 "use strict";
 
 // ================= Sozlamalar =================
-var VERSIYA = "8";
+var VERSIYA = "9";
 var NTFY = window.YK_NTFY || "https://ntfy.sh";
 var BROKERLAR = window.YK_BROKERLAR || ["wss://broker.emqx.io:8084/mqtt", "wss://broker.hivemq.com:8884/mqtt"];
 var ONLAYN_MS = 45000;
 var FAYL_MAX = 15*1024*1024;
 // "Kim ko'proq sevadi" ballari
-var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3, hikoya:6, sabab:3, bf:3, bfmos:5, hozir:8, nafas:4, tingla:3};
+var BALL = {sog:1, his:3, kayf:1, xat:10, shivir:8, video:15, rasm:8, teg:4, bosa:3, birga:6, savol:5, karta:2, reak:1, tun:2, reel:2, kupon:5, istak:4, uch:3, hikoya:6, chat:1, sabab:3, bf:3, bfmos:5, hozir:8, nafas:4, tingla:3};
 var BALL_NOM = {sog:"sog'inch", his:"hissiyot", xat:"xat", shivir:"shivir", video:"video", rasm:"rasm", teg:"teginish", bosa:"o'pich", birga:"yurak ulanishi", savol:"javob", tun:"xayrli tun", reel:"reels", kupon:"kupon", istak:"orzu", uch:"uchrashuv", hikoya:"hikoya", sabab:"sabab", bfmos:"bir xil fikr", hozir:"hozirgi surat", nafas:"birga nafas", tingla:"birga tinglash"};
 
 var HISLAR = {
@@ -879,7 +971,7 @@ function tasodifiyKod(){
   var a=new Uint8Array(10); crypto.getRandomValues(a);
   return "yurak-"+Array.prototype.map.call(a,function(b){ return ("0"+b.toString(36)).slice(-2); }).join("").slice(0,16);
 }
-function bildir(t){ var x=$("xabar"); x.textContent=t; x.hidden=false; clearTimeout(bildir.t); bildir.t=setTimeout(function(){ x.hidden=true; },2400); }
+function bildir(t, chatga){ var x=$("xabar"); x.textContent=t; x.hidden=false; x.dataset.chat=chatga?"1":""; clearTimeout(bildir.t); bildir.t=setTimeout(function(){ x.hidden=true; },2400); }
 function ikki(n){ return ("0"+n).slice(-2); }
 function vaqt(ms){
   var d=new Date(ms), b=new Date(), s=ikki(d.getHours())+":"+ikki(d.getMinutes());
@@ -1128,7 +1220,7 @@ function tarixga(x){
   if(x.i && tarix.some(function(y){ return y.i===x.i; })) return false;
   // Bildirishnoma va jonli kanal orqali ikki marta kelgan bir xil xabar
   if(!x.men && tarix.some(function(y){ return !y.men && y.m===x.m && Math.abs(y.vaqt-x.vaqt)<180000; })) return false;
-  tarix.unshift(x); tarix.sort(function(a,b){ return b.vaqt-a.vaqt; }); tarix=tarix.slice(0,150); qoy("tarix",tarix); tarixChiz(); return true;
+  tarix.unshift(x); tarix.sort(function(a,b){ return b.vaqt-a.vaqt; }); tarix=tarix.slice(0,150); qoy("tarix",tarix); tarixChiz(); if(joriy==="Chat") chatChiz(); return true;
 }
 
 // ================= Bildirishnoma (ntfy): faqat sevgili ilovada bo'lmasa =================
@@ -1146,7 +1238,7 @@ function ntfyQuvish(){
       if(!q) return; var d; try{ d=JSON.parse(q); }catch(e){ return; }
       if(d.event!=="message") return; qoy("ntfyOxirgi", d.id);
       var tt=d.title||"", j=tt.lastIndexOf(" "), kim=j>0?tt.slice(0,j):tt;
-      if(kim===sozlama.ism) return;
+      if(kim===sozlama.ism || /💬$/.test(tt)) return;
       tarixga({e:j>0?tt.slice(j+1):"❤️", m:d.message||"", kim:kim, vaqt:(d.time||0)*1000});
     });
   }).catch(function(){});
@@ -1223,12 +1315,13 @@ $("parda").addEventListener("click", varaqYop);
 $("hisBtn").addEventListener("click", function(){ varaqOch("varaqHis"); faolYubor("his"); });
 
 // ================= Menyu =================
-var joriy="Yurak";
+var joriy="Chat";
 function ekranOch(nom){
   joriy=nom; faolYubor("tab_"+nom);
-  ["Yurak","Teg","Xat","Biz","Oyin"].forEach(function(n){ $("ekran"+n).hidden = n!==nom; });
+  ["Chat","Yurak","Teg","Xat","Biz","Oyin"].forEach(function(n){ $("ekran"+n).hidden = n!==nom; });
   Array.prototype.forEach.call($("menyu").children, function(b){ b.setAttribute("aria-selected", b.dataset.e===nom?"true":"false"); });
   if(nom==="Teg"){ $("tegNuqta").hidden=true; kanvaOlcham(); }
+  if(nom==="Chat"){ chatChiz(true); oqildiYubor(); }
   if(nom==="Xat") $("xatNuqta").hidden=true;
   if(nom==="Oyin") $("oyinNuqta").hidden=true;
   if(nom==="Biz") $("bizNuqta").hidden=true;
@@ -1451,7 +1544,7 @@ function xatChiz(){
     r.appendChild(k);
   });
   $("xatBosh").hidden=soni>0;
-  bizChiz();
+  bizChiz(); if(joriy==="Chat") chatChiz();
 }
 function xatOch(x){
   if(x.och>Date.now() && !x.men){ bildir("Bu xat "+vaqt(x.och)+" da ochiladi. Sabr 💌"); return; }
@@ -1495,14 +1588,14 @@ function ovozIjro(x, k){
   if(!x.men && !x.ochildi){ x.ochildi=true; xatSaqla(); nashr("e",{t:"ochildi", id:x.id}).catch(function(){}); }
 }
 // Shivir: tugmani bosib turib gapiriladi
-var yozuvchi=null, bolaklar=[], yozBosh=0, yozT=null, sb=$("shivirBtn"), sbBosilgan=false;
+var yozuvchi=null, bolaklar=[], yozBosh=0, yozT=null, sb=$("shivirBtn"), sbBosilgan=false, sbFaol=null;
 function mimeTanla(){
   var v=["audio/mp4","audio/webm;codecs=opus","audio/webm","audio/ogg"];
   for(var i=0;i<v.length;i++){ if(window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(v[i])) return v[i]; }
   return "";
 }
-sb.addEventListener("pointerdown", function(ev){
-  ev.preventDefault(); try{ sb.setPointerCapture(ev.pointerId); }catch(e){}
+function shivirBosh(ev){
+  sbFaol=ev.currentTarget; ev.preventDefault(); try{ sbFaol.setPointerCapture(ev.pointerId); }catch(e){}
   if(!navigator.mediaDevices || !window.MediaRecorder){ bildir("Bu telefonda ovoz yozib bo'lmaydi"); return; }
   sbBosilgan=true;
   navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){
@@ -1511,12 +1604,13 @@ sb.addEventListener("pointerdown", function(ev){
     yozuvchi=new MediaRecorder(st, mime?{mimeType:mime, audioBitsPerSecond:32000}:{audioBitsPerSecond:32000});
     yozuvchi.ondataavailable=function(e){ if(e.data && e.data.size) bolaklar.push(e.data); };
     yozuvchi.onstop=function(){ st.getTracks().forEach(function(t){ t.stop(); }); shivirYubor(yozuvchi.mimeType||mime||"audio/mp4"); };
-    yozuvchi.start(); yozBosh=Date.now(); sb.classList.add("yozmoqda"); faolYubor("ovoz");
-    var fi=setInterval(function(){ if(yozuvchi && yozuvchi.state==="recording") faolYubor("ovoz"); else clearInterval(fi); }, 3600); sb.textContent="🔴 Yozilmoqda… qo'yib yuboring";
+    yozuvchi.start(); yozBosh=Date.now(); sbFaol.classList.add("yozmoqda"); faolYubor("ovoz");
+    var fi=setInterval(function(){ if(yozuvchi && yozuvchi.state==="recording") faolYubor("ovoz"); else clearInterval(fi); }, 3600); if(sbFaol===sb) sb.textContent="🔴 Yozilmoqda… qo'yib yuboring"; else { sbFaol.textContent="🔴"; bildir("🎙 Yozilmoqda… qo'yib yuborsangiz ketadi"); }
     yozT=setTimeout(shivirTugat, 30000);
   }).catch(function(){ sbBosilgan=false; bildir("Mikrofonga ruxsat bering"); });
-});
-function shivirTugat(){ sbBosilgan=false; clearTimeout(yozT); if(yozuvchi && yozuvchi.state==="recording") yozuvchi.stop(); sb.classList.remove("yozmoqda"); sb.textContent="🎙 Bosib turib shivirlang"; }
+}
+sb.addEventListener("pointerdown", shivirBosh);
+function shivirTugat(){ sbBosilgan=false; clearTimeout(yozT); if(yozuvchi && yozuvchi.state==="recording") yozuvchi.stop(); sb.classList.remove("yozmoqda"); sb.textContent="🎙 Bosib turib shivir"; $("chMic").classList.remove("yozmoqda"); $("chMic").textContent="🎙"; }
 sb.addEventListener("pointerup", shivirTugat); sb.addEventListener("pointercancel", shivirTugat);
 function shivirYubor(mime){
   var dur=(Date.now()-yozBosh)/1000;
@@ -1942,7 +2036,7 @@ var FAOL = {
   kor_reel:{m:"🎬 reelsingizni ko'ryapti", s:20000, x:1}, kor_hik:{m:"👁 hikoyangizni ko'ryapti", s:10000, x:1},
   profil:{m:"👤 profilingizni ko'ryapti", s:8000, x:1}, kuch:{m:"🫳 Teginishda sizni kutyapti", s:60000},
   tab_Yurak:{m:"❤️ Yurak bo'limida", s:60000}, tab_Teg:{m:"🫳 Teginishda sizni kutyapti", s:60000}, tab_Xat:{m:"💌 Lahzalarni ko'ryapti", s:60000},
-  tab_Biz:{m:"🎬 Biz bo'limida", s:60000}, tingla:{m:"🎧 siz bilan tinglayapti", s:25000}, tab_Oyin:{m:"🃏 O'yin bo'limida", s:60000}
+  tab_Biz:{m:"🎬 Biz bo'limida", s:60000}, tab_Chat:{m:"💬 chatda", s:60000}, tingla:{m:"🎧 siz bilan tinglayapti", s:25000}, tab_Oyin:{m:"🃏 O'yin bo'limida", s:60000}
 };
 var oxFaol={}, uFaolHol=null, boshlanganVaqt=Date.now();
 function faolYubor(n){
@@ -1956,7 +2050,7 @@ function uFaolMatn(){
   return f.m;
 }
 document.addEventListener("input", function(e){
-  if(["matn","xatMatn","savolMatn","reelInp","istakInp","hikJavob"].indexOf(e.target && e.target.id)>=0) faolYubor("yoz");
+  if(["matn","xatMatn","savolMatn","reelInp","istakInp","hikJavob","chatInp","bxInp"].indexOf(e.target && e.target.id)>=0) faolYubor("yoz");
 });
 
 // ================= PROFIL va STATUS =================
@@ -2346,6 +2440,186 @@ $("tinglaForma").addEventListener("submit", function(e){
 });
 $("tinglaQosh").addEventListener("click", function(){ ytYarat(); faolYubor("tingla"); });
 
+// ================= CHAT =================
+var xabarlar=ol("xabarlar",[]), javobga=null, yetdiNavbat=[], yetdiT=null, chatKunlar=["Yakshanba","Dushanba","Seshanba","Chorshanba","Payshanba","Juma","Shanba"];
+function xabarSaqla(){ if(xabarlar.length>800) xabarlar=xabarlar.slice(-800); qoy("xabarlar",xabarlar); }
+var EMOJI_RE=null; try{ EMOJI_RE=new RegExp("^\\s*(?:\\p{Extended_Pictographic}(?:\\uFE0F|\\u200D\\p{Extended_Pictographic}|\\p{Emoji_Modifier})*\\s*){1,3}$","u"); }catch(e){}
+function kattami(m){ return !!(EMOJI_RE && EMOJI_RE.test(m)); }
+function oqildiV(){ return ol("oqildiV",0); }
+function oqilmaganSoni(){ var v=oqildiV(); return xabarlar.filter(function(x){ return !x.men && x.vaqt>v; }).length; }
+function chatSonChiz(){ var n=oqilmaganSoni(); $("chatSon").hidden=!n; $("chatSon").textContent=n>99?"99+":n; }
+function chatKorinmoqda(){ return joriy==="Chat" && !document.hidden && !$("ilova").hidden; }
+function oqildiYubor(){
+  if(!KALIT || !chatKorinmoqda()) return;
+  var oxirgi=0; xabarlar.forEach(function(x){ if(!x.men && x.vaqt>oxirgi) oxirgi=x.vaqt; });
+  if(oxirgi>oqildiV()){ qoy("oqildiV",oxirgi); nashr("cr/"+QID, {t:"oqildi", gacha:oxirgi}, true).catch(function(){}); }
+  chatSonChiz();
+}
+function kunNomi(ms){
+  var d=new Date(ms), b=new Date(), k=new Date(); k.setDate(b.getDate()-1);
+  if(d.toDateString()===b.toDateString()) return "Bugun";
+  if(d.toDateString()===k.toDateString()) return "Kecha";
+  if(b-d<6*864e5) return chatKunlar[d.getDay()];
+  return d.getDate()+"."+ikki(d.getMonth()+1)+"."+d.getFullYear();
+}
+function soat(ms){ var d=new Date(ms); return ikki(d.getHours())+":"+ikki(d.getMinutes()); }
+function chatPastdami(){ var o=$("chatOqim"); return o.scrollHeight-o.scrollTop-o.clientHeight < 80; }
+function lahzaPfYasa(x){
+  var pf=el("div","pf lahzaPf"), lq=el("div","lq"), lr=el("div","lr"), lt=el("div","lt"), b, sm="";
+  if(x.tur==="xat"){ lr.textContent=x.yon?"🔥":"💌"; b=(x.yon?"Yonuvchi xat":"Muhrlangan xat");
+    sm = x.men ? (x.holat==="ochildi"?"O'qildi":x.holat==="yetdi"?"Yetkazildi":"Yuborildi") : (x.och>Date.now()?"🔒 "+vaqt(x.och)+" da ochiladi":x.ochildi?"O'qilgan":"Ochish uchun bosing"); }
+  else if(x.tur==="ovoz"){ lr.textContent="🎙"; b="Ovozli xabar"; sm=Math.max(1,Math.round(x.dur||0))+" soniya · eshitish uchun bosing"; pf.classList.add("ovoz"); }
+  else if(x.tur==="video"||x.tur==="rasm"){
+    if(x.kichik && rasmTogri(x.kichik)) lr.style.backgroundImage='url("'+x.kichik+'")'; else lr.textContent=x.tur==="rasm"?"🖼":"🎥";
+    if(x.dumaloq) lr.classList.add("dumaloq");
+    b = x.tur==="rasm" ? (x.izoh && /Hozir/.test(x.izoh) ? "📸 Hozir" : "Rasm") : x.dumaloq ? "Dumaloq video" : "Video";
+    sm = x.men ? (x.holat==="ochildi"?"Ko'rildi":x.holat==="xato"?"Yuborilmadi · bosing":x.holat==="yuklanmoqda"?"Yuborilmoqda…":"Yuborildi")
+               : (x.saqlandi?(x.ochildi?"Ko'rilgan":"Ko'rish uchun bosing"):x.eskirgan?"Muddati o'tdi · so'rash":"Yuklanmoqda…"); }
+  else if(x.tur==="reel"){ lr.classList.add("ig"); lr.textContent="🎬"; b=igKod(x.url)?"Instagram Reels":"Havola"; sm=x.men?(x.uReak?"Reaksiya: "+x.uReak:x.holat==="ochildi"?"Ko'rildi":"Yuborildi"):(x.menReak?"Siz: "+x.menReak:"Ko'rish uchun bosing"); }
+  else if(x.tur==="kupon"){ lr.textContent=x.e||"🎟"; b="Kupon: "+x.n; sm = x.ishlatildi ? "Ishlatildi" : x.men ? "Sovg'a qilindi" : "Ishlatish uchun bosing"; }
+  else return null;
+  lt.append(el("b",null,b), el("small",null,sm)); lq.append(lr,lt); pf.appendChild(lq);
+  pf.addEventListener("click", function(){
+    if(x.tur==="xat") xatOch(x); else if(x.tur==="ovoz") ovozIjro(x,pf); else if(x.tur==="reel") reelKorish(x);
+    else if(x.tur==="kupon"){ if(!x.men && !x.ishlatildi) kuponIshlat(x); } else lahzaKorish(x);
+  });
+  return pf;
+}
+function matnPfYasa(x){
+  var pf=el("div","pf"+(kattami(x.m)?" katta":""));
+  if(x.javob && x.javob.m){ pf.appendChild(el("div","iqtibos",(x.javob.kim||"")+": "+x.javob.m)); }
+  var h=havolaTozala(x.m), ig=h && igKod(h);
+  if(ig && x.m.trim()===h){
+    // Faqat Instagram havolasi yozilgan xabar reels kartasi bo'lib ko'rinadi
+    var lp=lahzaPfYasa({tur:"reel", url:h, men:true, vaqt:x.vaqt}); lp.querySelector("small").textContent="Ko'rish uchun bosing";
+    if(x.javob && x.javob.m) lp.insertBefore(el("div","iqtibos",(x.javob.kim||"")+": "+x.javob.m), lp.firstChild);
+    return lp;
+  }
+  pf.appendChild(document.createTextNode(x.m));
+  if(h && !ig){ var a=el("a","havolaPf"," ↗"); a.href=h; a.target="_blank"; a.rel="noopener noreferrer"; pf.appendChild(a); }
+  else if(ig){ var a2=el("a","havolaPf"," 🎬 ochish"); a2.href="#"; a2.addEventListener("click", function(ev){ ev.preventDefault(); reelKorish({url:h, men:true, vaqt:x.vaqt}); }); pf.appendChild(a2); }
+  return pf;
+}
+function bosibTurish(elm, x){
+  var t=null, oxBos=0;
+  elm.addEventListener("pointerdown", function(){ t=setTimeout(function(){ t=null; amalMenyu(x, elm); }, 480); });
+  ["pointerup","pointercancel","pointerleave","pointermove"].forEach(function(n){ elm.addEventListener(n, function(ev){ if(n==="pointermove" && Math.abs(ev.movementY||0)<4) return; if(t){ clearTimeout(t); t=null; } }); });
+  elm.addEventListener("click", function(){ var now=Date.now(); if(now-oxBos<320){ reaksiyaQoy(x,"❤️",true); oxBos=0; } else oxBos=now; });
+  elm.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+}
+function chatChiz(pastga){
+  var o=$("chatOqim"), edi=chatPastdami(), eskiH=o.scrollHeight, eskiT=o.scrollTop;
+  o.textContent="";
+  var r=[];
+  xabarlar.forEach(function(x){ if(!x.och) r.push({k:"x", v:x.vaqt, x:x}); });
+  tarix.forEach(function(x){ r.push({k:"h", v:x.vaqt, x:x}); });
+  xatlar.forEach(function(x){ r.push({k:"l", v:x.vaqt, x:x}); });
+  r.sort(function(a,b){ return a.v-b.v; }); r=r.slice(-350);
+  if(!r.length){
+    var bo=el("div","chatBosh"); bo.append(el("div",null,"💬"), el("b",null,uIsm()+" bilan chat"), el("div",null,"Faqat ikkovingiz. Hamma narsa shifrlangan. Birinchi xabarni yozing ❤️"));
+    o.appendChild(bo); chatSonChiz(); return;
+  }
+  var oxKun="", oxKim=null, oxMen=null;
+  r.forEach(function(it){ if(it.k==="x" && it.x.men) oxMen=it.x; });
+  r.forEach(function(it){
+    var x=it.x, kun=new Date(it.v).toDateString();
+    if(kun!==oxKun){ o.appendChild(el("div","kunAj",kunNomi(it.v))); oxKun=kun; oxKim=null; }
+    var men=!!x.men, q=el("div","xq "+(men?"men":"u")); if(oxKim!==men) q.classList.add("yangiG"); oxKim=men;
+    var pf;
+    if(it.k==="x") pf=matnPfYasa(x);
+    else if(it.k==="h"){ pf=el("div","pf his"); pf.append(el("span","he",x.e), document.createTextNode(x.m)); }
+    else { pf=lahzaPfYasa(x); if(!pf) return; }
+    q.appendChild(pf);
+    if(it.k==="x"){
+      bosibTurish(pf, x);
+      var rk=[x.reakMen, x.reakU].filter(Boolean);
+      if(rk.length){ q.classList.add("reakli"); q.appendChild(el("span","reakB",rk.join(""))); }
+      if(x===oxMen){ q.appendChild(el("div","xHol", x.holat==="oqildi" ? "Ko'rildi "+soat(x.oqildiV||x.vaqt) : x.holat==="yetdi" ? "✓✓ Yetkazildi" : "✓ Yuborildi")); }
+    }
+    o.appendChild(q);
+  });
+  var f=uFaolHol && uFaolHol.n==="yoz" && Date.now()-uFaolHol.v<6000 && uOnlayn();
+  if(f){ var yb2=el("div","yozBubl"); yb2.append(el("i"),el("i"),el("i")); o.appendChild(yb2); }
+  if(pastga || edi){ o.scrollTop=o.scrollHeight; $("pastgaBtn").hidden=true; }
+  else { o.scrollTop=eskiT; }
+  chatSonChiz();
+}
+$("chatOqim").addEventListener("scroll", function(){ if(chatPastdami()) $("pastgaBtn").hidden=true; });
+$("pastgaBtn").addEventListener("click", function(){ var o=$("chatOqim"); o.scrollTop=o.scrollHeight; $("pastgaBtn").hidden=true; });
+function amalMenyu(x, elm){
+  var fon=el("div","amalFon"), quti=el("div","amalQuti"), rq=el("div","reakQator"), ar=el("div","amalRoy");
+  ["❤️","😂","😮","😢","🔥","👍"].forEach(function(e){ var b=el("button",e===x.reakMen?"tanlangan":"",e); b.type="button";
+    b.addEventListener("click", function(){ yop(); reaksiyaQoy(x,e,false); }); rq.appendChild(b); });
+  function amal(n, f){ var b=el("button",null,n); b.type="button"; b.addEventListener("click", function(){ yop(); f(); }); ar.appendChild(b); }
+  amal("↩️ Javob berish", function(){ javobBer(x); });
+  amal("📋 Nusxalash", function(){ if(navigator.clipboard) navigator.clipboard.writeText(x.m).then(function(){ bildir("Nusxalandi"); }, function(){}); });
+  amal("🗑 O'zimdan o'chirish", function(){ x.och=1; xabarSaqla(); chatChiz(); });
+  quti.append(rq, ar);
+  var rect=elm.getBoundingClientRect(), top=Math.max(70, Math.min(window.innerHeight-260, rect.top-64));
+  quti.style.top=top+"px";
+  function yop(){ fon.remove(); quti.remove(); }
+  fon.addEventListener("click", yop);
+  document.body.append(fon, quti);
+}
+function reaksiyaQoy(x, e, ikkiBos){
+  x.reakMen = (x.reakMen===e && !ikkiBos) ? "" : e; xabarSaqla(); chatChiz();
+  if(x.reakMen){ uchir(x.reakMen,4); }
+  nashr("e",{t:"mreak", i:x.i, e:x.reakMen||""}).catch(function(){});
+}
+function javobBer(x){
+  javobga={i:x.i, m:String(x.m).slice(0,80), kim:x.men?sozlama.ism:uIsm()};
+  $("javobKim").textContent=javobga.kim; $("javobMatn").textContent=javobga.m; $("javobOld").hidden=false; $("chatInp").focus();
+}
+$("javobYop").addEventListener("click", function(){ javobga=null; $("javobOld").hidden=true; });
+function xabarYubor(m){
+  m=String(m||"").trim(); if(!m || !KALIT) return;
+  var x={i:tasodifiy(8), men:true, m:m.slice(0,2000), vaqt:Date.now(), holat:"yuborildi"};
+  if(javobga){ x.javob=javobga; javobga=null; $("javobOld").hidden=true; }
+  xabarlar.push(x); xabarSaqla(); chatChiz(true);
+  nashr("c/"+QID+"/"+x.i, {t:"msg", i:x.i, m:x.m, javob:x.javob||null, v:x.vaqt}, true).catch(function(){});
+  ntfy("💬", x.m.length>140 ? x.m.slice(0,140)+"…" : x.m);
+  ballQosh("chat");
+  if(kattami(x.m)) uchir(x.m.trim().split(/\s+/)[0], 5);
+}
+var inp=$("chatInp");
+function kompozitorChiz(){
+  var bor=inp.value.trim().length>0;
+  $("chYub").hidden=!bor; $("chMic").hidden=bor; $("chYurak").hidden=bor;
+  inp.style.height="42px";
+  if(bor && inp.scrollHeight>44) inp.style.height=Math.min(120, inp.scrollHeight+2)+"px";
+}
+inp.addEventListener("input", kompozitorChiz);
+$("chYub").addEventListener("pointerdown", function(e){ e.preventDefault(); });
+$("chYub").addEventListener("click", function(){ xabarYubor(inp.value); inp.value=""; kompozitorChiz(); inp.focus(); });
+$("chYurak").addEventListener("click", function(){ xabarYubor("❤️"); });
+$("chMic").addEventListener("pointerdown", shivirBosh);
+$("chMic").addEventListener("pointerup", shivirTugat); $("chMic").addEventListener("pointercancel", shivirTugat);
+$("chPlus").addEventListener("click", function(){ varaqOch("varaqPlus"); });
+Array.prototype.forEach.call(document.querySelectorAll("#varaqPlus [data-p]"), function(b){
+  b.addEventListener("click", function(){
+    var p=b.dataset.p; varaqYop();
+    if(p==="rasm") $("faylInp").click(); else if(p==="video") videoOch(); else if(p==="his"){ varaqOch("varaqHis"); faolYubor("his"); }
+    else if(p==="xat") $("yozBtn").click(); else if(p==="hozir") $("hozirBtn").click(); else if(p==="teg") ekranOch("Teg");
+  });
+});
+// iPhone klaviaturasi: pastki menyu yashiriladi, chat klaviatura ustida qoladi
+inp.addEventListener("focus", function(){ $("ilova").classList.add("klav"); setTimeout(function(){ var o=$("chatOqim"); o.scrollTop=o.scrollHeight; }, 300); });
+inp.addEventListener("blur", function(){ setTimeout(function(){ if(document.activeElement!==inp) $("ilova").classList.remove("klav"); }, 150); });
+if(window.visualViewport){
+  var vvMoslash=function(){
+    var il=$("ilova"), vv=window.visualViewport;
+    if(il.classList.contains("klav")){ il.style.height=vv.height+"px"; window.scrollTo(0,0); var o=$("chatOqim"); if(chatPastdami()||true) o.scrollTop=o.scrollHeight; }
+    else il.style.height="";
+  };
+  window.visualViewport.addEventListener("resize", vvMoslash);
+  window.visualViewport.addEventListener("scroll", function(){ if($("ilova").classList.contains("klav")) window.scrollTo(0,0); });
+}
+$("xabar").addEventListener("click", function(){ if($("xabar").dataset.chat) ekranOch("Chat"); });
+function yetdiYubor(id){
+  yetdiNavbat.push(id); clearTimeout(yetdiT);
+  yetdiT=setTimeout(function(){ var ids=yetdiNavbat.splice(0); if(ids.length) nashr("e",{t:"yetdi", ids:ids}).catch(function(){}); }, 300);
+}
+
 // ================= O'YIN: kartalar va kunlik savol =================
 var tanlanganDeck=ol("deck","ehtiros"), joriyKarta=ol("karta",null);
 if(!DECKLAR[tanlanganDeck]) tanlanganDeck="ehtiros";
@@ -2468,6 +2742,23 @@ function qabul(q, o){
       if(x && !x.korildi){ x.korildi=vq; if(Date.now()-vq<120000) bildir("👁 "+uIsm()+" hikoyangizni ko'rdi"); } });
     qoy("menHik",menHik); menHikChiz(); return;
   }
+  if(q.indexOf("c/")===0 && o.t==="msg"){
+    if(!o.i || xabarlar.some(function(x){ return x.i===o.i; })){ if(o.i) yetdiYubor(o.i); return; }
+    var jv=o.javob && typeof o.javob==="object" ? {i:String(o.javob.i||""), m:String(o.javob.m||"").slice(0,80), kim:String(o.javob.kim||"").slice(0,24)} : null;
+    var xm={i:String(o.i), men:false, m:String(o.m||"").slice(0,2000), vaqt:vq}; if(jv) xm.javob=jv;
+    xabarlar.push(xm); xabarlar.sort(function(a,b){ return a.vaqt-b.vaqt; }); xabarSaqla();
+    yetdiYubor(xm.i);
+    if(chatKorinmoqda()){ chatChiz(); oqildiYubor(); if(!chatPastdami()) $("pastgaBtn").hidden=false; }
+    else { chatChiz(); if(Date.now()-vq<120000){ bildir("💬 "+uIsm()+": "+xm.m.slice(0,70), true); qongiroq(1100); } }
+    uFaolHol=null; sarlavhaYangila();
+    return;
+  }
+  if(q.indexOf("cr/")===0){
+    var gacha=+o.gacha||0, ozg=false;
+    xabarlar.forEach(function(x){ if(x.men && x.vaqt<=gacha && x.holat!=="oqildi"){ x.holat="oqildi"; x.oqildiV=vq; ozg=true; } });
+    if(ozg){ xabarSaqla(); chatChiz(); }
+    return;
+  }
   if(q.indexOf("sb/")===0){
     var eski=uSabab.length;
     uSabab=(o.l||[]).filter(function(y){ return y && y.id; }).map(function(y){ return {id:String(y.id), m:String(y.m||"").slice(0,200)}; });
@@ -2575,9 +2866,21 @@ function qabul(q, o){
     case "nafasQosh":
       var nu=$("nafasU"); if(nu) nu.textContent="✨ "+uIsm()+" qo'shildi. Birga nafas olyapsiz"; else bildir("🌬 "+uIsm()+" nafasga qo'shildi");
       break;
+    case "yetdi":
+      var oz2=false;
+      (o.ids||[]).forEach(function(id){ var x=xabarlar.filter(function(y){ return y.i===id && y.men; })[0];
+        if(x){ if(x.holat==="yuborildi"){ x.holat="yetdi"; oz2=true; } tozala("c/"+QID+"/"+id); } });
+      if(oz2){ xabarSaqla(); chatChiz(); }
+      break;
+    case "mreak":
+      var mx=xabarlar.filter(function(y){ return y.i===o.i; })[0];
+      if(mx){ mx.reakU=String(o.e||"").slice(0,8); xabarSaqla(); chatChiz();
+        if(mx.reakU && yangi){ uchir(mx.reakU,6); if(!chatKorinmoqda()) bildir(uIsm()+" xabaringizga "+mx.reakU+" qo'ydi", true); } }
+      break;
     case "faol":
       if(!yangi || !FAOL[o.n]) break;
       uFaolHol={n:o.n, v:Date.now()}; sarlavhaYangila();
+      if(o.n==="yoz" && joriy==="Chat"){ chatChiz(); setTimeout(function(){ if(joriy==="Chat") chatChiz(); }, 6300); }
       if(FAOL[o.n].x) bildir(uIsm()+" "+FAOL[o.n].m);
       if((o.n==="tab_Teg"||o.n==="kuch") && joriy!=="Teg"){ $("tegNuqta").hidden=false; bildir("🫳 "+uIsm()+" Teginishda sizni kutyapti"); }
       setTimeout(sarlavhaYangila, FAOL[o.n].s+200);
@@ -2690,7 +2993,7 @@ async function boshla(){
   if(ol("ulandi_"+sozlama.kod,false)) qoy("ulandi",true);
   $("taklif").hidden=!!ol("ulandi",false);
   if(menHolat.sog.kun!==bugun()) menHolat.sog={kun:bugun(), n:0};
-  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); hikTozala(); profilChiz(); bankaChiz(); bxChiz(); tinglaChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
+  kunlar(); bayram(); tarixChiz(); hislarChiz("mehr"); masofaChiz(); uchChiz(); istakChiz(); hikTozala(); profilChiz(); bankaChiz(); bxChiz(); tinglaChiz(); kompozitorChiz(); kayfChiz(); xatChiz(); decklarChiz(); kartaKorsat(false); savolChiz(); sarlavhaYangila();
   await kalitTayyorla(sozlama.kod);
   xatlar.forEach(function(x){ x.yuklanyapti=false; });
   xatlar.filter(function(x){ return !x.men && (x.tur==="video"||x.tur==="rasm") && !x.saqlandi && !x.eskirgan; }).forEach(yuklabOl);
@@ -2704,17 +3007,18 @@ async function boshla(){
   uHik.forEach(function(x){ hikYukla(x); });
   if(istaklar.length) istakNashr();
   setInterval(function(){ hozirman(!document.hidden); }, ONLAYN_MS);
+  ekranOch(ol("ulandi",false) ? "Chat" : "Yurak");
 }
 document.addEventListener("visibilitychange", function(){
   if(!KALIT) return;
   hozirman(!document.hidden);
-  if(!document.hidden){ ntfyQuvish(); savolChiz(); kunlar(); xatChiz(); olchovChiz(); tunChiz(); bayram();
+  if(!document.hidden){ oqildiYubor(); ntfyQuvish(); savolChiz(); kunlar(); xatChiz(); olchovChiz(); tunChiz(); bayram();
     xatlar.filter(function(x){ return !x.men && (x.tur==="video"||x.tur==="rasm") && !x.saqlandi && !x.eskirgan; }).forEach(yuklabOl); }
 });
 window.addEventListener("pagehide", function(){ hozirman(false); });
 
 function yangiSozlama(s, yangiJuft){
-  if(yangiJuft){ tarix=[]; xatlar=[]; qoy("tarix",[]); qoy("xatlar",[]); u={on:0,oxirgi:0,kayf:null,sog:null}; qoy("u",u); qoy("ntfyOxirgi","12h"); qoy("karta",null); joriyKarta=null; }
+  if(yangiJuft){ tarix=[]; xatlar=[]; xabarlar=[]; qoy("tarix",[]); qoy("xatlar",[]); qoy("xabarlar",[]); qoy("oqildiV",0); u={on:0,oxirgi:0,kayf:null,sog:null}; qoy("u",u); qoy("ntfyOxirgi","12h"); qoy("karta",null); joriyKarta=null; }
   sozlama=s; qoy("sozlama",s);
 }
 $("kirishForma").addEventListener("submit", function(e){
