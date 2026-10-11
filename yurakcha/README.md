@@ -16,6 +16,17 @@ Tepada sevgilingizning ismi, kayfiyati va holati ko'rinadi: "Hozir ilovada" yoki
 
 Qo'shimcha hissiyotlar:
 
+- **💞 Yonma-yon rejimi:** ikkovingiz 30–40 metr ichida bo'lsangiz, ilova oltin rangga kiradi, tepada "Yonma-yonsiz · 00:12"
+  chiqadi va birga o'tgan vaqt (bugun, hafta, jami) hisoblanadi. Telefonlarni bir vaqtda silkitsangiz yoki "Yuraklarni
+  ulash" ni birga bossangiz, "Yuraklar ulandi!" chiqadi va bu lahza tarixga yoziladi. Birga bo'lgan joylar o'zi saqlanadi.
+- **🥺 Xayrlashuv va 🏠 Yetib bordim:** 10 daqiqadan ko'p birga bo'lib ajralsangiz, "Hozirdan sog'indim" ekrani chiqadi.
+  Chatda "Yetib bordim ❤️" tugmasi turadi. Telefon uzoqlashib, 5 daqiqa qimirlamay tursa, buni o'zi so'raydi.
+- **🎁 Sirli sovg'a:** u hech narsa bilmaydi. Sovg'a tasodifiy yoki tanlangan vaqtda ekranida ochiladi, xuddi o'sha paytda
+  ntfy bildirishnomasi keladi (`delay`). Ilova yopiq bo'lsa ham shunday.
+- **☀️ Tonggi salom:** ovozli salom ertaga ertalab ilova ochilganda chiqadi, 07:30 da bildirishnoma keladi.
+- **📅 7 kunlik xatlar:** ertadan boshlab har kuni 08:00 da bittadan ochiladi.
+- **📖 Bizning tarix:** tanishgan kun, 7, 30, 100… kunlar, birinchi xabar, xat, video va sovg'a, yuraklar ulangan lahzalar
+  va birga bo'lgan joylar avtomatik yilnoma bo'lib to'planadi.
 - **🫙 Sevgi bankasi:** "Seni sevaman, chunki…" sabablarini bankaga tashlaysiz. Sevgilingiz har kuni bittadan ochadi,
   siz esa "bugungi sababni ochdi" xabarini olasiz.
 - **🧠 Bir xil o'ylaymizmi?** Ikkovingizga bir xil savol beriladi va ikkalangiz yashirin javob berasiz. Javoblar mos tushsa,
