@@ -23,5 +23,5 @@ Kompas va puflashni iPhone'da bir marta ruxsat so'raydi. Joylashuv faqat sahifa 
 ## Tayyor sovg'a
 
 `andijonfk.uz/sehr/zaxro/` – barcha matnlari yozilgan tayyor sovg'a: 6 ta tilak, bugungi kechaning osmonidagi 5 ta xotira, 4 ta topishmoq va xat.
-Sahifa o'zi asosiy havolaga yo'naltiradi. Kompas nuqtasi va oxirgi joy berilmagani uchun kompas bo'limi o'tkazib yuboriladi,
-xazina esa to'liq xat bilan tugaydi.
+Sahifa o'zi asosiy havolaga yo'naltiradi. Kompas igna bilan belgilangan nuqtani (40.797694, 72.102861) ko'rsatadi. Oxirgi joy berilmagani uchun
+xazina to'liq xat bilan tugaydi.
