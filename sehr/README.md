@@ -4,10 +4,21 @@ Sevgan odamga bitta havoladan iborat, to'rt bo'limli sovg'a. Server kerak emas, 
 
 | Bo'lim | Nima bo'ladi |
 |---|---|
+| ❤️ **Yurak qulfi** | Yurakka barmog'ini 2,4 soniya bosib turadi: halqa to'ladi, yurak uradi va "Yurak tanildi: Ism ✓" chiqadi. |
 | 🕯 **Shamlar** | Telefonga puflasa (mikrofon), shamlar o'chadi va har biridan bitta tilak chiqadi. Mikrofonga ruxsat bermasa, shamga bosish kifoya. |
 | 🌌 **O'sha kechaning osmoni** | Tanishgan kun va soatda shahringiz osmoni qanday bo'lgan bo'lsa, aynan shunday chiziladi. Eng yorug' yulduzlarga xotiralar yashirilgan. Hammasi ochilgach, yulduzlar uning ismining bosh harfiga yig'iladi va "«Ism» yulduzi" paydo bo'ladi. |
 | 🧭 **Yurak kompasi** | Igna siz belgilagan joyni (uyingizni) ko'rsatadi: "men o'sha tomondaman". Oradagi masofa yoziladi, u kelishi shart emas. |
 | 🗝 **Xazina ovi** | Faqat u biladigan topishmoqlar. Har bir to'g'ri javob xatning bir bo'lagini ochadi. Keyin "issiq-sovuq" ko'rsatkich uni siz kutayotgan joyga olib boradi va u yetib kelganda ekranda "Orqangga qara" chiqadi. |
+
+| ✨ **Oxiri** | Ism, yurak va "SENI SEVAMAN" minglab yulduz zarralaridan yig'iladi. Barmoq tekkanda zarralar tarqalib, qaytib keladi. "Yulduz guvohnomasi" rasmini telefonga saqlash mumkin. |
+
+## iPhone uchun
+
+- iPhone jim rejimda bo'lsa ham ovoz chiqadi (audio sessiya `playback`, eski iOS uchun jim WAV).
+- Mikrofon ishlayotganda sessiya `play-and-record` ga o'tadi, keyin qaytadi.
+- iOS 18+ da yurak urishi bilan birga yengil tebranish ham bo'ladi (yashirin `switch` katakcha).
+- Telefon kompas yo'nalishini bermasa, tomon so'z bilan aytiladi: "men sendan g'arb tomondaman".
+- Instagram ichida ochilsa, "Tashqi brauzerda ochish" haqida eslatma chiqadi.
 
 ## Qanday tayyorlanadi
 
