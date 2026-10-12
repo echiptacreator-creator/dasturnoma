@@ -106,12 +106,32 @@ em{font-style:italic;color:var(--oltin)}
 .sahna .k{max-width:380px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
 .sahna .ke{font-size:90px;line-height:1;animation:urish 1.2s ease-in-out infinite}
 .sahna .km{font-family:var(--sarlavha);font-style:italic;font-size:34px;line-height:1.15}
-.qogoz{background:linear-gradient(170deg,#fbf1e3,#efdcc2);color:#3b1d12;border-radius:6px;padding:26px 22px;max-height:56vh;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:var(--qol);font-size:25px;line-height:1.35;text-align:left;
+.qogoz{background:linear-gradient(170deg,#fbf1e3,#efdcc2);color:#3b1d12;border-radius:6px;padding:26px 22px;-webkit-overflow-scrolling:touch;font-family:var(--qol);font-size:25px;line-height:1.35;text-align:left;
   white-space:pre-wrap;overflow-wrap:anywhere;max-height:60vh;overflow-y:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);width:100%}
 .uchar{position:fixed;bottom:-40px;font-size:30px;pointer-events:none;z-index:45;animation:uch 3.6s ease-in forwards}
 @keyframes uch{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
 #xabar{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--matn);color:var(--tun);
   border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;max-width:92vw;text-align:center}
+
+/* Yurak qulfi */
+.qulf{position:relative;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;margin:8px 0;touch-action:none;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;background:radial-gradient(circle,#2a1440,#120f33 70%);box-shadow:0 0 50px rgba(255,92,138,.25);transition:box-shadow .6s}
+.qulf svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
+.qulf circle{fill:none;stroke-width:4}
+.qulf .iz{stroke:var(--chiziq)}
+.qulf .tol{stroke:var(--atirgul);stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:339.3;filter:drop-shadow(0 0 6px var(--atirgul))}
+.qulf span{font-size:64px;line-height:1;animation:urish 1.4s ease-in-out infinite;pointer-events:none}
+.qulf.bos span{animation-duration:.6s}
+.qulf.tayyor{box-shadow:0 0 90px rgba(255,92,138,.65)}
+.ilovaOgoh{max-width:380px;font-size:13px;line-height:1.45;color:#ffd9a8;background:rgba(242,200,121,.08);border:1px solid rgba(242,200,121,.3);border-radius:16px;padding:10px 14px}
+
+/* Oxirgi: zarralardan ism */
+.oxirBob{padding:0;position:relative;overflow:hidden;justify-content:flex-end}
+#zarraKanva{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.oxirUst{position:absolute;left:16px;right:16px;top:calc(36px + env(safe-area-inset-top,0px));pointer-events:none}
+.oxirPast{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 18px calc(26px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.oxirPast button{pointer-events:auto}
+.guvoh{width:100%;border-radius:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);-webkit-touch-callout:default}
 
 /* Tayyorlash sahifasi */
 .yarat{max-width:560px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 60px;display:flex;flex-direction:column;gap:18px}
@@ -138,8 +158,14 @@ em{font-style:italic;color:var(--oltin)}
   <section class="bob" id="bKirish">
     <div class="yorliq">Faqat bir kishi uchun</div>
     <h1 id="kIsm">Zaxro</h1>
-    <p class="xira">Bu yerda to'rtta sehr seni kutyapti. Shoshma. Quloqchin taqsang, yanada yaxshi.</p>
-    <button class="tugma" id="boshlaBtn" type="button">✨ Boshlash</button>
+    <p class="xira" id="kMatn">Bu yerda sehrlar seni kutyapti. Ularni faqat sen ochishing mumkin.</p>
+    <div class="qulf" id="qulf" role="button" aria-label="Yurakni bosib turing">
+      <svg viewBox="0 0 120 120"><circle class="iz" cx="60" cy="60" r="54"/><circle class="tol" id="qulfTol" cx="60" cy="60" r="54"/></svg>
+      <span>❤️</span>
+    </div>
+    <div class="puflaHol" id="qulfHol">Yurakka barmog'ingni bosib tur</div>
+    <button class="tugma" id="boshlaBtn" type="button" hidden>✨ Sehrni ochish</button>
+    <div class="ilovaOgoh" id="ilovaOgoh" hidden>Instagram ichida kompas va mikrofon ishlamasligi mumkin. Yuqoridagi <b>•••</b> ni bosib, <b>«Tashqi brauzerda ochish»</b> ni tanla. Safari'da hamma sehr to'liq ochiladi.</div>
   </section>
 
   <section class="bob" id="b1" hidden>
@@ -208,11 +234,17 @@ em{font-style:italic;color:var(--oltin)}
     </div>
   </section>
 
-  <section class="bob" id="bOxir" hidden>
-    <div class="yorliq">Hammasi shu emas</div>
-    <h2>Bu faqat <em>boshlanishi</em></h2>
-    <p class="xira" id="oxirMatn"></p>
-    <button class="tugma" id="yanaBtn" type="button">❤️ Yana bir bor</button>
+  <section class="bob oxirBob" id="bOxir" hidden>
+    <canvas id="zarraKanva" aria-label="Ismingdan yasalgan yulduzlar"></canvas>
+    <div class="oxirUst"><div class="yorliq">Hammasi shu emas</div></div>
+    <div class="oxirPast">
+      <p class="xira" id="oxirMatn"></p>
+      <div class="puflaHol">Harflarga barmog'ing bilan teg ✨</div>
+      <div class="qator" style="justify-content:center;width:100%;max-width:420px">
+        <button class="tugma" id="guvohBtn" type="button">⭐ Yulduz guvohnomasi</button>
+        <button class="tugma ikki" id="yanaBtn" type="button">❤️ Yana bir bor</button>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -300,9 +332,25 @@ function och(t){ try{ t=t.replace(/-/g,"+").replace(/_/g,"/"); while(t.length%4)
 var hs=new URLSearchParams(location.hash.slice(1)), D=hs.get("s") ? och(hs.get("s")) : null;
 
 // ---------- Ovoz: yumshoq musiqa va yurak urishi ----------
-var AC=null, musiqa=null, ovozYoq=true;
-function audioOch(){ try{ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==="suspended") AC.resume(); }catch(e){} }
-function zarba(k){ if(!AC) return; var t=AC.currentTime, o=AC.createOscillator(), g=AC.createGain(); o.type="sine"; o.frequency.setValueAtTime(70,t); o.frequency.exponentialRampToValueAtTime(40,t+.18);
+var AC=null, musiqa=null, ovozYoq=true, jimAudio=null, hap=null;
+// iPhone'da yon tugma "jim" holatida bo'lsa ham ovoz chiqishi uchun: audio sessiyani "playback" ga o'tkazamiz
+function sessiya(t){ try{ if(navigator.audioSession) navigator.audioSession.type=t; }catch(e){} }
+function jimWav(){ var n=4000, b=new Uint8Array(44+n), v=new DataView(b.buffer), y=function(o,t){ for(var i=0;i<t.length;i++) b[o+i]=t.charCodeAt(i); };
+  y(0,"RIFF"); v.setUint32(4,36+n,true); y(8,"WAVEfmt "); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,8000,true); v.setUint32(28,8000,true);
+  v.setUint16(32,1,true); v.setUint16(34,8,true); y(36,"data"); v.setUint32(40,n,true); for(var i=0;i<n;i++) b[44+i]=128;
+  var s=""; for(var j=0;j<b.length;j++) s+=String.fromCharCode(b[j]); return "data:audio/wav;base64,"+btoa(s); }
+function audioOch(){
+  if(!mikOn) sessiya("playback");
+  try{ if(!jimAudio){ jimAudio=new Audio(jimWav()); jimAudio.loop=true; jimAudio.setAttribute("playsinline",""); } if(jimAudio.paused && !mikOn) jimAudio.play().catch(function(){}); }catch(e){}
+  try{ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state!=="running") AC.resume(); }catch(e){}
+}
+var mikOn=false;
+// iPhone veb-sahifaga tebranish bermaydi; iOS 18+ da "switch" katakchasini bosish yengil tebranish beradi
+function tebran(){ try{ if(navigator.vibrate){ navigator.vibrate(25); return; }
+  if(!hap){ hap=document.createElement("label"); var i=document.createElement("input"); i.type="checkbox"; i.setAttribute("switch",""); hap.appendChild(i);
+    hap.style.cssText="position:fixed;left:-200px;top:0;opacity:0;pointer-events:none"; hap.setAttribute("aria-hidden","true"); document.body.appendChild(hap); }
+  hap.click(); }catch(e){} }
+function zarba(k){ tebran(); if(!AC) return; var t=AC.currentTime, o=AC.createOscillator(), g=AC.createGain(); o.type="sine"; o.frequency.setValueAtTime(70,t); o.frequency.exponentialRampToValueAtTime(40,t+.18);
   g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(k||.7,t+.015); g.gain.exponentialRampToValueAtTime(.0001,t+.25); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+.27); }
 function qongiroq(f){ if(!AC) return; var t=AC.currentTime; [0,.1,.2].forEach(function(d,i){ var o=AC.createOscillator(), g=AC.createGain(); o.type="sine"; o.frequency.value=(f||880)*[1,1.25,1.5][i];
   g.gain.setValueAtTime(.0001,t+d); g.gain.exponentialRampToValueAtTime(.18,t+d+.02); g.gain.exponentialRampToValueAtTime(.0001,t+d+1.2); o.connect(g); g.connect(AC.destination); o.start(t+d); o.stop(t+d+1.3); }); }
@@ -340,9 +388,20 @@ function sovga(){
     BOBLAR.forEach(function(id,i){ $(id).hidden = i!==n; });
     nq.hidden = n===0 || n===5; Array.prototype.forEach.call(nq.children, function(x,i){ x.classList.toggle("on", i<n); });
     hol.b=Math.max(hol.b,n); qoy(kalit,hol); window.scrollTo(0,0);
+    if(n!==2 && osRaf){ cancelAnimationFrame(osRaf); osRaf=-1; }
     if(n===1) shamTayyor(); if(n===2) osmonBoshla(); if(n===3) kompasTayyor(); if(n===4) xazinaBoshla(); if(n===5) oxir();
   }
   $("boshlaBtn").addEventListener("click", function(){ audioOch(); musiqaBoshla(); $("ovozBtn").hidden=false; qongiroq(660); bobOch(hol.b>0 && hol.b<5 ? hol.b : 1); });
+  if(/Instagram|FBAN|FBAV/.test(navigator.userAgent)) $("ilovaOgoh").hidden=false;
+  // Yurak qulfi: barmoq 2,4 soniya bosib turilsa "yurak tanildi"
+  var qulf=$("qulf"), qulfT=null, qulfRaf=null, qulfBosh=0, qulfOk=false;
+  function qulfChiz(){ var p=Math.min(1,(performance.now()-qulfBosh)/2400); $("qulfTol").style.strokeDashoffset=339.3*(1-p); if(p>=1){ qulfTugadi(); return; } qulfRaf=requestAnimationFrame(qulfChiz); }
+  function qulfQoy(){ if(qulfOk || !qulfBosh) return; qulfBosh=0; cancelAnimationFrame(qulfRaf); clearInterval(qulfT); qulf.classList.remove("bos"); $("qulfTol").style.strokeDashoffset=339.3; $("qulfHol").textContent="Qo'yib yubormasdan bosib tur 🤍"; }
+  function qulfTugadi(){ qulfOk=true; clearInterval(qulfT); qulf.classList.remove("bos"); qulf.classList.add("tayyor"); $("qulfHol").textContent="Yurak tanildi: "+U+" ✓"; qongiroq(660); tebran(); uchir("💗",10); $("boshlaBtn").hidden=false; }
+  qulf.addEventListener("pointerdown", function(e){ if(qulfOk) return; e.preventDefault(); audioOch(); qulf.classList.add("bos"); $("qulfHol").textContent="Yuraging tekshirilmoqda…";
+    qulfBosh=performance.now(); qulfChiz(); zarba(.5); clearInterval(qulfT); qulfT=setInterval(function(){ zarba(.5); },600); });
+  ["pointerup","pointercancel","pointerleave"].forEach(function(ev){ qulf.addEventListener(ev, function(){ audioOch(); qulfQoy(); }); });
+  qulf.addEventListener("contextmenu", function(e){ e.preventDefault(); });
   $("b1Keyin").addEventListener("click", function(){ bobOch(2); });
   $("b2Keyin").addEventListener("click", function(){ bobOch(3); });
   $("b3Keyin").addEventListener("click", function(){ kompasToxtat(); bobOch(4); });
@@ -360,7 +419,7 @@ function sovga(){
     s=shamEl[i]; if(!s) return;
     s.classList.add("ochdi"); for(var k=0;k<4;k++){ var tt=el("div","tutun"); tt.style.setProperty("--dx",(Math.random()*30-15)+"px"); tt.style.animationDelay=(k*.15)+"s"; s.appendChild(tt); }
     ochgan++; $("tilak").textContent="“"+tilaklar[i]+"”"; $("tilak").style.animation="none"; void $("tilak").offsetWidth; $("tilak").style.animation="";
-    qongiroq(520+ochgan*60);
+    qongiroq(520+ochgan*60); tebran();
     if(ochgan>=shamEl.length){
       mikToxtat(); $("mikBtn").hidden=true; $("puflaHol").textContent=""; $("mikD").hidden=true;
       setTimeout(function(){ $("tilak").textContent="Hammasi ro'yobga chiqadi. Chunki men yoningdaman 💛"; uchir("✨",16); $("b1Keyin").hidden=false; }, 2200);
@@ -369,6 +428,7 @@ function sovga(){
   $("mikBtn").addEventListener("click", function(){
     audioOch();
     if(!navigator.mediaDevices){ $("puflaHol").textContent="Shamga barmog'ing bilan teg"; return; }
+    mikOn=true; sessiya("play-and-record"); if(jimAudio) jimAudio.pause();
     navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false, noiseSuppression:false, autoGainControl:false}}).then(function(st){
       mikOqim=st; var src=AC.createMediaStreamSource(st); analizator=AC.createAnalyser(); analizator.fftSize=1024; src.connect(analizator);
       $("mikBtn").hidden=true; $("puflaHol").textContent="Eshityapman… endi puflab yubor 🌬";
@@ -384,9 +444,10 @@ function sovga(){
         if(past>chegara){ kuchli+=16; } else kuchli=Math.max(0,kuchli-24);
         if(kuchli>230 && now-oxOchish>900){ oxOchish=now; kuchli=0; shamOchir(-1); }
       })();
-    }).catch(function(){ $("puflaHol").textContent="Mikrofon bo'lmasa, shamlarga barmog'ing bilan teg 🕯"; $("mikBtn").hidden=true; });
+    }).catch(function(){ mikOn=false; sessiya("playback"); $("puflaHol").textContent="Mikrofon bo'lmasa, shamlarga barmog'ing bilan teg 🕯"; $("mikBtn").hidden=true; });
   });
-  function mikToxtat(){ cancelAnimationFrame(mikRaf); if(mikOqim) mikOqim.getTracks().forEach(function(t){ t.stop(); }); mikOqim=null; }
+  function mikToxtat(){ cancelAnimationFrame(mikRaf); if(mikOqim) mikOqim.getTracks().forEach(function(t){ t.stop(); }); mikOqim=null;
+    if(mikOn){ mikOn=false; setTimeout(function(){ sessiya("playback"); if(AC && AC.state!=="running") AC.resume(); }, 300); } }
 
   // ---------------- 2. OSMON ----------------
   // Eng yorqin yulduzlar: [nom, ko'tarilish (soat), og'ish (daraja), yorqinlik]
@@ -420,6 +481,7 @@ function sovga(){
   function ekranga(p){ var r=R*Math.tan((Math.PI/2-p.alt)/2), a=p.az+aylana; return [MX-r*Math.sin(a), MY-r*Math.cos(a)]; }
   function olcham(){ W=innerWidth; H=innerHeight; kv.width=W*DPR; kv.height=H*DPR; kv.style.width=W+"px"; kv.style.height=H+"px"; R=Math.min(W,H)*.47; MX=W/2; MY=H*.52; }
   function osmonBoshla(){
+    if(osRaf===-1){ osRaf=null; (function kadr(){ osRaf=requestAnimationFrame(kadr); osmonChiz(); })(); return; }
     if(osRaf) return;
     olcham(); osBosh=performance.now();
     var d=new Date(osVaqt), oy=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
@@ -521,15 +583,18 @@ function sovga(){
     else tingla();
     if(!navigator.geolocation){ bildir("Joylashuv aniqlanmaydi"); return; }
     $("kompasBtn").hidden=true; $("kMasofa").textContent="…";
+    setTimeout(function(){ if(sarlavhaDeg==null && menJoy) $("kompasIzoh").textContent="Telefoning kompasni bermadi. Lekin bilib qo'y: men sendan "+tomon(yonalishDeg)+" tomondaman."; }, 3500);
     kompasKuz=navigator.geolocation.watchPosition(function(p){
       menJoy={lat:p.coords.latitude, lon:p.coords.longitude};
       var d=masofaM(menJoy,kT); yonalishDeg=burchak(menJoy,kT); ignaYangila();
-      $("kMasofa").textContent=masMatn(d);
+      $("kMasofa").textContent=masMatn(d); if(sarlavhaDeg==null && performance.now()-kompasVaqt>3500) $("kompasIzoh").textContent="Telefoning kompasni bermadi. Lekin bilib qo'y: men sendan "+tomon(yonalishDeg)+" tomondaman.";
       $("kompasMatn").textContent = d<60 ? "Shu qadar yaqinmiz… yuragim eshitilyaptimi? 💞" : d<500 ? "Shu atrofda seni o'ylayotgan yurak urib turibdi" : d<5000 ? (ko.x || "Shu tomonda seni o'ylayotgan odam bor") : "Oramizda "+masMatn(d)+". Lekin yurak masofani tanimaydi";
       clearInterval(urT); urT=setInterval(function(){ if(ovozYoq) zarba(.45); }, Math.max(380, Math.min(1400, 380+d/8)));
       $("b3Keyin").hidden=false;
     }, function(){ bildir("Joylashuvga ruxsat bering"); $("kompasBtn").hidden=false; $("b3Keyin").hidden=false; }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000});
   });
+  var kompasVaqt=performance.now();
+  function tomon(b){ return ["shimol","shimoli-sharq","sharq","janubi-sharq","janub","janubi-g'arb","g'arb","shimoli-g'arb"][Math.round(b/45)%8]; }
   function kompasToxtat(){ clearInterval(urT); if(kompasKuz!=null) navigator.geolocation.clearWatch(kompasKuz); kompasKuz=null; }
 
   // ---------------- 4. XAZINA ----------------
@@ -586,8 +651,92 @@ function sovga(){
   }
 
   // ---------------- OXIRI ----------------
-  function oxir(){ $("oxirMatn").textContent=(M ? M+" seni har kuni bundan ham ko'proq sevadi." : "Men seni har kuni bundan ham ko'proq sevaman.")+" Sehrlar tugadi, lekin bizning hikoyamiz endi boshlanmoqda."; uchir("💛",16); }
+  function oxir(){ $("oxirMatn").textContent=(M ? M+" seni har kuni bundan ham ko'proq sevadi." : "Men seni har kuni bundan ham ko'proq sevaman.")+" Sehrlar tugadi, lekin bizning hikoyamiz endi boshlanmoqda."; zarraBoshla(); }
+
+  // Ism minglab yulduz zarralaridan yig'iladi; barmoq tekkanda tarqaladi va qaytib keladi
+  var zk=$("zarraKanva"), zc=zk.getContext("2d"), zarra=[], zW=0, zH=0, zRaf=null, tegish=null;
+  function zarraBoshla(){
+    var tayyor=document.fonts && document.fonts.load ? Promise.all([document.fonts.load("italic 600 80px 'Cormorant Garamond'"), document.fonts.load("700 40px Manrope")]).catch(function(){}) : Promise.resolve();
+    Promise.race([tayyor, new Promise(function(ok){ setTimeout(ok,1500); })]).then(zarraQur);
+  }
+  function zarraQur(){
+    var r=zk.getBoundingClientRect(); zW=r.width; zH=r.height; var dpr=Math.min(2,window.devicePixelRatio||1);
+    zk.width=zW*dpr; zk.height=zH*dpr; zc.setTransform(dpr,0,0,dpr,0,0);
+    var o=document.createElement("canvas"); o.width=Math.round(zW); o.height=Math.round(zH); var g=o.getContext("2d");
+    g.fillStyle="#fff"; g.strokeStyle="#fff"; g.lineJoin="round"; g.textAlign="center"; g.textBaseline="middle";
+    var ism=Math.min(zW*.26, 110, zW*1.5/Math.max(3,U.length)), y0=zH*.36;
+    g.font="bold "+(ism*1.1)+"px Georgia, serif"; g.fillText("❤", zW/2, y0-ism*1.05);
+    g.font="italic 600 "+ism+"px 'Cormorant Garamond', Georgia, serif"; g.lineWidth=ism*.035; g.strokeText(U, zW/2, y0+ism*.1); g.fillText(U, zW/2, y0+ism*.1);
+    g.font="700 "+Math.min(ism*.42, zW*.085)+"px Manrope, -apple-system, sans-serif"; g.fillText("SENI SEVAMAN", zW/2, y0+ism*.95);
+    var px=g.getImageData(0,0,o.width,o.height).data, qadam=zW*zH>500000 ? 4 : 3, rang=["#f2c879","#ff5c8a","#fff4dc","#ffd27a","#ff8fb0"];
+    zarra=[];
+    for(var y=0;y<o.height;y+=qadam) for(var x=0;x<o.width;x+=qadam){
+      if(px[(y*o.width+x)*4+3]>140) zarra.push({tx:x, ty:y, x:Math.random()*zW, y:Math.random()*zH, vx:0, vy:0, r:Math.random()*.8+1.3, c:rang[Math.floor(Math.random()*rang.length)], f:Math.random()*6});
+    }
+    if(zRaf) cancelAnimationFrame(zRaf);
+    var bosh=performance.now();
+    (function chiz(){
+      zRaf=requestAnimationFrame(chiz);
+      var t=(performance.now()-bosh)/1000;
+      zc.fillStyle="rgba(7,6,26,.32)"; zc.fillRect(0,0,zW,zH);
+      for(var i=0;i<zarra.length;i++){ var p=zarra[i], k=Math.min(1,t/2.2)*.05;
+        p.vx+=(p.tx-p.x)*k; p.vy+=(p.ty-p.y)*k;
+        if(tegish){ var dx=p.x-tegish.x, dy=p.y-tegish.y, d2=dx*dx+dy*dy; if(d2<8100){ var kuch=(8100-d2)/8100*4.5, d=Math.sqrt(d2)||1; p.vx+=dx/d*kuch; p.vy+=dy/d*kuch; } }
+        p.vx*=.86; p.vy*=.86; p.x+=p.vx; p.y+=p.vy;
+        zc.globalAlpha=.65+.35*Math.sin(t*3+p.f); zc.fillStyle=p.c; zc.fillRect(p.x,p.y,p.r,p.r);
+      }
+      zc.globalAlpha=1;
+    })();
+    if(!zarraQur.bir){ zarraQur.bir=true; uchir("💛",14); qongiroq(880); setTimeout(function(){ zarba(.7); },900); setTimeout(function(){ zarba(.7); },1300); }
+  }
+  function tegXY(e){ var r=zk.getBoundingClientRect(); tegish={x:e.clientX-r.left, y:e.clientY-r.top}; }
+  zk.addEventListener("pointerdown", function(e){ tegXY(e); tebran(); });
+  zk.addEventListener("pointermove", function(e){ if(tegish) tegXY(e); });
+  ["pointerup","pointercancel","pointerleave"].forEach(function(ev){ zk.addEventListener(ev, function(){ tegish=null; }); });
+  window.addEventListener("resize", function(){ if(!$("bOxir").hidden && zarra.length) zarraQur(); });
+
+  // Yulduz guvohnomasi: telefonga saqlanadigan rasm
+  $("guvohBtn").addEventListener("click", function(){
+    var tayyor=document.fonts && document.fonts.load ? Promise.all([document.fonts.load("italic 600 120px 'Cormorant Garamond'"), document.fonts.load("600 60px Caveat"), document.fonts.load("600 30px Manrope")]).catch(function(){}) : Promise.resolve();
+    Promise.race([tayyor, new Promise(function(ok){ setTimeout(ok,1500); })]).then(guvohnoma);
+  });
+  function guvohnoma(){
+    var c=document.createElement("canvas"); c.width=1080; c.height=1350; var g=c.getContext("2d"), W2=1080, H2=1350;
+    var fon=g.createRadialGradient(W2/2,420,40,W2/2,600,1100); fon.addColorStop(0,"#2a2266"); fon.addColorStop(.55,"#100d33"); fon.addColorStop(1,"#05041a"); g.fillStyle=fon; g.fillRect(0,0,W2,H2);
+    var sd=7; function rn(){ sd=(sd*16807)%2147483647; return sd/2147483647; }
+    for(var i=0;i<700;i++){ g.globalAlpha=.2+rn()*.8; g.fillStyle="#fff"; var rr=rn()*1.8+.3; g.beginPath(); g.arc(rn()*W2, rn()*H2, rr, 0, Math.PI*2); g.fill(); }
+    g.globalAlpha=1;
+    g.strokeStyle="rgba(242,200,121,.55)"; g.lineWidth=2; g.strokeRect(40,40,W2-80,H2-80); g.strokeStyle="rgba(242,200,121,.25)"; g.strokeRect(56,56,W2-112,H2-112);
+    var sx=W2/2, sy=360, nur=g.createRadialGradient(sx,sy,0,sx,sy,190); nur.addColorStop(0,"rgba(255,244,214,1)"); nur.addColorStop(.12,"rgba(255,226,150,.9)"); nur.addColorStop(.4,"rgba(242,200,121,.25)"); nur.addColorStop(1,"rgba(242,200,121,0)");
+    g.fillStyle=nur; g.beginPath(); g.arc(sx,sy,190,0,Math.PI*2); g.fill();
+    g.fillStyle="#fff8e6"; g.beginPath(); for(var k=0;k<10;k++){ var a=k*Math.PI/5-Math.PI/2, rad2=k%2?18:52; g.lineTo(sx+Math.cos(a)*rad2, sy+Math.sin(a)*rad2); } g.closePath(); g.fill();
+    g.textAlign="center"; g.textBaseline="alphabetic";
+    g.fillStyle="#a49fcf"; g.font="600 26px Manrope, -apple-system, sans-serif"; g.fillText("Y U L D U Z   G U V O H N O M A S I", W2/2, 130);
+    g.fillStyle="#f4eefe"; g.font="italic 500 46px 'Cormorant Garamond', Georgia, serif"; g.fillText("Ushbu yulduz abadiy", W2/2, 640);
+    g.fillStyle="#f2c879"; g.font="italic 600 "+Math.min(150, 1500/Math.max(4,U.length))+"px 'Cormorant Garamond', Georgia, serif"; g.fillText(U, W2/2, 790);
+    g.fillStyle="#f4eefe"; g.font="italic 500 46px 'Cormorant Garamond', Georgia, serif"; g.fillText("nomi bilan ataladi", W2/2, 870);
+    var lst=((gmst(osVaqt)+osLon)%360+360)%360, soat=Math.floor(lst/15), daq=Math.round((lst/15-soat)*60); if(daq===60){ soat=(soat+1)%24; daq=0; }
+    var d=new Date(osVaqt), oy=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+    g.fillStyle="#a49fcf"; g.font="500 28px Manrope, -apple-system, sans-serif";
+    g.fillText(d.getDate()+" "+oy[d.getMonth()]+" "+d.getFullYear()+" kechasi aynan boshing ustida porlagan nuqta", W2/2, 970);
+    g.fillText("To'g'ri chiqish "+soat+"s "+ikki(daq)+"d  ·  Og'ish +"+osLat.toFixed(1).replace(".",",")+"°", W2/2, 1014);
+    g.fillStyle="#ffe9c4"; g.font="600 58px Caveat, 'Bradley Hand', cursive"; g.fillText("Bu yulduz endi seniki", W2/2, 1140);
+    g.fillStyle="#a49fcf"; g.font="500 26px Manrope, -apple-system, sans-serif"; g.fillText("Topshirdi: "+(M||"seni sevuvchi yurak"), W2/2, 1220);
+    var url=c.toDataURL("image/jpeg",.92), k2=el("div","k");
+    var img=el("img","guvoh"); img.src=url; img.alt="Yulduz guvohnomasi";
+    k2.append(img, el("p","xira","Rasmni bosib turing va «Rasmlarga saqlash» ni tanlang"));
+    var yop=el("button","tugma ikki","Yopish"); yop.type="button"; yop.addEventListener("click", sahnaYop);
+    if(navigator.canShare && c.toBlob){
+      var ul=el("button","tugma","Saqlash yoki ulashish"); ul.type="button"; k2.append(ul);
+      c.toBlob(function(b){ var fl=new File([b], U+"-yulduzi.jpg", {type:"image/jpeg"});
+        if(!navigator.canShare({files:[fl]})){ ul.remove(); return; }
+        ul.addEventListener("click", function(){ navigator.share({files:[fl], title:U+" yulduzi"}).catch(function(){}); }); }, "image/jpeg", .92);
+    }
+    k2.append(yop); sahnaOch(k2, function(){ uchir("⭐",12); qongiroq(990); });
+  }
   $("b1Keyin").hidden=true;
+  var soni=2+(isFinite(kT.lat)?1:0)+(top.length||isFinite(xT.lat)?1:0);
+  $("kMatn").textContent="Bu yerda "+["","bitta","ikkita","uchta","to'rtta"][soni]+" sehr seni kutyapti. Ularni faqat sen ochishing mumkin.";
 }
 
 // =====================================================================
