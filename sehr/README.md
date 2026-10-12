@@ -19,3 +19,9 @@ Sevgan odamga bitta havoladan iborat, to'rt bo'limli sovg'a. Server kerak emas, 
 Qoralama telefoningizda saqlanadi. U qayerda to'xtagan bo'lsa, havolani qayta ochganda o'sha yerdan davom etadi.
 
 Kompas va puflashni iPhone'da bir marta ruxsat so'raydi. Joylashuv faqat sahifa ochiq turganda ishlaydi.
+
+## Tayyor sovg'a
+
+`andijonfk.uz/sehr/zaxro/` – barcha matnlari yozilgan tayyor sovg'a: 6 ta tilak, bugungi kechaning osmonidagi 5 ta xotira, 4 ta topishmoq va xat.
+Sahifa o'zi asosiy havolaga yo'naltiradi. Kompas nuqtasi va oxirgi joy berilmagani uchun kompas bo'limi o'tkazib yuboriladi,
+xazina esa to'liq xat bilan tugaydi.
