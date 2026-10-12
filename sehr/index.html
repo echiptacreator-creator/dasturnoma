@@ -525,7 +525,7 @@ function sovga(){
       menJoy={lat:p.coords.latitude, lon:p.coords.longitude};
       var d=masofaM(menJoy,kT); yonalishDeg=burchak(menJoy,kT); ignaYangila();
       $("kMasofa").textContent=masMatn(d);
-      $("kompasMatn").textContent = d<60 ? "Men shu yerdaman. Boshingni ko'tar 💞" : d<500 ? "Juda yaqinsan… yuragim eshitilyaptimi?" : d<5000 ? (ko.x || "Shu tomonda seni o'ylayotgan odam bor") : "Oramizda "+masMatn(d)+". Lekin yurak masofani tanimaydi";
+      $("kompasMatn").textContent = d<60 ? "Shu qadar yaqinmiz… yuragim eshitilyaptimi? 💞" : d<500 ? "Shu atrofda seni o'ylayotgan yurak urib turibdi" : d<5000 ? (ko.x || "Shu tomonda seni o'ylayotgan odam bor") : "Oramizda "+masMatn(d)+". Lekin yurak masofani tanimaydi";
       clearInterval(urT); urT=setInterval(function(){ if(ovozYoq) zarba(.45); }, Math.max(380, Math.min(1400, 380+d/8)));
       $("b3Keyin").hidden=false;
     }, function(){ bildir("Joylashuvga ruxsat bering"); $("kompasBtn").hidden=false; $("b3Keyin").hidden=false; }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000});
