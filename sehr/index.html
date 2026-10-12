@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07061a">
+<title>Faqat sen uchun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;600;700&family=Caveat:wght@500;600&display=swap">
+<style>
+/* To'rt bob: sham, osmon, kompas, xazina. Tun ko'ki, sham oltini, mum qizili */
+:root{
+  --tun:#07061a; --tun2:#100e2b; --qat:#17143a; --chiziq:#2b2760;
+  --matn:#f4eefe; --xira:#a49fcf; --oltin:#f2c879; --sham:#ffb347; --atirgul:#ff5c8a; --yashil:#5fe0a0;
+  --sarlavha:"Cormorant Garamond",Georgia,serif; --asosiy:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif; --qol:"Caveat","Bradley Hand",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;min-height:100%;background:var(--tun);color:var(--matn);font:16px/1.55 var(--asosiy)}
+body{background:radial-gradient(120% 70% at 50% 0%,#1d1850 0%,var(--tun) 60%) fixed}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--oltin);outline-offset:3px}
+h1,h2,h3{font-family:var(--sarlavha);font-weight:500;margin:0;text-wrap:balance}
+em{font-style:italic;color:var(--oltin)}
+.xira{color:var(--xira)}
+.tugma{border:0;border-radius:999px;padding:14px 26px;font-weight:700;background:var(--oltin);color:#2a1a05;box-shadow:0 10px 30px -10px rgba(242,200,121,.7)}
+.tugma.ikki{background:transparent;color:var(--matn);border:1px solid var(--chiziq);box-shadow:none}
+.tugma:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Bob sahifasi */
+.bob{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;
+  padding:calc(30px + env(safe-area-inset-top,0px)) 20px calc(30px + env(safe-area-inset-bottom,0px));animation:kir .9s ease}
+@keyframes kir{from{opacity:0;transform:translateY(14px)}}
+.bob h1{font-size:clamp(40px,11vw,64px);line-height:1.05}
+.bob h2{font-size:clamp(30px,8vw,44px);line-height:1.1}
+.bob .yorliq{letter-spacing:.24em;text-transform:uppercase;font-size:11.5px;color:var(--xira)}
+.bob p{max-width:420px;margin:0}
+.nuqtalar{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:20;pointer-events:none}
+.nuqtalar i{width:8px;height:8px;border-radius:50%;background:var(--chiziq)}
+.nuqtalar i.on{background:var(--oltin);box-shadow:0 0 10px var(--oltin)}
+.ovozBtn{position:fixed;right:14px;top:calc(8px + env(safe-area-inset-top,0px));z-index:21;width:40px;height:40px;border-radius:50%;border:1px solid var(--chiziq);background:rgba(23,20,58,.7);font-size:17px}
+
+/* 1. Shamlar */
+.shamlar{display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,5vw,26px);height:200px;margin-top:10px}
+.sham{position:relative;width:26px;height:110px;border-radius:6px 6px 4px 4px;background:linear-gradient(90deg,#efe3cf,#fff8ec 45%,#d9c7aa);cursor:pointer}
+.sham:nth-child(odd){height:130px}
+.sham::before{content:"";position:absolute;left:50%;top:-10px;width:2px;height:12px;margin-left:-1px;background:#3a2a1a;border-radius:1px}
+.alanga{position:absolute;left:50%;bottom:calc(100% + 8px);width:18px;height:34px;margin-left:-9px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;
+  background:radial-gradient(circle at 50% 75%,#fff 0 12%,#ffe08a 25%,var(--sham) 55%,rgba(255,120,40,.0) 75%);filter:blur(.4px);
+  box-shadow:0 0 30px 10px rgba(255,170,60,.35);animation:lip 1.2s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes lip{25%{transform:scale(.96,1.05) rotate(-2deg)}50%{transform:scale(1.03,.97) rotate(2deg)}75%{transform:scale(.98,1.04) rotate(-1deg)}}
+.sham.ochdi .alanga{animation:och .5s forwards}
+@keyframes och{to{transform:scale(.2,.1);opacity:0}}
+.tutun{position:absolute;left:50%;bottom:calc(100% + 10px);width:10px;height:10px;margin-left:-5px;border-radius:50%;background:rgba(200,200,220,.35);filter:blur(3px);animation:tutun 2.6s ease-out forwards}
+@keyframes tutun{to{transform:translate(var(--dx,8px),-120px) scale(4);opacity:0}}
+.tilak{font-family:var(--qol);font-size:clamp(24px,6.5vw,32px);line-height:1.25;min-height:84px;max-width:420px;color:#ffe9c4;animation:kir 1s ease}
+.puflaHol{font-size:13px;color:var(--xira);min-height:20px}
+.mikDarajasi{width:180px;height:6px;border-radius:3px;background:var(--chiziq);overflow:hidden}
+.mikDarajasi b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sham),var(--atirgul));transition:width .08s}
+
+/* 2. Osmon */
+.osmonBob{padding:0;justify-content:flex-start;gap:0;position:relative;overflow:hidden}
+#osmonKanva{display:block;width:100vw;height:100vh;height:100dvh;touch-action:none}
+.osmonUst{position:absolute;left:16px;right:16px;top:calc(34px + env(safe-area-inset-top,0px));text-align:center;pointer-events:none;display:flex;flex-direction:column;gap:6px;align-items:center}
+.osmonUst h2{font-size:clamp(26px,7vw,38px)}
+.osmonPast{position:absolute;left:16px;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:10px}
+.xotiraKarta{max-width:380px;background:rgba(16,14,43,.88);border:1px solid var(--chiziq);border-radius:20px;padding:16px 18px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-family:var(--qol);font-size:24px;line-height:1.3;animation:kir .6s ease}
+.xotiraKarta small{display:block;font-family:var(--asosiy);font-size:12px;color:var(--xira);margin-bottom:4px}
+
+/* 3. Kompas */
+.kompas{position:relative;width:min(78vw,300px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#1f1b4d 0%,#120f33 65%);border:1px solid var(--chiziq);box-shadow:inset 0 0 40px rgba(0,0,0,.6),0 0 60px rgba(255,92,138,.12)}
+.kompas .yon{position:absolute;font-family:var(--sarlavha);font-size:18px;color:var(--xira)}
+.kompas .n{top:8px;left:50%;transform:translateX(-50%);color:var(--atirgul)} .kompas .s{bottom:8px;left:50%;transform:translateX(-50%)}
+.kompas .e{right:12px;top:50%;transform:translateY(-50%)} .kompas .w{left:12px;top:50%;transform:translateY(-50%)}
+.kompasYuz{position:absolute;inset:0;transition:transform .25s linear}
+.igna{position:absolute;left:50%;top:50%;width:0;height:0}
+.igna .yurakIgna{position:absolute;left:-26px;top:-128px;width:52px;height:120px;display:flex;flex-direction:column;align-items:center}
+.igna .yurakIgna::after{content:"";width:4px;flex:1;background:linear-gradient(var(--atirgul),rgba(255,92,138,.1));border-radius:2px}
+.igna .yurakIgna span{font-size:40px;line-height:1;filter:drop-shadow(0 0 12px rgba(255,92,138,.8));animation:urish 1s ease-in-out infinite}
+.markaz{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;border-radius:50%;background:var(--oltin);box-shadow:0 0 14px var(--oltin)}
+@keyframes urish{0%,100%{transform:scale(1)}14%{transform:scale(1.18)}28%{transform:scale(1)}42%{transform:scale(1.1)}}
+.masofa{font-family:var(--sarlavha);font-size:clamp(36px,10vw,52px);line-height:1;font-variant-numeric:tabular-nums}
+.kompasMatn{font-family:var(--sarlavha);font-style:italic;font-size:22px;max-width:380px;min-height:60px}
+
+/* 4. Xazina */
+.topishmoq{width:min(100%,420px);background:var(--qat);border:1px solid var(--chiziq);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px;text-align:left}
+.topishmoq .q{font-family:var(--sarlavha);font-size:24px;line-height:1.25}
+.topishmoq input{border:1px solid var(--chiziq);background:var(--tun);border-radius:14px;padding:13px 15px;width:100%}
+.topishmoq .ishora{font-size:13px;color:var(--xira);min-height:18px}
+.bolaklar{width:min(100%,420px);display:flex;flex-direction:column;gap:8px}
+.bolak{background:linear-gradient(170deg,#fbf1e3,#efdcc2);color:#3b1d12;border-radius:6px;padding:12px 16px;font-family:var(--qol);font-size:22px;line-height:1.3;text-align:left;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.8);animation:kir .7s ease;transform:rotate(var(--r,0deg))}
+.bolak.yopiq{background:repeating-linear-gradient(45deg,#2b2760 0 10px,#241f55 10px 20px);color:transparent;text-shadow:none;min-height:46px}
+.issiq{font-family:var(--sarlavha);font-size:28px}
+.titra{animation:titra .4s}
+@keyframes titra{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-4px)}}
+
+/* Oxirgi va sahna */
+.sahna{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:24px;background:rgba(5,4,18,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:kir .4s}
+.sahna .k{max-width:380px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+.sahna .ke{font-size:90px;line-height:1;animation:urish 1.2s ease-in-out infinite}
+.sahna .km{font-family:var(--sarlavha);font-style:italic;font-size:34px;line-height:1.15}
+.qogoz{background:linear-gradient(170deg,#fbf1e3,#efdcc2);color:#3b1d12;border-radius:6px;padding:26px 22px;font-family:var(--qol);font-size:25px;line-height:1.35;text-align:left;
+  white-space:pre-wrap;overflow-wrap:anywhere;max-height:60vh;overflow-y:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);width:100%}
+.uchar{position:fixed;bottom:-40px;font-size:30px;pointer-events:none;z-index:45;animation:uch 3.6s ease-in forwards}
+@keyframes uch{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+#xabar{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--matn);color:var(--tun);
+  border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;max-width:92vw;text-align:center}
+
+/* Tayyorlash sahifasi */
+.yarat{max-width:560px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 60px;display:flex;flex-direction:column;gap:18px}
+.yarat h1{font-size:44px;line-height:1.05}
+.blok{background:var(--qat);border:1px solid var(--chiziq);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.blok h2{font-size:26px}
+.blok label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.blok input,.blok textarea{border:1px solid var(--chiziq);background:var(--tun);border-radius:14px;padding:12px 14px;font-weight:400;width:100%}
+.blok textarea{min-height:110px;resize:vertical}
+.qator{display:flex;gap:10px;flex-wrap:wrap}
+.qator>*{flex:1 1 140px;min-width:0}
+.izoh{font-size:13px;color:var(--xira);margin:0}
+.topRow{border:1px dashed var(--chiziq);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.joyHol{font-size:13px;color:var(--yashil)}
+.natija{word-break:break-all;font-size:12.5px;background:var(--tun);border:1px solid var(--chiziq);border-radius:12px;padding:10px}
+</style>
+</head>
+<body>
+<div class="nuqtalar" id="nuqtalar" hidden></div>
+<button class="ovozBtn" id="ovozBtn" type="button" hidden aria-label="Musiqa">🔊</button>
+
+<!-- ============ SOVG'A ============ -->
+<main id="sovga" hidden>
+  <section class="bob" id="bKirish">
+    <div class="yorliq">Faqat bir kishi uchun</div>
+    <h1 id="kIsm">Zaxro</h1>
+    <p class="xira">Bu yerda to'rtta sehr seni kutyapti. Shoshma. Quloqchin taqsang, yanada yaxshi.</p>
+    <button class="tugma" id="boshlaBtn" type="button">✨ Boshlash</button>
+  </section>
+
+  <section class="bob" id="b1" hidden>
+    <div class="yorliq">Birinchi sehr</div>
+    <h2>Shamlarni <em>puflab</em> o'chir</h2>
+    <p class="xira" id="shamIzoh">Telefonni og'zingga yaqin tut va haqiqatan puflab yubor. Har bir o'chgan shamdan bitta tilagim chiqadi.</p>
+    <div class="shamlar" id="shamlar"></div>
+    <div class="mikDarajasi" id="mikD"><b></b></div>
+    <div class="puflaHol" id="puflaHol"></div>
+    <div class="tilak" id="tilak"></div>
+    <button class="tugma" id="mikBtn" type="button">🎤 Puflashga tayyorman</button>
+    <button class="tugma" id="b1Keyin" type="button" hidden>Davom et ✨</button>
+  </section>
+
+  <section class="bob osmonBob" id="b2" hidden>
+    <canvas id="osmonKanva" aria-label="Yulduzli osmon"></canvas>
+    <div class="osmonUst">
+      <div class="yorliq">Ikkinchi sehr</div>
+      <h2 id="osmonSar">O'sha kechaning osmoni</h2>
+      <div class="xira" id="osmonIzoh" style="font-size:14px"></div>
+    </div>
+    <div class="osmonPast">
+      <div class="xotiraKarta" id="xotiraKarta" hidden></div>
+      <button class="tugma" id="b2Keyin" type="button" hidden>Davom et ✨</button>
+    </div>
+  </section>
+
+  <section class="bob" id="b3" hidden>
+    <div class="yorliq">Uchinchi sehr</div>
+    <h2>Yurak <em>kompasi</em></h2>
+    <p class="xira" id="kompasIzoh">Telefonni kaftingga tekis qo'y va asta aylan. Yurakcha qayerni ko'rsatsa, men o'sha tomondaman.</p>
+    <div class="kompas" id="kompas">
+      <div class="kompasYuz" id="kompasYuz"><span class="yon n">Sh</span><span class="yon e">Shq</span><span class="yon s">J</span><span class="yon w">G'</span></div>
+      <div class="igna" id="igna"><div class="yurakIgna"><span>❤️</span></div></div>
+      <div class="markaz"></div>
+    </div>
+    <div class="masofa" id="kMasofa">—</div>
+    <div class="kompasMatn" id="kompasMatn"></div>
+    <button class="tugma" id="kompasBtn" type="button">🧭 Kompasni yoqish</button>
+    <button class="tugma" id="b3Keyin" type="button" hidden>Davom et ✨</button>
+  </section>
+
+  <section class="bob" id="b4" hidden>
+    <div class="yorliq">To'rtinchi sehr</div>
+    <h2>Xazina <em>ovi</em></h2>
+    <p class="xira" id="xazinaIzoh">Har bir to'g'ri javob xatimning bir bo'lagini ochadi. Faqat sen bilasan.</p>
+    <div class="topishmoq" id="topishmoq">
+      <div class="xira" style="font-size:12px" id="tSon"></div>
+      <div class="q" id="tSavol"></div>
+      <input id="tJavob" autocomplete="off" placeholder="Javobing…" aria-label="Javob">
+      <div class="ishora" id="tIshora"></div>
+      <button class="tugma" id="tTekshir" type="button">Ochish 🗝</button>
+    </div>
+    <div class="bolaklar" id="bolaklar"></div>
+    <div id="joyQism" hidden style="display:flex;flex-direction:column;gap:14px;align-items:center;width:100%">
+      <h3 style="font-family:var(--sarlavha);font-size:28px">Oxirgi bo'lak <em>bir joyda</em> yashirin</h3>
+      <p class="xira" id="joyIshora"></p>
+      <div class="kompas" id="xKompas" style="width:min(60vw,220px)">
+        <div class="kompasYuz" id="xKompasYuz"><span class="yon n">Sh</span></div>
+        <div class="igna" id="xIgna"><div class="yurakIgna" style="top:-96px;height:88px"><span style="font-size:30px">🗝</span></div></div>
+        <div class="markaz"></div>
+      </div>
+      <div class="issiq" id="issiq">—</div>
+      <button class="tugma" id="joyBtn" type="button">📍 Yo'lga chiqdim</button>
+      <button class="tugma ikki" id="keyinroqBtn" type="button">Hozir bora olmayman</button>
+    </div>
+  </section>
+
+  <section class="bob" id="bOxir" hidden>
+    <div class="yorliq">Hammasi shu emas</div>
+    <h2>Bu faqat <em>boshlanishi</em></h2>
+    <p class="xira" id="oxirMatn"></p>
+    <button class="tugma" id="yanaBtn" type="button">❤️ Yana bir bor</button>
+  </section>
+</main>
+
+<!-- ============ TAYYORLASH ============ -->
+<main class="yarat" id="yarat" hidden>
+  <div>
+    <div class="yorliq xira" style="letter-spacing:.2em;font-size:11.5px;text-transform:uppercase">Sovg'a tayyorlash</div>
+    <h1>To'rt <em>sehr</em></h1>
+    <p class="xira">To'ldiring va maxsus havola oling. Hamma narsa faqat havolaning ichida saqlanadi, hech qayerga yozilmaydi. Havolani faqat unga yuboring.</p>
+  </div>
+  <div class="blok">
+    <h2>Ismlar</h2>
+    <div class="qator">
+      <label>Uning ismi<input id="yU" maxlength="24" placeholder="Zaxro"></label>
+      <label>Sizning ismingiz<input id="yM" maxlength="24" placeholder="Ismingiz"></label>
+    </div>
+  </div>
+  <div class="blok">
+    <h2>🕯 Shamlar</h2>
+    <label>Tilaklaringiz (har qatorga bittasi, 3–7 ta)<textarea id="ySh" placeholder="Doim shunday kulib yur&#10;Orzularing ro'yobga chiqsin&#10;Har tongni men bilan kutib ol"></textarea></label>
+  </div>
+  <div class="blok">
+    <h2>🌌 O'sha kechaning osmoni</h2>
+    <div class="qator">
+      <label>Tanishgan kun<input id="yOsSana" type="date"></label>
+      <label>Taxminiy soat<input id="yOsSoat" type="time" value="21:00"></label>
+    </div>
+    <div class="qator">
+      <label>Kenglik<input id="yOsLat" inputmode="decimal" value="40.7821"></label>
+      <label>Uzunlik<input id="yOsLon" inputmode="decimal" value="72.3442"></label>
+    </div>
+    <p class="izoh">Standart joy: Andijon. Boshqa shahar bo'lsa, Google Maps'dan koordinatani qo'ying.</p>
+    <label>Yulduzlarga yashiriladigan xotiralar (har qatorga bittasi)<textarea id="yOsX" placeholder="Birinchi marta kulganingni ko'rgan kunim&#10;Yomg'irda bitta soyabon ostida yurganimiz&#10;Sen birinchi marta 'sog'indim' degan kecha"></textarea></label>
+    <label>Unga atalgan yulduz uchun so'zlar<input id="yOsY" maxlength="160" placeholder="Shu kechadan beri bu osmonda bitta yulduz ortdi. U seniki."></label>
+  </div>
+  <div class="blok">
+    <h2>🧭 Yurak kompasi</h2>
+    <p class="izoh">Igna shu nuqtani ko'rsatadi. Uyingizda yoki o'zingiz bo'ladigan joyda turib bosing.</p>
+    <button class="tugma ikki" type="button" data-joy="yKo">📍 Hozirgi joyimni olish</button>
+    <div class="qator"><label>Kenglik<input id="yKoLat" inputmode="decimal"></label><label>Uzunlik<input id="yKoLon" inputmode="decimal"></label></div>
+    <label>Kompas ostidagi so'zlar<input id="yKoX" maxlength="160" placeholder="Qayerda bo'lsang ham, yuragim shu tomonda"></label>
+  </div>
+  <div class="blok">
+    <h2>🗝 Xazina ovi</h2>
+    <p class="izoh">Faqat u biladigan savollar. Bir nechta to'g'ri javob bo'lsa, vergul bilan yozing. Har bir javob xatning bir bo'lagini ochadi.</p>
+    <div id="yTop"></div>
+    <button class="tugma ikki" id="yTopQosh" type="button">＋ Topishmoq qo'shish</button>
+    <h3 style="font-family:var(--sarlavha);font-size:22px;margin-top:6px">Oxirgi joy</h3>
+    <p class="izoh">U shu joyga kelganda telefoni "Orqangga qara" deydi. Siz o'sha yerda kutib turasiz. Joyda turib bosing yoki koordinatani qo'ying.</p>
+    <button class="tugma ikki" type="button" data-joy="yXz">📍 Hozirgi joyimni olish</button>
+    <div class="qator"><label>Kenglik<input id="yXzLat" inputmode="decimal"></label><label>Uzunlik<input id="yXzLon" inputmode="decimal"></label></div>
+    <label>Joy haqida ishora<input id="yXzIsh" maxlength="160" placeholder="Biz birinchi marta uchrashgan skameyka"></label>
+    <label>Yakuniy xat<textarea id="yXzX" placeholder="Jonim, …"></textarea></label>
+  </div>
+  <button class="tugma" id="yYarat" type="button">✨ Havolani yaratish</button>
+  <div class="blok" id="yNatija" hidden>
+    <h2>Tayyor!</h2>
+    <div class="natija" id="yHavola"></div>
+    <div class="qator">
+      <button class="tugma" id="yUlash" type="button">Unga yuborish</button>
+      <button class="tugma ikki" id="yKor" type="button">Oldindan ko'rish</button>
+    </div>
+    <p class="izoh">Oldindan ko'rganingizda ham hamma narsa ishlaydi. Faqat sirlarni o'zingiz ochib qo'ymang 😉</p>
+  </div>
+</main>
+
+<div class="sahna" id="sahna" hidden></div>
+<div id="xabar" hidden></div>
+
+<script>
+(function(){
+"use strict";
+function $(id){ return document.getElementById(id); }
+function el(t,c,m){ var x=document.createElement(t); if(c) x.className=c; if(m!=null) x.textContent=m; return x; }
+function bildir(t){ var x=$("xabar"); x.textContent=t; x.hidden=false; clearTimeout(bildir.t); bildir.t=setTimeout(function(){ x.hidden=true; },2600); }
+function ol(k,d){ try{ var v=localStorage.getItem("sehr_"+k); return v===null?d:JSON.parse(v); }catch(e){ return d; } }
+function qoy(k,v){ try{ localStorage.setItem("sehr_"+k, JSON.stringify(v)); }catch(e){} }
+function uchir(e,n){ for(var i=0;i<(n||14);i++){ var s=el("span","uchar",e); s.style.left=Math.random()*92+"vw"; s.style.animationDelay=Math.random()*1+"s"; s.style.fontSize=(22+Math.random()*26)+"px"; document.body.appendChild(s); setTimeout(s.remove.bind(s),4800); } }
+function ikki(n){ return ("0"+n).slice(-2); }
+function norm(s){ return String(s||"").toLowerCase().replace(/[‘’ʻʼ`´'"]/g,"").replace(/[\s.,!?;:«»()\-–—]/g,""); }
+
+// ---------- Havola ichidagi ma'lumot (base64url JSON) ----------
+function kodla(o){ var b=new TextEncoder().encode(JSON.stringify(o)), s=""; for(var i=0;i<b.length;i++) s+=String.fromCharCode(b[i]); return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""); }
+function och(t){ try{ t=t.replace(/-/g,"+").replace(/_/g,"/"); while(t.length%4) t+="="; var s=atob(t), u=new Uint8Array(s.length); for(var i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return JSON.parse(new TextDecoder().decode(u)); }catch(e){ return null; } }
+var hs=new URLSearchParams(location.hash.slice(1)), D=hs.get("s") ? och(hs.get("s")) : null;
+
+// ---------- Ovoz: yumshoq musiqa va yurak urishi ----------
+var AC=null, musiqa=null, ovozYoq=true;
+function audioOch(){ try{ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==="suspended") AC.resume(); }catch(e){} }
+function zarba(k){ if(!AC) return; var t=AC.currentTime, o=AC.createOscillator(), g=AC.createGain(); o.type="sine"; o.frequency.setValueAtTime(70,t); o.frequency.exponentialRampToValueAtTime(40,t+.18);
+  g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(k||.7,t+.015); g.gain.exponentialRampToValueAtTime(.0001,t+.25); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+.27); }
+function qongiroq(f){ if(!AC) return; var t=AC.currentTime; [0,.1,.2].forEach(function(d,i){ var o=AC.createOscillator(), g=AC.createGain(); o.type="sine"; o.frequency.value=(f||880)*[1,1.25,1.5][i];
+  g.gain.setValueAtTime(.0001,t+d); g.gain.exponentialRampToValueAtTime(.18,t+d+.02); g.gain.exponentialRampToValueAtTime(.0001,t+d+1.2); o.connect(g); g.connect(AC.destination); o.start(t+d); o.stop(t+d+1.3); }); }
+function musiqaBoshla(){
+  if(!AC || musiqa) return;
+  var bosh=AC.createGain(); bosh.gain.value=0; bosh.connect(AC.destination); bosh.gain.linearRampToValueAtTime(.06, AC.currentTime+3);
+  var f=AC.createBiquadFilter(); f.type="lowpass"; f.frequency.value=1200; f.connect(bosh);
+  var akkordlar=[[220,261.6,329.6],[174.6,220,261.6],[261.6,329.6,392],[196,246.9,293.7]], i=0;
+  function chal(){ var t=AC.currentTime; akkordlar[i%4].forEach(function(fr){ [1,2].forEach(function(m){ var o=AC.createOscillator(), g=AC.createGain(); o.type=m===1?"triangle":"sine"; o.frequency.value=fr*m*(m===2?1.003:1);
+      g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(m===1?.5:.18,t+1.4); g.gain.exponentialRampToValueAtTime(.0001,t+4.4); o.connect(g); g.connect(f); o.start(t); o.stop(t+4.5); }); }); i++; }
+  chal(); musiqa={t:setInterval(chal,4000), g:bosh};
+}
+$("ovozBtn").addEventListener("click", function(){ ovozYoq=!ovozYoq; $("ovozBtn").textContent=ovozYoq?"🔊":"🔇"; if(musiqa) musiqa.g.gain.linearRampToValueAtTime(ovozYoq?.06:0, AC.currentTime+.6); });
+
+// ---------- Sahna ----------
+function sahnaOch(ichi, keyin){ var s=$("sahna"); s.textContent=""; s.appendChild(ichi); s.hidden=false; if(keyin) keyin(); }
+function sahnaYop(){ $("sahna").hidden=true; }
+$("sahna").addEventListener("click", function(e){ if(e.target===$("sahna")) sahnaYop(); });
+
+if(!D){ yaratSahifasi(); return; }
+sovga();
+
+// =====================================================================
+//                              SOVG'A
+// =====================================================================
+function sovga(){
+  var U=String(D.u||"Sevgilim").slice(0,24), M=String(D.m||"").slice(0,24);
+  document.title=U+" uchun";
+  $("kIsm").textContent=U; $("sovga").hidden=false;
+  var BOBLAR=["bKirish","b1","b2","b3","b4","bOxir"], kalit="hol_"+(hs.get("s")||"").slice(0,24), hol=ol(kalit,{b:0, xz:0});
+  var nq=$("nuqtalar"); for(var i=0;i<4;i++) nq.appendChild(el("i"));
+  function bobOch(n){
+    BOBLAR.forEach(function(id,i){ $(id).hidden = i!==n; });
+    nq.hidden = n===0 || n===5; Array.prototype.forEach.call(nq.children, function(x,i){ x.classList.toggle("on", i<n); });
+    hol.b=Math.max(hol.b,n); qoy(kalit,hol); window.scrollTo(0,0);
+    if(n===1) shamTayyor(); if(n===2) osmonBoshla(); if(n===3) kompasTayyor(); if(n===4) xazinaBoshla(); if(n===5) oxir();
+  }
+  $("boshlaBtn").addEventListener("click", function(){ audioOch(); musiqaBoshla(); $("ovozBtn").hidden=false; qongiroq(660); bobOch(hol.b>0 && hol.b<5 ? hol.b : 1); });
+  $("b1Keyin").addEventListener("click", function(){ bobOch(2); });
+  $("b2Keyin").addEventListener("click", function(){ bobOch(3); });
+  $("b3Keyin").addEventListener("click", function(){ kompasToxtat(); bobOch(4); });
+  $("yanaBtn").addEventListener("click", function(){ hol={b:0, xz:0}; qoy(kalit,hol); location.reload(); });
+
+  // ---------------- 1. SHAMLAR ----------------
+  var tilaklar=(D.sh||[]).filter(Boolean).slice(0,7); if(!tilaklar.length) tilaklar=["Doim shunday kulib yur"];
+  var shamEl=[], ochgan=0, mikOqim=null, analizator=null, mikRaf=null;
+  function shamTayyor(){
+    var w=$("shamlar"); if(w.children.length) return;
+    tilaklar.forEach(function(t,i){ var s=el("div","sham"); s.appendChild(el("div","alanga")); s.addEventListener("click", function(){ shamOchir(i); }); w.appendChild(s); shamEl.push(s); });
+  }
+  function shamOchir(i){
+    var s=shamEl[i]; if(!s || s.classList.contains("ochdi")) i=shamEl.findIndex(function(x){ return !x.classList.contains("ochdi"); });
+    s=shamEl[i]; if(!s) return;
+    s.classList.add("ochdi"); for(var k=0;k<4;k++){ var tt=el("div","tutun"); tt.style.setProperty("--dx",(Math.random()*30-15)+"px"); tt.style.animationDelay=(k*.15)+"s"; s.appendChild(tt); }
+    ochgan++; $("tilak").textContent="“"+tilaklar[i]+"”"; $("tilak").style.animation="none"; void $("tilak").offsetWidth; $("tilak").style.animation="";
+    qongiroq(520+ochgan*60);
+    if(ochgan>=shamEl.length){
+      mikToxtat(); $("mikBtn").hidden=true; $("puflaHol").textContent=""; $("mikD").hidden=true;
+      setTimeout(function(){ $("tilak").textContent="Hammasi ro'yobga chiqadi. Chunki men yoningdaman 💛"; uchir("✨",16); $("b1Keyin").hidden=false; }, 2200);
+    }
+  }
+  $("mikBtn").addEventListener("click", function(){
+    audioOch();
+    if(!navigator.mediaDevices){ $("puflaHol").textContent="Shamga barmog'ing bilan teg"; return; }
+    navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false, noiseSuppression:false, autoGainControl:false}}).then(function(st){
+      mikOqim=st; var src=AC.createMediaStreamSource(st); analizator=AC.createAnalyser(); analizator.fftSize=1024; src.connect(analizator);
+      $("mikBtn").hidden=true; $("puflaHol").textContent="Eshityapman… endi puflab yubor 🌬";
+      var f=new Uint8Array(analizator.frequencyBinCount), boshV=performance.now(), fon=0, fonN=0, kuchli=0, oxOchish=0;
+      (function tinglash(){
+        mikRaf=requestAnimationFrame(tinglash);
+        analizator.getByteFrequencyData(f);
+        var past=0; for(var i=1;i<24;i++) past+=f[i]; past/=23;
+        var now=performance.now();
+        if(now-boshV<900){ fon+=past; fonN++; return; }
+        var chegara=Math.max(105, (fon/Math.max(1,fonN))*1.9+30);
+        $("mikD").firstChild.style.width=Math.min(100, past/chegara*80)+"%";
+        if(past>chegara){ kuchli+=16; } else kuchli=Math.max(0,kuchli-24);
+        if(kuchli>230 && now-oxOchish>900){ oxOchish=now; kuchli=0; shamOchir(-1); }
+      })();
+    }).catch(function(){ $("puflaHol").textContent="Mikrofon bo'lmasa, shamlarga barmog'ing bilan teg 🕯"; $("mikBtn").hidden=true; });
+  });
+  function mikToxtat(){ cancelAnimationFrame(mikRaf); if(mikOqim) mikOqim.getTracks().forEach(function(t){ t.stop(); }); mikOqim=null; }
+
+  // ---------------- 2. OSMON ----------------
+  // Eng yorqin yulduzlar: [nom, ko'tarilish (soat), og'ish (daraja), yorqinlik]
+  var YULDUZ=[["Sirius",6.752,-16.72,-1.46],["Arktur",14.261,19.18,-.05],["Vega",18.616,38.78,.03],["Kapella",5.278,46.00,.08],["Rigel",5.242,-8.20,.13],["Protsion",7.655,5.22,.34],
+    ["Betelgeyze",5.919,7.41,.5],["Altair",19.846,8.87,.76],["Aldebaran",4.599,16.51,.86],["Antares",16.490,-26.43,.96],["Spika",13.420,-11.16,.97],["Polluks",7.755,28.03,1.14],
+    ["Fomalhaut",22.961,-29.62,1.16],["Deneb",20.690,45.28,1.25],["Regul",10.140,11.97,1.35],["Kastor",7.577,31.89,1.58],["Bellatriks",5.419,6.35,1.64],["Elnat",5.438,28.61,1.65],
+    ["Alnilam",5.604,-1.20,1.69],["Alnitak",5.679,-1.94,1.77],["Mintaka",5.533,-.30,2.23],["Saif",5.796,-9.67,2.06],["Dubxe",11.062,61.75,1.79],["Merak",11.031,56.38,2.37],
+    ["Fekda",11.897,53.69,2.44],["Megrez",12.257,57.03,3.31],["Alioth",12.900,55.96,1.77],["Mitsar",13.399,54.93,2.23],["Alkaid",13.792,49.31,1.86],["Qutb yulduzi",2.530,89.26,1.98],
+    ["Shedar",.675,56.54,2.24],["Kaf",.153,59.15,2.28],["Navi",.945,60.72,2.47],["Ruxbax",1.430,60.24,2.68],["Segin",1.907,63.67,3.38],["Sadr",20.370,40.26,2.23],["Gienax",20.770,33.97,2.48],
+    ["Delta Oqqush",19.750,45.13,2.87],["Albireo",19.512,27.96,3.05],["Sheliak",18.835,33.36,3.5],["Sulafat",18.982,32.69,3.25],["Alferats",.140,29.09,2.06],["Mirax",1.162,35.62,2.06],
+    ["Almax",2.065,42.33,2.1],["Hamal",2.120,23.46,2.0],["Algol",3.136,40.96,2.1],["Mirfak",3.405,49.86,1.79],["Hulkar",3.791,24.11,2.87],["Denebola",11.818,14.57,2.14],
+    ["Algieba",10.333,19.84,2.08],["Koxab",14.845,74.16,2.08],["Rasalxague",17.582,12.56,2.08],["Shaula",17.560,-37.10,1.62]];
+  var CHIZIQ=[["Dubxe","Merak"],["Merak","Fekda"],["Fekda","Megrez"],["Megrez","Dubxe"],["Megrez","Alioth"],["Alioth","Mitsar"],["Mitsar","Alkaid"],
+    ["Kaf","Shedar"],["Shedar","Navi"],["Navi","Ruxbax"],["Ruxbax","Segin"],
+    ["Betelgeyze","Bellatriks"],["Bellatriks","Mintaka"],["Mintaka","Alnilam"],["Alnilam","Alnitak"],["Alnitak","Saif"],["Saif","Rigel"],["Rigel","Mintaka"],["Betelgeyze","Alnitak"],
+    ["Deneb","Sadr"],["Sadr","Albireo"],["Delta Oqqush","Sadr"],["Sadr","Gienax"],["Vega","Sheliak"],["Sheliak","Sulafat"],["Sulafat","Vega"],["Kastor","Polluks"],
+    ["Alferats","Mirax"],["Mirax","Almax"],["Regul","Algieba"],["Algieba","Denebola"],["Denebola","Regul"]];
+  var os=D.os||{}, osLat=+os.lat||40.7821, osLon=+os.lon||72.3442, osVaqt=+os.t||Date.now();
+  var xotiralar=(os.x||[]).filter(Boolean).slice(0,10); if(!xotiralar.length) xotiralar=["Seni birinchi ko'rgan lahzam"];
+  var kv=$("osmonKanva"), cx=kv.getContext("2d"), DPR=Math.min(2,window.devicePixelRatio||1), W=0, H=0, R=0, MX=0, MY=0, aylana=0, osRaf=null, osBosh=0;
+  var fonYulduz=[], qulay=[], xotiraYulduz=[], ochilgan=0, harfNuqta=[], harfBosh=0, uchuvchi=[];
+  function rad(d){ return d*Math.PI/180; }
+  function gmst(ms){ var d=ms/864e5+2440587.5-2451545.0; return ((280.46061837+360.98564736629*d)%360+360)%360; }
+  function ufqqa(raS, decD){
+    var lst=gmst(osVaqt)+osLon, ha=rad(lst-raS*15), dec=rad(decD), la=rad(osLat);
+    var sa=Math.sin(dec)*Math.sin(la)+Math.cos(dec)*Math.cos(la)*Math.cos(ha), alt=Math.asin(Math.max(-1,Math.min(1,sa)));
+    var ca=(Math.sin(dec)-Math.sin(alt)*Math.sin(la))/(Math.cos(alt)*Math.cos(la)+1e-9), az=Math.acos(Math.max(-1,Math.min(1,ca)));
+    if(Math.sin(ha)>0) az=2*Math.PI-az;
+    return {alt:alt, az:az};
+  }
+  function ekranga(p){ var r=R*Math.tan((Math.PI/2-p.alt)/2), a=p.az+aylana; return [MX-r*Math.sin(a), MY-r*Math.cos(a)]; }
+  function olcham(){ W=innerWidth; H=innerHeight; kv.width=W*DPR; kv.height=H*DPR; kv.style.width=W+"px"; kv.style.height=H+"px"; R=Math.min(W,H)*.47; MX=W/2; MY=H*.52; }
+  function osmonBoshla(){
+    if(osRaf) return;
+    olcham(); osBosh=performance.now();
+    var d=new Date(osVaqt), oy=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+    $("osmonIzoh").textContent=d.getDate()+" "+oy[d.getMonth()]+" "+d.getFullYear()+", "+ikki(d.getHours())+":"+ikki(d.getMinutes())+" · Shu kecha osmon aynan shunday edi. Porlayotgan yulduzlarga teg ✨";
+    var s=12345; function rnd(){ s=(s*16807)%2147483647; return s/2147483647; }
+    for(var i=0;i<900;i++){ var ra=rnd()*24, dec=Math.asin(rnd()*2-1)*180/Math.PI; fonYulduz.push({p:ufqqa(ra,dec), m:3.5+rnd()*2.6, f:rnd()*6}); }
+    YULDUZ.forEach(function(y){ var p=ufqqa(y[1],y[2]); y.p=p; if(p.alt>rad(4)) qulay.push(y); });
+    qulay.sort(function(a,b){ return a[3]-b[3]; });
+    xotiraYulduz=qulay.slice(0,xotiralar.length).map(function(y,i){ return {y:y, x:xotiralar[i], ochiq:false}; });
+    var bos=null;
+    kv.onpointerdown=function(e){ bos={x:e.clientX, a:aylana, t:Date.now()}; };
+    kv.onpointermove=function(e){ if(bos && Math.abs(e.clientX-bos.x)>6) aylana=bos.a+(e.clientX-bos.x)/R; };
+    kv.onpointerup=function(e){ var t=bos; bos=null; if(t && Math.abs(e.clientX-t.x)<8) osmonTeg(e.clientX, e.clientY); };
+    window.addEventListener("resize", olcham);
+    (function kadr(){ osRaf=requestAnimationFrame(kadr); osmonChiz(); })();
+  }
+  function osmonTeg(x,y){
+    var eng=null, ed=36;
+    xotiraYulduz.forEach(function(m){ var q=ekranga(m.y.p), d=Math.hypot(q[0]-x,q[1]-y); if(d<ed){ ed=d; eng=m; } });
+    if(!eng) return;
+    var k=$("xotiraKarta"); k.textContent=""; k.append(el("small",null,eng.y[0]+" yulduzi"), document.createTextNode(eng.x)); k.hidden=false;
+    zarba(.4); qongiroq(990);
+    if(!eng.ochiq){ eng.ochiq=true; ochilgan++; if(ochilgan>=xotiraYulduz.length) setTimeout(harfYasa, 2500); }
+  }
+  function harfYasa(){
+    $("xotiraKarta").hidden=true;
+    var c=document.createElement("canvas"); c.width=200; c.height=200; var g=c.getContext("2d");
+    g.fillStyle="#fff"; g.font="bold 170px Georgia, serif"; g.textAlign="center"; g.textBaseline="middle"; g.fillText((U[0]||"Z").toUpperCase(),100,108);
+    var px=g.getImageData(0,0,200,200).data, nuq=[];
+    for(var t=0;t<4000 && nuq.length<22;t++){ var x=Math.floor(Math.random()*200), y=Math.floor(Math.random()*200);
+      if(px[(y*200+x)*4+3]>200 && nuq.every(function(n){ return Math.hypot(n[0]-x,n[1]-y)>22; })) nuq.push([x,y]); }
+    harfNuqta=nuq; harfBosh=performance.now();
+    $("osmonSar").textContent="Osmon senga nimadir yozdi…"; $("osmonIzoh").textContent="";
+    qongiroq(660);
+    setTimeout(function(){
+      $("osmonSar").textContent="Bu yulduz endi seniki";
+      var k=$("xotiraKarta"); k.textContent=""; k.append(el("small",null,"«"+U+"» yulduzi"), document.createTextNode(os.y || "Shu kechadan beri bu osmonda bitta yulduz ortdi. U seniki."));
+      k.hidden=false; uchir("✨",18); qongiroq(880); $("b2Keyin").hidden=false;
+    }, 5200);
+  }
+  function osmonChiz(){
+    var t=(performance.now()-osBosh)/1000;
+    cx.setTransform(DPR,0,0,DPR,0,0); cx.clearRect(0,0,W,H);
+    var gr=cx.createRadialGradient(MX,MY,0,MX,MY,R*1.15); gr.addColorStop(0,"#1b1a4a"); gr.addColorStop(.7,"#0d0b2a"); gr.addColorStop(1,"#07061a");
+    cx.fillStyle=gr; cx.fillRect(0,0,W,H);
+    cx.strokeStyle="rgba(164,159,207,.18)"; cx.lineWidth=1; cx.beginPath(); cx.arc(MX,MY,R,0,Math.PI*2); cx.stroke();
+    cx.fillStyle="rgba(164,159,207,.5)"; cx.font="13px Manrope, sans-serif"; cx.textAlign="center"; cx.textBaseline="middle";
+    [["Sh",0],["Shq",Math.PI/2],["J",Math.PI],["G'",Math.PI*1.5]].forEach(function(n){ var a=n[1]+aylana; cx.fillText(n[0], MX-(R+14)*Math.sin(a), MY-(R+14)*Math.cos(a)); });
+    fonYulduz.forEach(function(s){ if(s.p.alt<0) return; var q=ekranga(s.p), a=Math.max(.08,(6.2-s.m)/4)*(.75+.25*Math.sin(t*2+s.f));
+      cx.fillStyle="rgba(230,232,255,"+a.toFixed(2)+")"; cx.fillRect(q[0],q[1],1.2,1.2); });
+    cx.strokeStyle="rgba(140,150,255,.22)"; cx.lineWidth=1;
+    CHIZIQ.forEach(function(c){ var a=YULDUZ.filter(function(y){ return y[0]===c[0]; })[0], b=YULDUZ.filter(function(y){ return y[0]===c[1]; })[0];
+      if(!a||!b||!a.p||!b.p||a.p.alt<0||b.p.alt<0) return; var p=ekranga(a.p), q=ekranga(b.p); cx.beginPath(); cx.moveTo(p[0],p[1]); cx.lineTo(q[0],q[1]); cx.stroke(); });
+    qulay.forEach(function(y){ var q=ekranga(y.p), r=Math.max(1,3.4-y[3]*.8);
+      cx.fillStyle="#fff"; cx.beginPath(); cx.arc(q[0],q[1],r,0,Math.PI*2); cx.fill(); });
+    xotiraYulduz.forEach(function(m,i){ var q=ekranga(m.y.p), p=.5+.5*Math.sin(t*3+i);
+      var g2=cx.createRadialGradient(q[0],q[1],0,q[0],q[1],22+p*10); g2.addColorStop(0, m.ochiq?"rgba(255,92,138,.55)":"rgba(242,200,121,.75)"); g2.addColorStop(1,"rgba(242,200,121,0)");
+      cx.fillStyle=g2; cx.beginPath(); cx.arc(q[0],q[1],32,0,Math.PI*2); cx.fill();
+      cx.fillStyle="rgba(244,238,254,.75)"; cx.font="11px Manrope, sans-serif"; cx.fillText(m.y[0], q[0], q[1]+20); });
+    // Uchuvchi yulduzlar
+    if(Math.random()<.006) uchuvchi.push({x:Math.random()*W, y:Math.random()*H*.5, vx:6+Math.random()*4, vy:3+Math.random()*2, h:1});
+    uchuvchi=uchuvchi.filter(function(u){ return u.h>0; });
+    uchuvchi.forEach(function(u){ cx.strokeStyle="rgba(255,255,255,"+u.h+")"; cx.lineWidth=1.5; cx.beginPath(); cx.moveTo(u.x,u.y); cx.lineTo(u.x-u.vx*8,u.y-u.vy*8); cx.stroke(); u.x+=u.vx; u.y+=u.vy; u.h-=.02; });
+    // Uning ismi bosh harfidan yulduz turkumi
+    if(harfNuqta.length){
+      var o=(performance.now()-harfBosh)/1000, k=R*1.1/200, ox=MX-100*k, oy=MY-100*k;
+      harfNuqta.forEach(function(n,i){ var ko=Math.min(1, Math.max(0, o*1.6-i*.12)); if(!ko) return;
+        var x=ox+n[0]*k, y=oy+n[1]*k, g3=cx.createRadialGradient(x,y,0,x,y,14); g3.addColorStop(0,"rgba(242,200,121,"+ko+")"); g3.addColorStop(1,"rgba(242,200,121,0)");
+        cx.fillStyle=g3; cx.beginPath(); cx.arc(x,y,14,0,Math.PI*2); cx.fill(); cx.fillStyle="rgba(255,255,255,"+ko+")"; cx.beginPath(); cx.arc(x,y,2.2,0,Math.PI*2); cx.fill(); });
+      if(o>4.5){ var a2=Math.min(1,(o-4.5)/1.5), g4=cx.createRadialGradient(MX,MY-R*.62,0,MX,MY-R*.62,40); g4.addColorStop(0,"rgba(255,240,200,"+a2+")"); g4.addColorStop(1,"rgba(255,240,200,0)");
+        cx.fillStyle=g4; cx.beginPath(); cx.arc(MX,MY-R*.62,40,0,Math.PI*2); cx.fill();
+        cx.fillStyle="rgba(255,255,255,"+a2+")"; cx.font="italic 600 20px 'Cormorant Garamond', serif"; cx.fillText(U, MX, MY-R*.62+28); }
+    }
+  }
+
+  // ---------------- 3. KOMPAS ----------------
+  var ko=D.ko||{}, kT={lat:+ko.lat, lon:+ko.lon}, menJoy=null, yonalishDeg=0, sarlavhaDeg=null, kompasKuz=null, urT=null;
+  function masofaM(a,b){ var r=Math.PI/180, dLa=(b.lat-a.lat)*r, dLo=(b.lon-a.lon)*r, h=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dLo/2)*Math.sin(dLo/2); return 2*6371000*Math.asin(Math.min(1,Math.sqrt(h))); }
+  function burchak(a,b){ var r=Math.PI/180, y=Math.sin((b.lon-a.lon)*r)*Math.cos(b.lat*r), x=Math.cos(a.lat*r)*Math.sin(b.lat*r)-Math.sin(a.lat*r)*Math.cos(b.lat*r)*Math.cos((b.lon-a.lon)*r); return (Math.atan2(y,x)/r+360)%360; }
+  function masMatn(d){ return d<1000 ? Math.max(5,Math.round(d/5)*5)+" m" : d<10000 ? (d/1000).toFixed(1).replace(".",",")+" km" : Math.round(d/1000)+" km"; }
+  function kompasTayyor(){ $("kompasMatn").textContent = ko.x || "Qayerda bo'lsang ham, yuragim shu tomonda"; if(!isFinite(kT.lat)){ $("kompasIzoh").textContent="Kompas nuqtasi belgilanmagan"; $("b3Keyin").hidden=false; } }
+  function sarlavhaOl(e){
+    var h=null;
+    if(typeof e.webkitCompassHeading==="number") h=e.webkitCompassHeading;
+    else if(e.absolute && typeof e.alpha==="number") h=360-e.alpha;
+    else if(typeof e.alpha==="number") h=360-e.alpha;
+    if(h!=null){ sarlavhaDeg=h; ignaYangila(); }
+  }
+  function ignaYangila(){
+    var hd=sarlavhaDeg||0;
+    $("kompasYuz").style.transform="rotate("+(-hd)+"deg)";
+    $("igna").style.transform="rotate("+(yonalishDeg-hd)+"deg)";
+    if(menJoy && sarlavhaDeg!=null){ var farq=Math.abs(((yonalishDeg-hd)+540)%360-180); $("igna").firstChild.firstChild.style.fontSize = farq<15 ? "52px" : "40px"; }
+  }
+  $("kompasBtn").addEventListener("click", function(){
+    audioOch();
+    var tingla=function(){ window.addEventListener("deviceorientationabsolute", sarlavhaOl); window.addEventListener("deviceorientation", sarlavhaOl); };
+    if(window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission==="function") DeviceOrientationEvent.requestPermission().then(function(s){ if(s==="granted") tingla(); else bildir("Kompasga ruxsat bering"); }).catch(tingla);
+    else tingla();
+    if(!navigator.geolocation){ bildir("Joylashuv aniqlanmaydi"); return; }
+    $("kompasBtn").hidden=true; $("kMasofa").textContent="…";
+    kompasKuz=navigator.geolocation.watchPosition(function(p){
+      menJoy={lat:p.coords.latitude, lon:p.coords.longitude};
+      var d=masofaM(menJoy,kT); yonalishDeg=burchak(menJoy,kT); ignaYangila();
+      $("kMasofa").textContent=masMatn(d);
+      $("kompasMatn").textContent = d<60 ? "Men shu yerdaman. Boshingni ko'tar 💞" : d<500 ? "Juda yaqinsan… yuragim eshitilyaptimi?" : d<5000 ? (ko.x || "Shu tomonda seni o'ylayotgan odam bor") : "Oramizda "+masMatn(d)+". Lekin yurak masofani tanimaydi";
+      clearInterval(urT); urT=setInterval(function(){ if(ovozYoq) zarba(.45); }, Math.max(380, Math.min(1400, 380+d/8)));
+      $("b3Keyin").hidden=false;
+    }, function(){ bildir("Joylashuvga ruxsat bering"); $("kompasBtn").hidden=false; $("b3Keyin").hidden=false; }, {enableHighAccuracy:true, maximumAge:5000, timeout:30000});
+  });
+  function kompasToxtat(){ clearInterval(urT); if(kompasKuz!=null) navigator.geolocation.clearWatch(kompasKuz); kompasKuz=null; }
+
+  // ---------------- 4. XAZINA ----------------
+  var xz=D.xz||{}, top=(xz.s||[]).filter(function(q){ return q && q.q; }), xT={lat:+xz.lat, lon:+xz.lon}, xKuz=null, xSarlavha=null;
+  function xazinaBoshla(){
+    var b=$("bolaklar"); b.textContent="";
+    top.forEach(function(q,i){ var p=el("div","bolak"+(i<hol.xz?"":" yopiq"), i<hol.xz ? q.p : "·"); p.style.setProperty("--r",((i%2?1:-1)*(.6+Math.random()))+"deg"); b.appendChild(p); });
+    topishmoqKorsat();
+  }
+  function topishmoqKorsat(){
+    if(hol.xz>=top.length){ $("topishmoq").hidden=true; if(isFinite(xT.lat)) joyBoshla(); else xazinaOxir(); return; }
+    var q=top[hol.xz]; $("tSon").textContent=(hol.xz+1)+" / "+top.length; $("tSavol").textContent=q.q; $("tJavob").value=""; $("tIshora").textContent=""; q.xato=0;
+  }
+  function tekshir(){
+    var q=top[hol.xz]; if(!q) return;
+    var v=norm($("tJavob").value), ok=String(q.a||"").split(",").map(norm).filter(Boolean).some(function(a){ return a===v; });
+    if(ok){
+      var p=$("bolaklar").children[hol.xz]; p.classList.remove("yopiq"); p.textContent=q.p||"♥"; p.style.animation="none"; void p.offsetWidth; p.style.animation="";
+      hol.xz++; qoy(kalit,hol); qongiroq(780+hol.xz*60); uchir("💛",6);
+      setTimeout(topishmoqKorsat, 900);
+    } else {
+      q.xato=(q.xato||0)+1; $("topishmoq").classList.remove("titra"); void $("topishmoq").offsetWidth; $("topishmoq").classList.add("titra");
+      var a=String(q.a||"").split(",")[0].trim();
+      $("tIshora").textContent = q.xato===1 ? "Yo'q… yana bir o'ylab ko'r 🤭" : q.xato===2 ? "Ishora: "+a.length+" ta harf, boshlanishi «"+a.slice(0,1).toUpperCase()+"»" : "Yana bir ishora: «"+a.slice(0,Math.ceil(a.length/2))+"…»";
+    }
+  }
+  $("tTekshir").addEventListener("click", tekshir);
+  $("tJavob").addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); tekshir(); } });
+  function joyBoshla(){ $("joyQism").hidden=false; $("joyIshora").textContent = xz.joy ? "Ishora: "+xz.joy : "Yuragingga quloq sol va yo'lga chiq"; }
+  $("joyBtn").addEventListener("click", function(){
+    audioOch();
+    var tingla=function(){ window.addEventListener("deviceorientationabsolute", xSarlavhaOl); window.addEventListener("deviceorientation", xSarlavhaOl); };
+    if(window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission==="function") DeviceOrientationEvent.requestPermission().then(function(s){ if(s==="granted") tingla(); }).catch(tingla); else tingla();
+    if(!navigator.geolocation){ bildir("Joylashuv aniqlanmaydi"); return; }
+    $("joyBtn").hidden=true; $("issiq").textContent="Qidirilmoqda…";
+    xKuz=navigator.geolocation.watchPosition(function(p){
+      var m={lat:p.coords.latitude, lon:p.coords.longitude}, d=masofaM(m,xT), acc=p.coords.accuracy||0;
+      xYon=burchak(m,xT); xIgna();
+      $("issiq").textContent = d<300 ? "❤️‍🔥 Juda issiq! "+masMatn(d) : d<1000 ? "🔥 Issiq · "+masMatn(d) : d<3000 ? "🌤 Iliq · "+masMatn(d) : "❄️ Sovuq · "+masMatn(d);
+      if(d < Math.max(35, Math.min(acc,70))){ navigator.geolocation.clearWatch(xKuz); xKuz=null; xazinaOxir(true); }
+    }, function(){ bildir("Joylashuvga ruxsat bering"); $("joyBtn").hidden=false; }, {enableHighAccuracy:true, maximumAge:3000, timeout:30000});
+  });
+  var xYon=0;
+  function xSarlavhaOl(e){ var h = typeof e.webkitCompassHeading==="number" ? e.webkitCompassHeading : typeof e.alpha==="number" ? 360-e.alpha : null; if(h!=null){ xSarlavha=h; xIgna(); } }
+  function xIgna(){ var hd=xSarlavha||0; $("xKompasYuz").style.transform="rotate("+(-hd)+"deg)"; $("xIgna").style.transform="rotate("+(xYon-hd)+"deg)"; }
+  $("keyinroqBtn").addEventListener("click", function(){ bildir("Qachon tayyor bo'lsang, shu havolani qayta och. Hammasi saqlanadi 💛"); });
+  function xazinaOxir(joyda){
+    var k=el("div","k");
+    if(joyda){ k.append(el("div","ke","💞"), el("div","km","Orqangga qara")); }
+    else k.append(el("div","ke","🗝"), el("div","km","Xat to'liq ochildi"));
+    var q=el("div","qogoz", xz.x || top.map(function(t){ return t.p; }).join("\n")); q.appendChild(el("div",null,"\n— "+(M||"Seni sevuvchi")));
+    var b=el("button","tugma","Davom et ✨"); b.type="button"; b.addEventListener("click", function(){ sahnaYop(); bobOch(5); });
+    k.append(q,b); sahnaOch(k, function(){ uchir("💖",20); uchir("✨",12); qongiroq(880); zarba(.8); setTimeout(function(){ zarba(.8); },700); setTimeout(function(){ zarba(.8); },1400); });
+  }
+
+  // ---------------- OXIRI ----------------
+  function oxir(){ $("oxirMatn").textContent=(M ? M+" seni" : "Seni")+" har kuni bundan ham ko'proq sevadi. To'rtta sehr tugadi, lekin bizning hikoyamiz endi boshlanmoqda."; uchir("💛",16); }
+  $("b1Keyin").hidden=true;
+}
+
+// =====================================================================
+//                           TAYYORLASH SAHIFASI
+// =====================================================================
+function yaratSahifasi(){
+  document.title="Sovg'a tayyorlash";
+  $("yarat").hidden=false;
+  var qoralama=ol("qoralama",null);
+  function topQator(q){
+    var w=el("div","topRow"), i1=el("input"), i2=el("input"), i3=el("textarea");
+    i1.placeholder="Savol: Birinchi uchrashuvimizda nima ichgandik?"; i2.placeholder="Javob: choy, ko'k choy"; i3.placeholder="Ochiladigan xat bo'lagi: O'sha kuni choy sovib qoldi, chunki men faqat senga qarab o'tirdim…"; i3.style.minHeight="70px";
+    i1.className="tq"; i2.className="ta"; i3.className="tp"; i1.maxLength=200; i2.maxLength=120; i3.maxLength=600;
+    if(q){ i1.value=q.q||""; i2.value=q.a||""; i3.value=q.p||""; }
+    w.append(i1,i2,i3); $("yTop").appendChild(w);
+  }
+  (qoralama && qoralama.top && qoralama.top.length ? qoralama.top : [null,null,null]).forEach(topQator);
+  $("yTopQosh").addEventListener("click", function(){ topQator(null); });
+  var maydon=["yU","yM","ySh","yOsSana","yOsSoat","yOsLat","yOsLon","yOsX","yOsY","yKoLat","yKoLon","yKoX","yXzLat","yXzLon","yXzIsh","yXzX"];
+  if(qoralama) maydon.forEach(function(id){ if(qoralama[id]!=null) $(id).value=qoralama[id]; });
+  function saqla(){ var q={top:yigTop()}; maydon.forEach(function(id){ q[id]=$(id).value; }); qoy("qoralama",q); }
+  document.addEventListener("input", saqla);
+  function yigTop(){ return Array.prototype.map.call(document.querySelectorAll(".topRow"), function(w){ return {q:w.querySelector(".tq").value.trim(), a:w.querySelector(".ta").value.trim(), p:w.querySelector(".tp").value.trim()}; }).filter(function(q){ return q.q && q.a; }); }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-joy]"), function(b){
+    b.addEventListener("click", function(){
+      var p=b.dataset.joy; if(!navigator.geolocation){ bildir("Joylashuv aniqlanmaydi"); return; }
+      b.textContent="📍 Aniqlanmoqda…";
+      navigator.geolocation.getCurrentPosition(function(g){ $(p+"Lat").value=g.coords.latitude.toFixed(6); $(p+"Lon").value=g.coords.longitude.toFixed(6); b.textContent="📍 Olindi (±"+Math.round(g.coords.accuracy)+" m)"; saqla(); },
+        function(){ b.textContent="📍 Hozirgi joyimni olish"; bildir("Joylashuvga ruxsat bering"); }, {enableHighAccuracy:true, timeout:20000});
+    });
+  });
+  // "41.31, 69.27" ko'rinishida yopishtirilsa ikkiga ajratiladi
+  ["yOsLat","yKoLat","yXzLat"].forEach(function(id){ $(id).addEventListener("input", function(){ var m=$(id).value.match(/(-?\d+(?:\.\d+)?)\s*[,;\s]\s*(-?\d+(?:\.\d+)?)/); if(m){ $(id).value=m[1]; $(id.replace("Lat","Lon")).value=m[2]; } }); });
+  function son(id){ var v=parseFloat(String($(id).value).replace(",",".")); return isFinite(v) ? v : null; }
+  function qatorlar(id){ return $(id).value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean); }
+  $("yYarat").addEventListener("click", function(){
+    var u=$("yU").value.trim(); if(!u){ bildir("Uning ismini yozing"); $("yU").focus(); return; }
+    var sana=$("yOsSana").value, soat=$("yOsSoat").value||"21:00";
+    var d={v:1, u:u, m:$("yM").value.trim(), sh:qatorlar("ySh").slice(0,7),
+      os:{t: sana ? new Date(sana+"T"+soat).getTime() : Date.now(), lat:son("yOsLat")||40.7821, lon:son("yOsLon")||72.3442, x:qatorlar("yOsX").slice(0,10), y:$("yOsY").value.trim()},
+      ko:{lat:son("yKoLat"), lon:son("yKoLon"), x:$("yKoX").value.trim()},
+      xz:{s:yigTop(), lat:son("yXzLat"), lon:son("yXzLon"), joy:$("yXzIsh").value.trim(), x:$("yXzX").value.trim()}};
+    var url=location.href.split("#")[0]+"#s="+kodla(d);
+    $("yHavola").textContent=url; $("yNatija").hidden=false; $("yNatija").scrollIntoView({behavior:"smooth"});
+    $("yUlash").onclick=function(){ if(navigator.share) navigator.share({title:u+" uchun", text:u+", bu faqat sen uchun. Yolg'iz, shoshmasdan och 💛", url:url}).catch(function(){});
+      else if(navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ bildir("Havola nusxalandi"); }); };
+    $("yKor").onclick=function(){ location.href=url; location.reload(); };
+    var ogoh=[]; if(!d.sh.length) ogoh.push("tilaklar"); if(!d.os.x.length) ogoh.push("xotiralar"); if(d.ko.lat==null) ogoh.push("kompas joyi"); if(!d.xz.s.length) ogoh.push("topishmoqlar");
+    bildir(ogoh.length ? "Havola tayyor. To'ldirilmagan: "+ogoh.join(", ") : "Havola tayyor ✨");
+  });
+}
+})();
+</script>
+</body>
+</html>
