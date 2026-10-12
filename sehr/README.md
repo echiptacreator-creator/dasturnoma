@@ -24,4 +24,4 @@ Kompas va puflashni iPhone'da bir marta ruxsat so'raydi. Joylashuv faqat sahifa 
 
 `andijonfk.uz/sehr/zaxro/` – barcha matnlari yozilgan tayyor sovg'a: 6 ta tilak, bugungi kechaning osmonidagi 5 ta xotira, 4 ta topishmoq va xat.
 Sahifa o'zi asosiy havolaga yo'naltiradi. Kompas igna bilan belgilangan nuqtani (40.797694, 72.102861) ko'rsatadi. Oxirgi joy berilmagani uchun
-xazina esa to'liq xat bilan tugaydi.
+xazina to'liq xat bilan tugaydi.
