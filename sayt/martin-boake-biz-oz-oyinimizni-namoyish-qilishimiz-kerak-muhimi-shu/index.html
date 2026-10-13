@@ -3877,6 +3877,36 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .jd .dq{display:none}
   .rek{grid-template-columns:1fr}
 }
+
+/* HOMIY BANNERLARI (webapp/homiybanner.py) */
+.hb{margin:46px auto}
+.hb-s{font-size:12px;letter-spacing:4px;text-transform:uppercase;opacity:.55;
+  margin:0 0 12px;font-weight:700}
+.hb-r{position:relative;aspect-ratio:5/1;border-radius:18px;overflow:hidden;
+  background:#0b1430;box-shadow:0 18px 40px -22px rgba(2,27,83,.55)}
+.hb-i{position:absolute;inset:0;display:block}
+.hb-i img,.hb-i picture{display:block;width:100%;height:100%;object-fit:cover}
+.hb-i:hover img{transform:scale(1.012)}
+.hb-i img{transition:transform .6s ease}
+.hb-ayl .hb-a{opacity:0;visibility:hidden;animation:hbAyl var(--j) infinite}
+.hb-ayl .hb-a:first-child{opacity:1;visibility:visible}
+@keyframes hbAyl{0%{opacity:0;visibility:visible}3%{opacity:1}
+  17%{opacity:1}20%{opacity:0;visibility:hidden}100%{opacity:0;visibility:hidden}}
+.hb-n{position:absolute;right:18px;bottom:14px;display:flex;gap:6px;z-index:3;
+  pointer-events:none}
+.hb-n i{width:7px;height:7px;border-radius:9px;background:rgba(255,255,255,.45);
+  animation:hbNuq var(--j) infinite}
+@keyframes hbNuq{0%{background:#fff;width:22px}17%{background:#fff;width:22px}
+  20%{background:rgba(255,255,255,.45);width:7px}100%{background:rgba(255,255,255,.45);width:7px}}
+.hb-gal{display:grid;gap:22px;margin:26px 0 10px}
+@media (max-width:700px){
+  .hb{margin:30px auto}
+  .hb-r{aspect-ratio:2/1;border-radius:14px}
+  .hb-n{right:12px;bottom:10px}
+  .hb-gal{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){.hb-ayl .hb-a{animation:none}
+  .hb-ayl .hb-a:not(:first-child){display:none}.hb-n{display:none}}
 </style>
 <link rel="canonical" href="https://andijonfk.uz/sayt/martin-boake-biz-oz-oyinimizni-namoyish-qilishimiz-kerak-muhimi-shu/">
 <meta property="og:url" content="https://andijonfk.uz/sayt/martin-boake-biz-oz-oyinimizni-namoyish-qilishimiz-kerak-muhimi-shu/">
@@ -3924,6 +3954,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <ul><li>Keling, Xudo bizga nima berishini ko&#x27;ramiz. Lekin biz o&#x27;z o&#x27;yinimizni namoyish qilishimiz kerak. Men uchun eng muhimi shu.</li></ul>
 <ul><li>Ayni paytda hisobingizda uchta gol bor. Chempionat yakuniga qadar nechta gol urishni xohlardingiz?</li></ul>
 <ul><li>Umid qilamanki, hali ko&#x27;p-ko&#x27;p gollar uraman.</li></ul>
+<section class="hb"><div class="hb-s">Hamkorlarimiz</div><div class="hb-r hb-ayl" style="--j:30s"><a class="hb-i hb-a" style="animation-delay:0s" href="https://kokanduni.uz/" target="_blank" rel="sponsored noopener" title="Kokand University"><picture><source media="(max-width:700px)" srcset="/media/sayt_art/homiy/kokand_m.jpg"><img src="../media/sayt_art/homiy/kokand.jpg" alt="Kokand University - FK Andijon homiysi" width="2400" height="480" decoding="async"></picture></a><a class="hb-i hb-a" style="animation-delay:6s" href="https://t.me/echipta_bot" target="_blank" rel="sponsored noopener" title="echipta"><picture><source media="(max-width:700px)" srcset="/media/sayt_art/homiy/echipta_m.jpg"><img src="../media/sayt_art/homiy/echipta.jpg" alt="echipta - FK Andijon homiysi" width="2400" height="480" loading="lazy" decoding="async"></picture></a><a class="hb-i hb-a" style="animation-delay:12s" href="https://uzautomotors.com/" target="_blank" rel="sponsored noopener" title="UzAuto Motors"><picture><source media="(max-width:700px)" srcset="/media/sayt_art/homiy/uzauto_m.jpg"><img src="../media/sayt_art/homiy/uzauto.jpg" alt="UzAuto Motors - FK Andijon homiysi" width="2400" height="480" loading="lazy" decoding="async"></picture></a><a class="hb-i hb-a" style="animation-delay:18s" href="https://centrum-air.com/" target="_blank" rel="sponsored noopener" title="Centrum Air"><picture><source media="(max-width:700px)" srcset="/media/sayt_art/homiy/centrumair_m.jpg"><img src="../media/sayt_art/homiy/centrumair.jpg" alt="Centrum Air - FK Andijon homiysi" width="2400" height="480" loading="lazy" decoding="async"></picture></a><a class="hb-i hb-a" style="animation-delay:24s" href="https://www.instagram.com/aksoy_water/" target="_blank" rel="sponsored noopener" title="Aksoy suvi"><picture><source media="(max-width:700px)" srcset="/media/sayt_art/homiy/aksoy_m.jpg"><img src="../media/sayt_art/homiy/aksoy.jpg" alt="Aksoy suvi - FK Andijon homiysi" width="2400" height="480" loading="lazy" decoding="async"></picture></a><div class="hb-n"><i style="animation-delay:0s"></i><i style="animation-delay:6s"></i><i style="animation-delay:12s"></i><i style="animation-delay:18s"></i><i style="animation-delay:24s"></i></div></div></section>
 </article>
 <footer><div class="q">
   <div class="ust">

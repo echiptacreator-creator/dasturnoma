@@ -3877,6 +3877,36 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .jd .dq{display:none}
   .rek{grid-template-columns:1fr}
 }
+
+/* HOMIY BANNERLARI (webapp/homiybanner.py) */
+.hb{margin:46px auto}
+.hb-s{font-size:12px;letter-spacing:4px;text-transform:uppercase;opacity:.55;
+  margin:0 0 12px;font-weight:700}
+.hb-r{position:relative;aspect-ratio:5/1;border-radius:18px;overflow:hidden;
+  background:#0b1430;box-shadow:0 18px 40px -22px rgba(2,27,83,.55)}
+.hb-i{position:absolute;inset:0;display:block}
+.hb-i img,.hb-i picture{display:block;width:100%;height:100%;object-fit:cover}
+.hb-i:hover img{transform:scale(1.012)}
+.hb-i img{transition:transform .6s ease}
+.hb-ayl .hb-a{opacity:0;visibility:hidden;animation:hbAyl var(--j) infinite}
+.hb-ayl .hb-a:first-child{opacity:1;visibility:visible}
+@keyframes hbAyl{0%{opacity:0;visibility:visible}3%{opacity:1}
+  17%{opacity:1}20%{opacity:0;visibility:hidden}100%{opacity:0;visibility:hidden}}
+.hb-n{position:absolute;right:18px;bottom:14px;display:flex;gap:6px;z-index:3;
+  pointer-events:none}
+.hb-n i{width:7px;height:7px;border-radius:9px;background:rgba(255,255,255,.45);
+  animation:hbNuq var(--j) infinite}
+@keyframes hbNuq{0%{background:#fff;width:22px}17%{background:#fff;width:22px}
+  20%{background:rgba(255,255,255,.45);width:7px}100%{background:rgba(255,255,255,.45);width:7px}}
+.hb-gal{display:grid;gap:22px;margin:26px 0 10px}
+@media (max-width:700px){
+  .hb{margin:30px auto}
+  .hb-r{aspect-ratio:2/1;border-radius:14px}
+  .hb-n{right:12px;bottom:10px}
+  .hb-gal{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){.hb-ayl .hb-a{animation:none}
+  .hb-ayl .hb-a:not(:first-child){display:none}.hb-n{display:none}}
 </style>
 <link rel="canonical" href="https://andijonfk.uz/sayt/futbolchi/odilbek-abdumajidov/">
 <meta property="og:url" content="https://andijonfk.uz/sayt/futbolchi/odilbek-abdumajidov/">
