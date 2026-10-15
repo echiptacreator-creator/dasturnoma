@@ -4205,6 +4205,8 @@ document.addEventListener('click',function(ev){
       r[b].style.display=(k==='hammasi'
         ||r[b].getAttribute('data-al')===k)?'':'none';}
   });}
+  var hh=(location.hash||'').slice(1);
+  if(hh){for(var z=0;z<t.length;z++){if(t[z].getAttribute('data-md')===hh){t[z].click();break;}}}
   if(!q)return;
   var im=q.querySelector('img'),iz=q.querySelector('.md-izoh'),joriy=0;
   function koz(n){
