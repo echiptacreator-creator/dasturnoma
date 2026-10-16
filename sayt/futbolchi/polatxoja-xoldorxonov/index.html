@@ -2651,6 +2651,130 @@ article a{color:var(--oltin);text-decoration:underline;
 article a:hover{color:#fff}
 article .qisqa{font-size:19px;color:rgba(255,255,255,.82);
   border-left:3px solid var(--qizil);padding-left:16px;margin-bottom:28px}
+/* --- INTERVYU (2026-10-16) ---------------------------------------
+   Operator: «intervyular maqolalardan farq qilsin». Maqola —
+   sarlavha + muqova + matn. Intervyu — katta portret ustida
+   iqtibos-sarlavha, savol-javob ko'rinishi, javob beruvchining
+   surati va oxirida «Boshqa intervyular». */
+article.iv{max-width:880px}
+.iv-bosh{position:relative;border-radius:22px;overflow:hidden;margin:0 0 34px;
+  background:linear-gradient(180deg,#0A2A63,#04143A);border:1px solid var(--chiziq);
+  min-height:460px;display:flex;align-items:flex-end}
+.iv-foto{position:absolute;inset:0}
+.iv-foto img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.iv-foto:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,
+  rgba(3,16,46,0) 20%,rgba(3,16,46,.72) 58%,#03102E 100%)}
+.iv-foto-yoq{display:flex;align-items:flex-start;justify-content:center;padding-top:46px}
+.iv-foto-yoq .yoy{position:absolute;inset:0;display:flex;justify-content:center;opacity:.65}
+.iv-foto-yoq .yoy svg{height:100%;width:auto}
+.iv-foto-yoq:after{background:linear-gradient(180deg,rgba(3,16,46,0) 40%,#03102E 100%)}
+.iv-ust{position:relative;z-index:2;padding:34px 38px 30px;width:100%}
+.iv-teg{display:inline-flex;align-items:center;gap:7px;padding:6px 13px 6px 10px;
+  border-radius:999px;background:var(--qizil);color:#fff;font-family:"Nekst";
+  font-weight:700;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+.iv-teg .ik{width:15px;height:15px}
+article.iv h1{position:relative;margin:18px 0 20px;font-size:40px;line-height:1.12;
+  text-wrap:balance;padding-left:44px}
+.iv-qm{position:absolute;left:-4px;top:-14px;font-family:Georgia,serif;font-size:96px;
+  line-height:1;color:var(--oltin)}
+.iv-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;
+  font-size:13.5px;color:rgba(255,255,255,.6)}
+.iv-kimh{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none!important}
+.iv-kimh b{font-family:"Nekst";font-weight:700;font-size:15px}
+.iv-kimh i{font-style:normal;font-size:12.5px;color:var(--oltin)}
+a.iv-kimh:hover b{color:var(--oltin)}
+/* Javob beruvchining surati */
+.iv-av{position:relative;flex:none;width:38px;height:38px;border-radius:50%;overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#123A80,#0A2558);border:2px solid var(--oltin);
+  font-family:"Nekst";font-weight:900;font-size:13px;color:var(--oltin)}
+.iv-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center top;background:#0A2558}
+.iv-av-k{width:132px;height:132px;font-size:40px;border-width:3px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5)}
+/* Savol-javob */
+.iv-matn{margin-top:6px}
+.iv-s{margin:38px 0 14px;padding:16px 20px 16px 20px;border-radius:14px;
+  background:rgba(226,186,117,.08);border:1px solid rgba(226,186,117,.22);
+  border-left:4px solid var(--oltin)}
+.iv-yl{display:block;font-family:"Nekst";font-weight:700;font-size:10.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--oltin);margin-bottom:6px}
+.iv-s p{margin:0;font-family:"Nekst";font-weight:700;font-size:18px;line-height:1.45;color:#fff}
+.iv-j{padding:4px 0 4px 54px;position:relative}
+.iv-kim{display:flex;align-items:center;gap:10px;margin:0 0 10px -54px}
+.iv-kim .iv-av{width:42px;height:42px}
+.iv-kim b{font-family:"Nekst";font-weight:700;font-size:14px;color:rgba(255,255,255,.85)}
+.iv-j p{font-size:17.5px;line-height:1.72;color:rgba(255,255,255,.88)}
+.iv-j p:last-child{margin-bottom:0}
+.iv-iqt{margin:40px 0;padding:30px 30px 24px;border-radius:18px;position:relative;
+  background:linear-gradient(135deg,rgba(226,186,117,.14),rgba(226,186,117,.03));
+  border:1px solid rgba(226,186,117,.25)}
+.iv-iqt:before{content:"\201C";position:absolute;right:22px;top:-6px;font-family:Georgia,serif;
+  font-size:120px;line-height:1;color:var(--oltin);opacity:.35}
+.iv-iqt blockquote{margin:0 0 18px;padding:0;border:0;font-family:"Nekst";
+  font-weight:700;font-size:22px;line-height:1.5;color:#fff}
+.iv-iqt figcaption{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--oltin)}
+/* Kartochka — maqola kartochkasidan farqli */
+.iv-kar{border-color:rgba(226,186,117,.28)}
+.iv-kar .rasm{aspect-ratio:4/3}
+.iv-kar .rasm img{object-position:center 20%}
+.iv-kar .tur{display:inline-flex;align-items:center;gap:6px;background:var(--qizil)!important;
+  color:#fff!important;border-color:transparent!important}
+.iv-kar .tur .ik{width:13px;height:13px}
+.iv-kq{font-family:Georgia,serif;font-size:60px;line-height:.6;height:26px;
+  color:var(--oltin);margin-top:12px}
+.iv-kar h3{font-style:italic}
+.iv-kk{display:flex;align-items:center;gap:9px;margin:4px 0 12px}
+.iv-kk .iv-av{width:30px;height:30px;font-size:11px}
+.iv-kk b{font-family:"Nekst";font-weight:700;font-size:13.5px;color:var(--oltin)}
+.iv-rasm-av{display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,#123A80,#04143A)!important}
+.iv-rasm-av .iv-av-k{width:110px;height:110px}
+/* Intervyular lentasida «bosh maqola» kengaytmasi yo'q — hamma
+   suhbat teng, portretlar bir qatorda. */
+@media(min-width:900px){
+  .iv-lenta{grid-template-columns:repeat(3,1fr)}
+  .iv-lenta > .kar:first-child{grid-column:auto;flex-direction:column}
+  .iv-lenta > .kar:first-child .rasm{width:auto;aspect-ratio:16/9}
+  .iv-lenta > .iv-kar:first-child .rasm{aspect-ratio:4/3}
+  .iv-lenta > .kar:first-child .ich{padding:17px 19px 20px;justify-content:flex-start}
+  .iv-lenta > .kar:first-child h3{font-size:19px;line-height:1.28}
+}
+/* Ulashish tugmalari (maqola va intervyu) */
+.ulash{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:30px 0 8px}
+.ulash-y{font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);margin-right:6px}
+article .ulash-t{display:inline-flex;align-items:center;padding:9px 15px;border-radius:999px;
+  border:1px solid var(--chiziq);background:rgba(255,255,255,.04);color:#fff;
+  font-family:inherit;font-size:13px;font-weight:600;line-height:1;
+  text-decoration:none;cursor:pointer}
+article .ulash-t:hover{border-color:var(--oltin);color:var(--oltin)}
+article .ulash-tg{background:#229ED9;border-color:#229ED9}
+article .ulash-wa{background:#1FA855;border-color:#1FA855}
+article .ulash-tg:hover,article .ulash-wa:hover{color:#fff;filter:brightness(1.1)}
+.iv-boshqa{margin-top:56px;padding-top:30px;border-top:1px solid var(--chiziq)}
+/* Kartochkalar article ICHIDA — `article a` (oltin, tagi chizilgan)
+   qoidasi ularga tegmasin. */
+article .iv-boshqa a{text-decoration:none}
+article .iv-boshqa a.kar{color:#fff}
+article .iv-boshqa a.kar:hover{color:#fff}
+article .iv-boshqa .kar h3{font-size:17px}
+.iv-boshqa h2{font-size:13px!important;letter-spacing:.18em!important;
+  text-transform:uppercase!important;margin:0 0 18px!important}
+@media (max-width:640px){
+  .iv-bosh{min-height:0;display:block;border-radius:16px}
+  .iv-foto{position:relative;aspect-ratio:4/3}
+  .iv-foto-yoq{aspect-ratio:auto;height:220px}
+  .iv-ust{padding:0 18px 22px;margin-top:-70px}
+  article.iv h1{font-size:27px;padding-left:30px}
+  .iv-qm{font-size:66px;top:-8px}
+  .iv-j{padding-left:0}
+  .iv-kim{margin-left:0}
+  .iv-j p{font-size:16.5px}
+  .iv-s p{font-size:16.5px}
+  .iv-iqt{padding:24px 20px 20px}
+  .iv-iqt blockquote{font-size:19px}
+}
 /* --- TURNIR JADVALI ----------------------------------------------
    Ilgari jadval inline uslublar bilan chizilgan oddiy jadval edi:
    gerb yo'q, zonalar (yetakchi / tushish xavfi) ko'rinmasdi. */
