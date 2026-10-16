@@ -4340,7 +4340,7 @@ document.addEventListener('click',function(ev){
     if(n>=b.length)n=0;
     joriy=n;
     var g=b[n].querySelector('img'),c=b[n].querySelector('figcaption');
-    im.src=g.getAttribute('src');
+    im.src=g.getAttribute('data-katta')||g.getAttribute('src');
     im.alt=g.getAttribute('alt')||'';
     iz.textContent=c?c.textContent:'';
     q.hidden=false;
