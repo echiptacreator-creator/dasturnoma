@@ -4,7 +4,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#021B53">
 <link rel="icon" type="image/png" href="../../gerb/Andijon.png">
-<link rel="apple-touch-icon" href="../../gerb/Andijon.png">
+<link rel="apple-touch-icon" href="../../ikon-192.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FK Andijon">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Usmonali Ismonaliyev — FK Andijon</title>
 <meta name="description" content="Usmonali Ismonaliyev · Hujumchi">
 <meta property="og:title" content="Usmonali Ismonaliyev — FK Andijon">
@@ -2740,6 +2744,27 @@ a.iv-kimh:hover b{color:var(--oltin)}
   .iv-lenta > .kar:first-child .ich{padding:17px 19px 20px;justify-content:flex-start}
   .iv-lenta > .kar:first-child h3{font-size:19px;line-height:1.28}
 }
+/* Telegram kanal taklifi (maqola oxiri) */
+.kanal-ch{display:flex;align-items:center;gap:16px;margin:26px 0 8px;padding:18px 20px;
+  border-radius:16px;background:linear-gradient(135deg,rgba(34,158,217,.18),rgba(34,158,217,.05));
+  border:1px solid rgba(34,158,217,.35)}
+.kanal-ch > .ik{width:34px;height:34px;color:#4FC3F7;flex:none}
+.kanal-ch div{flex:1;min-width:0}
+.kanal-ch b{display:block;font-family:"Nekst";font-weight:700;font-size:16px;color:#fff}
+.kanal-ch span{display:block;font-size:13.5px;color:rgba(255,255,255,.65);margin-top:3px}
+article .kanal-ch a{flex:none;padding:11px 18px;border-radius:999px;background:#229ED9;
+  color:#fff;text-decoration:none;font-weight:700;font-size:13.5px}
+article .kanal-ch a:hover{filter:brightness(1.1);color:#fff}
+@media (max-width:560px){.kanal-ch{flex-wrap:wrap}.kanal-ch a{width:100%;text-align:center}}
+/* O'qish chizig'i */
+.oq-chiz{position:fixed;left:0;right:0;top:0;height:3px;z-index:9999;pointer-events:none}
+.oq-chiz i{display:block;height:100%;background:linear-gradient(90deg,var(--qizil),var(--oltin));
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .08s linear}
+/* Futerdagi «Ilovani o'rnatish» */
+.ft-orn{margin-left:auto;padding:7px 14px;border-radius:999px;border:1px solid var(--oltin);
+  background:transparent;color:var(--oltin);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.ft-orn:hover{background:var(--oltin);color:#1b1408}
+.ft-orn + .ft-tepa{margin-left:12px}
 /* Ulashish tugmalari (maqola va intervyu) */
 .ulash{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:30px 0 8px}
 .ulash-y{font-family:"Nekst";font-weight:700;font-size:11px;letter-spacing:.18em;
@@ -4077,11 +4102,34 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
     <span>Andijon Press</span>
     <span class="ft-n">·</span>
     <a href="../../maxfiylik">Maxfiylik siyosati</a>
+    <button class="ft-orn" id="ft-orn" type="button" hidden>Ilovani o&#39;rnatish</button>
     <a class="ft-tepa" href="#tepa">Yuqoriga</a>
   </div>
 </div></footer>
 <nav class="pastnav"><a href="../../"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg><span>Bosh</span></a><a href="../../oyinlar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 4.3 3.1-1.6 5.1H9.3L7.7 10.5z"/><path d="M12 3v4.4M3.4 9.9l4.3.6M20.6 9.9l-4.3.6M7 20.4l2.3-4.8M17 20.4l-2.3-4.8"/></svg><span>O&#x27;yin</span></a><a href="../../jadval"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg><span>Jadval</span></a><a href="../../chiptalar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.4a2.2 2.2 0 0 0 0 4.4v1.4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.4a2.2 2.2 0 0 0 0-4.4z"/><path d="M14.2 6.4v1.8M14.2 11.1v1.8M14.2 15.8v1.8"/></svg><span>Chipta</span></a><button class="yn-tug" type="button" id="yn-tug" aria-label="Barcha bo&#39;limlar"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h11M4 18h7"/></svg><span>Yana</span></button></nav>
 <div class="yn" id="yn" hidden><div class="yn-ich"><div class="yn-bosh"><b>Bo&#39;limlar</b><button class="yn-yop" type="button" aria-label="Yopish">&#10005;</button></div><a class="yn-uy" href="../../"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2V21h-6v-6H9v6H3z"/></svg>Bosh sahifa</a><a class="yn-uy" href="../../qidiruv"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg>Qidiruv</a><div class="yn-tor"><div class="yn-g"><h4>Yangiliklar</h4><a href="../../yangiliklar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9.5h5M7 13.5h10M7 17h7"/></svg>So&#x27;nggi yangiliklar</a><a href="../../intervyular"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>Intervyular</a></div><div class="yn-g"><h4>O&#x27;yinlar</h4><a href="../../oyinlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalendar</a><a href="../../jadval"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.2h18M3 14.6h18M8.6 9.2V20"/></svg>Turnir jadvali</a><a href="../../statistika"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.2V11M12 20.2V3.8M19 20.2v-6.4"/></svg>Statistika</a><a href="../../arxiv"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg>Arxiv</a><a href="../../uchrashuvlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Uchrashuvlar</a></div><div class="yn-g"><h4>Klub</h4><a href="../../jamoa" class="faol"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.3 6-5.3s6 2 6 5.3"/><path d="M16.4 5.7a3.2 3.2 0 0 1 0 6.2M17.6 14.5c2.1.6 3.4 2.2 3.4 4.4"/></svg>Jamoa safi</a><a href="../../akademiya"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V7h4l3 3.5 5 1.6A4 4 0 0 1 19 16v1H4z"/><path d="M4 17h15"/></svg>Akademiya</a><a href="../../transferlar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.5a3 3 0 0 1 0 5.6M17 13.2a5 5 0 0 1 4 4.8V19"/></svg>Transfer va jarohat</a><a href="../../tarix"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 1.8"/></svg>Klub tarixi</a><a href="../../stadion"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10" r="2.6"/></svg>Bobur Arena</a><a href="../../homiylar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></svg>Homiylar</a><a href="../../aloqa"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.6l7 2.9 2.9 7z"/><path d="M21 3 10 13.5"/></svg>Aloqa</a></div><div class="yn-g"><h4>Media</h4><a href="../../media"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.6h3.4L8.2 6h7.6l1.8 2.6H21v10.8H3z"/><circle cx="12" cy="13.7" r="3.5"/></svg>Media</a></div><div class="yn-g"><h4>Chiptalar</h4><a href="../../chiptalar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.4a2.2 2.2 0 0 0 0 4.4v1.4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.4a2.2 2.2 0 0 0 0-4.4z"/><path d="M14.2 6.4v1.8M14.2 11.1v1.8M14.2 15.8v1.8"/></svg>Chiptalar</a></div></div><a class="yn-cta" href="../../chiptalar"><svg class="ik ik-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.4a2.2 2.2 0 0 0 0 4.4v1.4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.4a2.2 2.2 0 0 0 0-4.4z"/><path d="M14.2 6.4v1.8M14.2 11.1v1.8M14.2 15.8v1.8"/></svg>Chipta olish</a></div></div>
+<script>
+/* SAYTNI ILOVA QILIB O'RNATISH (2026-10-16). Brauzer o'rnatishni
+   taklif qila olsa (`beforeinstallprompt`), futerda tugma chiqadi;
+   bosilsa sayt telefon ekraniga gerb belgisi bilan qo'shiladi va
+   alohida ilovadek ochiladi. Taklif bo'lmasa tugma yashirin qoladi. */
+(function(){
+  var b = document.getElementById("ft-orn"), t = null;
+  if (!b) return;
+  window.addEventListener("beforeinstallprompt", function(e){
+    e.preventDefault(); t = e; b.hidden = false; });
+  b.addEventListener("click", function(){
+    if (!t) return; t.prompt();
+    t.userChoice.then(function(){ t = null; b.hidden = true; }); });
+  window.addEventListener("appinstalled", function(){ b.hidden = true; });
+  /* Xizmat ishchisi — internet uzilsa oxirgi ko'rilgan sahifalar
+     ochilaveradi (stadionda tarmoq yo'qolganda foydali). */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("/sayt/sw.js", {scope: "/sayt/"})
+      .catch(function(){});
+  }
+})();
+</script>
 <script>
 /* «YANA» VARAG'I — telefonda saytning hamma bo'limi.
    ⚠ TEPA MENYU TELEFONDA YASHIRINADI (`max-width:860px`), ya'ni
