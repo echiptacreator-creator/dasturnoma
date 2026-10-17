@@ -324,12 +324,6 @@ img{display:block;max-width:100%}
   .yz{justify-content:flex-end;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   .yz-kartalar.yz-2,.yz-kartalar.yz-1{grid-template-columns:1fr;max-width:none}
 }
-@media(prefers-reduced-motion:reduce){
-  .hero-kino[data-kino]{height:auto}
-  .hero-kino[data-kino] .hero{position:relative;min-height:0}
-  .hero-kino[data-kino] .hero .q{opacity:1;transform:none}
-  .kino-boblar{display:none}
-}
 .tr-av{flex:none;width:44px;height:44px;border-radius:50%;overflow:hidden;
   border:2px solid rgba(255,255,255,.35);background:#071a45;margin:0 4px}
 .tr-av img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;display:block}
@@ -4942,7 +4936,9 @@ Hakamlar: Alis</p><div class="sana">16-oktabr, 2026</div></div></a><a class="kar
 (function(){
   var qobiq = document.querySelector(".hero-kino[data-kino]");
   if (!qobiq || !window.matchMedia) return;
-  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  /* reduced-motion TEKSHIRUVI OLIB TASHLANDI (2026-10-17): film o'zi
+     o'ynamaydi, uni foydalanuvchi skroll bilan boshqaradi; quvvat tejash
+     rejimidagi telefonlarda film butunlay o'chib qolardi. */
   var v = qobiq.querySelector("video.hero-kino-v");
   if (!v) return;
   var mobil = matchMedia("(max-width:720px), (hover:none) and (pointer:coarse)").matches;
