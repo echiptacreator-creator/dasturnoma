@@ -2135,6 +2135,14 @@ img{display:block;max-width:100%}
 .mst-r{display:flex;gap:9px;align-items:center;margin-top:9px;
   flex-wrap:wrap}
 .mst-r input{flex:1 1 160px;width:auto}
+.mst-kim{flex:1 1 160px;font-size:13px;color:rgba(255,255,255,.7);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.mst-kir{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:16px 18px;border-radius:14px;border:1px dashed rgba(42,171,238,.6);
+  background:rgba(42,171,238,.08);color:#fff;text-decoration:none}
+.mst-kir b{font-size:15px}.mst-kir span{font-size:13px;color:#2AABEE;font-weight:700}
+.mst-kir:hover{background:rgba(42,171,238,.14)}
+.mst-kir[hidden],.mst-f[hidden]{display:none}
 .mst-y{flex:0 0 auto;padding:11px 22px;border:0;border-radius:999px;
   cursor:pointer;font-family:"Nekst";font-weight:800;font-size:13.5px;
   color:#fff;background:linear-gradient(100deg,#EB1F28 0%,#0A2A63 100%);
@@ -4740,6 +4748,8 @@ tug&&(tug.onclick=function(){if(!API){xt.textContent='Kirish hozircha ishlamayap
         fetch(API+'/api/muxlis/kirish?kod='+d.kod).then(function(r){return r.json();}).then(function(h){
           if(h.holat==='tayyor'){clearInterval(vaqt);qoy('fk_tok',h.token);
             if(h.profil){qoy('fk_ism',h.profil.ism||'');qoy('fk_kim',h.profil.kim);}
+            var qy=(location.search.match(/[?&]qayt=([^&]+)/)||[])[1];
+            if(qy){qy=decodeURIComponent(qy);if(qy.charAt(0)==='/'&&qy.charAt(1)!=='/'){location.href=qy;return;}}
             kut.hidden=true;men_ol();var a=Q('kir-tug');if(a&&h.profil){a.classList.add('kir-on');
               a.textContent=(h.profil.ism||'M').trim().charAt(0).toUpperCase();}}
           else if(h.holat==='eskirdi'||h.holat==='yoq'){clearInterval(vaqt);kut.innerHTML='Havola eskirdi — qayta bosing.';}
