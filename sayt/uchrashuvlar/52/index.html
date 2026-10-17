@@ -391,6 +391,9 @@ img{display:block;max-width:100%}
   .md-av > b{font-size:10px;height:20px;line-height:20px;min-width:20px;right:-5px}
   .md-belgi i{width:16px;height:16px}.md-belgi .md-kart{width:10px;height:14px}
   .md-f em{font-size:10px;margin-top:5px}.md-f small{display:none}
+  /* Uzun familiya (XOLDORXO'JAYEV) qo'shnisiga yopishmasin (2026-10-17). */
+  .md-f em{max-width:72px;margin-left:auto;margin-right:auto;overflow:hidden;
+    text-overflow:ellipsis;letter-spacing:0;font-size:9.5px}
   .md-bosh b{font-size:20px}.md-tablo{gap:8px;padding:6px 10px}.md-tablo > b{font-size:20px}
   .md-tablo span{font-size:11px}.md-tablo span img{width:22px;height:22px}.md-sx{font-size:10px;padding:4px 8px}
 }
@@ -3319,6 +3322,11 @@ article .iv-boshqa .kar h3{font-size:17px}
   .jd-guruh{margin-bottom:16px;align-items:stretch}
   .jd-segment{width:100%}
   .jd-segment button{flex:1;text-align:center;padding:8px 10px}
+}
+/* Tor telefonda «Shakl» ustuni yashirinadi — ochko ustuni ekranda
+   ko'rinsin (2026-10-17, audit: ochko o'ngga chiqib ketardi). */
+@media (max-width:430px){
+  .jd-t .jd-sh{display:none}
 }
 
 /* --- FUTER ------------------------------------------------------
