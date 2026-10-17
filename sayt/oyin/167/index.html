@@ -4034,6 +4034,39 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .md-al h2 small{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--oltin);
   padding:4px 11px;border-radius:999px;background:rgba(226,186,117,.12)}
 .krs.md-krs{gap:14px}
+.md-ak-tor{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));margin:6px 0 34px}
+.md-ak-tor[hidden],.md-al[hidden]{display:none}
+.md-ak{position:relative;display:block;aspect-ratio:4/3;border-radius:20px;overflow:hidden;
+  color:#fff;text-decoration:none;background:#03102E;border:1px solid var(--chiziq);
+  transition:transform .35s,border-color .35s,box-shadow .35s}
+.md-ak:hover{transform:translateY(-4px);border-color:rgba(226,186,117,.55);
+  box-shadow:0 22px 44px rgba(0,0,0,.45)}
+.md-ak>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.md-ak:hover>img{transform:scale(1.07)}
+.md-ak:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,16,46,0) 25%,rgba(2,16,46,.55) 55%,rgba(2,12,36,.96) 100%)}
+.md-ak-q{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 16px 18px;
+  display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.md-ak-m{display:flex;align-items:center;gap:16px}
+.md-ak-m img{width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.7));
+  transition:transform .4s}
+.md-ak:hover .md-ak-m img:first-child{transform:translateX(-4px) rotate(-4deg)}
+.md-ak:hover .md-ak-m img:last-child{transform:translateX(4px) rotate(4deg)}
+.md-ak-m strong{font-family:"Nekst";font-weight:900;font-size:42px;line-height:1;
+  text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.md-ak-m strong u{text-decoration:none;color:var(--qizil);margin:0 5px}
+.md-ak-q b{font-family:"Nekst";font-weight:900;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.md-ak-q em{font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.6)}
+.md-ak-q b.md-ak-t{font-size:20px;letter-spacing:.06em}
+.md-ak-n,.md-ak-u{position:absolute;top:12px;z-index:2;padding:4px 11px;border-radius:999px;
+  font-family:"Nekst";font-style:normal;font-size:11px;font-weight:700;letter-spacing:.05em}
+.md-ak-n{right:12px;background:rgba(2,27,83,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--oltin)}
+.md-ak-u{left:12px;background:var(--qizil);color:#fff}
+.md-orqa{display:inline-flex;align-items:center;gap:6px;margin:0 0 14px;padding:8px 16px;
+  border-radius:999px;border:1px solid var(--chiziq);font-family:"Nekst";font-size:12px;
+  letter-spacing:.06em;color:#fff;text-decoration:none}
+.md-orqa:hover{border-color:var(--oltin);color:var(--oltin)}
 .md-mb{position:relative;display:flex;align-items:center;gap:clamp(12px,3vw,34px);
   padding:14px clamp(14px,3vw,30px);border-radius:20px;overflow:hidden;
   border:1px solid rgba(226,186,117,.22);
@@ -4190,6 +4223,9 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .md-nav::-webkit-scrollbar{display:none}
   .md-nav button{flex:none;white-space:nowrap}
   .md-al .krs-bosh{display:block}
+  .md-ak-tor{grid-template-columns:1fr;gap:12px}
+  .md-ak-m img{width:48px;height:48px}
+  .md-ak-m strong{font-size:36px}
   .md-mb{justify-content:space-between;gap:8px;padding:12px}
   .md-mj{flex-direction:column!important;gap:6px;text-align:center!important;flex:1}
   .md-mj b{font-size:11.5px;white-space:normal}
@@ -4715,6 +4751,17 @@ document.addEventListener('click',function(ev){
   var t=document.querySelectorAll('.md-nav button');
   var r=document.querySelectorAll('.md-r');
   var q=document.getElementById('md-katta');
+  var G=document.getElementById('md-albomlar');
+  function kor(){
+    var h=(location.hash||'').slice(1),x=h&&document.getElementById(h),
+        ich=!!(x&&x.classList.contains('md-al')),al=document.querySelectorAll('.md-al');
+    for(var i=0;i<al.length;i++)al[i].hidden=(al[i]!==x);
+    if(G)G.hidden=ich;
+    window.dispatchEvent(new Event('resize'));
+    return ich?x:G;}
+  window.addEventListener('hashchange',function(){var e=kor();
+    if(e)window.scrollTo(0,e.getBoundingClientRect().top+window.pageYOffset-110);});
+  kor();
   var toplam=[];
   function korinadi(){return toplam;}
   for(var i=0;i<t.length;i++){t[i].addEventListener('click',function(){
