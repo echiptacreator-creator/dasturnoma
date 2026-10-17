@@ -4034,6 +4034,32 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .md-al h2 small{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--oltin);
   padding:4px 11px;border-radius:999px;background:rgba(226,186,117,.12)}
 .krs.md-krs{gap:14px}
+.md-mb{position:relative;display:flex;align-items:center;gap:clamp(12px,3vw,34px);
+  padding:14px clamp(14px,3vw,30px);border-radius:20px;overflow:hidden;
+  border:1px solid rgba(226,186,117,.22);
+  background:radial-gradient(120% 160% at 0% 50%,rgba(235,31,40,.22),transparent 55%),
+    radial-gradient(120% 160% at 100% 50%,rgba(226,186,117,.14),transparent 55%),
+    linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.md-mb:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.08) 50%,transparent 60%);
+  transform:translateX(-100%);animation:mdNur 6s ease-in-out infinite}
+@keyframes mdNur{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.md-mb{flex:0 1 640px}
+.md-mj{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.md-mj:last-child{flex-direction:row-reverse;text-align:right}
+.md-mj img{width:clamp(40px,5vw,58px);height:clamp(40px,5vw,58px);object-fit:contain;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));transition:transform .3s}
+.md-mb:hover .md-mj img{transform:scale(1.08) rotate(-3deg)}
+.md-mj b{font-family:"Nekst";font-weight:900;font-size:clamp(14px,1.8vw,20px);
+  text-transform:uppercase;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.md-mh{display:flex;flex-direction:column;align-items:center;gap:3px}
+.md-mh em{font-style:normal;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);white-space:nowrap}
+.md-mh strong{font-family:"Nekst";font-weight:900;font-size:clamp(28px,3.4vw,42px);
+  line-height:1;color:#fff;text-shadow:0 0 24px rgba(235,31,40,.35)}
+.md-mh strong u{text-decoration:none;color:var(--qizil);margin:0 6px}
+.md-mh span{font-family:"Nekst";font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--oltin);padding:3px 10px;border-radius:999px;background:rgba(226,186,117,.12)}
 .md-krs>*{flex-basis:clamp(260px,31%,440px)}
 .md-n{position:absolute;top:10px;right:10px;z-index:2;padding:4px 10px;border-radius:999px;
   background:rgba(2,27,83,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -4163,6 +4189,10 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   .md-nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 22px;padding:0 16px 4px}
   .md-nav::-webkit-scrollbar{display:none}
   .md-nav button{flex:none;white-space:nowrap}
+  .md-al .krs-bosh{display:block}
+  .md-mb{justify-content:space-between;gap:8px;padding:12px}
+  .md-mj{flex-direction:column!important;gap:6px;text-align:center!important;flex:1}
+  .md-mj b{font-size:11.5px;white-space:normal}
   .md-tor{grid-template-columns:1fr 1fr;gap:7px}
   .md-r figcaption{display:none}
   .md-katta{padding:12px}
