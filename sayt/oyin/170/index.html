@@ -203,6 +203,17 @@ img{display:block;max-width:100%}
   .yz-tug{grid-area:tug;margin-top:0;padding:9px 12px;font-size:10px;letter-spacing:.08em}
   .yz-hammasi{margin-top:12px;font-size:11px}
 }
+/* AUDIT (2026-10-17): sahna ekranning PASTIGA yopishadi — film tugab
+   hero yuqoriga ketganda ostida bo'sh stadion qolmaydi, yangiliklar
+   darhol keladi. O'yin kamroq bo'lsa to'r torayadi. */
+.yz{justify-content:flex-end;padding-bottom:6vh}
+.yz-kartalar.yz-2{grid-template-columns:repeat(2,1fr);max-width:780px}
+.yz-kartalar.yz-1{grid-template-columns:1fr;max-width:400px}
+.yz-kartalar.yz-2 .yz-karta:nth-child(3){grid-column:auto}
+@media(max-width:720px){
+  .yz{justify-content:flex-end;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .yz-kartalar.yz-2,.yz-kartalar.yz-1{grid-template-columns:1fr;max-width:none}
+}
 @media(prefers-reduced-motion:reduce){
   .hero-kino[data-kino]{height:auto}
   .hero-kino[data-kino] .hero{position:relative;min-height:0}
@@ -2837,6 +2848,11 @@ a.iv-kimh:hover b{color:var(--oltin)}
   .krs-hav{font-size:11px}
 }
 /* --- JAMOA (2026-10-17): raqamlar + pozitsiya tugmalari + statistikali kartochkalar --- */
+/* Windows bayroq emojisini harf qilib ko'rsatadi («UZ») — bayroq shrifti
+   faqat bayroq belgilariga (unicode-range) ulanadi, boshqa matnga tegmaydi. */
+@font-face{font-family:"Bayroq";font-display:swap;unicode-range:U+1F1E6-1F1FF;
+  src:url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.8/dist/TwemojiCountryFlags.woff2") format("woff2")}
+.jm-i em{font-family:"Bayroq","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .jm-blok{padding:64px 0 40px;background:linear-gradient(180deg,rgba(28,79,168,.10),transparent 70%)}
 .jm-chip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}
 .jm-chip>div{border:1px solid var(--chiziq);border-radius:14px;padding:14px 16px;
@@ -2891,6 +2907,52 @@ a.iv-kimh:hover b{color:var(--oltin)}
   .jm-i b{font-size:15px}
   .jm-s span{font-size:9.5px;padding:8px 2px}
   .jm-s b{font-size:15px}
+}
+/* --- ANDIJON STORE (2026-10-17) --- */
+.dk-blok{padding:56px 0;position:relative;overflow:hidden;
+  background:radial-gradient(90% 120% at 85% 20%,rgba(206,17,38,.22),transparent 60%),
+             linear-gradient(180deg,#071a45,#04143A)}
+.dk-ich{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
+.dk-yo{display:inline-block;font-style:normal;font-family:"Nekst";font-weight:700;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--oltin);margin-bottom:12px}
+.dk-matn h2{font-family:"Nekst";font-weight:900;font-size:clamp(30px,3.6vw,48px);line-height:1.02;
+  text-transform:uppercase;margin:0 0 14px;color:#fff}
+.dk-matn p{color:rgba(255,255,255,.72);font-size:15.5px;margin:0 0 22px;max-width:460px}
+.dk-afz{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 24px}
+.dk-afz>div{border:1px solid var(--chiziq);border-radius:14px;padding:12px 14px;background:rgba(3,21,57,.55)}
+.dk-afz b{display:block;font-family:"Nekst";font-weight:900;font-size:20px;line-height:1.1;color:#fff}
+.dk-afz span{display:block;font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+.dk-tug{display:flex;gap:10px;flex-wrap:wrap}
+.dk-tug a{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;
+  font-family:"Nekst";font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3)}
+.dk-tug a i{font-style:normal}
+.dk-asosiy{background:var(--qizil);border-color:var(--qizil)!important}
+.dk-asosiy:hover{filter:brightness(1.1)}
+.dk-ikki:hover{border-color:var(--oltin)!important;color:var(--oltin)!important}
+.dk-kartalar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dk-k{position:relative;display:block;border-radius:18px;overflow:hidden;aspect-ratio:4/5;
+  border:1px solid var(--chiziq);color:#fff;text-decoration:none;background:#04143A}
+.dk-k:nth-child(even){transform:translateY(26px)}
+.dk-k img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+.dk-k:hover img{transform:scale(1.06)}
+.dk-k span{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 12px;
+  background:linear-gradient(180deg,transparent,rgba(4,20,58,.92))}
+.dk-k b{display:block;font-family:"Nekst";font-weight:900;font-size:14px;text-transform:uppercase;line-height:1.1}
+.dk-k em{display:block;font-style:normal;font-size:11px;color:rgba(255,255,255,.65);margin-top:3px}
+@media(max-width:900px){
+  .dk-ich{grid-template-columns:1fr;gap:26px}
+  .dk-kartalar{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:44%;
+    overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -16px;padding:0 16px 6px}
+  .dk-kartalar::-webkit-scrollbar{display:none}
+  .dk-k{scroll-snap-align:start}
+  .dk-k:nth-child(even){transform:none}
+}
+@media(max-width:760px){
+  .dk-blok{padding:44px 0}
+  .dk-matn p{font-size:14.5px}
+  .dk-afz b{font-size:17px}
+  .dk-tug a{flex:1;justify-content:center;padding:13px 14px}
 }
 /* --- VIDEOLAR (2026-10-16) --- */
 .vk-tor{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:18px 0 6px}
@@ -5201,9 +5263,18 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     }).then(function(){qoy(KS,'0');chiz();xabar(T.ochdi);}).catch(function(){});}
   var tk=null;
   function taklifYop(){if(tk){tk.remove();tk=null;}}
+  /* TAKLIF QACHON CHIQADI (2026-10-17, audit): birinchi ekranda emas —
+     odam kamida 3 sahifa ochgan bo'lsa yoki sahifaning yarmini o'qigach
+     (15 soniyadan oldin emas). */
+  var sah=(+(ol('afk_push_sah')||0))+1;qoy('afk_push_sah',String(sah));
+  function vaqtimi(f){var t0=Date.now(),ok=false;
+    function tek(){if(ok)return;var h=document.documentElement,
+        o=(scrollY+innerHeight)/Math.max(1,h.scrollHeight);
+      if(Date.now()-t0>=15000&&(sah>=3||o>=0.5)){ok=true;removeEventListener('scroll',tek);clearInterval(iv);f();}}
+    var iv=setInterval(tek,3000);addEventListener('scroll',tek,{passive:true});}
   if(Notification.permission==='default'&&ol(KS)!=='1'){
     var oxirgi=+(ol(KT)||0);
-    if(Date.now()-oxirgi>14*864e5)setTimeout(function(){
+    if(Date.now()-oxirgi>14*864e5)vaqtimi(function(){
       tk=document.createElement('div');tk.className='push-taklif';
       tk.innerHTML='<b></b><span></span><div><button type="button" class="pt-ha"></button>'+
         '<button type="button" class="pt-yoq"></button></div>';
@@ -5212,7 +5283,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
       document.body.appendChild(tk);
       tk.querySelector('.pt-ha').onclick=function(){yoq();};
       tk.querySelector('.pt-yoq').onclick=function(){qoy(KT,String(Date.now()));taklifYop();};
-    },15000);
+    });
   }
 })();
 </script>
