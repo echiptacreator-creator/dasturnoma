@@ -4017,22 +4017,76 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .md-ch{left:16px;top:50%;transform:translateY(-50%)}
 .md-oq{right:16px;top:50%;transform:translateY(-50%)}
 /* Matbuot to'plami — brend ranglari va qoidalari. */
+.pk-zip{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;
+  margin:4px 0 6px;padding:12px 18px;border-radius:12px;background:var(--qizil);
+  color:#fff;font-family:"Nekst";font-size:14px;letter-spacing:.03em;
+  text-decoration:none;transition:transform .2s,filter .2s}
+.pk-zip:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.pk-zip small{font-family:inherit;font-size:11px;opacity:.75;letter-spacing:.02em}
+.pk-h{margin:26px 0 12px;font-family:"Nekst";font-size:15px;letter-spacing:.04em}
+.pk-h small{font-size:11px;font-weight:400;color:rgba(255,255,255,.45);
+  margin-left:8px;letter-spacing:.02em}
+.pk-ftor{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.pk-f{display:block;border:1px solid var(--chiziq);border-radius:13px;padding:10px;
+  color:inherit;text-decoration:none;background:rgba(255,255,255,.035);
+  transition:border-color .2s,transform .2s}
+.pk-f:hover{border-color:var(--oltin);transform:translateY(-2px)}
+.pk-fk{height:120px;border-radius:9px;display:flex;align-items:center;
+  justify-content:center;margin-bottom:10px}
+.pk-fk img{height:88px}
+.pk-f b{display:block;font-family:"Nekst";font-size:13px}
+.pk-f span{display:block;font-size:11.5px;color:rgba(255,255,255,.5);margin-top:2px}
+.pk-f span::after{content:"  ↓";color:var(--oltin)}
 .pk-tor{display:grid;gap:12px;
   grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}
-.pk-r{border:1px solid var(--chiziq);border-radius:13px;padding:13px;
-  background:rgba(255,255,255,.035)}
+.pk-r{position:relative;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  border:1px solid var(--chiziq);border-radius:13px;padding:13px;
+  background:rgba(255,255,255,.035);transition:border-color .2s}
+.pk-r:hover{border-color:var(--oltin)}
 .pk-r i{display:block;height:46px;border-radius:9px;margin-bottom:11px;
   border:1px solid rgba(255,255,255,.12)}
-.pk-r b{display:block;font-family:"Nekst";font-size:12.5px;
-  letter-spacing:.04em}
-.pk-r span{display:block;font-size:11.5px;margin-top:3px;
-  color:rgba(255,255,255,.5)}
+.pk-r b{display:block;font-family:"Nekst";font-size:12.5px;letter-spacing:.04em}
+.pk-r small{display:block;font-size:10.5px;color:rgba(255,255,255,.42);margin-top:2px}
+.pk-r span{display:block;font-size:11.5px;margin-top:3px;color:rgba(255,255,255,.5)}
 .pk-r code{font-size:11.5px;color:var(--oltin);letter-spacing:.04em}
-.pk-gerb{display:flex;align-items:center;gap:16px;margin-top:16px;
-  padding:14px;border:1px solid var(--chiziq);border-radius:13px}
-.pk-gerb img{width:72px;height:72px;object-fit:contain;flex:0 0 auto}
-.pk-gerb p{margin:0;font-size:13px;line-height:1.6;
-  color:rgba(255,255,255,.6)}
+.pk-r em{position:absolute;top:8px;right:8px;font-style:normal;font-size:10.5px;
+  padding:3px 7px;border-radius:6px;background:var(--oltin);color:#021B53;
+  opacity:0;transform:translateY(-4px);transition:.2s}
+.pk-r.nus em{opacity:1;transform:none}
+.pk-qoida{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.pk-q{border:1px solid var(--chiziq);border-radius:13px;padding:14px;
+  background:rgba(255,255,255,.035)}
+.pk-q p,.pk-izoh{margin:12px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.62)}
+.pk-q p b{color:#fff}
+.pk-joy,.pk-min,.pk-fon{height:120px;display:flex;align-items:center;
+  justify-content:center;gap:14px;border-radius:9px;background:rgba(255,255,255,.04)}
+.pk-joy img{height:72px;padding:14px;outline:1.5px dashed var(--oltin);
+  outline-offset:0;box-sizing:content-box}
+.pk-min{align-items:flex-end;padding-bottom:22px;box-sizing:border-box}
+.pk-fon i{display:flex;align-items:center;justify-content:center;width:58px;
+  height:76px;border-radius:8px}
+.pk-fon img{height:48px}
+.pk-xtor{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(128px,1fr))}
+.pk-x{border:1px solid rgba(235,31,40,.35);border-radius:12px;padding:8px;
+  background:rgba(235,31,40,.05);text-align:center}
+.pk-xk{position:relative;height:96px;border-radius:8px;display:flex;
+  align-items:center;justify-content:center;overflow:hidden;
+  background:rgba(255,255,255,.04)}
+.pk-xk img{height:62px}
+.pk-xk::after{content:"✕";position:absolute;top:6px;right:6px;width:20px;
+  height:20px;border-radius:50px;background:var(--qizil);color:#fff;
+  font-size:11px;line-height:20px}
+.pk-x span{display:block;margin-top:7px;font-size:11.5px;color:rgba(255,255,255,.6)}
+.pk-shr{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pk-shr div{border:1px solid var(--chiziq);border-radius:13px;padding:14px}
+.pk-shr span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:6px}
+.pk-shr b{font-size:22px;font-weight:700}
+.pk-press{font-family:"Nekst";font-size:15px!important;letter-spacing:.08em;
+  display:inline-flex;align-items:center;gap:8px}
+.pk-press i{width:7px;height:7px;border-radius:50px;background:var(--qizil);
+  animation:pkLive 1.4s infinite}
+@keyframes pkLive{50%{opacity:.25}}
 @media (max-width:600px){
   .md-tor{grid-template-columns:1fr 1fr;gap:7px}
   .md-r figcaption{display:none}
