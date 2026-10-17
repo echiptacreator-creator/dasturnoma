@@ -3387,6 +3387,9 @@ footer{border-top:1px solid var(--chiziq);
   margin-top:70px;padding:46px 0 32px;color:rgba(255,255,255,.5);
   font-size:13px}
 footer .q{display:block}
+/* TELEFONDA FUTER MENYUSI YASHIRIN (2026-10-17, operator): bo'limlar
+   pastki paneldagi "Yana" tugmasida bor - ikki marta ko'rsatilmaydi. */
+@media(max-width:720px){footer .ust>div:not(.ft-klub){display:none}}
 footer .ust{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:34px;
   padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07)}
 footer .ust h4{font-family:"Nekst";font-weight:900;font-size:11px;
@@ -3705,6 +3708,9 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   color:rgba(255,255,255,.72);border:1px solid var(--chiziq);
   transition:color .14s,border-color .14s,background .14s}
 .qd-tug .ik{width:18px;height:18px}
+.kir-tug{margin-left:8px}
+.kir-tug.kir-on{background:var(--oltin);border-color:var(--oltin);color:#04143A;
+  font-family:"Nekst";font-weight:900;font-size:15px}
 .qd-tug:hover{color:var(--oltin);border-color:var(--oltin);
   background:rgba(226,186,117,.1)}
 @media (max-width:400px){.qd-t{grid-template-columns:1fr}}
@@ -4618,7 +4624,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
        bo'lim emas, ASBOB — shuning uchun u yumaloq ikonka
        bo'lib menyudan ajralib turadi. Telefonda ham shu joyda
        qoladi (menyu yashiringanda ham ko'rinadi). -->
-  <a class="qd-tug" href="../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a><a class="til-tug" id="til-tug" href="../ru/" hidden>RU</a><script>(function(){var a=document.getElementById("til-tug");if(!a)return;var R=["","oyinlar","jadval","jamoa","statistika","chiptalar","aloqa","stadion","media","video"],p=location.pathname,ru=p.indexOf("/sayt/ru")===0,k=(ru?p.slice(8):p.replace(/^\/sayt/,"")).replace(/index\.html$/,"").replace(/^\/+|\/+$/g,"");if(R.indexOf(k)<0)return;a.href=(ru?"/sayt/":"/sayt/ru/")+(k?k+"/":"");a.textContent=ru?"UZ":"RU";a.title=ru?"O'zbekcha":"Русский";a.hidden=false;})();</script>
+  <a class="qd-tug" href="../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a><a class="qd-tug kir-tug" id="kir-tug" href="../profil" aria-label="Profil"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.2" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></a><script>(function(){try{var t=localStorage.getItem("fk_tok"),i=localStorage.getItem("fk_ism")||"";if(t&&i){var a=document.getElementById("kir-tug");a.classList.add("kir-on");a.textContent=i.trim().charAt(0).toUpperCase();a.title=i;}}catch(e){}})();</script><a class="til-tug" id="til-tug" href="../ru/" hidden>RU</a><script>(function(){var a=document.getElementById("til-tug");if(!a)return;var R=["","oyinlar","jadval","jamoa","statistika","chiptalar","aloqa","stadion","media","video"],p=location.pathname,ru=p.indexOf("/sayt/ru")===0,k=(ru?p.slice(8):p.replace(/^\/sayt/,"")).replace(/index\.html$/,"").replace(/^\/+|\/+$/g,"");if(R.indexOf(k)<0)return;a.href=(ru?"/sayt/":"/sayt/ru/")+(k?k+"/":"");a.textContent=ru?"UZ":"RU";a.title=ru?"O'zbekcha":"Русский";a.hidden=false;})();</script>
 </div></header>
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../oyin/315"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>0</b>:<b>1</b><span class="t ong"><img class="tsm-g" src="../gerb/Qizilqum.png" alt="Qizilqum" title="Qizilqum" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Qizilqum</span></span></span></a><a class="tsm" href="../oyin/360"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../gerb/So_g_diyona.png" alt="So‘g‘diyona" title="So‘g‘diyona" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>So‘g‘diyona</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>20-oktabr, 2026 · 19:00</em></span></a></div></div>
 <style>
@@ -4737,8 +4743,8 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 <section class="sb bor-fon"><img class="sb-fon" src="../media/sayt_art/bobur_havo.jpg" alt="" decoding="async" onerror="this.remove()"><div class="sb-parda"></div><div class="yoy"><svg viewBox="0 0 400 520" aria-hidden="true"><path d="M200 8C200 8 372 168 372 330v182H28V330C28 168 200 8 200 8Z"/><path d="M200 78C200 78 320 208 320 336v176H80V336C80 208 200 78 200 78Z"/><path d="M200 148C200 148 268 248 268 342v170H132V342C132 248 200 148 200 148Z"/></svg></div><div class="q sb-ich"><div class="sb-matn"><h1 class="sb-h sarl">Klub viktorinasi</h1><p>Andijonni qanchalik yaxshi bilasiz? Har kuni 10 ta yangi savol - tarix, futbolchilar va natijalar.</p></div></div></section>
 <div class="q mo"><div class="mo-grid"><section class="mo-k vk-qut"><div id="vk"><div class="mo-bosh">Yuklanmoqda...</div></div></section><section class="mo-k" id="vk-r"><h3>Reyting</h3><div class="mo-bosh">Yuklanmoqda...</div></section></div><p class="izoh" style="margin-top:18px">Keyingi o&#8216;yin hisobini ham toping: <a href="../bashorat">hisob bashorati &#8594;</a></p></div>
 <script>(function(){
-var API="https://api-andijon.maladesbola.uz",K='fk_kim',KI='fk_ism',kim='',ism='';
-try{kim=localStorage.getItem(K)||'';ism=localStorage.getItem(KI)||'';}catch(e){}
+var API="https://api-andijon.maladesbola.uz",K='fk_kim',KI='fk_ism',kim='',ism='',TOK='';
+try{kim=localStorage.getItem(K)||'';ism=localStorage.getItem(KI)||'';TOK=localStorage.getItem('fk_tok')||'';}catch(e){}
 if(!kim){kim=Math.random().toString(36).slice(2)+Date.now().toString(36);try{localStorage.setItem(K,kim);}catch(e){}}
 function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function ismSaqla(v){ism=v;try{localStorage.setItem(KI,v);}catch(e){}}
@@ -4783,7 +4789,7 @@ function savol(){var s=D.savollar[i],n=D.savollar.length;
     jav.push(+b.getAttribute('data-k'));setTimeout(function(){i++;if(i<n)savol();else yubor();},380);};});}
 function yubor(){M.innerHTML='<div class="mo-bosh">Natija hisoblanmoqda...</div>';
   fetch(API+'/api/muxlis-oyin/viktorina',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({kim:kim,ism:ism,javob:jav,soniya:(Date.now()-t0)/1000})})
+    body:JSON.stringify({kim:kim,ism:ism,javob:jav,soniya:(Date.now()-t0)/1000,tok:TOK})})
   .then(function(r){return r.json();}).then(function(d){
     if(!d.ok){M.innerHTML='<div class="mo-bosh">'+E(d.xato||'Xatolik')+'</div>';return;}
     natija(d.ball,d.jami,d.togri,jav,d.izoh);reyting(d);})
