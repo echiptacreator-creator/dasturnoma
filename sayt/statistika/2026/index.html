@@ -2802,6 +2802,40 @@ a.iv-kimh:hover b{color:var(--oltin)}
   .iv-lenta > .kar:first-child .ich{padding:17px 19px 20px;justify-content:flex-start}
   .iv-lenta > .kar:first-child h3{font-size:19px;line-height:1.28}
 }
+/* --- KARUSEL (2026-10-17) — yonboshga suriladigan lenta --- */
+.krs-blok{position:relative}
+.krs-bosh{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px}
+.krs-bosh h2{margin:0}
+.krs-o{display:flex;align-items:center;gap:14px}
+.krs-hav{font-family:"Nekst";font-weight:700;font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--oltin);text-decoration:none;white-space:nowrap}
+.krs-hav:hover{color:#fff}
+.krs-hav i{font-style:normal}
+.krs-tug{display:flex;gap:8px}
+.krs-tug button{width:42px;height:42px;border-radius:50%;border:1px solid var(--chiziq);
+  background:rgba(255,255,255,.04);color:#fff;font-size:22px;line-height:1;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s}
+.krs-tug button:hover:not(:disabled){border-color:var(--oltin);color:var(--oltin);background:rgba(226,186,117,.08)}
+.krs-tug button:disabled{opacity:.28;cursor:default}
+.krs-blok.krs-tor .krs-tug{display:none}
+.krs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding:6px 2px 12px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.krs::-webkit-scrollbar{display:none}
+.krs>*{flex:0 0 330px;min-width:0;scroll-snap-align:start}
+.krs-yang>.kar:first-child{flex-basis:540px}
+.krs-yang>.kar:first-child h3{font-size:24px}
+.krs-video>*{flex-basis:300px}
+.krs-foto>*{flex-basis:300px}
+.krs-intr>*{flex-basis:300px}
+.fg-blok .krs{margin-top:0}
+@media(max-width:760px){
+  .krs{gap:12px;margin:0 -16px;padding:2px 16px 10px;scroll-padding-left:16px}
+  .krs>*,.krs-video>*,.krs-foto>*,.krs-intr>*{flex-basis:78%}
+  .krs-yang>.kar:first-child{flex-basis:86%}
+  .krs-yang>.kar:first-child h3{font-size:20px}
+  .krs-tug{display:none}
+  .krs-hav{font-size:11px}
+}
 /* --- VIDEOLAR (2026-10-16) --- */
 .vk-tor{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:18px 0 6px}
 .vk-4{grid-template-columns:repeat(4,1fr)}
