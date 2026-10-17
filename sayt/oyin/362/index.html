@@ -5024,6 +5024,62 @@ document.addEventListener('click',function(ev){
   var v = qobiq.querySelector("video.hero-kino-v");
   if (!v) return;
   var mobil = matchMedia("(max-width:720px), (hover:none) and (pointer:coarse)").matches;
+  /* TELEFONDA KADRLAR (2026-10-17). Haqiqiy telefonlarda (ayniqsa iPhone
+     Safari) videoning currentTime'ini skroll bilan surish ishonchsiz - film
+     qotib qolardi. Telefonda film 72 ta JPEG kadrdan canvas'ga chiziladi
+     (1,3 MB, videodan yengil). Kadrlar faqat ommaviy saytda bor. */
+  if (mobil && location.hostname.indexOf("andijonfk.uz") >= 0) { kadrRejim(); return; }
+  function kadrRejim(){
+    var N = 72, B = "/sayt/kino/", I = [], joriy = -1, nishon = 0, tayyor = false;
+    var cv = document.createElement("canvas"), cx = cv.getContext("2d");
+    cv.className = "hero-kino-v"; cv.setAttribute("aria-hidden", "true");
+    cv.style.opacity = "0"; cv.style.transition = "opacity .4s";
+    v.parentNode.insertBefore(cv, v.nextSibling);
+    function olcham(){
+      var r = cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); joriy = -1;
+    }
+    function chiz(i){
+      var im = null;
+      for (var k = i; k >= 0; k--) { if (I[k] && I[k].naturalWidth) { im = I[k]; break; } }
+      if (!im) return;
+      var W = cv.width, H = cv.height, sk = Math.max(W / im.naturalWidth, H / im.naturalHeight);
+      var w = im.naturalWidth * sk, h = im.naturalHeight * sk;
+      cx.drawImage(im, (W - w) / 2, (H - h) * 0.3, w, h);
+    }
+    function daraja(){
+      var r = qobiq.getBoundingClientRect(), yol = qobiq.offsetHeight - window.innerHeight;
+      if (yol <= 0) return 0;
+      var p = -r.top / yol;
+      return p < 0 ? 0 : (p > 1 ? 1 : p);
+    }
+    function yangila(){
+      var p = daraja();
+      qobiq.style.setProperty("--p", p.toFixed(3));
+      qobiq.classList.toggle("kino-ketdi", p > 0.3);
+      nishon = p;
+    }
+    function halqa(){
+      requestAnimationFrame(halqa);
+      if (!tayyor) return;
+      var i = Math.round(nishon * (N - 1));
+      if (i !== joriy) { joriy = i; chiz(i); }
+    }
+    window.addEventListener("scroll", yangila, {passive: true});
+    window.addEventListener("resize", function(){ olcham(); yangila(); });
+    yangila();
+    requestAnimationFrame(halqa);
+    for (var i = 0; i < N; i++) (function(k){
+      var im = new Image();
+      im.onload = function(){
+        if (k === 0) { olcham(); tayyor = true; cv.style.opacity = ""; v.style.visibility = "hidden"; }
+        joriy = -1;
+      };
+      if (k === 0) im.onerror = function(){ cv.remove(); };
+      im.src = B + ("00" + (k + 1)).slice(-3) + ".jpg";
+      I.push(im);
+    })(i);
+  }
   var src = null;
   qobiq.querySelectorAll("source").forEach(function(s){
     if (s.dataset.tur === (mobil ? "mobil" : "desktop")) src = s.getAttribute("src");
