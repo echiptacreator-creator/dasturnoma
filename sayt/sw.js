@@ -1,5 +1,5 @@
 /* FK Andijon — xizmat ishchisi (2026-10-16) */
-var K = "fka-v2";
+var K = "fka-v3";
 /* GOL BILDIRISHNOMASI: agent yuborgan xabar {t, b, u, g}. Bir o'yin
    xabarlari bitta teg (g) bilan — telefonda ustma-ust yig'ilmaydi,
    eng yangisi ko'rinadi, lekin har biri ovoz/tebranish beradi. */
@@ -36,7 +36,10 @@ self.addEventListener("fetch", function(e){
   var r = e.request;
   if (r.method !== "GET" || new URL(r.url).origin !== location.origin) return;
   if (r.mode === "navigate") {
-    e.respondWith(fetch(r).then(function(j){
+    /* no-cache: brauzerning 10 daqiqalik HTTP keshi eski sahifani
+       bermasin - har safar serverdan tekshiriladi (2026-10-18). */
+    /* ⚠ `fetch(r, {...})` EMAS: navigate so'roviga init berilsa TypeError. */
+    e.respondWith(fetch(r.url, {cache: "no-cache", credentials: "include"}).then(function(j){
       var n = j.clone(); caches.open(K).then(function(c){ c.put(r, n); });
       return j;
     }).catch(function(){
