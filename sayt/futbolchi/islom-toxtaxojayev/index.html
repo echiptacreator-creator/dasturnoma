@@ -2490,6 +2490,35 @@ h1.sarl:before{content:"";position:absolute;left:0;top:2px;bottom:2px;
   .bj-portret{min-height:0}
   .bj-portret img{max-height:62vh}
 }
+/* JAMOA — telefonda suratli kartochkalar lentasi (2026-10-17).
+   Kompyuterda yashirin; telefonda matnli ro'yxat va katta portret
+   o'rniga chiqadi. Barmoq bilan suriladi, har kartochka «yopishadi». */
+.bj-kartalar{display:none}
+@media(max-width:760px){
+  .bj-h{font-size:56px}
+  .bj-matn>p{font-size:14.5px;margin-bottom:18px}
+  .bj-royxat,.bj-portret{display:none}
+  .bj-kartalar{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:0 -16px 18px;padding:4px 16px 10px;scrollbar-width:none}
+  .bj-kartalar::-webkit-scrollbar{display:none}
+  .bjk{position:relative;flex:0 0 46%;width:46%;min-width:0;max-width:200px;scroll-snap-align:start;border-radius:16px;overflow:hidden;
+    background:radial-gradient(120% 80% at 50% 10%,#1C4FA8 0%,#0A2A63 45%,#04143A 100%);
+    border:1px solid var(--chiziq);color:#fff;text-decoration:none;display:flex;flex-direction:column}
+  .bjk-r{aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+  .bjk-r img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+  .bjk-q{position:absolute;top:8px;right:10px;font-family:"Nekst";font-weight:900;font-style:normal;
+    font-size:30px;line-height:1;color:rgba(255,255,255,.9);text-shadow:0 2px 10px rgba(0,0,0,.5)}
+  .bjk-i{padding:10px 12px 12px;background:linear-gradient(180deg,rgba(4,20,58,.6),#04143A);
+    margin-top:-34px;position:relative}
+  .bjk-i span{display:block;font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.2}
+  .bjk-i b{display:block;font-family:"Nekst";font-weight:900;font-size:15px;line-height:1.15;
+    text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bjk-i em{display:block;font-style:normal;font-size:11px;color:var(--oltin);margin-top:3px}
+  /* Bosh sahifadagi mini jadval: klub nomlari kesilmasin */
+  .bs-th,.bs-tr{grid-template-columns:28px 1fr 30px 38px 44px}
+  .bs-tr .bs-n{gap:7px;font-size:13px}
+  .bs-tr .bs-n img{width:20px;height:20px}
+}
 /* Homiylar tasmasi */
 .bs-homiy{margin-top:54px;padding:34px 0 40px;
   border-top:1px solid var(--chiziq)}
