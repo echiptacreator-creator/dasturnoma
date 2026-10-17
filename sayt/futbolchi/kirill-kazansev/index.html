@@ -337,12 +337,41 @@ img{display:block;max-width:100%}
   background-size:250% 100%;background-position:120% 0;transition:background-position 1.1s ease}
 .kw-mavsum:hover .kw-yalt{background-position:-40% 0}
 @media(max-width:900px){.kw-ich{grid-template-columns:1fr}.kw{min-height:280px}}
+/* TELEFON (2026-10-17, operator: «bu bloklar mobile'da yaxshi chiqmayapti»).
+   Kubok: kubok o'ngda, matn chapda — bir-birini yopmaydi.
+   Mavsumiy karta: baland (420px) o'rniga ixcham — karta o'ng yuqorida
+   kichik, matn pastda chapda. */
 @media(max-width:720px){
-  .kw-blok{margin-top:34px}.kw{min-height:250px}.kw-t{left:18px;right:18px;bottom:18px}
-  .kw-kubok video{right:-20%}
-  .kw-mavsum{min-height:420px}.kw-mavsum .kw-t{right:18px;top:auto;bottom:18px;transform:none}
-  .kw-chek{right:auto;left:50%;top:20px;width:58%;transform:translateX(-50%) rotate(-4deg)}
-  .kw-mavsum:hover .kw-chek{transform:translateX(-50%) rotate(-4deg)}
+  .kw-blok{margin-top:30px}.kw-ich{gap:12px}
+  .kw{min-height:210px;border-radius:18px}
+  .kw-t{left:18px;right:18px;bottom:18px}
+  .kw-t b{font-size:28px}.kw-t span{font-size:13px;margin-top:6px}
+  .kw-t em{margin-top:10px}
+  .kw-kubok video{right:-34%;height:100%;opacity:.95}
+  .kw-kubok .kw-parda{background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.75) 45%,rgba(0,0,0,0) 85%)}
+  .kw-kubok .kw-t{right:38%}
+  .kw-mavsum{min-height:230px}
+  .kw-mavsum .kw-t{right:18px;top:auto;bottom:18px;transform:none}
+  .kw-mavsum .kw-t b{max-width:60%}
+  .kw-chek{right:-14px;left:auto;top:16px;width:46%;transform:rotate(7deg)}
+  .kw-mavsum:hover .kw-chek{transform:rotate(7deg)}
+  .kw-tug{margin-top:12px}
+  /* Akademiya qabuli — telefonda qisqa: ro'yxat yashirin, matn 3 qator */
+  body .ak-qabul{padding:20px 18px}
+  body .ak-qabul ul{display:none}
+  body .ak-qabul p{font-size:14px;display:-webkit-box;-webkit-line-clamp:3;
+    -webkit-box-orient:vertical;overflow:hidden}
+  body .ak-qabul h3{font-size:20px}
+  /* To'purarlar — ism kesilmasin */
+  .bs-k .bs-tsr b{white-space:normal!important;overflow:visible!important;
+    text-overflow:clip!important;line-height:1.2}
+  body .ak-qabul .tugmalar{flex-wrap:nowrap;gap:8px}
+  body .ak-qabul .tug{padding:10px 14px;font-size:11.5px;white-space:nowrap}
+  .kw{min-height:230px}
+  .kw-t i{font-size:9.5px;letter-spacing:.2em}
+  .kw-kubok .kw-t{right:30%}
+  .kw-kubok .kw-t b{font-size:26px}
+  .kw-t em{font-size:11px}
 }
 /* --- GERB EVOLYUTSIYASI (2026-09-25) --- */
 .tx-gm{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;margin:18px 0 22px;
