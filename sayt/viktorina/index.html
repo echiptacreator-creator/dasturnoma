@@ -4719,6 +4719,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
   border-left:4px solid var(--qizil)}
 .vk-sharh li.ok{border-left-color:#16a34a}
 .vk-sharh li span{display:block;margin-top:4px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.vk-sharh li em.vk-iz{display:block;margin-top:6px;font-style:normal;font-size:12.5px;line-height:1.5;color:var(--oltin)}
 .vk-tab{display:flex;gap:8px;margin-bottom:12px}
 .vk-tab button{padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:none;
   color:#fff;font-family:"Nekst";font-size:11px;letter-spacing:.08em;cursor:pointer}
@@ -4760,17 +4761,18 @@ function reyting(d){var r=d.reyting||d;var ich='<div class="vk-tab"><button clas
   function q(t){var x=(r[t]||[]).map(function(a,k){a.o=k+1;return a;});reyChiz(document.getElementById('vk-rey'),x,null);}
   el.querySelectorAll('.vk-tab button').forEach(function(b){b.onclick=function(){el.querySelectorAll('.vk-tab button').forEach(function(c){c.className='';});b.className='faol';q(b.getAttribute('data-t'));};});
   q('bugun');}
-function natija(ball,jami,togri,mening){
+function natija(ball,jami,togri,mening,izoh){
   var h='<div class="vk-ball">'+ball+'<u>/'+jami+'</u></div><p style="text-align:center;color:rgba(255,255,255,.7)">'+
     (ball>=8?'Ajoyib! Siz haqiqiy Andijon muxlisisiz.':ball>=5?'Yaxshi natija! Ertaga yana urinib ko\'ring.':'Klubni yaxshiroq bilish uchun saytimizni kuzatib boring!')+
     '</p><p style="text-align:center;color:rgba(255,255,255,.55);font-size:13px">Yangi savollar ertaga.</p>';
   if(togri&&D){h+='<ul class="vk-sharh">'+D.savollar.map(function(s,k){var ok=mening&&mening[k]===togri[k];
-    return '<li class="'+(ok?'ok':'')+'">'+(k+1)+'. '+E(s.s)+'<span>To\'g\'ri javob: '+E(s.v[togri[k]])+(mening&&!ok&&mening[k]!=null?' · Siz: '+E(s.v[mening[k]]):'')+'</span></li>';}).join('')+'</ul>';}
+    return '<li class="'+(ok?'ok':'')+'">'+(k+1)+'. '+E(s.s)+'<span>To\'g\'ri javob: '+E(s.v[togri[k]])+(mening&&!ok&&mening[k]!=null?' · Siz: '+E(s.v[mening[k]]):'')+'</span>'+
+    (izoh&&izoh[k]?'<em class="vk-iz">'+E(izoh[k])+'</em>':'')+'</li>';}).join('')+'</ul>';}
   M.innerHTML=h;}
 function kirish(){
-  if(D.oynagan){natija(D.oynagan.ball,D.oynagan.jami,D.togri,null);return;}
+  if(D.oynagan){natija(D.oynagan.ball,D.oynagan.jami,D.togri,null,D.izoh);return;}
   M.innerHTML='<div class="vk-kirish"><div class="vk-katta">'+D.savollar.length+' savol</div>'+
-    '<p>Klub tarixi, futbolchilar va natijalar haqida. Har kuni yangi to\'plam - bir kunda bir marta o\'ynaladi.</p>'+
+    '<p>7 ta savol klub tarixidan (1964-yildan buyon) va 3 tasi joriy mavsumdan. Har kuni yangi to\'plam - bir kunda bir marta o\'ynaladi. Oxirida har savol bo\'yicha qisqa fakt chiqadi.</p>'+
     '<div class="mo-form"><input id="vk-ism" maxlength="24" placeholder="Ismingiz (reytingda ko\'rinadi)" value="'+E(ism)+'">'+
     '<button class="mo-tug" id="vk-bosh">Boshlash</button></div><div class="mo-holat" id="vk-hol"></div></div>';
   document.getElementById('vk-bosh').onclick=function(){var v=document.getElementById('vk-ism').value.trim();
@@ -4787,7 +4789,7 @@ function yubor(){M.innerHTML='<div class="mo-bosh">Natija hisoblanmoqda...</div>
     body:JSON.stringify({kim:kim,ism:ism,javob:jav,soniya:(Date.now()-t0)/1000})})
   .then(function(r){return r.json();}).then(function(d){
     if(!d.ok){M.innerHTML='<div class="mo-bosh">'+E(d.xato||'Xatolik')+'</div>';return;}
-    natija(d.ball,d.jami,d.togri,jav);reyting(d);})
+    natija(d.ball,d.jami,d.togri,jav,d.izoh);reyting(d);})
   .catch(function(){M.innerHTML='<div class="mo-bosh">Aloqa uzildi - sahifani yangilab qayta urinib ko\'ring.</div>';});}
 if(!API){M.innerHTML='<div class="mo-bosh">Viktorina hozircha ishlamayapti.</div>';return;}
 fetch(API+'/api/muxlis-oyin/viktorina?kim='+kim).then(function(r){return r.json();})
