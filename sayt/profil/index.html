@@ -4796,7 +4796,7 @@ function bldChiz(s){S.bld=s;Q('pf-bld').innerHTML='<h3>Telegram eslatmalari</h3>
       body:JSON.stringify({bld:o})}).then(function(r){return r.json();}).then(function(d){if(d.ok)bldChiz(d.bld);else bt.disabled=false;})
       .catch(function(){bt.disabled=false;});};});}
 S.och={};
-var OBI={tg_kanal:'✈️',tg_media:'✈️',insta:'📸',youtube:'▶️'};
+var OBI={tg_kanal:'✈️',tg_togarak:'✈️',insta:'📸',insta_togarak:'📸',youtube:'▶️'};
 function obChiz(l){S.ob=l;var bor=l.filter(function(o){return o.bor;}).length;
   Q('ob-son').textContent=l.length?(bor+'/'+l.length):'';
   Q('pf-ob').innerHTML=l.map(function(o){var t=o.bor?'✓ +'+o.ball:(S.och[o.kod]?(o.tekshiriladi?'Tekshirish':'Obuna bo‘ldim'):'Obuna bo‘lish');
