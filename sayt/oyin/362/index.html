@@ -5076,6 +5076,24 @@ document.addEventListener('click',function(ev){
   else window.addEventListener("load", function(){ setTimeout(yukla, 300); });
 })();
 </script>
+<script>
+/* JONLANTIRISH (2026-10-17): bo'lim ekranga kirganda yumshoq paydo
+   bo'ladi. Faqat JS ishlasa va harakat cheklanmagan bo'lsa; aks holda
+   hammasi odatdagidek turadi. */
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var st=document.createElement('style');
+  st.textContent='.jn{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.jn.ko{opacity:1;transform:none}';
+  document.head.appendChild(st);
+  var sel='main h2, .blok, .krs-blok, .bs-blok, .mb-blok, .fg-blok, .fs, .mo-k, .kar, .md-ak, .jadval-o, .fk-mavj, .ch-k';
+  var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){
+    return e.getBoundingClientRect().top>window.innerHeight*0.9&&!e.closest('.hero-kino');});
+  var io=new IntersectionObserver(function(q){q.forEach(function(x){
+    if(x.isIntersecting){x.target.classList.add('ko');io.unobserve(x.target);}});},{rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(e){e.classList.add('jn');io.observe(e);});
+})();
+</script>
 
 <style id="jn-uslub">
 /* Sanoq katakchasi jonli holatda — o'sha shakl, faqat qizil. */
