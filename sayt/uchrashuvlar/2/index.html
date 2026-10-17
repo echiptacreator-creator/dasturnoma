@@ -3174,6 +3174,9 @@ article .kanal-ch a:hover{filter:brightness(1.1);color:#fff}
   color:#fff;font-family:"Nekst";font-weight:700;font-size:12px;letter-spacing:.08em;text-decoration:none}
 .til-tug:hover{border-color:var(--oltin);color:var(--oltin)}
 .til-tug[hidden]{display:none}
+.til-uch{display:inline-flex;gap:4px}.til-uch .til-tug{min-width:34px;padding:0 6px}
+.til-uch .til-tug.on{background:var(--oltin);border-color:var(--oltin);color:#04143A}
+@media(max-width:760px){.til-uch .til-tug:not(.on){display:none}.til-uch:hover .til-tug,.til-uch:focus-within .til-tug{display:inline-flex}}
 /* Gol xabarlari (2026-10-16) */
 .ft-push{padding:7px 14px;border-radius:999px;border:1px solid var(--chiziq);background:transparent;
   color:rgba(255,255,255,.75);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin-left:auto}
@@ -4642,6 +4645,10 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 </style>
 <link rel="canonical" href="https://andijonfk.uz/sayt/uchrashuvlar/2/">
 <meta property="og:url" content="https://andijonfk.uz/sayt/uchrashuvlar/2/">
+<link rel="alternate" hreflang="uz" href="https://andijonfk.uz/sayt/uchrashuvlar/2/">
+<link rel="alternate" hreflang="ru" href="https://andijonfk.uz/sayt/ru/uchrashuvlar/2/">
+<link rel="alternate" hreflang="en" href="https://andijonfk.uz/sayt/en/uchrashuvlar/2/">
+<link rel="alternate" hreflang="x-default" href="https://andijonfk.uz/sayt/uchrashuvlar/2/">
 </head><body id="tepa">
 <header><div class="q">
   <!-- ⚠ GERB — HAVOLA. Menyudagi «Bosh sahifa» bandi shu sababli
@@ -4659,7 +4666,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
        bo'lim emas, ASBOB — shuning uchun u yumaloq ikonka
        bo'lib menyudan ajralib turadi. Telefonda ham shu joyda
        qoladi (menyu yashiringanda ham ko'rinadi). -->
-  <a class="qd-tug" href="../../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a><a class="qd-tug kir-tug" id="kir-tug" href="../../profil" aria-label="Profil"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.2" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></a><script>(function(){try{var t=localStorage.getItem("fk_tok"),i=localStorage.getItem("fk_ism")||"";if(t&&i){var a=document.getElementById("kir-tug");a.classList.add("kir-on");a.textContent=i.trim().charAt(0).toUpperCase();a.title=i;}}catch(e){}})();</script><a class="til-tug" id="til-tug" href="../../ru/" hidden>RU</a><script>(function(){var a=document.getElementById("til-tug");if(!a)return;var R=["","oyinlar","jadval","jamoa","statistika","chiptalar","aloqa","stadion","media","video"],p=location.pathname,ru=p.indexOf("/sayt/ru")===0,k=(ru?p.slice(8):p.replace(/^\/sayt/,"")).replace(/index\.html$/,"").replace(/^\/+|\/+$/g,"");if(R.indexOf(k)<0)return;a.href=(ru?"/sayt/":"/sayt/ru/")+(k?k+"/":"");a.textContent=ru?"UZ":"RU";a.title=ru?"O'zbekcha":"Русский";a.hidden=false;})();</script>
+  <a class="qd-tug" href="../../qidiruv" aria-label="Qidiruv"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.4-4.4"/></svg></a><a class="qd-tug kir-tug" id="kir-tug" href="../../profil" aria-label="Profil"><svg class="ik" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.2" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></a><script>(function(){try{var t=localStorage.getItem("fk_tok"),i=localStorage.getItem("fk_ism")||"";if(t&&i){var a=document.getElementById("kir-tug");a.classList.add("kir-on");a.textContent=i.trim().charAt(0).toUpperCase();a.title=i;}}catch(e){}})();</script><span class="til-uch" id="til-uch"><a class="til-tug" data-t="uz" href="../../">UZ</a><a class="til-tug" data-t="ru" href="../../ru/">RU</a><a class="til-tug" data-t="en" href="../../en/">EN</a></span><script>(function(){var w=document.getElementById("til-uch");if(!w)return;var p=location.pathname,i=p.indexOf("/sayt"),bosh=i<0?"/":p.slice(0,i),dum=i<0?"":p.slice(i+5),m=dum.match(/^\/(ru|en)(\/|$)/),t=m?m[1]:"uz";if(m)dum=dum.slice(3);dum=dum.replace(/^\/+/,"");w.querySelectorAll("a").forEach(function(a){var k=a.getAttribute("data-t");a.href=bosh+"/sayt/"+(k==="uz"?"":k+"/")+dum;if(k===t)a.classList.add("on");});})();</script>
 </div></header>
 <div class="tasma"><div class="q tasma-ich"><a class="tsm" href="../../oyin/315"><span class="k">Oldingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span><b>0</b>:<b>1</b><span class="t ong"><img class="tsm-g" src="../../gerb/Qizilqum.png" alt="Qizilqum" title="Qizilqum" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Qizilqum</span></span></span></a><a class="tsm" href="../../oyin/360"><span class="k">Keyingi</span><span class="v"><span class="t"><img class="tsm-g" src="../../gerb/So_g_diyona.png" alt="So‘g‘diyona" title="So‘g‘diyona" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>So‘g‘diyona</span></span><i>—</i><span class="t ong"><img class="tsm-g" src="../../gerb/Andijon.png" alt="Andijon" title="Andijon" loading="lazy" onerror="this.parentNode.classList.add('nom');this.remove()"><span>Andijon</span></span> <em>20-oktabr, 2026 · 19:00</em></span></a></div></div>
 <div class="q" style="padding-top:34px">
