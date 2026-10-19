@@ -4709,7 +4709,7 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 .ry-bosh{padding:30px;text-align:center;color:rgba(255,255,255,.6)}
 @media(max-width:760px){.ry-l .q{display:none}.ry-l li{grid-template-columns:36px 1fr auto}.ry-top{gap:6px}
   .ry-p{padding:14px 6px}.ry-p b{font-size:13px}.ry-p strong{font-size:21px}}
-</style><div class="q ry"><div class="ry-k"><div class="ry-hero"><i>Muxlislar reytingi</i><h1 class="sarl">Eng yaxshi Andijon muxlislari</h1><p>Hisob bashorati va kunlik viktorina ballari bitta reytingda. Ishtirokchilar: <b id="ry-son">…</b></p><div class="ry-qoida"><span>🎯 Aniq hisob — 3 ball</span><span>✅ To&#8216;g&#8216;ri natija — 1 ball</span><span>🧠 Viktorina — har to&#8216;g&#8216;ri javob 1 ball</span><span>📲 Rasmiy sahifalarga obuna — 3–5 ball</span><span>🏅 O&#8216;yin qahramoni ovozi — 1 ball, topsangiz +2</span></div></div><div class="ry-men" id="ry-men"></div><div class="ry-top" id="ry-top"></div><ul class="ry-l" id="ry-l"><li class="ry-bosh">Yuklanmoqda…</li></ul></div></div><script>(function(){
+</style><div class="q ry"><div class="ry-k"><div class="ry-hero"><i>Muxlislar reytingi</i><h1 class="sarl">Eng yaxshi Andijon muxlislari</h1><p>Sayt, Andijon FK ilovasi va to&#8216;garak — hammasi bitta reytingda. Ishtirokchilar: <b id="ry-son">…</b></p><div class="ry-qoida"><span>🎯 Aniq hisob — 3 ball</span><span>✅ To&#8216;g&#8216;ri natija — 1 ball</span><span>🧠 Viktorina — har to&#8216;g&#8216;ri javob 1 ball</span><span>📲 Rasmiy sahifalarga obuna — 3–5 ball</span><span>🏅 O&#8216;yin qahramoni ovozi — 1 ball, topsangiz +2</span><span>🤝 Do&#8216;st taklifi — 200 ball</span><span>⚽ Farzandingiz to&#8216;garakda — har dars 10 ball</span><span>👑 Burgut+ a&#8217;zolari — ballar x2</span></div></div><div class="ry-men" id="ry-men"></div><div class="ry-top" id="ry-top"></div><ul class="ry-l" id="ry-l"><li class="ry-bosh">Yuklanmoqda…</li></ul></div></div><script>(function(){
 var API="https://api-andijon.maladesbola.uz";
 function ol(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
 function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -4726,6 +4726,7 @@ fetch(API+'/api/muxlis/reyting?kim='+encodeURIComponent(ol('fk_kim')),{headers:h
   if(r.length)Q('ry-l').innerHTML=qol.map(function(x){return '<li'+(x.men?' class="men"':'')+'><span class="o">'+x.o+'</span>'+
     '<span class="i"><b>'+E(x.ism)+(x.tg?'<span class="ry-tg">✓</span>':'')+'</b><span>'+E(x.daraja)+
     (x.nishon?' · '+x.nishon+' nishon':'')+'</span></span><span class="q">bashorat '+x.bashorat+' · viktorina '+x.viktorina+(x.obuna?' · obuna '+x.obuna:'')+
+    (x.taklif?' · taklif '+x.taklif:'')+(x.togarak?' · to‘garak '+x.togarak:'')+(x.premium?' · <b style="color:#E2BA75">BURGUT+</b>':'')+
     '</span><span class="b">'+x.ball+'</span></li>';}).join('')||'';
   var m=d.men,mq=Q('ry-men');
   if(m){mq.innerHTML='Sizning o\'rningiz: <b>'+m.o+'</b> / '+d.ishtirokchi+' · <b>'+m.ball+'</b> ball · '+E(m.daraja);}
