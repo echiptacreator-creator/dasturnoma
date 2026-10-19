@@ -674,6 +674,14 @@ img{display:block;max-width:100%}
 @media(max-width:720px){
   .tx-kd-t{left:18px;right:18px;bottom:calc(96px + env(safe-area-inset-bottom,0px));gap:10px}
   .tx-kd-yil{font-size:52px}
+  /* TELEFON YENGILLASHTIRISH (2026-10-19, operator: «3D jonli qismi mobilda ishlamayapti»):
+     17 ta to'liq ekranli qatlam bir vaqtda blur(26px) + 9s masshtab + SVG don bilan
+     telefon GPU xotirasini to'ldirib, sahna qora/qotib qolardi. Endi faqat faol davr
+     va qo'shnilari chiziladi; blur va don o'chiq. */
+  .tx-kd:not(.yaqin){display:none}
+  .tx-kd-fonx{filter:brightness(.32) saturate(.6);transform:none!important;transition:none;inset:0;width:100%;height:100%}
+  .tx-kd-don{display:none}
+  .tx-kd-ramka{box-shadow:0 24px 50px rgba(0,0,0,.6)}
   .tx-kd-ramka{top:42%;width:min(calc(100vw - 28px),calc((100vh - 330px) * var(--r,1.42)));padding:6px}
   .tx-kd-muhr{font-size:10px;bottom:-12px;right:10px}
   .tx-kd-nom{font-size:20px}.tx-kd-nom img{width:40px;height:40px}
