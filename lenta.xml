@@ -8,6 +8,13 @@
 <atom:link href="https://andijonfk.uz/lenta.xml" rel="self" type="application/rss+xml"/>
 <item>
 <title>Mashg&#x27;ulotdan lavhalar</title>
+<link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-7</link>
+<guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-7</guid>
+<description></description>
+<pubDate>Wed, 28 Oct 2026 21:56:52 -0000</pubDate>
+</item>
+<item>
+<title>Mashg&#x27;ulotdan lavhalar</title>
 <link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-6</link>
 <guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-6</guid>
 <description></description>
@@ -208,13 +215,6 @@
 <guid isPermaLink="true">https://andijonfk.uz/sayt/sogdiyona-andijon-bu-yil-hisobidan-uchinchi-toqnashuv</guid>
 <description>Jamoalar yarim final yo&#x27;llanmasi uchun kurashadilar</description>
 <pubDate>Mon, 19 Oct 2026 12:22:59 -0000</pubDate>
-</item>
-<item>
-<title>Fotoreportaj</title>
-<link>https://andijonfk.uz/sayt/fotoreportaj-2</link>
-<guid isPermaLink="true">https://andijonfk.uz/sayt/fotoreportaj-2</guid>
-<description></description>
-<pubDate>Mon, 19 Oct 2026 12:13:45 -0000</pubDate>
 </item>
 </channel>
 </rss>
