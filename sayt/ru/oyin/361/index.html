@@ -5477,6 +5477,8 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   var OY = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
   function sana(d) { return d.getDate() + '-' + OY[d.getMonth()] + ', ' + d.getFullYear(); }
   function soat(d) { return ikki(d.getHours()) + ':' + ikki(d.getMinutes()); }
+  // 2026-10-29: ilova ma'lumotida logo kelmasa (Navbahor) - saytning o'z gerbi.
+  function logo(k) { k = k || {}; return k.logo || (k.nom ? 'https://api-andijon.maladesbola.uz/gerb/klub/' + encodeURIComponent(k.nom) + '?o=128' : ''); }
   function img(u, cls) { return u ? '<img class="' + (cls || 'gb') + '" src="' + e(url(u)) + '" alt="" loading="lazy">' : ''; }
 
   /* ---------- holat ---------- */
@@ -5554,7 +5556,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
       mid = '<div class="sc">' + h[0] + ' : ' + h[1] + '</div><div class="pl">Tugadi' + (v ? ' · ' + sana(v) : '') + '</div>' +
         (K.pen_biz != null ? '<div class="sub">Penalti ' + e(K.pen_biz) + ':' + e(K.pen_ular) + '</div>' : '');
     }
-    function tm(k) { return '<div class="tm">' + img(k.logo, '') + '<b>' + e(k.nom) + '</b></div>'; }
+    function tm(k) { return '<div class="tm">' + img(logo(k), '') + '<b>' + e(k.nom) + '</b></div>'; }
     return '<div class="hd"><div class="w"><div class="hd-s">' + e(sub) + '</div><div class="hd-r">' + tm(M.uy) + '<div class="mid">' + mid + '</div>' + tm(M.mehmon) + '</div>' +
       (HOLAT !== 'pre' ? golchilar() : '') + (HOLAT === 'pre' && v && v > new Date() ? '<div class="sn" id="om-sn"></div>' : '') + '</div></div>';
   }
@@ -5613,7 +5615,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   function shakl() {
     var b = P.shakl_biz || [], r = P.shakl_raqib || []; if (!b.length && !r.length) return '';
     function qator(k, l) {
-      return '<div class="li">' + img(k.logo) + '<span class="bo f">' + e(k.nom) + '</span><span class="shk">' + l.slice(0, 5).map(function (x) {
+      return '<div class="li">' + img(logo(k)) + '<span class="bo f">' + e(k.nom) + '</span><span class="shk">' + l.slice(0, 5).map(function (x) {
         return '<span class="ch ' + (x.natija || 'd') + '" title="' + e(x.sana + ' · ' + x.raqib + (x.uyda ? ' (uy)' : ' (safar)')) + '">' + e(x.hisob) + '</span>';
       }).join('') + '</span></div>';
     }
@@ -5622,7 +5624,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   function chetda() {
     var b = P.chetda_biz || [], r = P.chetda_raqib || []; if (!b.length && !r.length) return '';
     function ust(k, l) {
-      return '<div class="cd"><div class="li">' + img(k.logo) + '<span class="bo">' + e(k.nom) + '</span></div>' + (l.length ? l.map(function (x) {
+      return '<div class="cd"><div class="li">' + img(logo(k)) + '<span class="bo">' + e(k.nom) + '</span></div>' + (l.length ? l.map(function (x) {
         var s = String(x.sabab || ''); var ik = /jaro/i.test(s) ? '✚' : '🟥';
         return '<div class="li"><span>' + ik + '</span><div class="f"><div class="bo">' + e(x.ism) + '</div><div class="mu">' + e(s === 'jazo' ? 'Diskvalifikatsiya' : s) + '</div></div></div>';
       }).join('') : '<div class="li mu">Hamma safda</div>') + '</div>';
@@ -5633,9 +5635,9 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     var t = P.tarix; if (!t || !t.oyin) return '';
     var g = t.g || 0, d = t.d || 0, m = t.m || 0, s = g + d + m || 1;
     var h = '<div class="cd" style="padding:16px"><div style="display:flex;justify-content:space-around;text-align:center">' +
-      '<div>' + img(BIZ.logo, 'gb" style="width:36px;height:36px;margin:0 auto 6px') + '<b style="font:900 26px Nekst">' + g + '</b><div class="mu">G\'alaba</div></div>' +
+      '<div>' + img(logo(BIZ), 'gb" style="width:36px;height:36px;margin:0 auto 6px') + '<b style="font:900 26px Nekst">' + g + '</b><div class="mu">G\'alaba</div></div>' +
       '<div><div style="height:42px"></div><b style="font:900 26px Nekst">' + d + '</b><div class="mu">Durang</div></div>' +
-      '<div>' + img(RAQ.logo, 'gb" style="width:36px;height:36px;margin:0 auto 6px') + '<b style="font:900 26px Nekst">' + m + '</b><div class="mu">G\'alaba</div></div></div>' +
+      '<div>' + img(logo(RAQ), 'gb" style="width:36px;height:36px;margin:0 auto 6px') + '<b style="font:900 26px Nekst">' + m + '</b><div class="mu">G\'alaba</div></div></div>' +
       '<div class="ozb"><i style="width:' + g / s * 100 + '%;background:var(--q)"></i><i style="width:' + d / s * 100 + '%;background:rgba(255,255,255,.25)"></i><i style="width:' + m / s * 100 + '%;background:#2F5BD3"></i></div>' +
       '<div class="mu" style="text-align:center">' + t.oyin + ' ta uchrashuv · gollar ' + (t.urgan || 0) + ':' + (t.yegan || 0) + (t.boshlangan ? ' · ' + e(t.boshlangan) + '-yildan' : '') + '</div>' +
       (toliq ? '' : '<a class="hv" data-tab="ozaro" style="margin:12px -16px -16px">O\'zaro uchrashuvlar →</a>') + '</div>';
@@ -5644,7 +5646,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   function topurar() {
     var b = P.topurar || [], r = P.topurar_raqib || []; if (!b.length && !r.length) return '';
     function ust(k, l) {
-      return '<div class="cd"><div class="li">' + img(k.logo) + '<span class="bo">' + e(k.nom) + '</span></div>' + l.slice(0, 5).map(function (x, i) {
+      return '<div class="cd"><div class="li">' + img(logo(k)) + '<span class="bo">' + e(k.nom) + '</span></div>' + l.slice(0, 5).map(function (x, i) {
         return '<div class="li"><span class="mu" style="width:14px">' + (i + 1) + '</span><span class="f">' + e(x.ism) + '</span><b>' + x.gol + '</b><span class="mu">⚽</span></div>';
       }).join('') + '</div>';
     }
@@ -5683,7 +5685,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     var tm = tarkiblar(); if (!tm.bA.length && !tm.rA.length) return '';
     function ust(k, l, sx) {
       var ok = String(sx || '').split('-').reduce(function (a, b) { return a + (+b || 0); }, 0) === 10;
-      return '<div class="cd"><div class="li">' + img(k.logo) + '<span class="bo f">' + e(k.nom) + '</span><span class="mu">' + (ok ? e(sx) : '') + '</span></div>' +
+      return '<div class="cd"><div class="li">' + img(logo(k)) + '<span class="bo f">' + e(k.nom) + '</span><span class="mu">' + (ok ? e(sx) : '') + '</span></div>' +
         l.slice(0, 11).map(function (p) { return '<div class="li" style="padding:7px 14px"><span class="mu" style="width:22px">' + e(p.no == null ? '' : p.no) + '</span><span class="f">' + e(p.ism) + '</span></div>'; }).join('') + '</div>';
     }
     return sec(tm.rasmiy ? 'Tarkiblar' : 'Ehtimoliy tarkib', 'maydonda', 'tarkib') + '<div class="z2">' + ust(BIZ, tm.bA, tm.bSx) + ust(RAQ, tm.rA, tm.rSx) + '</div>';
@@ -5773,7 +5775,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
       rows.push('<div class="tt">' + (x.uy ? '<div class="u">' + matn + ik + '</div>' + d + '<div></div>' : '<div></div>' + d + '<div class="m">' + ik + matn + '</div>') + '</div>');
     });
     if (htQo === false && v.length) rows.push('<div class="tt-s">Boshlanish</div>');
-    return '<div class="cd"><div class="tt-h">' + img(M.uy.logo) + h[0] + ' : ' + h[1] + img(M.mehmon.logo) + '</div>' + rows.join('') + '</div>';
+    return '<div class="cd"><div class="tt-h">' + img(logo(M.uy)) + h[0] + ' : ' + h[1] + img(logo(M.mehmon)) + '</div>' + rows.join('') + '</div>';
   }
 
   /* ---------- statistika (PFL rasmiy; bo'lmasa sharhdan — ilovadagi sharhStat) ---------- */
@@ -5889,11 +5891,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     var uy = M.biz_uyda, uSx = uy ? tm.bSx : tm.rSx, mSx = uy ? tm.rSx : tm.bSx;
     var mu = M.murabbiy_uy && M.murabbiy_uy.ism, mm = M.murabbiy_mehmon && M.murabbiy_mehmon.ism;
     var h = sec(tm.rasmiy ? 'Rasmiy tarkiblar' : 'Ehtimoliy tarkib', tm.rasmiy ? (HOLAT === 'fin' ? 'yakuniy' : '') : "so'nggi o'yinlar bo'yicha") +
-      '<div class="cd"><div class="pth"><span>' + img(M.uy.logo) + e(M.uy.nom) + (uSx ? ' <span class="mu">' + e(uSx) + '</span>' : '') + '</span><span class="mu">' + (mu ? 'Murabbiy · ' + e(mu) : '') + '</span></div>' +
+      '<div class="cd"><div class="pth"><span>' + img(logo(M.uy)) + e(M.uy.nom) + (uSx ? ' <span class="mu">' + e(uSx) + '</span>' : '') + '</span><span class="mu">' + (mu ? 'Murabbiy · ' + e(mu) : '') + '</span></div>' +
       '<div style="padding:0 10px">' + maydon(tm) + '</div>' +
-      '<div class="pth"><span>' + img(M.mehmon.logo) + e(M.mehmon.nom) + (mSx ? ' <span class="mu">' + e(mSx) + '</span>' : '') + '</span><span class="mu">' + (mm ? 'Murabbiy · ' + e(mm) : '') + '</span></div></div>';
+      '<div class="pth"><span>' + img(logo(M.mehmon)) + e(M.mehmon.nom) + (mSx ? ' <span class="mu">' + e(mSx) + '</span>' : '') + '</span><span class="mu">' + (mm ? 'Murabbiy · ' + e(mm) : '') + '</span></div></div>';
     function zx(k, l) {
-      return '<div class="cd"><div class="li">' + img(k.logo) + '<span class="bo">' + e(k.nom) + '</span></div>' + (l.length ? l.map(function (p) {
+      return '<div class="cd"><div class="li">' + img(logo(k)) + '<span class="bo">' + e(k.nom) + '</span></div>' + (l.length ? l.map(function (p) {
         return '<div class="li">' + (p.rasm ? '<img class="av" src="' + e(p.rasm) + '" alt="" loading="lazy">' : '<span class="av" style="display:flex;align-items:center;justify-content:center;font-weight:800">' + e(p.no == null ? '' : p.no) + '</span>') +
           '<span class="f">' + e(p.ism) + '</span><span class="mu">' + e(p.no == null ? '' : '#' + p.no) + '</span>' + belgilar(p.ism).replace('class="bd"', 'class="r"').replace('class="ch2"', 'class="alm" style="font-size:11px"') + '</div>';
       }).join('') : '<div class="li mu">—</div>') + '</div>';
@@ -5914,7 +5916,7 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   }
   function statSahifa() {
     var st = statQ(), h = '';
-    h += st.r.length ? sec("O'yin statistikasi", st.m) + '<div class="cd"><div class="pth"><span>' + img(M.uy.logo) + e(M.uy.nom) + '</span><span>' + e(M.mehmon.nom) + img(M.mehmon.logo) + '</span></div></div>' + statBlok(st.r)
+    h += st.r.length ? sec("O'yin statistikasi", st.m) + '<div class="cd"><div class="pth"><span>' + img(logo(M.uy)) + e(M.uy.nom) + '</span><span>' + e(M.mehmon.nom) + img(logo(M.mehmon)) + '</span></div></div>' + statBlok(st.r)
       : '<div class="cd" style="margin-top:20px"><div class="bo2">Statistika hali yo\'q</div></div>';
     var sb = P.stat_biz, sr = P.stat_raqib;
     if (sb && sr) {
