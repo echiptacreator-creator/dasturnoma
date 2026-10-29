@@ -5478,7 +5478,8 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
   function sana(d) { return d.getDate() + '-' + OY[d.getMonth()] + ', ' + d.getFullYear(); }
   function soat(d) { return ikki(d.getHours()) + ':' + ikki(d.getMinutes()); }
   // 2026-10-29: ilova ma'lumotida logo kelmasa (Navbahor) - saytning o'z gerbi.
-  function logo(k) { k = k || {}; return k.logo || (k.nom ? 'https://api-andijon.maladesbola.uz/gerb/klub/' + encodeURIComponent(k.nom) + '?o=128' : ''); }
+  // PFL rasm serveri (cdn.pfl.uz) ishlamay qolganda logolar butunlay yo'qolardi - endi har doim o'z gerbimiz.
+  function logo(k) { k = k || {}; return k.nom ? 'https://api-andijon.maladesbola.uz/gerb/klub/' + encodeURIComponent(k.nom) + '?o=128' : (k.logo || ''); }
   function img(u, cls) { return u ? '<img class="' + (cls || 'gb') + '" src="' + e(url(u)) + '" alt="" loading="lazy">' : ''; }
 
   /* ---------- holat ---------- */
