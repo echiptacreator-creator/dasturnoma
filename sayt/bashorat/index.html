@@ -4823,7 +4823,7 @@ if(!kim){kim=Math.random().toString(36).slice(2)+Date.now().toString(36);try{loc
 function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function ismSaqla(v){ism=v;try{localStorage.setItem(KI,v);}catch(e){}}
 function reyChiz(el,qator,men,ballNom){
-  if(!qator||!qator.length){el.innerHTML='<div class="mo-bosh">Hali hech kim yo\'q - birinchi bo\'ling!</div>';return;}
+  if(!qator||!qator.length){el.innerHTML='<div class="mo-bosh">Hali heç kim yöq - birinçi böling!</div>';return;}
   var h=qator.map(function(r,i){return '<li class="'+(r.men?'men':'')+'"><b>'+(r.o||i+1)+'</b><span>'+E(r.ism)+
     '</span><em>'+(r.aniq!=null?r.aniq+' aniq · '+r.soni+' ta':(r.kun_soni!=null?r.kun_soni+' kun':(r.jami?r.ball+'/'+r.jami:'')))+
     '</em><strong>'+r.ball+'</strong></li>';}).join('');
@@ -4846,14 +4846,14 @@ function chiz(d){
   if(o&&o.yopiq){tug.disabled=true;Q.querySelectorAll('.mo-s button').forEach(function(b){b.disabled=true;});
     hol.innerHTML='O\'yin boshlangan - bashorat qabul qilish yopildi.';}
   if(d.men){var k=korin(d.men.biz,d.men.ular);S=k;qoy();
-    if(!(o&&o.yopiq)){tug.textContent='Bashoratni o\'zgartirish';
-      hol.innerHTML='Sizning bashoratingiz: <b>'+k[0]+':'+k[1]+'</b> - o\'yin boshlanguncha o\'zgartirish mumkin.';}}
+    if(!(o&&o.yopiq)){tug.textContent='Başoratni özgartiriş';
+      hol.innerHTML='Sizning başoratingiz: <b>'+k[0]+':'+k[1]+'</b> - öyin boşlangunça özgartiriş mumkin.';}}
   var t=document.getElementById('mo-taq');
   if(d.men&&d.jami){var n=d.natija,j=d.jami,p=function(x){return Math.round(x*100/j);};
-    t.innerHTML='<h3>'+j+' muxlis bashorat qildi</h3><div class="mo-bar"><i class="g" style="width:'+p(n.g)+'%"></i><i class="d" style="width:'+p(n.d)+'%"></i><i class="m" style="width:'+p(n.m)+'%"></i></div>'+
-      '<div class="mo-bel"><span>Andijon g\'alabasi '+p(n.g)+'%</span><span>Durang '+p(n.d)+'%</span><span>Mag\'lubiyat '+p(n.m)+'%</span></div>'+
+    t.innerHTML='<h3>'+j+' muxlis başorat qildi</h3><div class="mo-bar"><i class="g" style="width:'+p(n.g)+'%"></i><i class="d" style="width:'+p(n.d)+'%"></i><i class="m" style="width:'+p(n.m)+'%"></i></div>'+
+      '<div class="mo-bel"><span>Andijon ğalabasi '+p(n.g)+'%</span><span>Durang '+p(n.d)+'%</span><span>Mağlubiyat '+p(n.m)+'%</span></div>'+
       '<div class="mo-chip">'+(d.top||[]).map(function(x){var a=x[0].split(':'),k=korin(+a[0],+a[1]);return '<span>'+k[0]+':'+k[1]+'<em>'+x[1]+' ta</em></span>';}).join('')+'</div>';}
-  else t.innerHTML='<div class="mo-bosh">Bashorat yuborgach, boshqa muxlislar nima deganini ko\'rasiz.</div>';
+  else t.innerHTML='<div class="mo-bosh">Başorat yuborgaç, boşqa muxlislar nima deganini körasiz.</div>';
   var r=d.reyting||{};reyChiz(document.getElementById('mo-rey'),r.reyting,r.men);
   var ri=document.getElementById('mo-rey-izoh');if(ri)ri.textContent=r.ishtirokchi?(r.ishtirokchi+' ishtirokchi'):'';
   var tr=document.getElementById('mo-tar');
@@ -4861,7 +4861,7 @@ function chiz(d){
     tr.innerHTML=x.map(function(a){return '<li>'+(a.ball!=null?'<i class="b'+a.ball+'">+'+a.ball+'</i>':'<i>kutilmoqda</i>')+
       '<b>'+(a.uy?'Andijon - '+E(a.raqib):E(a.raqib)+' - Andijon')+'</b><span>Siz: '+a.men+(a.hisob?' · Hisob: '+a.hisob:'')+' · '+a.vaqt+'</span></li>';}).join('');}
 }
-function yukla(){if(!API){hol.className='mo-holat xato';hol.textContent='Hozircha bashorat qabul qilinmayapti.';return;}
+function yukla(){if(!API){hol.className='mo-holat xato';hol.textContent='Hozirça başorat qabul qilinmayapti.';return;}
   fetch(API+'/api/muxlis-oyin/bashorat?mid='+MID+'&kim='+kim).then(function(r){return r.json();})
   .then(function(d){if(d&&d.ok)chiz(d);}).catch(function(){});}
 tug.onclick=function(){var v=inp.value.trim();
@@ -5323,7 +5323,7 @@ qoy();yukla();
       'onerror="this.remove()"></span>';
   }
 
-  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN ŞARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -5411,7 +5411,7 @@ qoy();yukla();
   setInterval(ol, YANGI);
   // 2026-10-25: o'yin sahifasi jonli rejimi (Sharh/Statistika ustunlari, haqiqiy tarkib) — tashqi fayl,
   // agent uni har so'rovda diskdan o'qiydi: keyingi o'zgarishlar uchun saytni qayta nashr qilish shart emas.
-  // __OM_INLINE__: o'yin markazi nashrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
+  // __OM_INLINE__: o'yin markazi naşrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
   if (/\/sayt\/oyin\/\d+/.test(location.pathname) && !window.__OM_INLINE__) {
     window.__SAYT_API__ = API.replace(/\/api\/sayt\/?$/, "");
     var sj = document.createElement("script");
@@ -5455,11 +5455,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     ok:'Готово! Начало матча, голы и итог придут на телефон.',ochdi:'Уведомления о голах отключены.',
     s:'Получать уведомления о голах?',m:'Начало матча, каждый гол и итоговый счёт — сразу на ваш телефон.',
     ha:'Включить',keyin:'Позже'}:{
-    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqish',
-    ruxsat:"Brauzer sozlamalarida bu sayt uchun bildirishnomaga ruxsat bering.",
-    ok:"Yoqildi! O'yin boshlanishi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari o'chirildi.",
-    s:'Gol xabarlarini olasizmi?',m:"O'yin boshlanishi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
-    ha:'Yoqish',keyin:'Keyinroq'};
+    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqiş',
+    ruxsat:"Brauzer sozlamalarida bu sayt uçun bildirişnomaga ruxsat bering.",
+    ok:"Yoqildi! Öyin boşlanişi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari öçirildi.",
+    s:'Gol xabarlarini olasizmi?',m:"Öyin boşlanişi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
+    ha:'Yoqiş',keyin:'Keyinroq'};
   function ol(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function qoy(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';

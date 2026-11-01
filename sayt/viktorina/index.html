@@ -4819,7 +4819,7 @@ if(!kim){kim=Math.random().toString(36).slice(2)+Date.now().toString(36);try{loc
 function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function ismSaqla(v){ism=v;try{localStorage.setItem(KI,v);}catch(e){}}
 function reyChiz(el,qator,men,ballNom){
-  if(!qator||!qator.length){el.innerHTML='<div class="mo-bosh">Hali hech kim yo\'q - birinchi bo\'ling!</div>';return;}
+  if(!qator||!qator.length){el.innerHTML='<div class="mo-bosh">Hali heç kim yöq - birinçi böling!</div>';return;}
   var h=qator.map(function(r,i){return '<li class="'+(r.men?'men':'')+'"><b>'+(r.o||i+1)+'</b><span>'+E(r.ism)+
     '</span><em>'+(r.aniq!=null?r.aniq+' aniq · '+r.soni+' ta':(r.kun_soni!=null?r.kun_soni+' kun':(r.jami?r.ball+'/'+r.jami:'')))+
     '</em><strong>'+r.ball+'</strong></li>';}).join('');
@@ -4830,24 +4830,24 @@ function reyChiz(el,qator,men,ballNom){
 var M=document.getElementById('vk'),D=null,i=0,jav=[],t0=0;
 function harf(n){return 'ABCD'.charAt(n);}
 function reyting(d){var r=d.reyting||d;var ich='<div class="vk-tab"><button class="faol" data-t="bugun">Bugun</button><button data-t="umumiy">Umumiy</button></div><ol class="mo-rey" id="vk-rey"></ol>';
-  var el=document.getElementById('vk-r');el.innerHTML='<h3>Reyting <em style="float:right;font-style:normal;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.5)">bugun '+(r.bugun_soni||0)+' kishi</em></h3>'+ich;
+  var el=document.getElementById('vk-r');el.innerHTML='<h3>Reyting <em style="float:right;font-style:normal;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.5)">bugun '+(r.bugun_soni||0)+' kişi</em></h3>'+ich;
   function q(t){var x=(r[t]||[]).map(function(a,k){a.o=k+1;return a;});reyChiz(document.getElementById('vk-rey'),x,null);}
   el.querySelectorAll('.vk-tab button').forEach(function(b){b.onclick=function(){el.querySelectorAll('.vk-tab button').forEach(function(c){c.className='';});b.className='faol';q(b.getAttribute('data-t'));};});
   q('bugun');}
 function natija(ball,jami,togri,mening,izoh){
   var h='<div class="vk-ball">'+ball+'<u>/'+jami+'</u></div><p style="text-align:center;color:rgba(255,255,255,.7)">'+
-    (ball>=8?'Ajoyib! Siz haqiqiy Andijon muxlisisiz.':ball>=5?'Yaxshi natija! Ertaga yana urinib ko\'ring.':'Klubni yaxshiroq bilish uchun saytimizni kuzatib boring!')+
+    (ball>=8?'Ajoyib! Siz haqiqiy Andijon muxlisisiz.':ball>=5?'Yaxşi natija! Ertaga yana urinib köring.':'Klubni yaxşiroq biliş uçun saytimizni kuzatib boring!')+
     '</p><p style="text-align:center;color:rgba(255,255,255,.55);font-size:13px">Yangi savollar ertaga.</p>';
   if(togri&&D){h+='<ul class="vk-sharh">'+D.savollar.map(function(s,k){var ok=mening&&mening[k]===togri[k];
-    return '<li class="'+(ok?'ok':'')+'">'+(k+1)+'. '+E(s.s)+'<span>To\'g\'ri javob: '+E(s.v[togri[k]])+(mening&&!ok&&mening[k]!=null?' · Siz: '+E(s.v[mening[k]]):'')+'</span>'+
+    return '<li class="'+(ok?'ok':'')+'">'+(k+1)+'. '+E(s.s)+'<span>Töğri javob: '+E(s.v[togri[k]])+(mening&&!ok&&mening[k]!=null?' · Siz: '+E(s.v[mening[k]]):'')+'</span>'+
     (izoh&&izoh[k]?'<em class="vk-iz">'+E(izoh[k])+'</em>':'')+'</li>';}).join('')+'</ul>';}
   M.innerHTML=h;}
 function kirish(){
   if(D.oynagan){natija(D.oynagan.ball,D.oynagan.jami,D.togri,null,D.izoh);return;}
   M.innerHTML='<div class="vk-kirish"><div class="vk-katta">'+D.savollar.length+' savol</div>'+
-    '<p>7 ta savol klub tarixidan (1964-yildan buyon) va 3 tasi joriy mavsumdan. Har kuni yangi to\'plam - bir kunda bir marta o\'ynaladi. Oxirida har savol bo\'yicha qisqa fakt chiqadi.</p>'+
-    '<div class="mo-form"><input id="vk-ism" maxlength="24" placeholder="Ismingiz (reytingda ko\'rinadi)" value="'+E(ism)+'">'+
-    '<button class="mo-tug" id="vk-bosh">Boshlash</button></div><div class="mo-holat" id="vk-hol"></div></div>';
+    '<p>7 ta savol klub tarixidan (1964-yildan buyon) va 3 tasi joriy mavsumdan. Har kuni yangi töplam - bir kunda bir marta öynaladi. Oxirida har savol böyiça qisqa fakt çiqadi.</p>'+
+    '<div class="mo-form"><input id="vk-ism" maxlength="24" placeholder="Ismingiz (reytingda körinadi)" value="'+E(ism)+'">'+
+    '<button class="mo-tug" id="vk-bosh">Boşlaş</button></div><div class="mo-holat" id="vk-hol"></div></div>';
   document.getElementById('vk-bosh').onclick=function(){var v=document.getElementById('vk-ism').value.trim();
     if(!v){var h=document.getElementById('vk-hol');h.className='mo-holat xato';h.textContent='Ismingizni yozing.';return;}
     ismSaqla(v);i=0;jav=[];t0=Date.now();savol();};}
@@ -4863,12 +4863,12 @@ function yubor(){M.innerHTML='<div class="mo-bosh">Natija hisoblanmoqda...</div>
   .then(function(r){return r.json();}).then(function(d){
     if(!d.ok){M.innerHTML='<div class="mo-bosh">'+E(d.xato||'Xatolik')+'</div>';return;}
     natija(d.ball,d.jami,d.togri,jav,d.izoh);reyting(d);})
-  .catch(function(){M.innerHTML='<div class="mo-bosh">Aloqa uzildi - sahifani yangilab qayta urinib ko\'ring.</div>';});}
-if(!API){M.innerHTML='<div class="mo-bosh">Viktorina hozircha ishlamayapti.</div>';return;}
+  .catch(function(){M.innerHTML='<div class="mo-bosh">Aloqa uzildi - sahifani yangilab qayta urinib köring.</div>';});}
+if(!API){M.innerHTML='<div class="mo-bosh">Viktorina hozirça işlamayapti.</div>';return;}
 fetch(API+'/api/muxlis-oyin/viktorina?kim='+kim).then(function(r){return r.json();})
  .then(function(d){if(!d||!d.ok){M.innerHTML='<div class="mo-bosh">Viktorina yuklanmadi.</div>';return;}
    D=d;kirish();reyting(d);})
- .catch(function(){M.innerHTML='<div class="mo-bosh">Aloqa uzildi - keyinroq urinib ko\'ring.</div>';});
+ .catch(function(){M.innerHTML='<div class="mo-bosh">Aloqa uzildi - keyinroq urinib köring.</div>';});
 })();</script>
 <footer><div class="q">
   <div class="ust">
@@ -5318,7 +5318,7 @@ fetch(API+'/api/muxlis-oyin/viktorina?kim='+kim).then(function(r){return r.json(
       'onerror="this.remove()"></span>';
   }
 
-  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN ŞARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -5406,7 +5406,7 @@ fetch(API+'/api/muxlis-oyin/viktorina?kim='+kim).then(function(r){return r.json(
   setInterval(ol, YANGI);
   // 2026-10-25: o'yin sahifasi jonli rejimi (Sharh/Statistika ustunlari, haqiqiy tarkib) — tashqi fayl,
   // agent uni har so'rovda diskdan o'qiydi: keyingi o'zgarishlar uchun saytni qayta nashr qilish shart emas.
-  // __OM_INLINE__: o'yin markazi nashrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
+  // __OM_INLINE__: o'yin markazi naşrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
   if (/\/sayt\/oyin\/\d+/.test(location.pathname) && !window.__OM_INLINE__) {
     window.__SAYT_API__ = API.replace(/\/api\/sayt\/?$/, "");
     var sj = document.createElement("script");
@@ -5450,11 +5450,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     ok:'Готово! Начало матча, голы и итог придут на телефон.',ochdi:'Уведомления о голах отключены.',
     s:'Получать уведомления о голах?',m:'Начало матча, каждый гол и итоговый счёт — сразу на ваш телефон.',
     ha:'Включить',keyin:'Позже'}:{
-    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqish',
-    ruxsat:"Brauzer sozlamalarida bu sayt uchun bildirishnomaga ruxsat bering.",
-    ok:"Yoqildi! O'yin boshlanishi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari o'chirildi.",
-    s:'Gol xabarlarini olasizmi?',m:"O'yin boshlanishi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
-    ha:'Yoqish',keyin:'Keyinroq'};
+    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqiş',
+    ruxsat:"Brauzer sozlamalarida bu sayt uçun bildirişnomaga ruxsat bering.",
+    ok:"Yoqildi! Öyin boşlanişi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari öçirildi.",
+    s:'Gol xabarlarini olasizmi?',m:"Öyin boşlanişi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
+    ha:'Yoqiş',keyin:'Keyinroq'};
   function ol(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function qoy(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';

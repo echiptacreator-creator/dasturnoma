@@ -4724,7 +4724,7 @@ function qat(el,n,men){
   b.textContent=n>0?n:'';
   el.className='rx-t'+(men?' men':'')+(n>0?' bor':'');}
 /* ⚠ `toliq=false` DA FAQAT KELGAN MAVZU YANGILANADI. Bitta
-   tugma bosilgach javob FAQAT o'sha mavzuning sanog'ini
+   tugma bosilgach javob FAQAT o'şa mavzuning sanog'ini
    qaytaradi. Ilgari shu javob bilan HAMMA tugma qayta
    chizilardi va qolganlariga nol yozib ketardi: birinchi
    emojining raqami ikkinchisini bosgan zahoti yo'qolardi
@@ -4764,16 +4764,16 @@ function bchiz(d){
     var men=meni.indexOf(tn)>=0;
     el.className='bsh-t'+(men?' men':'');
     /* ⚠ `%` — bu satr Python `%` formatidan o'tadi (OVOZ_JS).
-       Bitta `%` yozilsa `unsupported format character` bo'lardi. */
+       Bitta `%` yozilsa `unsupported format çaracter` bo'lardi. */
     var foiz=(meni.length&&jami)?Math.round(n*100/jami):0;
     var t=el.querySelector('i'),c=el.querySelector('s');
     if(t)t.textContent=meni.length?(foiz+'% · '+n):'';
     if(c)c.style.width=(meni.length?foiz:0)+'%';}
   var j=document.querySelector('.bsh-j');
-  if(j)j.textContent=jami?(jami+' muxlis bashorat qildi'):'';
+  if(j)j.textContent=jami?(jami+' muxlis başorat qildi'):'';
 }
-/* FUTBOLCHIGA BAHO — o'rtacha va o'zi qo'ygan baho.
-   ⚠ O'RTACHA HAR DOIM KO'RINADI (reaksiyadagidek), chunki bu
+/* FUTBOLCHIGA BAHO — o'rtaça va o'zi qo'ygan baho.
+   ⚠ O'RTAÇA HAR DOIM KO'RINADI (reaksiyadagidek), chunki bu
      so'rovnoma emas — baho. Muxlis boshqalarning bahosini
      ko'rib o'z fikrini shakllantirishi tabiiy.
    ⚠ HISOB BITTA JOYDA: `knowledge/ovozlar.ortacha()` bilan
@@ -4835,11 +4835,11 @@ fetch(API+'/api/muxlis-ovoz?mid='+encodeURIComponent(MID)+'&kim='+
     if(!band||!band.length){
       var b=document.createElement('div');
       b.className='mst-bosh';
-      b.textContent='Hali so‘z yo‘q — birinchi bo‘ling.';
+      b.textContent='Hali söz yöq — birinçi böling.';
       lenta.appendChild(b);return;}
     var s=document.createElement('div');
     s.className='mst-s';
-    s.textContent='Muxlislar so‘zi · '+band.length;
+    s.textContent='Muxlislar sözi · '+band.length;
     lenta.appendChild(s);
     band.forEach(function(x){
       var k=document.createElement('div');k.className='mst-x';
@@ -4855,7 +4855,7 @@ fetch(API+'/api/muxlis-ovoz?mid='+encodeURIComponent(MID)+'&kim='+
     .catch(function(){});
   tug.addEventListener('click',function(){
     var t=(matn.value||'').trim();
-    if(t.length<3){ayt('Bir og‘iz gap yozing.','xato');return;}
+    if(t.length<3){ayt('Bir oğiz gap yozing.','xato');return;}
     tug.disabled=true;
     fetch(API+'/api/muxlis-soz',{method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -4866,9 +4866,9 @@ fetch(API+'/api/muxlis-ovoz?mid='+encodeURIComponent(MID)+'&kim='+
        if(j&&j.xato==='kirish'){try{localStorage.removeItem('fk_tok');}catch(e){}
          forma.hidden=true;kirA.hidden=false;return;}
        if(j&&j.ok){matn.value='';ayt(j.xabar||'Qabul qilindi.','ok');}
-       else ayt((j&&j.xabar)||'Yuborilmadi — keyinroq urinib ko‘ring.','xato');})
+       else ayt((j&&j.xabar)||'Yuborilmadi — keyinroq urinib köring.','xato');})
      .catch(function(){tug.disabled=false;
-       ayt('Aloqa yo‘q — keyinroq urinib ko‘ring.','xato');});
+       ayt('Aloqa yöq — keyinroq urinib köring.','xato');});
   });
 })();
 /* Baho tugmasi — bitta futbolchiga bitta baho (almashadi). */
@@ -5397,7 +5397,7 @@ document.addEventListener('click',function(ev){
       'onerror="this.remove()"></span>';
   }
 
-  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN ŞARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -5485,7 +5485,7 @@ document.addEventListener('click',function(ev){
   setInterval(ol, YANGI);
   // 2026-10-25: o'yin sahifasi jonli rejimi (Sharh/Statistika ustunlari, haqiqiy tarkib) — tashqi fayl,
   // agent uni har so'rovda diskdan o'qiydi: keyingi o'zgarishlar uchun saytni qayta nashr qilish shart emas.
-  // __OM_INLINE__: o'yin markazi nashrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
+  // __OM_INLINE__: o'yin markazi naşrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
   if (/\/sayt\/oyin\/\d+/.test(location.pathname) && !window.__OM_INLINE__) {
     window.__SAYT_API__ = API.replace(/\/api\/sayt\/?$/, "");
     var sj = document.createElement("script");
@@ -5529,11 +5529,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     ok:'Готово! Начало матча, голы и итог придут на телефон.',ochdi:'Уведомления о голах отключены.',
     s:'Получать уведомления о голах?',m:'Начало матча, каждый гол и итоговый счёт — сразу на ваш телефон.',
     ha:'Включить',keyin:'Позже'}:{
-    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqish',
-    ruxsat:"Brauzer sozlamalarida bu sayt uchun bildirishnomaga ruxsat bering.",
-    ok:"Yoqildi! O'yin boshlanishi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari o'chirildi.",
-    s:'Gol xabarlarini olasizmi?',m:"O'yin boshlanishi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
-    ha:'Yoqish',keyin:'Keyinroq'};
+    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqiş',
+    ruxsat:"Brauzer sozlamalarida bu sayt uçun bildirişnomaga ruxsat bering.",
+    ok:"Yoqildi! Öyin boşlanişi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari öçirildi.",
+    s:'Gol xabarlarini olasizmi?',m:"Öyin boşlanişi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
+    ha:'Yoqiş',keyin:'Keyinroq'};
   function ol(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function qoy(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';

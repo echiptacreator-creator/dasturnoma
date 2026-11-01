@@ -4722,25 +4722,25 @@ h2 .yana{float:right;font-size:13px;color:var(--oltin);
 </style><div class="q kd"><div class="kd-k"><div class="kd-hero"><i>Bobur Arena · Muxlislar kadri</i><h1 class="sarl">Kadringiz stadion tablosida</h1><p>O&#8216;yin oldidan yoki 1-bo&#8216;limda tribunadan surat yuboring — tanaffusda eng yaxşilari stadionning katta LED tablosida çiqadi.</p><div class="kd-qad"><div><b>1</b>Suratga oling</div><div><b>2</b>Şu yerdan yuboring</div><div><b>3</b>Tanaffusda tabloda!</div></div></div><div class="kd-box"><div class="kd-xb" id="kd-xb">Yuklanmoqda…</div><div id="kd-f" hidden><label class="kd-tan" id="kd-tan" for="kd-in" style="margin-top:14px"><em>📸</em><b>Kadr tanlaş</b><span>Stadion, tribuna, muxlislar · rasm 15 MB gaça</span></label><input type="file" id="kd-in" accept="image/*" hidden><button type="button" class="kd-yub" id="kd-yub" disabled>Tabloga yuboriş</button><div class="kd-j" id="kd-j"></div></div><div class="kd-men" id="kd-men"></div><p style="font-size:12px;color:rgba(255,255,255,.5);margin:12px 0 0">Har kadr matbuot xizmati ko&#8216;rigidan o&#8216;tadi. Tasdiqlangan har kadr uçun +2 ball.</p></div></div></div><script>(function(){
 var API="https://api-andijon.maladesbola.uz";function ol(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
 var Q=function(id){return document.getElementById(id)},T=ol('fk_tok'),FAYL=null;
-var H={kutmoqda:'⏳ ko‘rikda',tasdiq:'✅ tabloga qo‘yildi',rad:'❌ rad etildi'};
+var H={kutmoqda:'⏳ körikda',tasdiq:'✅ tabloga qöyildi',rad:'❌ rad etildi'};
 function chiz(d){var xb=Q('kd-xb'),f=Q('kd-f');
   if(!T){xb.innerHTML='<a href="../profil/?qayt=/sayt/kadr">Telegram orqali kiring</a> — keyin stadiondan kadringizni yuborasiz.';f.hidden=true;return;}
-  if(!d.ochiq){xb.innerHTML='Kadr yuborish <b>o‘yin kuni</b> ochiladi: boshlanishidan 3 soat oldin va 1-bo‘lim davomida.';f.hidden=true;return;}
+  if(!d.ochiq){xb.innerHTML='Kadr yuboriş <b>öyin kuni</b> oçiladi: boşlanişidan 3 soat oldin va 1-bölim davomida.';f.hidden=true;return;}
   var m=d.mening||[],qol=d.chek-m.filter(function(x){return x.holat!=='rad';}).length;
-  xb.innerHTML='⚽ <b>'+(d.oyin||'')+'</b> — kadr yuborish ochiq. Yana <b>'+Math.max(0,qol)+'</b> ta yubora olasiz.';
+  xb.innerHTML='⚽ <b>'+(d.oyin||'')+'</b> — kadr yuboriş oçiq. Yana <b>'+Math.max(0,qol)+'</b> ta yubora olasiz.';
   f.hidden=qol<=0;
   Q('kd-men').innerHTML=m.map(function(x,i){return '<span class="'+x.holat+'">'+(i+1)+'-kadr: '+(H[x.holat]||x.holat)+'</span>';}).join('');}
 function yukla(){fetch(API+'/api/muxlis/kadr',{headers:T?{'Authorization':'Bearer '+T}:{}}).then(function(r){return r.json();}).then(chiz)
-  .catch(function(){Q('kd-xb').textContent='Aloqa yo‘q — keyinroq yangilang.';});}
+  .catch(function(){Q('kd-xb').textContent='Aloqa yöq — keyinroq yangilang.';});}
 Q('kd-in').onchange=function(){FAYL=this.files&&this.files[0];if(!FAYL)return;var u=URL.createObjectURL(FAYL);
   Q('kd-tan').innerHTML='<img src="'+u+'" alt="">';Q('kd-yub').disabled=false;};
 Q('kd-yub').onclick=function(){if(!FAYL)return;var b=this,j=Q('kd-j');b.disabled=true;j.className='kd-j';j.textContent='Yuborilmoqda…';
   var fd=new FormData();fd.append('rasm',FAYL);
   fetch(API+'/api/muxlis/kadr',{method:'POST',headers:{'Authorization':'Bearer '+T},body:fd}).then(function(r){return r.json();}).then(function(d){
-    j.className='kd-j '+(d.ok?'ok':'xato');j.textContent=d.xabar||(d.ok?'Yuborildi.':'Bo‘lmadi.');
-    if(d.ok){FAYL=null;Q('kd-in').value='';Q('kd-tan').innerHTML='<em>📸</em><b>Yana kadr tanlash</b><span>Stadion, tribuna, muxlislar</span>';}
-    else b.disabled=false;yukla();}).catch(function(){j.className='kd-j xato';j.textContent='Aloqa yo‘q — qayta urinib ko‘ring.';b.disabled=false;});};
-if(!API){Q('kd-xb').textContent='Hozircha ochilmadi.';return;}yukla();
+    j.className='kd-j '+(d.ok?'ok':'xato');j.textContent=d.xabar||(d.ok?'Yuborildi.':'Bölmadi.');
+    if(d.ok){FAYL=null;Q('kd-in').value='';Q('kd-tan').innerHTML='<em>📸</em><b>Yana kadr tanlaş</b><span>Stadion, tribuna, muxlislar</span>';}
+    else b.disabled=false;yukla();}).catch(function(){j.className='kd-j xato';j.textContent='Aloqa yöq — qayta urinib köring.';b.disabled=false;});};
+if(!API){Q('kd-xb').textContent='Hozirça oçilmadi.';return;}yukla();
 })();</script>
 <footer><div class="q">
   <div class="ust">
@@ -5190,7 +5190,7 @@ if(!API){Q('kd-xb').textContent='Hozircha ochilmadi.';return;}yukla();
       'onerror="this.remove()"></span>';
   }
 
-  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN ŞARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -5278,7 +5278,7 @@ if(!API){Q('kd-xb').textContent='Hozircha ochilmadi.';return;}yukla();
   setInterval(ol, YANGI);
   // 2026-10-25: o'yin sahifasi jonli rejimi (Sharh/Statistika ustunlari, haqiqiy tarkib) — tashqi fayl,
   // agent uni har so'rovda diskdan o'qiydi: keyingi o'zgarishlar uchun saytni qayta nashr qilish shart emas.
-  // __OM_INLINE__: o'yin markazi nashrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
+  // __OM_INLINE__: o'yin markazi naşrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
   if (/\/sayt\/oyin\/\d+/.test(location.pathname) && !window.__OM_INLINE__) {
     window.__SAYT_API__ = API.replace(/\/api\/sayt\/?$/, "");
     var sj = document.createElement("script");
@@ -5322,11 +5322,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     ok:'Готово! Начало матча, голы и итог придут на телефон.',ochdi:'Уведомления о голах отключены.',
     s:'Получать уведомления о голах?',m:'Начало матча, каждый гол и итоговый счёт — сразу на ваш телефон.',
     ha:'Включить',keyin:'Позже'}:{
-    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqish',
-    ruxsat:"Brauzer sozlamalarida bu sayt uchun bildirishnomaga ruxsat bering.",
-    ok:"Yoqildi! O'yin boshlanishi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari o'chirildi.",
-    s:'Gol xabarlarini olasizmi?',m:"O'yin boshlanishi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
-    ha:'Yoqish',keyin:'Keyinroq'};
+    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqiş',
+    ruxsat:"Brauzer sozlamalarida bu sayt uçun bildirişnomaga ruxsat bering.",
+    ok:"Yoqildi! Öyin boşlanişi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari öçirildi.",
+    s:'Gol xabarlarini olasizmi?',m:"Öyin boşlanişi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
+    ha:'Yoqiş',keyin:'Keyinroq'};
   function ol(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function qoy(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';

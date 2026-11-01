@@ -4732,25 +4732,25 @@ var API="https://api-andijon.maladesbola.uz";
 function ol(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
 function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 var Q=function(id){return document.getElementById(id)};
-if(!API){Q('ry-l').innerHTML='<li class="ry-bosh">Reyting hozircha ochilmadi.</li>';return;}
+if(!API){Q('ry-l').innerHTML='<li class="ry-bosh">Reyting hozirça oçilmadi.</li>';return;}
 var t=ol('fk_tok'),h=t?{'Authorization':'Bearer '+t}:{};
 fetch(API+'/api/muxlis/reyting?kim='+encodeURIComponent(ol('fk_kim')),{headers:h}).then(function(r){return r.json();}).then(function(d){
   var r=d.reyting||[];Q('ry-son').textContent=d.ishtirokchi||0;
-  if(!r.length){Q('ry-l').innerHTML='<li class="ry-bosh">Hali ball to\'plagan muxlis yo\'q — birinchi bo\'ling!</li>';}
+  if(!r.length){Q('ry-l').innerHTML='<li class="ry-bosh">Hali ball töplagan muxlis yöq — birinçi böling!</li>';}
   var med=['🥇','🥈','🥉'],top=[r[1],r[0],r[2]];
   Q('ry-top').innerHTML=r.length>=3?top.map(function(x){return '<div class="ry-p o'+x.o+'"><em>'+med[x.o-1]+'</em><b>'+E(x.ism)+
     '</b><strong>'+x.ball+'</strong><span>'+E(x.daraja)+'</span></div>';}).join(''):'';
   var qol=r.length>=3?r.slice(3):r;
   if(r.length)Q('ry-l').innerHTML=qol.map(function(x){return '<li'+(x.men?' class="men"':'')+'><span class="o">'+x.o+'</span>'+
     '<span class="i"><b>'+E(x.ism)+(x.tg?'<span class="ry-tg">✓</span>':'')+'</b><span>'+E(x.daraja)+
-    (x.nishon?' · '+x.nishon+' nishon':'')+'</span></span><span class="q">bashorat '+x.bashorat+' · viktorina '+x.viktorina+(x.obuna?' · obuna '+x.obuna:'')+
-    (x.taklif?' · taklif '+x.taklif:'')+(x.togarak?' · to‘garak '+x.togarak:'')+(x.premium?' · <b style="color:#E2BA75">BURGUT+</b>':'')+
+    (x.nishon?' · '+x.nishon+' nishon':'')+'</span></span><span class="q">başorat '+x.bashorat+' · viktorina '+x.viktorina+(x.obuna?' · obuna '+x.obuna:'')+
+    (x.taklif?' · taklif '+x.taklif:'')+(x.togarak?' · tögarak '+x.togarak:'')+(x.premium?' · <b style="color:#E2BA75">BURGUT+</b>':'')+
     '</span><span class="b">'+x.ball+'</span></li>';}).join('')||'';
   var m=d.men,mq=Q('ry-men');
-  if(m){mq.innerHTML='Sizning o\'rningiz: <b>'+m.o+'</b> / '+d.ishtirokchi+' · <b>'+m.ball+'</b> ball · '+E(m.daraja);}
-  else if(t){mq.innerHTML='Hali ball yo\'q. <a href="../bashorat/">Bashorat qiling</a> yoki <a href="../viktorina/">viktorinani yeching</a> — reytingga chiqasiz.';}
-  else{mq.innerHTML='<a href="../profil/?qayt=/sayt/reyting">Telegram orqali kiring</a> — ballaringiz har qurilmada saqlanadi va ismingiz reytingda chiqadi.';}
-}).catch(function(){Q('ry-l').innerHTML='<li class="ry-bosh">Aloqa yo\'q — keyinroq yangilang.</li>';});
+  if(m){mq.innerHTML='Sizning örningiz: <b>'+m.o+'</b> / '+d.ishtirokchi+' · <b>'+m.ball+'</b> ball · '+E(m.daraja);}
+  else if(t){mq.innerHTML='Hali ball yöq. <a href="../bashorat/">Başorat qiling</a> yoki <a href="../viktorina/">viktorinani yeçing</a> — reytingga çiqasiz.';}
+  else{mq.innerHTML='<a href="../profil/?qayt=/sayt/reyting">Telegram orqali kiring</a> — ballaringiz har qurilmada saqlanadi va ismingiz reytingda çiqadi.';}
+}).catch(function(){Q('ry-l').innerHTML='<li class="ry-bosh">Aloqa yöq — keyinroq yangilang.</li>';});
 })();</script>
 <footer><div class="q">
   <div class="ust">
@@ -5200,7 +5200,7 @@ fetch(API+'/api/muxlis/reyting?kim='+encodeURIComponent(ol('fk_kim')),{headers:h
       'onerror="this.remove()"></span>';
   }
 
-  /* 4) O'YIN SHARHI — yangi yozuvlar o'zi qo'shiladi.
+  /* 4) O'YIN ŞARHI — yangi yozuvlar o'zi qo'shiladi.
      Sahifadagi tuzilma AYNAN saqlanadi (.shrh-q / .shrh-d /
      .shrh-m / .shrh-t), shuning uchun yangi qator eskisidan
      farq qilmaydi. Reaksiya tugmalari yangi qatorda bo'lmaydi:
@@ -5288,7 +5288,7 @@ fetch(API+'/api/muxlis/reyting?kim='+encodeURIComponent(ol('fk_kim')),{headers:h
   setInterval(ol, YANGI);
   // 2026-10-25: o'yin sahifasi jonli rejimi (Sharh/Statistika ustunlari, haqiqiy tarkib) — tashqi fayl,
   // agent uni har so'rovda diskdan o'qiydi: keyingi o'zgarishlar uchun saytni qayta nashr qilish shart emas.
-  // __OM_INLINE__: o'yin markazi nashrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
+  // __OM_INLINE__: o'yin markazi naşrda sahifaning o'ziga joylangan - tashqi skript qayta yuklanmaydi.
   if (/\/sayt\/oyin\/\d+/.test(location.pathname) && !window.__OM_INLINE__) {
     window.__SAYT_API__ = API.replace(/\/api\/sayt\/?$/, "");
     var sj = document.createElement("script");
@@ -5332,11 +5332,11 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     ok:'Готово! Начало матча, голы и итог придут на телефон.',ochdi:'Уведомления о голах отключены.',
     s:'Получать уведомления о голах?',m:'Начало матча, каждый гол и итоговый счёт — сразу на ваш телефон.',
     ha:'Включить',keyin:'Позже'}:{
-    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqish',
-    ruxsat:"Brauzer sozlamalarida bu sayt uchun bildirishnomaga ruxsat bering.",
-    ok:"Yoqildi! O'yin boshlanishi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari o'chirildi.",
-    s:'Gol xabarlarini olasizmi?',m:"O'yin boshlanishi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
-    ha:'Yoqish',keyin:'Keyinroq'};
+    on:'Gol xabarlari: yoqilgan',bl:'Gol xabarlari: bloklangan',yoq:'Gol xabarlarini yoqiş',
+    ruxsat:"Brauzer sozlamalarida bu sayt uçun bildirişnomaga ruxsat bering.",
+    ok:"Yoqildi! Öyin boşlanişi, gollar va natija telefoningizga keladi.",ochdi:"Gol xabarlari öçirildi.",
+    s:'Gol xabarlarini olasizmi?',m:"Öyin boşlanişi, har bir gol va yakuniy natija telefoningizga darhol keladi.",
+    ha:'Yoqiş',keyin:'Keyinroq'};
   function ol(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function qoy(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
