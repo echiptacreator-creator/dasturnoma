@@ -5709,7 +5709,22 @@ t.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;
     var h = P.hakamlar; if (!h || !h.bosh_hakam) return '';
     var q = [['Boş hakam', h.bosh_hakam], ['1-yordamchi', h.yordamchi1], ['2-yordamchi', h.yordamchi2], ['Zaxira hakam', h.zaxira], ['VAR', h.var], ['AVAR', h.avar], ['Nazoratçi', h.nazoratchi], ['Komissar', h.komissar]].filter(function (x) { return x[1]; });
     return sec('Hakamlar', h.hakam_oyinlar ? h.hakam_oyinlar + " öyin · örtaça " + h.sariq_oyin + ' sariq' : null) + '<div class="cd">' +
-      q.map(function (x) { return '<div class="li"><span class="mu">' + e(x[0]) + '</span><span class="r bo">' + e(x[1]) + '</span></div>'; }).join('') + '</div>';
+      q.map(function (x) { return '<div class="li"><span class="mu">' + e(x[0]) + '</span><span class="r bo">' + e(x[1]) + '</span></div>'; }).join('') + '</div>' +
+      hakamBiz(h);
+  }
+  /* BOSH HAKAM BILAN O'YINLARIMIZ (2026-11-05) — `dastdata` -> hakamlar.biz */
+  function hakamBiz(h) {
+    var b = h && h.biz; if (!b || !b.oyin) return '';
+    var n = Math.max(1, b.oyin), w = function (k) { return (100 * b[k] / n).toFixed(1) + '%'; };
+    var t = function (v, l, c) { return '<div style="flex:1;text-align:center;padding:8px 0;border-radius:10px;background:' + c + '"><b style="display:block;font-size:22px">' + v + '</b><span class="mu" style="font-size:11px">' + l + '</span></div>'; };
+    return '<div class="cd" style="margin-top:10px"><div class="li"><span class="mu">' + e(h.bosh_hakam) + " bilan öyinlarimiz</span>" +
+      '<a class="r bo" href="../../hakam/' + e(b.slug) + '/" style="color:inherit">profil &rarr;</a></div>' +
+      '<div style="display:flex;gap:6px;margin:6px 0">' + t(b.oyin, "öyin", 'rgba(255,255,255,.06)') +
+      t(b.g, "ğalaba", 'rgba(31,157,85,.3)') + t(b.d, 'durang', 'rgba(255,255,255,.1)') + t(b.m, "mağlubiyat", 'rgba(215,25,32,.3)') + '</div>' +
+      '<div style="display:flex;height:5px;border-radius:9px;overflow:hidden;margin:4px 0 8px"><i style="width:' + w('g') + ';background:#1f9d55"></i><i style="width:' + w('d') + ';background:rgba(255,255,255,.35)"></i><i style="width:' + w('m') + ';background:#d71920"></i></div>' +
+      '<div class="li"><span class="mu">Sariq (biz : raqib)</span><span class="r bo">' + b.biz_sariq + ' : ' + b.ular_sariq + '</span></div>' +
+      '<div class="li"><span class="mu">Qizil</span><span class="r bo">' + b.biz_qizil + ' : ' + b.ular_qizil + '</span></div>' +
+      '<div class="li"><span class="mu">Penalti</span><span class="r bo">' + b.biz_penalti + ' : ' + b.ular_penalti + '</span></div></div>';
   }
 
   function maqolalar() { return (K.maqolalar || []).filter(function (x) { return x && x.sarlavha; }); }
