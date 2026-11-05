@@ -8,6 +8,13 @@
 <atom:link href="https://andijonfk.uz/lenta.xml" rel="self" type="application/rss+xml"/>
 <item>
 <title>Maşğulotdan lavhalar</title>
+<link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-12</link>
+<guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-12</guid>
+<description></description>
+<pubDate>Thu, 05 Nov 2026 19:14:58 -0000</pubDate>
+</item>
+<item>
+<title>Maşğulotdan lavhalar</title>
 <link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-11</link>
 <guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-11</guid>
 <description></description>
@@ -208,13 +215,6 @@
 <guid isPermaLink="true">https://andijonfk.uz/sayt/oyindan-galereya-9</guid>
 <description></description>
 <pubDate>Mon, 26 Oct 2026 12:58:00 -0000</pubDate>
-</item>
-<item>
-<title>Öyindan galereya</title>
-<link>https://andijonfk.uz/sayt/oyindan-galereya-8</link>
-<guid isPermaLink="true">https://andijonfk.uz/sayt/oyindan-galereya-8</guid>
-<description></description>
-<pubDate>Mon, 26 Oct 2026 12:35:24 -0000</pubDate>
 </item>
 </channel>
 </rss>
