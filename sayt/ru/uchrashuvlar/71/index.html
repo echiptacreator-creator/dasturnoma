@@ -5261,7 +5261,8 @@ function yub(q,qayta){var i=new Image();
  i.src="https://api-andijon.maladesbola.uz/api/sayt/t?"+q;}
 var q="p="+encodeURIComponent(location.pathname)+
 "&r="+encodeURIComponent(/manba=ilova/.test(location.search)?"ilova":(document.referrer||""))+"&y="+y+
-"&m="+(/Mobi|Android|iPhone/i.test(navigator.userAgent)?1:0)+"&d="+b;
+"&m="+(/Mobi|Android|iPhone/i.test(navigator.userAgent)?1:0)+"&d="+b+
+"&h="+new Date(Date.now()+18e6).getUTCHours();
 var t=new Image();t.onload=function(){var a=nav();if(!a.length)return;
  try{localStorage.removeItem(N)}catch(e){}a.forEach(function(x){yub(x,true)});};
 t.onerror=function(){try{var a=nav();if(a.length<30){a.push(q);
