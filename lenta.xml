@@ -7,6 +7,13 @@
 <language>uz</language>
 <atom:link href="https://andijonfk.uz/lenta.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>Fotoreportaj</title>
+<link>https://andijonfk.uz/sayt/fotoreportaj-12</link>
+<guid isPermaLink="true">https://andijonfk.uz/sayt/fotoreportaj-12</guid>
+<description></description>
+<pubDate>Fri, 13 Nov 2026 11:50:20 -0000</pubDate>
+</item>
+<item>
 <title>“Andijon”da maşğulotlar va jarohat olgan futbolçilar holati</title>
 <link>https://andijonfk.uz/sayt/andijon-da-mashgulotlar-va-jarohat-olgan-futbol-ilar-holati</link>
 <guid isPermaLink="true">https://andijonfk.uz/sayt/andijon-da-mashgulotlar-va-jarohat-olgan-futbol-ilar-holati</guid>
@@ -208,13 +215,6 @@
 <guid isPermaLink="true">https://andijonfk.uz/sayt/islom-ahmedov-bu-holatdan-chiqib-ketamiz-2</guid>
 <description>Matbuot anjumani</description>
 <pubDate>Sun, 01 Nov 2026 02:35:34 -0000</pubDate>
-</item>
-<item>
-<title>Birinçi bölimdan suratlar</title>
-<link>https://andijonfk.uz/sayt/birinchi-bolimdan-suratlar-2</link>
-<guid isPermaLink="true">https://andijonfk.uz/sayt/birinchi-bolimdan-suratlar-2</guid>
-<description></description>
-<pubDate>Sat, 31 Oct 2026 19:56:12 -0000</pubDate>
 </item>
 </channel>
 </rss>
