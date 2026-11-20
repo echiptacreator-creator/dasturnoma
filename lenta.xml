@@ -8,6 +8,13 @@
 <atom:link href="https://andijonfk.uz/lenta.xml" rel="self" type="application/rss+xml"/>
 <item>
 <title>Öyindan galereya</title>
+<link>https://andijonfk.uz/sayt/oyindan-galereya-17</link>
+<guid isPermaLink="true">https://andijonfk.uz/sayt/oyindan-galereya-17</guid>
+<description></description>
+<pubDate>Fri, 20 Nov 2026 09:15:14 -0000</pubDate>
+</item>
+<item>
+<title>Öyindan galereya</title>
 <link>https://andijonfk.uz/sayt/oyindan-galereya-16</link>
 <guid isPermaLink="true">https://andijonfk.uz/sayt/oyindan-galereya-16</guid>
 <description></description>
@@ -208,13 +215,6 @@
 <guid isPermaLink="true">https://andijonfk.uz/sayt/prevyu-andijon-lokomotiv</guid>
 <description></description>
 <pubDate>Fri, 06 Nov 2026 10:25:14 -0000</pubDate>
-</item>
-<item>
-<title>Maşğulotdan lavhalar</title>
-<link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-12</link>
-<guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-12</guid>
-<description></description>
-<pubDate>Thu, 05 Nov 2026 19:14:58 -0000</pubDate>
 </item>
 </channel>
 </rss>
