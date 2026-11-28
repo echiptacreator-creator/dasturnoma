@@ -7,6 +7,13 @@
 <language>uz</language>
 <atom:link href="https://andijonfk.uz/lenta.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>Fotoreportaj</title>
+<link>https://andijonfk.uz/sayt/fotoreportaj-19</link>
+<guid isPermaLink="true">https://andijonfk.uz/sayt/fotoreportaj-19</guid>
+<description></description>
+<pubDate>Sat, 28 Nov 2026 20:06:31 -0000</pubDate>
+</item>
+<item>
 <title>Nihoyat, galaba!!!</title>
 <link>https://andijonfk.uz/sayt/ni</link>
 <guid isPermaLink="true">https://andijonfk.uz/sayt/ni</guid>
@@ -208,13 +215,6 @@
 <guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-16</guid>
 <description></description>
 <pubDate>Thu, 12 Nov 2026 21:35:56 -0000</pubDate>
-</item>
-<item>
-<title>Maşğulotdan lavhalar</title>
-<link>https://andijonfk.uz/sayt/mashgulotdan-lavhalar-15</link>
-<guid isPermaLink="true">https://andijonfk.uz/sayt/mashgulotdan-lavhalar-15</guid>
-<description></description>
-<pubDate>Thu, 12 Nov 2026 13:45:49 -0000</pubDate>
 </item>
 </channel>
 </rss>
